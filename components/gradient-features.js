@@ -55,7 +55,7 @@ const features = [
 
 export default function GradientFeatures() {
     return (
-        <div className="bg-gradient-to-r from-blue-800 to-indigo-700">
+        <div className="bg-gradient-to-r from-blue-800 to-blue-600">
           <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 sm:pt-20 sm:pb-24 lg:max-w-7xl lg:pt-24 lg:px-8">
             <h2 className="text-3xl font-extrabold text-white tracking-tight">Inbox support built for efficiency</h2>
             <p className="mt-4 max-w-3xl text-lg text-blue-200">
