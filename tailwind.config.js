@@ -1,3 +1,4 @@
+const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
@@ -9,10 +10,17 @@ module.exports = {
         fontFamily: {
             sans: ['Inter', ...defaultTheme.fontFamily.sans],
         },
+        colors: {
+          teal: colors.teal,
+          cyan: colors.cyan,
+        }
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+      require('@tailwindcss/forms'),
+      require('@tailwindcss/aspect-ratio')
+  ],
 }
