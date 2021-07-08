@@ -18,7 +18,7 @@ const navigation = {
     { name: 'SEO', href: '/seo' },
     { name: 'Social Media', href: '/social-media' },
     { name: 'Email Marketing', href: '/email-marketing' },
-    { name: 'Google Ads', href: '/google-ads' },
+    { name: 'Google Ads', href: '/google-marketing' },
   ],
   legal: [
     { name: 'About Us', href: '/about' },

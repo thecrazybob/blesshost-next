@@ -109,7 +109,7 @@ const marketing = [
   {
     name: 'Google Ads',
     description: "Generate more leads and sales through paid ads",
-    href: '/google-ads',
+    href: '/google-marketing',
     icon: SearchIcon,
   },
 ]
