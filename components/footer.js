@@ -226,7 +226,7 @@ export default function Footer() {
                     </Link>
                 </div>
                 <div>
-                    <Link href="/legal/acceptable-usage-policy">
+                    <Link href="/legal/usage-policy">
                         <a className="leading-6 border-b border-gray-500 text-gray-500 hover:text-gray-400">
                         Usage Policy
                         </a>
