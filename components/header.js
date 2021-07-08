@@ -25,41 +25,41 @@ import blesshostLogo from '../public/logo.svg'
 import Link from 'next/link'
 
 const hosting = [
-  {
-    name: 'Web Hosting',
-    description: 'Suitable hosting for small and medium size businesses.',
-    href: '/web-hosting',
-    icon: GlobeIcon,
-  },
-  {
-    name: 'Simple Hosting',
-    description: 'Hosting optimized for improved perfomance.',
-    href: '/simple-hosting',
-    icon: CollectionIcon,
-  },
-  { name: 'Virtual Servers',
-    description: "Get scalable dedicated resources with easy upgrade options.",
-    href: '/vps-hosting',
-    icon: DatabaseIcon
-  },
-  {
-    name: 'Dedicated Servers',
-    description: "Suitable for large organizations or E-commerce websites.",
-    href: '/dedicated-hosting',
-    icon: ServerIcon,
-  },
-  {
-    name: 'Managed Hosting',
-    description: 'Sit back and relax while we manage your hosting servers.',
-    href: '/managed-hosting',
-    icon: CloudIcon,
-  },
-  {
-    name: 'Google Workspace',
-    description: 'Host business emails ending with yourcompanyname.com',
-    href: '/google-workspace',
-    icon: MailIcon,
-  },
+    {
+      name: 'Web Hosting',
+      description: 'Suitable hosting for small and medium size businesses.',
+      href: '/web-hosting',
+      icon: GlobeIcon,
+    },
+    {
+      name: 'Simple Hosting',
+      description: 'Hosting optimized for improved perfomance.',
+      href: '/simple-hosting',
+      icon: CollectionIcon,
+    },
+    { name: 'Virtual Servers',
+      description: "Get scalable dedicated resources with easy upgrade options.",
+      href: '/vps-hosting',
+      icon: DatabaseIcon
+    },
+    {
+      name: 'Dedicated Servers',
+      description: "Suitable for large organizations or E-commerce websites.",
+      href: '/dedicated-hosting',
+      icon: ServerIcon,
+    },
+    {
+      name: 'Managed Hosting',
+      description: 'Sit back and relax while we manage your hosting servers.',
+      href: '/managed-hosting',
+      icon: CloudIcon,
+    },
+    {
+      name: 'Google Workspace',
+      description: 'Host business emails ending with yourcompanyname.com',
+      href: '/google-workspace',
+      icon: MailIcon,
+    },
 ]
 
 const websites = [
@@ -498,45 +498,57 @@ export default function Header() {
                   <div className="mt-6">
                     <nav className="grid grid-cols-1 gap-7">
                       {mobileMenu.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
-                        >
-                          <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-500 text-white">
-                            <item.icon className="h-6 w-6" aria-hidden="true" />
-                          </div>
-                          <div className="ml-4 text-base font-medium text-gray-900">{item.name}</div>
-                        </a>
+                        <Link key={item.name} href={item.href}>
+                            <a
+                              className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
+                            >
+                              <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-500 text-white">
+                                <item.icon className="h-6 w-6" aria-hidden="true" />
+                              </div>
+                              <div className="ml-4 text-base font-medium text-gray-900">{item.name}</div>
+                            </a>
+                        </Link>
                       ))}
                     </nav>
                   </div>
                 </div>
                 <div className="py-6 px-5">
                   <div className="grid grid-cols-2 gap-4">
-                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                      Virtual Servers
-                    </a>
+                    <Link href="/vps-hosting">
+                        <a className="text-base font-medium text-gray-900 hover:text-gray-700">
+                            Virtual Servers
+                        </a>
+                    </Link>
 
-                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                      Dedicated Servers
-                    </a>
+                    <Link href="/dedicated-hosting">
+                        <a className="text-base font-medium text-gray-900 hover:text-gray-700">
+                            Dedicated Servers
+                        </a>
+                    </Link>
 
-                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                      About Us
-                    </a>
+                    <Link href="/about">
+                        <a className="text-base font-medium text-gray-900 hover:text-gray-700">
+                            About Us
+                        </a>
+                    </Link>
 
-                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                      Contact Us
-                    </a>
+                    <Link href="/contact">
+                        <a className="text-base font-medium text-gray-900 hover:text-gray-700">
+                            Contact Us
+                        </a>
+                    </Link>
 
-                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                      Affiliates
-                    </a>
+                    <Link href="/affiliates">
+                        <a className="text-base font-medium text-gray-900 hover:text-gray-700">
+                            Affiliates
+                        </a>
+                    </Link>
 
-                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                      Careers
-                    </a>
+                    <Link href="/careers">
+                        <a className="text-base font-medium text-gray-900 hover:text-gray-700">
+                            Careers
+                        </a>
+                    </Link>
 
                   </div>
                   <div className="mt-6">
