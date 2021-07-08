@@ -1,15 +1,23 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import {
-  ChartBarIcon,
+  ClockIcon,
+  CloudIcon,
+  CodeIcon,
+  CollectionIcon,
   CursorClickIcon,
-  DocumentReportIcon,
+  DatabaseIcon,
+  GlobeIcon,
+  MailIcon,
   MenuIcon,
-  RefreshIcon,
-  ShieldCheckIcon,
-  ViewGridIcon,
+  PresentationChartBarIcon,
+  SearchIcon,
+  ServerIcon,
+  TemplateIcon,
   XIcon,
+  SpeakerphoneIcon,
+  LockClosedIcon,
+  BriefcaseIcon
 } from '@heroicons/react/outline'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import Image from 'next/image'
@@ -20,37 +28,37 @@ const hosting = [
   {
     name: 'Web Hosting',
     description: 'Suitable hosting for small and medium size businesses.',
-    href: '#',
-    icon: ChartBarIcon,
+    href: '/web-hosting',
+    icon: GlobeIcon,
   },
   {
-    name: 'Traditional Hosting',
+    name: 'Simple Hosting',
     description: 'Hosting optimized for improved perfomance.',
-    href: '#',
-    icon: CursorClickIcon,
+    href: '/simple-hosting',
+    icon: CollectionIcon,
   },
   { name: 'Virtual Servers',
     description: "Get scalable dedicated resources with easy upgrade options.",
-    href: '#',
-    icon: ShieldCheckIcon
+    href: '/vps-hosting',
+    icon: DatabaseIcon
   },
   {
     name: 'Dedicated Servers',
     description: "Suitable for large organizations or E-commerce websites.",
-    href: '#',
-    icon: ViewGridIcon,
+    href: '/dedicated-hosting',
+    icon: ServerIcon,
   },
   {
-    name: 'Managed Servers',
+    name: 'Managed Hosting',
     description: 'Sit back and relax while we manage your hosting servers.',
-    href: '#',
-    icon: RefreshIcon,
+    href: '/managed-hosting',
+    icon: CloudIcon,
   },
   {
     name: 'Google Workspace',
     description: 'Host business emails ending with yourcompanyname.com',
-    href: '#',
-    icon: DocumentReportIcon,
+    href: '/google-workspace',
+    icon: MailIcon,
   },
 ]
 
@@ -58,25 +66,25 @@ const websites = [
   {
     name: 'Website Design',
     description: 'We create digital experiences that excite and inspire',
-    href: '#',
-    icon: ChartBarIcon,
+    href: '/website-design',
+    icon: TemplateIcon,
   },
   {
     name: 'Speed Optimization',
     description: 'Avoid losing potential customers due to lazy load time',
-    href: '#',
-    icon: CursorClickIcon,
+    href: '/website-optimization',
+    icon: ClockIcon,
   },
   { name: 'Website Maintenance',
-    description: "Annual website maintenance packages to keep your website updated",
-    href: '#',
-    icon: ShieldCheckIcon
+    description: "Annual maintenance packages to keep your website updated",
+    href: '/website-maintenance',
+    icon: CodeIcon
   },
   {
     name: 'Website Security',
     description: "SSL Certificates, Routine Backups and more.",
-    href: '#',
-    icon: ViewGridIcon,
+    href: '/website-security',
+    icon: LockClosedIcon,
   },
 ]
 
@@ -84,25 +92,25 @@ const marketing = [
   {
     name: 'SEO',
     description: 'Search Engine Optimization to expand your digital presence',
-    href: '#',
-    icon: ChartBarIcon,
+    href: '/seo',
+    icon: PresentationChartBarIcon,
   },
   {
-    name: 'Traditional Hosting',
-    description: 'Hosting optimized for improved perfomance.',
-    href: '#',
+    name: 'Social Media',
+    description: 'Social media management by social media experts',
+    href: '/social-media',
     icon: CursorClickIcon,
   },
-  { name: 'Virtual Servers',
-    description: "Get scalable dedicated resources with easy upgrade options.",
-    href: '#',
-    icon: ShieldCheckIcon
+  { name: 'Email Marketing',
+    description: "Turn more first-time shoppers into lifelong customers",
+    href: '/email-marketing',
+    icon: SpeakerphoneIcon
   },
   {
-    name: 'Dedicated Servers',
-    description: "Suitable for large organizations or E-commerce websites.",
-    href: '#',
-    icon: ViewGridIcon,
+    name: 'Google Ads',
+    description: "Generate more leads and sales through paid ads",
+    href: '/google-ads',
+    icon: SearchIcon,
   },
 ]
 
@@ -110,12 +118,45 @@ const support = [
   {
     name: 'Blog',
     description: 'Learn about tips, product updates and company culture.',
-    href: '#',
+    href: '/blog',
   },
-  { name: 'Contact Us', description: 'Get a personalized solution for your business', href: '#' },
-  { name: 'Affiliates', description: 'BlessHost offers the most rewarding affiliate programs', href: '#' },
-  { name: 'Status', description: 'Monitor status of our hosting servers in real time', href: '#' },
-  { name: 'Support Plans', description: 'Get quick response time, technical help and phone support.', href: '#' },
+  { name: 'Contact Us', description: 'Get a personalized solution for your business', href: '/contact' },
+  { name: 'Affiliates', description: 'BlessHost offers the most rewarding affiliate programs', href: '/affiliates' },
+  { name: 'Status', description: 'Monitor status of our hosting servers in real time', href: '/status' },
+  { name: 'Dedicated Support', description: 'Get quick response time, technical help and phone support.', href: '/dedicated-support' },
+]
+
+const mobileMenu = [
+    {
+      name: 'Web Hosting',
+      description: 'Suitable hosting for small and medium size businesses.',
+      href: '/web-hosting',
+      icon: GlobeIcon,
+    },
+    {
+        name: 'Website Design',
+        description: 'We create digital experiences that excite and inspire',
+        href: '/website-design',
+        icon: TemplateIcon,
+    },
+    {
+        name: 'Website Maintenance',
+        description: "Annual maintenance packages to keep your website updated",
+        href: '/website-maintenance',
+        icon: CodeIcon
+    },
+    {
+        name: 'SEO',
+        description: 'Search Engine Optimization to expand your digital presence',
+        href: '/seo',
+        icon: PresentationChartBarIcon,
+    },
+    {
+        name: 'Portfolio',
+        description: 'Search Engine Optimization to expand your digital presence',
+        href: '/portfolio',
+        icon: BriefcaseIcon,
+    },
 ]
 
 function classNames(...classes) {
@@ -124,6 +165,7 @@ function classNames(...classes) {
 
 export default function Header() {
   return (
+    <header>
     <Popover className="z-10 relative bg-white">
       {({ open }) => (
         <>
@@ -131,7 +173,7 @@ export default function Header() {
             <div className="flex justify-start items-center h-16 lg:w-0 lg:flex-1">
               <Link href="/">
                 <a>
-                  <span className="sr-only">Workflow</span>
+                  <span className="sr-only">BlessHost</span>
                   <Image src={blesshostLogo} layout="fixed" height={80} width={280} className="h-16 w-auto"></Image>
                 </a>
               </Link>
@@ -179,9 +221,8 @@ export default function Header() {
                         <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                           <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
                             {hosting.map((item) => (
+                              <Link key={item.name} href={item.href}>
                               <a
-                                key={item.name}
-                                href={item.href}
                                 className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                               >
                                 <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
@@ -192,6 +233,7 @@ export default function Header() {
                                   <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                                 </div>
                               </a>
+                              </Link>
                             ))}
                           </div>
                           <div className="p-5 bg-gray-50 sm:p-8">
@@ -250,9 +292,8 @@ export default function Header() {
                         <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                           <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
                             {websites.map((item) => (
+                                <Link key={item.name} href={item.href}>
                               <a
-                                key={item.name}
-                                href={item.href}
                                 className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                               >
                                 <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
@@ -263,6 +304,7 @@ export default function Header() {
                                   <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                                 </div>
                               </a>
+                              </Link>
                             ))}
                           </div>
                           <div className="p-5 bg-gray-50 sm:p-8">
@@ -321,9 +363,8 @@ export default function Header() {
                         <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                           <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
                             {marketing.map((item) => (
+                              <Link key={item.name} href={item.href}>
                               <a
-                                key={item.name}
-                                href={item.href}
                                 className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
                               >
                                 <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
@@ -334,6 +375,7 @@ export default function Header() {
                                   <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                                 </div>
                               </a>
+                              </Link>
                             ))}
                           </div>
                           <div className="p-5 bg-gray-50 sm:p-8">
@@ -392,14 +434,17 @@ export default function Header() {
                         <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                           <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                             {support.map((item) => (
-                              <a
+                              <Link
                                 key={item.name}
                                 href={item.href}
+                                >
+                              <a
                                 className="-m-3 p-3 block rounded-md hover:bg-gray-50"
                               >
                                 <p className="text-base font-medium text-gray-900">{item.name}</p>
                                 <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                               </a>
+                              </Link>
                             ))}
                           </div>
                         </div>
@@ -441,11 +486,7 @@ export default function Header() {
                 <div className="pt-5 pb-6 px-5">
                   <div className="flex items-center justify-between">
                     <div>
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark-blue-600.svg"
-                        alt="Workflow"
-                      />
+                      <Image height={50} width={240} src={blesshostLogo}></Image>
                     </div>
                     <div className="-mr-2">
                       <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
@@ -456,7 +497,7 @@ export default function Header() {
                   </div>
                   <div className="mt-6">
                     <nav className="grid grid-cols-1 gap-7">
-                      {hosting.map((item) => (
+                      {mobileMenu.map((item) => (
                         <a
                           key={item.name}
                           href={item.href}
@@ -474,25 +515,29 @@ export default function Header() {
                 <div className="py-6 px-5">
                   <div className="grid grid-cols-2 gap-4">
                     <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                      Pricing
+                      Virtual Servers
                     </a>
 
                     <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                      Docs
+                      Dedicated Servers
                     </a>
 
                     <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                      Enterprise
+                      About Us
                     </a>
-                    {support.map((item) => (
-                      <a
-                        key={support.name}
-                        href={item.href}
-                        className="text-base font-medium text-gray-900 hover:text-gray-700"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
+
+                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
+                      Contact Us
+                    </a>
+
+                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
+                      Affiliates
+                    </a>
+
+                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
+                      Careers
+                    </a>
+
                   </div>
                   <div className="mt-6">
                     <a
@@ -515,5 +560,6 @@ export default function Header() {
         </>
       )}
     </Popover>
+    </header>
   )
 }

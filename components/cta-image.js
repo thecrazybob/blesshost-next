@@ -21,21 +21,20 @@ export default function CTAImage() {
             </h2>
             <p className="mt-2 text-white text-3xl font-extrabold tracking-tight sm:text-4xl">We’re here to help</p>
             <p className="mt-3 text-lg text-gray-300">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, egestas tempus tellus etiam sed. Quam a
-              scelerisque amet ullamcorper eu enim et fermentum, augue. Aliquet amet volutpat quisque ut interdum
-              tincidunt duis.
+                From a new website to helping with you with your existing website, our team of experts is available to help you choose the best solution for your needs. If you are still undecided, do not hesitate and get in touch with us right away.
             </p>
-            <div className="mt-8">
+            <div className="mt-8 mb-2">
               <div className="inline-flex rounded-md shadow">
                 <a
                   href="#"
                   className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50"
                 >
-                  Visit the help center
+                  Chat with us
                   <ExternalLinkIcon className="-mr-1 ml-3 h-5 w-5 text-gray-400" aria-hidden="true" />
                 </a>
               </div>
             </div>
+            <span className="text-gray-300">or if you prefer WhatsApp +971-55-4012015</span>
           </div>
         </div>
       </div>

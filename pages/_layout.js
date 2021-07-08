@@ -32,6 +32,7 @@ export default function Layout({ children }) {
                 <meta name="theme-color" content="#ffffff"></meta>
 
                 <meta name="description" content="Make a website in Dubai" />
+
             </Head>
 
             <Header></Header>
