@@ -1,7 +1,7 @@
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
-import AlternatingFeature from "../components/alternating-feature";
+import AlternatingFeature from "../components/features-alternating";
 import Testimonials from "../components/testimonials";
-import SimpleCTA from "../components/simple-cta";
+import SimpleCTA from "../components/cta-simple";
 const plans = [
     {
         title: "Starter",
@@ -178,10 +178,10 @@ export default function Example() {
     return (
         <main>
             {/* Hero card */}
-            <div className="relative py-20 bg-white">
+            <div className="relative bg-white">
                 <div className="absolute inset-x-0 bottom-0 h-1/2" />
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">
+                <div className="mx-auto">
+                    <div className="relative shadow-xl sm:overflow-hidden">
                         <div className="absolute inset-0">
                             <img
                                 className="h-full w-full object-cover"
@@ -190,7 +190,7 @@ export default function Example() {
                             />
                             <div className="absolute inset-0 bg-blue-700 mix-blend-multiply" />
                         </div>
-                        <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
+                        <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-48 lg:px-8">
                             <h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
                                 <span className="block text-white">
                                     Take control of your

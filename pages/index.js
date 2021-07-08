@@ -2,9 +2,9 @@ import ContactForm from "../components/contact-form";
 import CTAImage from "../components/cta-image";
 import LatestBlog from "../components/latest-blog";
 import Stats from "../components/stats";
-import GradientFeatures from "../components/gradient-features";
+import GradientFeatures from "../components/features-gradient";
 import Testimonials from "../components/testimonials";
-import AlternatingFeature from "../components/alternating-feature";
+import AlternatingFeature from "../components/features-alternating";
 
 export default function Home() {
     return (
