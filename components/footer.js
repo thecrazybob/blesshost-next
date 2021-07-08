@@ -22,7 +22,7 @@ const navigation = {
   ],
   legal: [
     { name: 'About Us', href: '/about' },
-    { name: 'Contact Us', href: '/contact-us' },
+    { name: 'Contact Us', href: '/contact' },
     { name: 'Data Centers', href: '/data-centers' },
     { name: 'Careers', href: '/careers' },
     { name: 'Blog', href: '/blog' },
@@ -115,9 +115,9 @@ export default function Footer() {
                 <ul className="mt-4 space-y-4">
                   {navigation.support.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-base text-gray-300 hover:text-white">
+                      <Link href={item.href}><a className="text-base text-gray-300 hover:text-white">
                         {item.name}
-                      </a>
+                      </a></Link>
                     </li>
                   ))}
                 </ul>
@@ -129,9 +129,9 @@ export default function Footer() {
                 <ul className="mt-4 space-y-4">
                   {navigation.company.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-base text-gray-300 hover:text-white">
+                      <Link href={item.href}><a className="text-base text-gray-300 hover:text-white">
                         {item.name}
-                      </a>
+                      </a></Link>
                     </li>
                   ))}
                 </ul>
@@ -141,9 +141,9 @@ export default function Footer() {
                 <ul className="mt-4 space-y-4">
                   {navigation.legal.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-base text-gray-300 hover:text-white">
+                      <Link href={item.href}><a className="text-base text-gray-300 hover:text-white">
                         {item.name}
-                      </a>
+                      </a></Link>
                     </li>
                   ))}
                 </ul>
