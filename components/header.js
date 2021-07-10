@@ -120,33 +120,16 @@ const marketing = [
 ];
 
 const support = [
-    {
-        name: "Blog",
-        description: "Learn about tips, product updates and company culture.",
-        href: "/blog",
-    },
-    {
-        name: "Contact Us",
-        description: "Get a personalized solution for your business",
-        href: "/contact",
-    },
-    {
-        name: "Affiliates",
-        description: "BlessHost offers the most rewarding affiliate programs",
-        href: "/affiliates",
-    },
-    {
-        name: "Status",
-        description: "Monitor status of our hosting servers in real time",
-        href: "/status",
-    },
-    {
-        name: "Dedicated Support",
-        description:
-            "Get quick response time, technical help and phone support.",
-        href: "/dedicated-support",
-    },
-];
+  {
+    name: 'Blog',
+    description: 'Learn about tips, product updates and company culture.',
+    href: '/blog',
+  },
+  { name: 'Contact Us', description: 'Get a personalized solution for your business', href: '/contact' },
+  { name: 'Affiliates', description: 'BlessHost offers the most rewarding affiliate programs', href: '/affiliates' },
+  { name: 'Status', description: 'Monitor status of our hosting servers in real time', href: 'https://status.blesshost.com' },
+  { name: 'Dedicated Support', description: 'Get quick response time, technical help and phone support.', href: '/dedicated-support' },
+]
 
 const mobileMenu = [
     {
@@ -618,9 +601,23 @@ export default function Header() {
                                     href="#"
                                     className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
                                 >
-                                    Sign up
-                                </a>
-                            </div>
+                              <a
+                                className="-m-3 p-3 block rounded-md items-center  hover:bg-gray-50"
+                              >
+                                <p className="text-base font-medium text-gray-900 inline ">{item.name}</p>
+
+                                {item.name == 'Status' ?  <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 mb-1 w-5 h-5 inline" viewBox="0 0 20 20" fill="currentColor">
+  <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+</svg> : null }
+
+
+                                <p className="mt-1 text-sm text-gray-500">{item.description}</p>
+
+                              </a>
+                              </Link>
+                            ))}
+                          </div>
                         </div>
 
                         <Transition
