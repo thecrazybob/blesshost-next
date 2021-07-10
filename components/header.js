@@ -189,7 +189,7 @@ function classNames(...classes) {
 
 export default function Header() {
     return (
-        <header>
+        <header className="sticky top-0 inset-y-0 z-50 filter shadow-md ">
             <Popover className="z-10 relative bg-white">
                 {({ open }) => (
                     <>

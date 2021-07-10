@@ -3,12 +3,73 @@ import FeaturesGradient from "../components/features-gradient";
 import Testimonials from "../components/testimonials";
 import FAQsBrand from "../components/faqs-brand";
 import SimpleCTA from "../components/cta-simple";
+import {
+    ChatAltIcon,
+    DocumentReportIcon,
+    HeartIcon,
+    InboxIcon,
+    PencilAltIcon,
+    ReplyIcon,
+    TrashIcon,
+    UsersIcon,
+} from "@heroicons/react/outline";
 
 const includedFeatures = [
     "Private forum access",
     "Member resources",
     "Entry to annual conference",
     "Official member t-shirt",
+];
+
+const features = [
+    {
+        name: "Based in the UAE",
+        description:
+            "Headquartered in the heart of UAE so you can either visit us or call us whenever you wish.",
+        icon: InboxIcon,
+    },
+    {
+        name: "24/7 Support",
+        description:
+            "Our support team is always available to assist you via Live chat, WhatsApp, Email and Phone.",
+        icon: UsersIcon,
+    },
+    {
+        name: "Expert Team",
+        description:
+            "The BlessHost family consists of developers who have years of experience with websites.",
+        icon: TrashIcon,
+    },
+    {
+        name: "Flexible Services",
+        description:
+            "Our services are for suitable for everyone, from startups to large-scale corporations.",
+        icon: PencilAltIcon,
+    },
+    {
+        name: "Quality with Affordability",
+        description:
+            "We truly care about your business's online identity so our focus is always to improve your website.",
+        icon: DocumentReportIcon,
+    },
+    {
+        name: "Everything-included",
+        description:
+            "In the rapidly changing world of internet, our aim is to provide you access to the finest tools.",
+        icon: ReplyIcon,
+    },
+    {
+        name: "E-commerce",
+        description:
+            "Getting an impressive online store can be exhausting. Our team can help you get started right away.",
+        icon: ChatAltIcon,
+    },
+    {
+        name: "Establish your brand",
+        description:
+            "Just having a website, or a social page is not enough anymore. Let us help you establish your brand online.",
+        icon: HeartIcon,
+    },
 ];
 
 export default function Example() {
@@ -116,7 +177,11 @@ export default function Example() {
                 </div>
             </div>
 
-            <FeaturesGradient />
+            <FeaturesGradient
+                title="Title"
+                description="description"
+                features={features}
+            />
 
             <Testimonials />
 
