@@ -94,11 +94,31 @@ import Testimonials from "../components/testimonials";
 export default function WebHosting() {
     return (
         <div className="bg-white">
-            <TitleBar
-                title="Test"
-                subheading="test"
-                description="test"
-            ></TitleBar>
+            <div className="relative">
+                <div class="absolute inset-0">
+                    <img
+                        class="h-full w-full object-cover"
+                        src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1650&q=80"
+                        alt="People working on laptops"
+                    />
+                    <div class="absolute inset-0 bg-blue-700 mix-blend-multiply"></div>
+                </div>
+                <div className="relative">
+                    <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+                        <div className="text-center">
+                            <h1 className="text-base font-semibold text-blue-300 uppercase tracking-wide">
+                                Title
+                            </h1>
+                            <p className="mt-1 text-4xl font-extrabold text-gray-200 sm:text-5xl sm:tracking-tight lg:text-6xl">
+                                Title
+                            </p>
+                            <p className="max-w-xl mx-auto mt-5 text-xl text-gray-300">
+                                Title
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             {/* Split brand panel */}
             <div className="relative bg-white">
