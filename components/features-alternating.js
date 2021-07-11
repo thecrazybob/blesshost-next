@@ -1,6 +1,6 @@
 import { InboxIcon, SparklesIcon } from "@heroicons/react/outline";
 
-export default function AlternatingFeature() {
+export default function AlternatingFeatures() {
     return (
         <div className="relative pt-16 pb-32 overflow-hidden">
             <div
