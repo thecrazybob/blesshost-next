@@ -1,6 +1,6 @@
 import { InboxIcon, SparklesIcon } from "@heroicons/react/outline";
 
-export default function AlternatingFeature() {
+export default function AlternatingFeatures() {
     return (
         <div className="relative pt-16 pb-32 overflow-hidden">
             <div
@@ -21,15 +21,16 @@ export default function AlternatingFeature() {
                             </div>
                             <div className="mt-6">
                                 <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
-                                    Stay on top of customer support
+                                    360 Unlimited Web Hosting
                                 </h2>
                                 <p className="mt-4 text-lg text-gray-500">
-                                    Semper curabitur ullamcorper posuere nunc
-                                    sed. Ornare iaculis bibendum malesuada
-                                    faucibus lacinia porttitor. Pulvinar laoreet
-                                    sagittis viverra duis. In venenatis sem arcu
-                                    pretium pharetra at. Lectus viverra dui
-                                    tellus ornare pharetra.
+                                    The infrastructure of 360 web hosting is
+                                    built on a unique clustered architecture
+                                    that delivers faster, more scalable, more
+                                    reliable hosting service for your sites,
+                                    also our hosting is optimized for CMS based
+                                    websites like WordPress and Joomla. Install
+                                    70+ popular scripts using 1 click.
                                 </p>
                                 <div className="mt-6">
                                     <a
@@ -45,10 +46,13 @@ export default function AlternatingFeature() {
                             <blockquote>
                                 <div>
                                     <p className="text-base text-gray-500">
-                                        &ldquo;Cras velit quis eros eget rhoncus
-                                        lacus ultrices sed diam. Sit orci risus
-                                        aenean curabitur donec aliquet. Mi
-                                        venenatis in euismod ut.&rdquo;
+                                        &ldquo;For a small/medium size business
+                                        the cost is attractive and the customer
+                                        support is awesome. When it comes to
+                                        support, the BlessHost team is extremely
+                                        helpful. I am a client of several years
+                                        and give them high marks for all they
+                                        do.&rdquo;
                                     </p>
                                 </div>
                                 <footer className="mt-3">
@@ -94,15 +98,18 @@ export default function AlternatingFeature() {
                             </div>
                             <div className="mt-6">
                                 <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
-                                    Better understand your customers
+                                    Website Design & Development
                                 </h2>
                                 <p className="mt-4 text-lg text-gray-500">
-                                    Semper curabitur ullamcorper posuere nunc
-                                    sed. Ornare iaculis bibendum malesuada
-                                    faucibus lacinia porttitor. Pulvinar laoreet
-                                    sagittis viverra duis. In venenatis sem arcu
-                                    pretium pharetra at. Lectus viverra dui
-                                    tellus ornare pharetra.
+                                    Beautiful Websites. Increased Conversions.
+                                    Create a website that best represents your
+                                    business and you are going to be proud of.
+                                    We design and develop services specialized
+                                    in the development of stylish modern
+                                    websites, and digital stores for customers
+                                    around the globe. Our Website designers are
+                                    based in Abu Dhabi, UAE. Inquire now to get
+                                    a free quote.
                                 </p>
                                 <div className="mt-6">
                                     <a
@@ -118,10 +125,11 @@ export default function AlternatingFeature() {
                             <blockquote>
                                 <div>
                                     <p className="text-base text-gray-500">
-                                        &ldquo;Cras velit quis eros eget rhoncus
-                                        lacus ultrices sed diam. Sit orci risus
-                                        aenean curabitur donec aliquet. Mi
-                                        venenatis in euismod ut.&rdquo;
+                                        &ldquo;Brilliant and skilled people with
+                                        extensive web development experience in
+                                        complex e-commerce websites. Thanks to
+                                        their highly creative approach that led
+                                        to successful results. &rdquo;
                                     </p>
                                 </div>
                                 <footer className="mt-3">

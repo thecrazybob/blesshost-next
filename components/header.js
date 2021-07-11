@@ -187,9 +187,12 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
 }
 
+import Topbar from "../components/topbar";
+
 export default function Header() {
     return (
         <header className="sticky top-0 inset-y-0 z-50 filter shadow-md ">
+            <Topbar />
             <Popover className="z-10 relative bg-white">
                 {({ open }) => (
                     <>

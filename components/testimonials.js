@@ -1,5 +1,4 @@
-/* This example requires Tailwind CSS v2.0+ */
-export default function Example() {
+export default function Testimonials() {
     return (
         <section className="bg-white overflow-hidden">
             <div className="relative max-w-7xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 lg:py-20">
@@ -96,10 +95,13 @@ export default function Example() {
                         <blockquote className="relative">
                             <div className="text-2xl leading-9 font-medium text-gray-900">
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Nemo expedita voluptas
-                                    culpa sapiente alias molestiae. Numquam
-                                    corrupti in laborum sed rerum et corporis.
+                                    Wasim was my representative on my transition
+                                    to BlessHost. I could not do this without
+                                    his exceptional expertise and his personal
+                                    commitment to help our company in the
+                                    successful transition. BlessHost truly has a
+                                    team of professional and experienced
+                                    individuals I have ever worked with.
                                 </p>
                             </div>
                             <footer className="mt-8">

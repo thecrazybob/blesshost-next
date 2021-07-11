@@ -16,12 +16,15 @@ import {
     TrashIcon,
     UsersIcon,
 } from "@heroicons/react/outline";
+
+import { ExternalLinkIcon } from "@heroicons/react/solid";
+
 import React from "react";
 const features = [
     {
-        name: "Based in the UAE",
+        name: "Based in Abu Dhabi, UAE",
         description:
-            "Headquartered in the heart of UAE so you can either visit us or call us whenever you wish.",
+            "Head office is located in the capital city Abu Dhabi, UAE so you can either visit us or call us whenever you wish.",
         icon: InboxIcon,
     },
     {
@@ -76,7 +79,13 @@ export default function Home() {
 
     React.useEffect(() => {
         const options = {
-            strings: ["website", "email", "store", "identity"],
+            strings: [
+                "a website",
+                "a domain",
+                "an email",
+                "an identity",
+                "a store",
+            ],
             typeSpeed: 70,
             backSpeed: 70,
             backDelay: 2000,
@@ -101,20 +110,22 @@ export default function Home() {
                     <div className="grid grid-cols-1 items-center justify-between gap-x-5 md:grid-cols-2">
                         <div>
                             <h1 className="text-4xl tracking-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
-                                <span className="inline">Get a </span>
+                                <span className="inline">Get </span>
                                 <span className="inline text-blue-600">
                                     <span
                                         style={{ whiteSpace: "pre" }}
                                         ref={el}
                                     />
                                 </span>
-                                <span className="block">for your business</span>
+                                <span className="block">
+                                    for your online presence
+                                </span>
                             </h1>
-                            <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                                Are you missing out on online business? Reach a
-                                wider customer base, increase sales and improve
-                                customer satisfaction with our online website
-                                services.
+                            <p className="mt-3 mb-20 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                                Are you looking to boost your business by having
+                                an online presence? Reach a wider customer base,
+                                increase sales and improve customer satisfaction
+                                with our digital services.
                             </p>
                         </div>
 
@@ -271,8 +282,7 @@ export default function Home() {
             <div className="bg-gray-800">
                 <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
                     <h2 className="text-center text-gray-400 text-sm font-semibold uppercase tracking-wide">
-                        Trusted by over 1,000 companies in the United Arab
-                        Emirates
+                        Trusted by 1,000+ companies in the United Arab Emirates
                     </h2>
                     <div className="mt-8 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
                         <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
@@ -330,7 +340,53 @@ export default function Home() {
 
             <ContactForm />
 
-            <CTAImage />
+            <div className="relative bg-gray-900">
+                <div className="relative h-56 bg-blue-600 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
+                    <img
+                        className="w-full h-full object-cover"
+                        src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&sat=-100"
+                        alt=""
+                    />
+                    <div
+                        aria-hidden="true"
+                        className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600 mix-blend-multiply"
+                    />
+                </div>
+                <div className="relative mx-auto max-w-md px-4 py-12 sm:max-w-7xl sm:px-6 sm:py-20 md:py-28 lg:px-8 lg:py-32">
+                    <div className="md:ml-auto md:w-1/2 md:pl-10">
+                        <h2 className="text-base font-semibold uppercase tracking-wider text-gray-300">
+                            Award winning support
+                        </h2>
+                        <p className="mt-2 text-white text-3xl font-extrabold tracking-tight sm:text-4xl">
+                            We’re here to help
+                        </p>
+                        <p className="mt-3 text-lg text-gray-300">
+                            Either you're starting from scratch or need help
+                            with existing website, our team of experts are
+                            available to help you choose the best solution for
+                            your needs. If you are still undecided, do not
+                            hesitate and get in touch with us right away.
+                        </p>
+                        <div className="mt-8 mb-2">
+                            <div className="inline-flex rounded-md shadow">
+                                <a
+                                    href="#"
+                                    className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50"
+                                >
+                                    Chat with us
+                                    <ExternalLinkIcon
+                                        className="-mr-1 ml-3 h-5 w-5 text-gray-400"
+                                        aria-hidden="true"
+                                    />
+                                </a>
+                            </div>
+                        </div>
+                        <span className="text-gray-300">
+                            or if you prefer Call/WhatsApp +971 54 44 23 111
+                        </span>
+                    </div>
+                </div>
+            </div>
         </>
     );
 }

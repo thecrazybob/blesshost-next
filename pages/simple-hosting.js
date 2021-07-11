@@ -2,6 +2,8 @@ import { CheckIcon, XIcon } from "@heroicons/react/solid";
 import AlternatingFeature from "../components/features-alternating";
 import Testimonials from "../components/testimonials";
 import SimpleCTA from "../components/cta-simple";
+import FAQSDark from "../components/faqs-dark";
+
 const plans = [
     {
         title: "Starter",
@@ -907,7 +909,6 @@ export default function Example() {
                 </section>
             </div>
 
-            {/* Logo cloud */}
             <div className="max-w-2xl mx-auto py-12 px-4 sm:px-6 lg:max-w-7xl lg:py-32 lg:px-8">
                 <div className="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
                     <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
@@ -948,44 +949,10 @@ export default function Example() {
                 </div>
             </div>
 
-            <AlternatingFeature></AlternatingFeature>
-            {/* Testimonials */}
-            <Testimonials></Testimonials>
-
-            {/* FAQs */}
-            <section aria-labelledby="faqHeading" className="bg-gray-900">
-                <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-                    <div className="max-w-2xl lg:mx-auto lg:text-center">
-                        <h2
-                            id="faqHeading"
-                            className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl"
-                        >
-                            Frequently asked questions
-                        </h2>
-                        <p className="mt-4 text-gray-400">
-                            Ac euismod vel sit maecenas id pellentesque eu sed
-                            consectetur. Malesuada adipiscing sagittis vel nulla
-                            nec. Urna, sed a lectus elementum blandit et.
-                        </p>
-                    </div>
-                    <div className="mt-20">
-                        <dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10">
-                            {faqs.map((faq) => (
-                                <div key={faq.id}>
-                                    <dt className="font-semibold text-white">
-                                        {faq.question}
-                                    </dt>
-                                    <dd className="mt-3 text-gray-400">
-                                        {faq.answer}
-                                    </dd>
-                                </div>
-                            ))}
-                        </dl>
-                    </div>
-                </div>
-            </section>
-
-            <SimpleCTA></SimpleCTA>
+            <AlternatingFeature />
+            <Testimonials />
+            <FAQSDark faqs={faqs} />
+            <SimpleCTA />
         </main>
     );
 }
