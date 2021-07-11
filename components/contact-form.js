@@ -345,12 +345,6 @@ export default function ContactForm() {
                                         >
                                             Phone
                                         </label>
-                                        <span
-                                            id="phone-optional"
-                                            className="text-sm text-gray-500"
-                                        >
-                                            Optional
-                                        </span>
                                     </div>
                                     <div className="mt-1">
                                         <input
@@ -360,22 +354,6 @@ export default function ContactForm() {
                                             autoComplete="tel"
                                             className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
                                             aria-describedby="phone-optional"
-                                        />
-                                    </div>
-                                </div>
-                                <div className="sm:col-span-2">
-                                    <label
-                                        htmlFor="subject"
-                                        className="block text-sm font-medium text-gray-900"
-                                    >
-                                        Subject
-                                    </label>
-                                    <div className="mt-1">
-                                        <input
-                                            type="text"
-                                            name="subject"
-                                            id="subject"
-                                            className="py-3 px-4 block w-full shadow-sm text-gray-900 focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
                                         />
                                     </div>
                                 </div>
