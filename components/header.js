@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useRef } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import {
     ClockIcon,
@@ -190,6 +190,11 @@ function classNames(...classes) {
 import Topbar from "../components/topbar";
 
 export default function Header() {
+    const hostingButtonRef = useRef();
+    const websitesButtonRef = useRef();
+    const marketingButtonRef = useRef();
+    const supportButtonRef = useRef();
+
     return (
         <header className="sticky top-0 inset-y-0 z-50 filter shadow-md ">
             <Topbar />
@@ -230,6 +235,7 @@ export default function Header() {
                                     {({ open }) => (
                                         <>
                                             <Popover.Button
+                                                ref={hostingButtonRef}
                                                 className={classNames(
                                                     open
                                                         ? "text-gray-900"
@@ -267,63 +273,77 @@ export default function Header() {
                                                         <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
                                                             {hosting.map(
                                                                 (item) => (
-                                                                    <Link
-                                                                        key={
-                                                                            item.name
-                                                                        }
-                                                                        href={
-                                                                            item.href
+                                                                    <div
+                                                                        onClick={() =>
+                                                                            hostingButtonRef.current?.click()
                                                                         }
                                                                     >
-                                                                        <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                                                                            <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
-                                                                                <item.icon
-                                                                                    className="h-6 w-6"
-                                                                                    aria-hidden="true"
-                                                                                />
-                                                                            </div>
-                                                                            <div className="ml-4">
-                                                                                <p className="text-base font-medium text-gray-900">
-                                                                                    {
-                                                                                        item.name
-                                                                                    }
-                                                                                </p>
-                                                                                <p className="mt-1 text-sm text-gray-500">
-                                                                                    {
-                                                                                        item.description
-                                                                                    }
-                                                                                </p>
-                                                                            </div>
-                                                                        </a>
-                                                                    </Link>
+                                                                        <Link
+                                                                            key={
+                                                                                item.name
+                                                                            }
+                                                                            href={
+                                                                                item.href
+                                                                            }
+                                                                        >
+                                                                            <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                                                                                <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
+                                                                                    <item.icon
+                                                                                        className="h-6 w-6"
+                                                                                        aria-hidden="true"
+                                                                                    />
+                                                                                </div>
+                                                                                <div className="ml-4">
+                                                                                    <p className="text-base font-medium text-gray-900">
+                                                                                        {
+                                                                                            item.name
+                                                                                        }
+                                                                                    </p>
+                                                                                    <p className="mt-1 text-sm text-gray-500">
+                                                                                        {
+                                                                                            item.description
+                                                                                        }
+                                                                                    </p>
+                                                                                </div>
+                                                                            </a>
+                                                                        </Link>
+                                                                    </div>
                                                                 )
                                                             )}
                                                         </div>
                                                         <div className="p-5 bg-gray-50 sm:p-8">
-                                                            <Link href="/transfers">
-                                                                <a className="-m-3 p-3 flow-root rounded-md hover:bg-gray-100">
-                                                                    <div className="flex items-center">
-                                                                        <div className="text-base font-medium text-gray-900">
-                                                                            Transfers
+                                                            <div
+                                                                onClick={() =>
+                                                                    hostingButtonRef.current?.click()
+                                                                }
+                                                            >
+                                                                <Link href="/transfers">
+                                                                    <a className="-m-3 p-3 flow-root rounded-md hover:bg-gray-100">
+                                                                        <div className="flex items-center">
+                                                                            <div className="text-base font-medium text-gray-900">
+                                                                                Transfers
+                                                                            </div>
+                                                                            <span className="ml-3 inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium leading-5 bg-blue-100 text-blue-800">
+                                                                                Free
+                                                                            </span>
                                                                         </div>
-                                                                        <span className="ml-3 inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium leading-5 bg-blue-100 text-blue-800">
-                                                                            Free
-                                                                        </span>
-                                                                    </div>
-                                                                    <p className="mt-1 text-sm text-gray-500">
-                                                                        Let us
-                                                                        move
-                                                                        your
-                                                                        website
-                                                                        and
-                                                                        emails
-                                                                        to us
-                                                                        within
-                                                                        24
-                                                                        hours.
-                                                                    </p>
-                                                                </a>
-                                                            </Link>
+                                                                        <p className="mt-1 text-sm text-gray-500">
+                                                                            Let
+                                                                            us
+                                                                            move
+                                                                            your
+                                                                            website
+                                                                            and
+                                                                            emails
+                                                                            to
+                                                                            us
+                                                                            within
+                                                                            24
+                                                                            hours.
+                                                                        </p>
+                                                                    </a>
+                                                                </Link>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </Popover.Panel>
@@ -336,6 +356,7 @@ export default function Header() {
                                     {({ open }) => (
                                         <>
                                             <Popover.Button
+                                                ref={websitesButtonRef}
                                                 className={classNames(
                                                     open
                                                         ? "text-gray-900"
@@ -373,39 +394,50 @@ export default function Header() {
                                                         <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
                                                             {websites.map(
                                                                 (item) => (
-                                                                    <Link
-                                                                        key={
-                                                                            item.name
-                                                                        }
-                                                                        href={
-                                                                            item.href
+                                                                    <div
+                                                                        onClick={() =>
+                                                                            websitesButtonRef.current?.click()
                                                                         }
                                                                     >
-                                                                        <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                                                                            <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
-                                                                                <item.icon
-                                                                                    className="h-6 w-6"
-                                                                                    aria-hidden="true"
-                                                                                />
-                                                                            </div>
-                                                                            <div className="ml-4">
-                                                                                <p className="text-base font-medium text-gray-900">
-                                                                                    {
-                                                                                        item.name
-                                                                                    }
-                                                                                </p>
-                                                                                <p className="mt-1 text-sm text-gray-500">
-                                                                                    {
-                                                                                        item.description
-                                                                                    }
-                                                                                </p>
-                                                                            </div>
-                                                                        </a>
-                                                                    </Link>
+                                                                        <Link
+                                                                            key={
+                                                                                item.name
+                                                                            }
+                                                                            href={
+                                                                                item.href
+                                                                            }
+                                                                        >
+                                                                            <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                                                                                <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
+                                                                                    <item.icon
+                                                                                        className="h-6 w-6"
+                                                                                        aria-hidden="true"
+                                                                                    />
+                                                                                </div>
+                                                                                <div className="ml-4">
+                                                                                    <p className="text-base font-medium text-gray-900">
+                                                                                        {
+                                                                                            item.name
+                                                                                        }
+                                                                                    </p>
+                                                                                    <p className="mt-1 text-sm text-gray-500">
+                                                                                        {
+                                                                                            item.description
+                                                                                        }
+                                                                                    </p>
+                                                                                </div>
+                                                                            </a>
+                                                                        </Link>
+                                                                    </div>
                                                                 )
                                                             )}
                                                         </div>
-                                                        <div className="p-5 bg-gray-50 sm:p-8">
+                                                        <div
+                                                            onClick={() =>
+                                                                websitesButtonRef.current?.click()
+                                                            }
+                                                            className="p-5 bg-gray-50 sm:p-8"
+                                                        >
                                                             <Link href="/portfolio">
                                                                 <a className="-m-3 p-3 flow-root rounded-md hover:bg-gray-100">
                                                                     <div className="flex items-center">
@@ -439,6 +471,7 @@ export default function Header() {
                                     {({ open }) => (
                                         <>
                                             <Popover.Button
+                                                ref={marketingButtonRef}
                                                 className={classNames(
                                                     open
                                                         ? "text-gray-900"
@@ -476,39 +509,50 @@ export default function Header() {
                                                         <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
                                                             {marketing.map(
                                                                 (item) => (
-                                                                    <Link
-                                                                        key={
-                                                                            item.name
-                                                                        }
-                                                                        href={
-                                                                            item.href
+                                                                    <div
+                                                                        onClick={() =>
+                                                                            marketingButtonRef.current?.click()
                                                                         }
                                                                     >
-                                                                        <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                                                                            <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
-                                                                                <item.icon
-                                                                                    className="h-6 w-6"
-                                                                                    aria-hidden="true"
-                                                                                />
-                                                                            </div>
-                                                                            <div className="ml-4">
-                                                                                <p className="text-base font-medium text-gray-900">
-                                                                                    {
-                                                                                        item.name
-                                                                                    }
-                                                                                </p>
-                                                                                <p className="mt-1 text-sm text-gray-500">
-                                                                                    {
-                                                                                        item.description
-                                                                                    }
-                                                                                </p>
-                                                                            </div>
-                                                                        </a>
-                                                                    </Link>
+                                                                        <Link
+                                                                            key={
+                                                                                item.name
+                                                                            }
+                                                                            href={
+                                                                                item.href
+                                                                            }
+                                                                        >
+                                                                            <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                                                                                <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
+                                                                                    <item.icon
+                                                                                        className="h-6 w-6"
+                                                                                        aria-hidden="true"
+                                                                                    />
+                                                                                </div>
+                                                                                <div className="ml-4">
+                                                                                    <p className="text-base font-medium text-gray-900">
+                                                                                        {
+                                                                                            item.name
+                                                                                        }
+                                                                                    </p>
+                                                                                    <p className="mt-1 text-sm text-gray-500">
+                                                                                        {
+                                                                                            item.description
+                                                                                        }
+                                                                                    </p>
+                                                                                </div>
+                                                                            </a>
+                                                                        </Link>
+                                                                    </div>
                                                                 )
                                                             )}
                                                         </div>
-                                                        <div className="p-5 bg-gray-50 sm:p-8">
+                                                        <div
+                                                            onClick={() =>
+                                                                marketingButtonRef.current?.click()
+                                                            }
+                                                            className="p-5 bg-gray-50 sm:p-8"
+                                                        >
                                                             <Link href="/seo-report">
                                                                 <a className="-m-3 p-3 flow-root rounded-md hover:bg-gray-100">
                                                                     <div className="flex items-center">
@@ -542,6 +586,7 @@ export default function Header() {
                                     {({ open }) => (
                                         <>
                                             <Popover.Button
+                                                ref={supportButtonRef}
                                                 className={classNames(
                                                     open
                                                         ? "text-gray-900"
@@ -579,40 +624,46 @@ export default function Header() {
                                                         <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                                                             {support.map(
                                                                 (item) => (
-                                                                    <Link
-                                                                        key={
-                                                                            item.name
-                                                                        }
-                                                                        href={
-                                                                            item.href
+                                                                    <div
+                                                                        onClick={() =>
+                                                                            supportButtonRef.current?.click()
                                                                         }
                                                                     >
-                                                                        <a className="-m-3 p-3 block rounded-md hover:bg-gray-50">
-                                                                            <p className="text-base font-medium text-gray-900">
-                                                                                {
-                                                                                    item.name
-                                                                                }
-                                                                                {item.name ==
-                                                                                "Status" ? (
-                                                                                    <svg
-                                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                                        class="ml-1 mb-1 w-5 h-5 inline"
-                                                                                        viewBox="0 0 20 20"
-                                                                                        fill="currentColor"
-                                                                                    >
-                                                                                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                                                                                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                                                                                    </svg>
-                                                                                ) : null}
-                                                                            </p>
+                                                                        <Link
+                                                                            key={
+                                                                                item.name
+                                                                            }
+                                                                            href={
+                                                                                item.href
+                                                                            }
+                                                                        >
+                                                                            <a className="-m-3 p-3 block rounded-md hover:bg-gray-50">
+                                                                                <p className="text-base font-medium text-gray-900">
+                                                                                    {
+                                                                                        item.name
+                                                                                    }
+                                                                                    {item.name ==
+                                                                                    "Status" ? (
+                                                                                        <svg
+                                                                                            xmlns="http://www.w3.org/2000/svg"
+                                                                                            class="ml-1 mb-1 w-5 h-5 inline"
+                                                                                            viewBox="0 0 20 20"
+                                                                                            fill="currentColor"
+                                                                                        >
+                                                                                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                                                                                            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                                                                                        </svg>
+                                                                                    ) : null}
+                                                                                </p>
 
-                                                                            <p className="mt-1 text-sm text-gray-500">
-                                                                                {
-                                                                                    item.description
-                                                                                }
-                                                                            </p>
-                                                                        </a>
-                                                                    </Link>
+                                                                                <p className="mt-1 text-sm text-gray-500">
+                                                                                    {
+                                                                                        item.description
+                                                                                    }
+                                                                                </p>
+                                                                            </a>
+                                                                        </Link>
+                                                                    </div>
                                                                 )
                                                             )}
                                                         </div>
