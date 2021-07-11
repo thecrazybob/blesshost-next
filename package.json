@@ -12,6 +12,8 @@
     "@heroicons/react": "^1.0.1",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/forms": "^0.3.3",
+    "@tailwindcss/typography": "^0.4.1",
+    "date-fns": "^2.22.1",
     "mailgo": "^0.12.2",
     "next": "latest",
     "react": "^17.0.2",
