@@ -1,5 +1,7 @@
 import React from "react";
 import ContactForm from "../components/contact-form";
+import CTAImage from "../components/cta-image";
+import { getHomePosts } from "../lib/api";
 import LatestBlog from "../components/latest-blog";
 import Stats from "../components/stats";
 import GradientFeatures from "../components/features-gradient";
@@ -72,7 +74,7 @@ const features = [
     },
 ];
 
-export default function Home() {
+export default function Home({ homePosts }) {
     // Create reference to store the DOM element containing the animation
     const el = React.useRef(null);
     // Create reference to store the Typed instance itself
@@ -496,7 +498,7 @@ export default function Home() {
 
             <Testimonials />
 
-            <LatestBlog />
+            <LatestBlog homePosts={homePosts} />
 
             <Stats></Stats>
 
@@ -551,4 +553,11 @@ export default function Home() {
             </div>
         </>
     );
+}
+
+export async function getStaticProps() {
+    const homePosts = await getHomePosts();
+    return {
+        props: { homePosts },
+    };
 }

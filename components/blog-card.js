@@ -1,7 +1,6 @@
 import Date from "./date";
 import Link from "next/link";
-import Image from 'next/image'
-
+import Image from "next/image";
 
 export default function BlogCard({ posts }) {
   return (
@@ -26,11 +25,15 @@ export default function BlogCard({ posts }) {
               className="flex flex-col rounded-lg shadow-lg overflow-hidden"
             >
               <div className="flex-shrink-0">
-                <img
-                  className="h-48 w-full object-cover"
-                  src={node.featuredImage.node.sourceUrl}
-                  alt=""
-                />
+                <Link href={`/blog/${node.slug}`}>
+                  <a>
+                    <img
+                      className="h-48 w-full object-cover"
+                      src={node.featuredImage.node.sourceUrl}
+                      alt=""
+                    />
+                  </a>
+                </Link>
               </div>
               <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                 <div className="flex-1">
@@ -44,9 +47,10 @@ export default function BlogCard({ posts }) {
                   </p>
                   <Link href={`/blog/${node.slug}`}>
                     <a className="block mt-2">
-                      <p className="text-xl font-semibold text-gray-900">
-                        {node.title}
-                      </p>
+                      <p
+                        dangerouslySetInnerHTML={{ __html: node.title }}
+                        className="text-xl font-semibold text-gray-900"
+                      ></p>
                       <div
                         className="mt-3 text-base text-gray-500"
                         dangerouslySetInnerHTML={{ __html: node.excerpt }}
@@ -56,24 +60,21 @@ export default function BlogCard({ posts }) {
                 </div>
                 <div className="mt-6 flex items-center">
                   <div className="flex-shrink-0">
-                    <a href="#">
-                      <span className="sr-only">{node.author.node.name}</span>
-                      <img
-                        className="h-10 w-10 rounded-full"
-                        src={node.author.node.avatar.url}
-                        alt=""
-                      />
-                    </a>
+                    <span className="sr-only">{node.author.node.name}</span>
+                    <img
+                      className="h-10 w-10 rounded-full"
+                      src={node.author.node.avatar.url}
+                      alt=""
+                    />
                   </div>
                   <div className="ml-3">
                     <p className="text-sm font-medium text-gray-900">
-                      <a href="#" className="hover:underline">
-                        {node.author.node.name}
-                      </a>
+                      <div>{node.author.node.name}</div>
                     </p>
                     <div className="flex space-x-1 text-sm text-gray-500">
                       <Date dateString={node.date} />
                       <span aria-hidden="true">&middot;</span>
+                      <span>{node.readingTime} min read</span>
                     </div>
                   </div>
                 </div>
