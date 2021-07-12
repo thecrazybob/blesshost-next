@@ -6,40 +6,43 @@ import {
     ViewBoardsIcon,
     ViewListIcon,
 } from "@heroicons/react/outline";
+import Link from "next/link";
 
 const features = [
     {
-        name: "List view",
+        name: "Bullet-proof protection",
         description:
-            "Nunc a, lacinia sed risus neque, arcu, rhoncus. Id mauris justo facilisis aliquam platea vestibulum condimentum morbi.",
+            "Our servers are protected against DDoS attacks. Websites hosted with us are monitored and backed up daily in a remote region.",
         icon: ViewListIcon,
     },
     {
-        name: "Boards",
+        name: "Unlimited data",
         description:
-            "Purus lobortis volutpat posuere id integer nunc tellus. Non mauris malesuada feugiat massa mi pellentesque cum est. Pharetra a varius urna rhoncus, tempor rutrum.",
+            "You can install any number of applications, create unlimited email accounts and store unlimited data on your 360 Web Hosting account.",
         icon: ViewBoardsIcon,
     },
     {
-        name: "Calendar",
+        name: "360 Coverage",
         description:
-            "Purus lobortis volutpat posuere id integer nunc tellus. Non mauris malesuada feugiat massa mi pellentesque cum est. Pharetra a varius urna rhoncus, tempor rutrum.",
+            "Whether you want to host a WordPress website or a customized web application, our 360 Web Hosting supports one-click installation of over 200 applications.",
         icon: CalendarIcon,
     },
     {
-        name: "Teams",
+        name: "Expert Support",
         description:
-            "Tincidunt sollicitudin interdum nunc sit risus at bibendum vitae. Urna, quam ut sit justo non, consectetur et varius.",
+            "Our team of experts based in the United Arab Emirates are there to help you 24/7/365. No more talking to the robots and struggling to contact actual human support.",
         icon: UsersIcon,
     },
 ];
 const checklist = [
-    "Unlimited projects",
-    "No per user fees",
     "Unlimited storage",
+    "Unlimited visitors",
+    "Unlimited emails",
+    "Free website transfer",
+    "Free domain name",
+    "One-click app install",
     "24/7 support",
     "Cancel any time",
-    "14 days free",
 ];
 const logos = [
     {
@@ -87,7 +90,6 @@ const faqs = [
         answer: "He couldn't see himself doing it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
     },
 ];
-import TitleBar from "../components/title-bar";
 import AlternatingFeature from "../components/features-alternating";
 import Testimonials from "../components/testimonials";
 
@@ -107,13 +109,15 @@ export default function WebHosting() {
                     <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
                         <div className="text-center">
                             <h1 className="text-base font-semibold text-blue-300 uppercase tracking-wide">
-                                Title
+                                UAE & European Hosting
                             </h1>
                             <p className="mt-1 text-4xl font-extrabold text-gray-200 sm:text-5xl sm:tracking-tight lg:text-6xl">
-                                Title
+                                360 Website Hosting
                             </p>
                             <p className="max-w-xl mx-auto mt-5 text-xl text-gray-300">
-                                Title
+                                For a flat price, get unlimited website hosting
+                                hosted in either the United Arab Emirates or the
+                                EU
                             </p>
                         </div>
                     </div>
@@ -123,16 +127,17 @@ export default function WebHosting() {
             {/* Split brand panel */}
             <div className="relative bg-white">
                 <div className="absolute inset-0" aria-hidden="true">
-                    <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-r from-blue-600 to-blue-400" />
+                    <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-r from-blue-600 to-blue-700" />
                 </div>
                 <div className="relative max-w-7xl mx-auto lg:grid lg:grid-cols-2 lg:px-8">
                     <div className="bg-white py-16 px-4 sm:py-24 sm:px-6 lg:px-0 lg:pr-8">
                         <div className="max-w-lg mx-auto lg:mx-0">
                             <h2 className="text-base font-semibold tracking-wide text-blue-600 uppercase">
-                                Full-featublue
+                                Super-charged Hosting
                             </h2>
                             <p className="mt-2 text-2xl font-extrabold text-gray-900 sm:text-3xl">
-                                Everything you need to talk with your customers
+                                Everything included and optimized to get your
+                                website run faster, smoother and secure.
                             </p>
                             <dl className="mt-12 space-y-10">
                                 {features.map((feature) => (
@@ -163,36 +168,14 @@ export default function WebHosting() {
                         <div className="max-w-lg mx-auto w-full space-y-8 lg:mx-0">
                             <div>
                                 <h2 className="sr-only">Price</h2>
-                                <p className="relative grid grid-cols-2">
-                                    <span className="flex flex-col text-center">
-                                        <span className="text-5xl font-extrabold text-white tracking-tight">
-                                            $99
-                                        </span>
-                                        <span className="mt-2 text-base font-medium text-blue-100">
-                                            Setup fee
-                                        </span>
-                                        <span className="sr-only">plus</span>
+                                <span className="flex flex-col text-center">
+                                    <span className="text-5xl font-extrabold text-white tracking-tight">
+                                        $20
                                     </span>
-                                    <span
-                                        className="pointer-events-none absolute h-12 w-full flex items-center justify-center"
-                                        aria-hidden="true"
-                                    >
-                                        <PlusIcon
-                                            className="h-6 w-6 text-blue-200"
-                                            aria-hidden="true"
-                                        />
+                                    <span className="mt-2 text-base font-medium text-blue-100">
+                                        Monthly
                                     </span>
-                                    <span>
-                                        <span className="flex flex-col text-center">
-                                            <span className="text-5xl font-extrabold text-white tracking-tight">
-                                                $4
-                                            </span>
-                                            <span className="mt-2 text-base font-medium text-blue-100">
-                                                Per month
-                                            </span>
-                                        </span>
-                                    </span>
-                                </p>
+                                </span>
                             </div>
                             <ul className="rounded overflow-hidden grid gap-px sm:grid-cols-2">
                                 {checklist.map((item) => (
@@ -215,10 +198,10 @@ export default function WebHosting() {
                                 Get started today
                             </a>
                             <a
-                                href="#"
+                                href="/simple-hosting"
                                 className="block text-center text-base font-medium text-blue-100 hover:text-white"
                             >
-                                Try Workflow Lite for free
+                                Are you looking for simple hosting?
                             </a>
                         </div>
                     </div>
@@ -226,11 +209,12 @@ export default function WebHosting() {
             </div>
 
             {/* Logo cloud */}
-            <div className="bg-blue-100 bg-opacity-25">
+            <div className="bg-blue-300 bg-opacity-50">
                 <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
                     <div className="lg:grid lg:grid-cols-2 lg:gap-8">
-                        <h2 className="max-w-md mx-auto text-3xl font-extrabold text-blue-900 text-center lg:max-w-xl lg:text-left">
-                            The world's most innovative companies use Workflow
+                        <h2 className="max-w-md mx-auto text-3xl font-extrabold text-blue-800 text-center lg:max-w-xl lg:text-left">
+                            Companies in the UAE that are powered by our 360 Web
+                            Hosting
                         </h2>
                         <div className="mt-8 flow-root lg:mt-0 self-center">
                             <div className="-mt-4 -ml-8 flex flex-wrap justify-between lg:-ml-4">
@@ -264,28 +248,32 @@ export default function WebHosting() {
                     <div className="flex-1" />
                 </div>
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-gradient-to-r from-blue-400 to-blue-500 rounded-lg shadow-xl overflow-hidden lg:grid lg:grid-cols-2 lg:gap-4">
+                    <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg shadow-xl overflow-hidden lg:grid lg:grid-cols-2 lg:gap-4">
                         <div className="pt-10 pb-12 px-6 sm:pt-16 sm:px-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20">
                             <div className="lg:self-center">
                                 <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
                                     <span className="block">
-                                        Ready to dive in?
+                                        Are you hosting your website somewhere
+                                        else?
                                     </span>
-                                    <span className="block text-blue-900">
-                                        Start your free trial today.
+                                    <span className="block text-xl text-blue-900">
+                                        We can transfer it within{" "}
+                                        <span className="border-b-2">
+                                            24 hours
+                                        </span>
                                     </span>
                                 </h2>
                                 <p className="mt-4 text-lg leading-6 text-blue-50">
-                                    Ac euismod vel sit maecenas id pellentesque
-                                    eu sed consectetur. Malesuada adipiscing
-                                    sagittis vel nulla nec.
+                                    We can transfer your website from any other
+                                    host without any downtime and hassle. Just
+                                    fill out our website transfer form and enjoy
+                                    the perks of our 360 Web Hosting.
                                 </p>
-                                <a
-                                    href="#"
-                                    className="mt-8 bg-blue-100 border border-transparent rounded-md shadow py-3 px-6 inline-flex items-center text-base font-medium text-blue-600 hover:text-blue-500"
-                                >
-                                    Sign up for free
-                                </a>
+                                <Link href="/transfers">
+                                    <a className="mt-8 bg-blue-100 border border-transparent rounded-md shadow py-3 px-6 inline-flex items-center text-base font-medium text-blue-600 hover:text-blue-500">
+                                        Transfer my website
+                                    </a>
+                                </Link>
                             </div>
                         </div>
                         <div className="-mt-6 aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1">
@@ -323,12 +311,12 @@ export default function WebHosting() {
             </div>
 
             {/* CTA section */}
-            <div className="bg-gradient-to-r from-blue-600 to-blue-400">
+            <div className="bg-gradient-to-r from-blue-500 to-blue-600">
                 <div className="max-w-2xl mx-auto py-16 px-4 text-center sm:py-20 sm:px-6 lg:px-8">
                     <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
-                        <span className="block">Boost your productivity.</span>
+                        <span className="block">Supercharge your website</span>
                         <span className="block text-blue-900">
-                            Start using Workflow today.
+                            Get your website live today!
                         </span>
                     </h2>
                     <p className="mt-4 text-lg leading-6 text-blue-100">
@@ -340,7 +328,7 @@ export default function WebHosting() {
                         href="#"
                         className="mt-8 w-full bg-blue-50 border border-transparent rounded-md py-3 px-5 inline-flex items-center justify-center text-base font-medium text-blue-700 hover:bg-blue-100 sm:w-auto"
                     >
-                        Sign up for free
+                        Get started
                     </a>
                 </div>
             </div>
