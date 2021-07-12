@@ -124,12 +124,53 @@ export default function Home({ homePosts }) {
                                     for your online presence
                                 </span>
                             </h1>
-                            <p className="mt-3 mb-20 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                            <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
                                 Are you looking to boost your business by having
                                 an online presence? Reach a wider customer base,
                                 increase sales and improve customer satisfaction
                                 with our digital services.
                             </p>
+                            <div className="mt-8 md:mb-0 mb-20 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
+                                <p className="text-base font-medium text-gray-900">
+                                    Search for a domain name
+                                </p>
+                                <form
+                                    action="#"
+                                    method="POST"
+                                    className="mt-3 sm:flex"
+                                >
+                                    <label htmlFor="email" className="sr-only">
+                                        Email
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="email"
+                                        id="email"
+                                        className="block w-full py-3 text-base rounded-md placeholder-gray-500 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:flex-1 border-gray-300"
+                                        placeholder="youramazingwebsite.com"
+                                    />
+                                    <button
+                                        type="submit"
+                                        className="mt-3 w-full px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
+                                    >
+                                        Search
+                                    </button>
+                                </form>
+                                <div className="mt-3 text-sm text-gray-500 flex justify-between">
+                                    <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-gray-800">
+                                        .com $12.95
+                                    </span>
+                                    <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-gray-800">
+                                        .net $12.95
+                                    </span>
+                                    <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-gray-800">
+                                        .org $12.95
+                                    </span>
+                                    <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-gray-800">
+                                        .ae $12.95
+                                    </span>
+                                </div>
+                            </div>
                         </div>
 
                         <div className="order-first md:order-last">
