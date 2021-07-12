@@ -2,10 +2,8 @@ import { getAllPostsForHome } from "../../lib/api";
 import BlogCard from "../../components/blog-card";
 
 export default function Page({ allPosts: { edges } }) {
-  const morePosts = edges.slice(1);
-  return <>
-  {morePosts.length > 0 && <BlogCard posts={morePosts} />}
-  </>;
+  const posts = edges.slice(0);
+  return <>{posts.length > 0 && <BlogCard posts={posts} />}</>;
 }
 
 export async function getStaticProps() {
