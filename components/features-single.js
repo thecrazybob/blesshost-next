@@ -3,7 +3,7 @@ export default function SingleFeature(props) {
         <div className="relative bg-gray-50 pt-16 overflow-hidden sm:pt-24 lg:pt-32">
             <div className="mx-auto max-w-md px-4 text-center sm:px-6 sm:max-w-3xl lg:px-8 lg:max-w-7xl">
                 <div>
-                    <h2 className="text-base font-semibold tracking-wider text-indigo-600 uppercase">
+                    <h2 className="text-base font-semibold tracking-wider text-blue-600 uppercase">
                         {props.subheading}
                     </h2>
                     <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
