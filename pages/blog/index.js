@@ -4,6 +4,7 @@ import BlogCard from "../../components/blog-card";
 import { useRef, useState, Fragment, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/outline";
+import BlogSkeleton from "../../components/blog-skeleton.js";
 
 export default function Page({ allPosts: { edges } }) {
   const [show, setShow] = useState(true);
@@ -42,18 +43,22 @@ export default function Page({ allPosts: { edges } }) {
     };
   }, [element]);
 
-    useEffect(() => {
-      const timeout = setTimeout(() => {
-        setShow(false);
-      }, 7000);
-      return () => clearTimeout(timeout);
-    }, []);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShow(false);
+    }, 7000);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <>
       <BlogCard posts={currentPosts} />
+
       {currentPage !== maxPage ? (
-        <h1 ref={setElement}>Loading Posts...</h1>
+        <>
+          <span ref={setElement} />
+          <BlogSkeleton />
+        </>
       ) : (
         <div className="w-full flex flex-col items-center space-y-4 sm:items-end fixed top-32 right-0 z-50 pr-2 ">
           {/* Notification panel, dynamically insert this into the live region when it needs to be displayed */}
@@ -70,11 +75,11 @@ export default function Page({ allPosts: { edges } }) {
             <div className="max-w-sm w-46 bg-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
               <div className="p-3">
                 <div className="flex items-center">
-                    <p className="text-sm font-medium text-gray-900 inline ">
-                      End of Posts
-                    </p>
+                  <p className="text-sm font-medium text-gray-900 inline ">
+                    End of Posts
+                  </p>
                   <div className="ml-4">
-                  <CheckCircleIcon
+                    <CheckCircleIcon
                       className="h-6 w-6 text-green-400 inline "
                       aria-hidden="true"
                     />
