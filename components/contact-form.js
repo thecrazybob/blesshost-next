@@ -316,7 +316,7 @@ export default function ContactForm() {
                             </dl>
                             <ul className="mt-8 flex space-x-8" role="list">
                                 {social.map((item) => (
-                                    <li>
+                                    <li key={item.name}>
                                         <a
                                             key={item.name}
                                             href={item.href}

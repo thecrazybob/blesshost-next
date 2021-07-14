@@ -78,7 +78,7 @@ export default function BlogCard({ posts }) {
                                     </div>
                                     <div className="ml-3">
                                         <p className="text-sm font-medium text-gray-900">
-                                            <div>{node.author.node.name}</div>
+                                            {node.author.node.name}
                                         </p>
                                         <div className="flex space-x-1 text-gray-500">
                                             <Date dateString={node.date} />

@@ -274,14 +274,14 @@ export default function Header() {
                                                             {hosting.map(
                                                                 (item) => (
                                                                     <div
+                                                                        key={
+                                                                            item.name
+                                                                        }
                                                                         onClick={() =>
                                                                             hostingButtonRef.current?.click()
                                                                         }
                                                                     >
                                                                         <Link
-                                                                            key={
-                                                                                item.name
-                                                                            }
                                                                             href={
                                                                                 item.href
                                                                             }
@@ -395,14 +395,14 @@ export default function Header() {
                                                             {websites.map(
                                                                 (item) => (
                                                                     <div
+                                                                        key={
+                                                                            item.name
+                                                                        }
                                                                         onClick={() =>
                                                                             websitesButtonRef.current?.click()
                                                                         }
                                                                     >
                                                                         <Link
-                                                                            key={
-                                                                                item.name
-                                                                            }
                                                                             href={
                                                                                 item.href
                                                                             }
@@ -513,11 +513,11 @@ export default function Header() {
                                                                         onClick={() =>
                                                                             marketingButtonRef.current?.click()
                                                                         }
+                                                                        key={
+                                                                            item.name
+                                                                        }
                                                                     >
                                                                         <Link
-                                                                            key={
-                                                                                item.name
-                                                                            }
                                                                             href={
                                                                                 item.href
                                                                             }
@@ -628,11 +628,11 @@ export default function Header() {
                                                                         onClick={() =>
                                                                             supportButtonRef.current?.click()
                                                                         }
+                                                                        key={
+                                                                            item.name
+                                                                        }
                                                                     >
                                                                         <Link
-                                                                            key={
-                                                                                item.name
-                                                                            }
                                                                             href={
                                                                                 item.href
                                                                             }
