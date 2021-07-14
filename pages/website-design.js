@@ -5,6 +5,10 @@ import FAQSDark from "../components/faqs-dark";
 import CTASimple from "../components/cta-simple";
 import Testimonials from "../components/testimonials";
 
+import buildzone from "../public/img/portfolio/buildzone.ae.jpeg";
+import workshoponwheels from "../public/img/portfolio/workshoponwheels.ae.jpeg";
+import fosscape from "../public/img/portfolio/fosscape.com.jpeg";
+
 const faqs = [
     {
         id: 1,
@@ -40,34 +44,25 @@ const faqs = [
 
 const portfolio = [
     {
-        title: "Boost your conversion rate",
-        href: "#",
-        category: { name: "E-commerce", href: "#" },
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
-
-        imageUrl:
-            "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
+        title: "Buildzone",
+        href: "https://www.buildzone.ae/",
+        category: { name: "Corporate" },
+        description: "Construction company.",
+        image: buildzone,
     },
     {
-        title: "How to use search engine optimization to drive sales",
-        href: "#",
-        category: { name: "Blog", href: "#" },
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
-
-        imageUrl:
-            "https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
+        title: "Workshop on Wheels",
+        href: "https://www.workshoponwheels.ae/",
+        category: { name: "Corporate" },
+        description: "Maintenance Services.",
+        image: workshoponwheels,
     },
     {
-        title: "Improve your customer experience",
-        href: "#",
-        category: { name: "Company", href: "#" },
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
-
-        imageUrl:
-            "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
+        title: "Fosscape",
+        href: "https://www.fosscape.com/",
+        category: { name: "Corporate" },
+        description: "LED Lighting.",
+        image: fosscape,
     },
 ];
 
