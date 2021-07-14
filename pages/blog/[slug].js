@@ -125,8 +125,7 @@ export default function Post({ post, posts, preview }) {
                 <span className="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase">
                   {post.categories.edges[0].node.name}
                 </span>
-                <span className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                  {post.title}
+                <span dangerouslySetInnerHTML={{ __html: post.title }} className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                 </span>
               </h1>
               <Image
@@ -136,8 +135,6 @@ export default function Post({ post, posts, preview }) {
                 width={1310}
                 height={873}
               />
-
-              <div dangerouslySetInnerHTML={{ __html: post.excerpt }} />
               <div dangerouslySetInnerHTML={{ __html: post.content }} />
             </div>
           </div>
