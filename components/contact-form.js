@@ -1,5 +1,6 @@
 import { MailIcon, PhoneIcon } from "@heroicons/react/outline";
 import { ExternalLinkIcon } from "@heroicons/react/solid";
+import React, { useRef, useState } from "react";
 
 const social = [
     {
@@ -57,6 +58,55 @@ const social = [
 ];
 
 export default function ContactForm() {
+    // 1. Create a reference to the input so we can fetch/clear it's value.
+    const firstNameInput = useRef(null);
+    const lastNameInput = useRef(null);
+    const emailInput = useRef(null);
+    const phoneInput = useRef(null);
+    const messageInput = useRef(null);
+
+    // 2. Hold a message in state to handle the response from our API.
+    const [message, setMessage] = useState("");
+
+    const contact = async (e) => {
+        e.preventDefault();
+
+        // 3. Send a request to our API with the user's email address.
+        const res = await fetch("/api/contact", {
+            body: JSON.stringify({
+                first_name: firstNameInput.current.value,
+                last_name: lastNameInput.current.value,
+                email: emailInput.current.value,
+                phone: phoneInput.current.value,
+                message: messageInput.current.value,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+        });
+
+        const { error } = await res.json();
+
+        if (error) {
+            // 4. If there was an error, update the message in state.
+            setMessage(error);
+
+            return;
+        }
+
+        // 5. Clear the input value and show a success message.
+        firstNameInput.current.value = "";
+        lastNameInput.current.value = "";
+        emailInput.current.value = "";
+        phoneInput.current.value = "";
+        messageInput.current.value = "";
+
+        setMessage(
+            "Success! 🎉 Our team will get back to you as soon as possible."
+        );
+    };
+
     return (
         <div className="bg-gray-100">
             <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
@@ -282,8 +332,7 @@ export default function ContactForm() {
                                 Send us a message
                             </h3>
                             <form
-                                action="#"
-                                method="POST"
+                                onSubmit={contact}
                                 className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
                             >
                                 <div>
@@ -295,6 +344,7 @@ export default function ContactForm() {
                                     </label>
                                     <div className="mt-1">
                                         <input
+                                            ref={firstNameInput}
                                             type="text"
                                             name="first_name"
                                             id="first_name"
@@ -312,6 +362,7 @@ export default function ContactForm() {
                                     </label>
                                     <div className="mt-1">
                                         <input
+                                            ref={lastNameInput}
                                             type="text"
                                             name="last_name"
                                             id="last_name"
@@ -329,6 +380,7 @@ export default function ContactForm() {
                                     </label>
                                     <div className="mt-1">
                                         <input
+                                            ref={emailInput}
                                             id="email"
                                             name="email"
                                             type="email"
@@ -348,6 +400,7 @@ export default function ContactForm() {
                                     </div>
                                     <div className="mt-1">
                                         <input
+                                            ref={phoneInput}
                                             type="text"
                                             name="phone"
                                             id="phone"
@@ -374,6 +427,7 @@ export default function ContactForm() {
                                     </div>
                                     <div className="mt-1">
                                         <textarea
+                                            ref={messageInput}
                                             id="message"
                                             name="message"
                                             rows={4}
@@ -383,6 +437,7 @@ export default function ContactForm() {
                                         />
                                     </div>
                                 </div>
+                                {message}
                                 <div className="sm:col-span-2 sm:flex sm:justify-end">
                                     <button
                                         type="submit"
