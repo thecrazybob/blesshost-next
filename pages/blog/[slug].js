@@ -4,11 +4,11 @@ import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
 import Image from "next/image";
 
 export default function Post({ post, posts, preview }) {
-  const router = useRouter();
-  const morePosts = posts?.edges;
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
-  }
+    const router = useRouter();
+    const morePosts = posts?.edges;
+    if (!router.isFallback && !post?.slug) {
+        return <ErrorPage statusCode={404} />;
+    }
 
   return (
     <>
@@ -122,7 +122,7 @@ export default function Post({ post, posts, preview }) {
           <div className="relative px-4 sm:px-6 lg:px-8">
             <div className="text-lg max-w-prose mx-auto">
               <h1>
-                <span className="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase">
+                <span className="block text-base text-center text-blue-600 font-semibold tracking-wide uppercase">
                   {post.categories.edges[0].node.name}
                 </span>
                 <span dangerouslySetInnerHTML={{ __html: post.title }} className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -145,22 +145,22 @@ export default function Post({ post, posts, preview }) {
 }
 
 export async function getStaticProps({ params, preview = false, previewData }) {
-  const data = await getPostAndMorePosts(params.slug, preview, previewData);
+    const data = await getPostAndMorePosts(params.slug, preview, previewData);
 
-  return {
-    props: {
-      preview,
-      post: data.post,
-      posts: data.posts,
-    },
-  };
+    return {
+        props: {
+            preview,
+            post: data.post,
+            posts: data.posts,
+        },
+    };
 }
 
 export async function getStaticPaths() {
-  const allPosts = await getAllPostsWithSlug();
+    const allPosts = await getAllPostsWithSlug();
 
-  return {
-    paths: allPosts.edges.map(({ node }) => `/blog/${node.slug}`) || [],
-    fallback: true,
-  };
+    return {
+        paths: allPosts.edges.map(({ node }) => `/blog/${node.slug}`) || [],
+        fallback: true,
+    };
 }

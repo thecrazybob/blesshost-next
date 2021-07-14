@@ -7,6 +7,7 @@ import {
     ViewListIcon,
 } from "@heroicons/react/outline";
 import Link from "next/link";
+import WHMCSLink from "../components/whmcs-link";
 
 const features = [
     {
@@ -61,33 +62,35 @@ const logos = [
 const faqs = [
     {
         id: 1,
-        question: "What's the best thing about Switzerland?",
-        answer: "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+        question: "What is web hosting and how does it help my website?",
+        answer: 'To create a website, a domain and web hosting is necessary. Domain is the name of the website, e.g. our domain name is "blesshost.com". Once you have selected a domain name, web hosting is where you store the content of the website',
     },
     {
         id: 2,
-        question: "How do you make holy water?",
-        answer: "You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+        question: "Can I install popular applications like WordPress myself?",
+        answer: "Yes, we have partnered with Softaculous which allows our customers to install over 200+ applications like WordPress, Laravel and Magento  using a single click.",
     },
     {
         id: 3,
-        question: "Why do you never see elephants hiding in trees?",
-        answer: "Because they're so good at it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+        question:
+            "What happens when I want to transfer my hosting somewhere else?",
+        answer: "As long as your account is active, you can transfer your website from our 360 Web Hosting to any other host.",
     },
     {
         id: 4,
-        question: "What do you call someone with no body and no nose?",
-        answer: "Nobody knows. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+        question:
+            "My website is currently hosted on another host, how can I transfer it here?",
+        answer: "BlessHost takes care of website transfers, just create a ticket with your previous host login info and your website will be transferred within 24 hours.",
     },
     {
         id: 5,
-        question: "Why can't you hear a pterodactyl go to the bathroom?",
-        answer: "Because the pee is silent. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+        question: "How do I reach BlessHost support team when I need help?",
+        answer: "Our team is available 24/7/365 to help you via live chat, email, our ticket system, phone and WhatsApp. Our team is always ready to help you out.",
     },
     {
         id: 6,
-        question: "Why did the invisible man turn down the job offer?",
-        answer: "He couldn't see himself doing it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+        question: "How do I pay for my own 360 Web Hosting account?",
+        answer: "You can pay via any VISA / Mastercard card, PayPal or Bitcoin (and other popular cryptocurrencies such as ETH).",
     },
 ];
 import AlternatingFeature from "../components/features-alternating";
@@ -191,12 +194,12 @@ export default function WebHosting() {
                                     </li>
                                 ))}
                             </ul>
-                            <a
-                                href="#"
+                            <WHMCSLink
+                                pid={91}
+                                currency={2}
+                                label="Get started today"
                                 className="w-full bg-white border border-transparent rounded-md py-4 px-8 flex items-center justify-center text-lg leading-6 font-medium text-blue-700 hover:bg-blue-50 md:px-10"
-                            >
-                                Get started today
-                            </a>
+                            />
                             <a
                                 href="/simple-hosting"
                                 className="block text-center text-base font-medium text-blue-100 hover:text-white"
@@ -320,16 +323,23 @@ export default function WebHosting() {
                         </span>
                     </h2>
                     <p className="mt-4 text-lg leading-6 text-blue-100">
-                        Ac euismod vel sit maecenas id pellentesque eu sed
-                        consectetur. Malesuada adipiscing sagittis vel nulla
-                        nec.
+                        With instant provisioning, your 360 Web Hosting account
+                        will be delivered right away to your email. If you are
+                        still unsure, let our team of experts help you.
                     </p>
-                    <a
-                        href="#"
-                        className="mt-8 w-full bg-blue-50 border border-transparent rounded-md py-3 px-5 inline-flex items-center justify-center text-base font-medium text-blue-700 hover:bg-blue-100 sm:w-auto"
-                    >
-                        Get started
-                    </a>
+                    <div className="flex justify-center space-x-4">
+                        <WHMCSLink
+                            label="Order now"
+                            pid="91"
+                            className="mt-8 w-full bg-blue-50 border border-transparent rounded-md py-3 px-5 inline-flex items-center justify-center text-base font-medium text-blue-700 hover:bg-blue-100 sm:w-auto"
+                        />
+                        <a
+                            href="#"
+                            className="mt-8 w-full bg-blue-600 border border-blue-600 rounded-md py-3 px-5 inline-flex items-center justify-center text-base font-medium text-gray-200 hover:bg-blue-700 sm:w-auto"
+                        >
+                            Chat with us
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

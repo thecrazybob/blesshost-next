@@ -14,10 +14,10 @@ export default function Example() {
           <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
             <div className="pr-16 sm:text-center sm:px-16">
               <p className="font-medium text-white">
-                <span className="md:hidden">Web Hosting for 1 AED!</span>
+                <span className="md:hidden">Web Hosting for just 2 AED!</span>
                 <span className="hidden md:inline">
-                  Big news! For a limited time we're providing web hosting for
-                  just 1 AED!
+                  Big news! Try our most popular 360 Unlimited Web Hosting for
+                  just AED 2/month!
                 </span>
                 <span className="block sm:ml-2 sm:inline-block">
                   <Link href="/web-hosting">

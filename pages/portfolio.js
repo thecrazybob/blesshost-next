@@ -1,42 +1,307 @@
 import Portfolio from "../components/portfolio";
-import TitleBar from "../components/title-bar";
+import buildzone from "../public/img/portfolio/buildzone.ae.jpeg";
+import workshoponwheels from "../public/img/portfolio/workshoponwheels.ae.jpeg";
+import fosscape from "../public/img/portfolio/fosscape.com.jpeg";
+import aljazeeraroyalhotel from "../public/img/portfolio/aljaziraroyal.ae.jpeg";
+import hairmiles from "../public/img/portfolio/hair-miles.com.jpeg";
+import eyeontechnology from "../public/img/portfolio/eyeontechnology.net.jpeg";
+import runwaydubai from "../public/img/portfolio/runwaydubai.com.jpeg";
+import waleedshah from "../public/img/portfolio/waleedshah.ae.jpeg";
+import teemcouae from "../public/img/portfolio/teemcouae.com.jpeg";
+import mahmoodequipment from "../public/img/portfolio/mahmoodequipment.com.jpeg";
+import alwahahygiene from "../public/img/portfolio/alwahahygiene.ae.jpeg";
+import gfas from "../public/img/portfolio/gfas.ae.jpeg";
+import arrowavia from "../public/img/portfolio/arrowavia.aero.jpeg";
+import banian from "../public/img/portfolio/banian.ae.jpeg";
+import saifalfalasi from "../public/img/portfolio/saifalfalasi.com.jpeg";
+import ktccp from "../public/img/portfolio/ktccp.ae.jpeg";
+import almathal from "../public/img/portfolio/al-mathal.com.jpeg";
+import innerseed from "../public/img/portfolio/innerseeduae.com.jpeg";
+import ocreandreamboats from "../public/img/portfolio/oceandreamboats.com.jpeg";
+import fla from "../public/img/portfolio/fla.ae.jpeg";
+import brandcare from "../public/img/portfolio/brandcaresolutions.ae.jpeg";
+import deserttigers from "../public/img/portfolio/deserttigers.com.jpeg";
+import qualityplus from "../public/img/portfolio/qualityplus.ae.jpeg";
+import schoeggl from "../public/img/portfolio/schoeggl-energy.com.jpeg";
+import globalMigrate from "../public/img/portfolio/global-migrate.com.jpeg";
+import alnoorllc from "../public/img/portfolio/alnoorllc.com.jpeg";
+import smtuae from "../public/img/portfolio/smtuae.org.jpeg";
+import gulfims from "../public/img/portfolio/gulfims.ae.jpeg";
+import danas from "../public/img/portfolio/danas.ae.jpeg";
+import theharvest from "../public/img/portfolio/theharvest.ae.jpeg";
+import abetuae from "../public/img/portfolio/abet-uae.com.jpeg";
+import diwanlrc from "../public/img/portfolio/diwanlrc.com.jpeg";
+import abudhabitalking from "../public/img/portfolio/abudhabitalking.com.jpeg";
+import rollingwheels from "../public/img/portfolio/rollingwheels.ae.jpeg";
+import yolandadivers from "../public/img/portfolio/yolandadivers.com.jpeg";
+import standardmentors from "../public/img/portfolio/standardmentors.com.jpeg";
+import tesolarabia from "../public/img/portfolio/tesol-arabia.org.jpeg";
 
 const portfolio = [
     {
-        title: "Boost your conversion rate",
-        href: "#",
-        category: { name: "E-commerce", href: "#" },
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.",
-
-        imageUrl:
-            "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
+        title: "Buildzone",
+        href: "https://www.buildzone.ae/",
+        category: { name: "Corporate" },
+        description: "Construction company.",
+        image: buildzone,
     },
     {
-        title: "How to use search engine optimization to drive sales",
-        href: "#",
-        category: { name: "Blog", href: "#" },
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi., tempore temporibus quo laudantium.",
-
-        imageUrl:
-            "https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
+        title: "Workshop on Wheels",
+        href: "https://www.workshoponwheels.ae/",
+        category: { name: "Corporate" },
+        description: "Maintenance Services.",
+        image: workshoponwheels,
     },
     {
-        title: "Improve your customer experience",
-        href: "#",
-        category: { name: "Company", href: "#" },
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis perferendis hic.",
-
-        imageUrl:
-            "https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80",
+        title: "Fosscape",
+        href: "https://www.fosscape.com/",
+        category: { name: "Corporate" },
+        description: "LED Lighting.",
+        image: fosscape,
+    },
+    {
+        title: "Al Jazeera Royal Hotel",
+        href: "https://www.aljaziraroyal.ae/",
+        category: { name: "Corporate" },
+        description: "Hotel Accomodation.",
+        image: aljazeeraroyalhotel,
+    },
+    {
+        title: "Hair Miles",
+        href: "https://hair-miles.com/",
+        category: { name: "Corporate" },
+        description: "Hair Extension Service.",
+        image: hairmiles,
+    },
+    {
+        title: "Eye on Technology",
+        href: "http://www.eyeontechnology.net/",
+        category: { name: "Corporate" },
+        description: "Security and defense services.",
+        image: eyeontechnology,
+    },
+    {
+        title: "RUNWAY Dubai",
+        href: "https://www.runwaydubai.com/",
+        category: { name: "Corporate" },
+        description: "Fashion Event Services.",
+        image: runwaydubai,
+    },
+    {
+        title: "Waleed Shah",
+        href: "https://www.waleedshah.ae/",
+        category: { name: "Corporate" },
+        description: "Photography.",
+        image: waleedshah,
+    },
+    {
+        title: "Teemco UAE",
+        href: "https://www.teemcouae.com/",
+        category: { name: "Corporate" },
+        description: "Electrical & Mechanical Works.",
+        image: teemcouae,
+    },
+    {
+        title: "Mahmood Establishment",
+        href: "https://www.mahmoodequipment.com/",
+        category: { name: "Corporate" },
+        description: "Construction Equipment Provider.",
+        image: mahmoodequipment,
+    },
+    {
+        title: "Al Waha Hygiene",
+        href: "https://www.alwahahygiene.ae/",
+        category: { name: "Corporate" },
+        description: "Cleaning Services",
+        image: alwahahygiene,
+    },
+    {
+        title: "Global Fintech",
+        href: "https://www.gfas.ae/",
+        category: { name: "Corporate" },
+        description: "Accounting Solutions",
+        image: gfas,
+    },
+    {
+        title: "ArrowAvia",
+        href: "http://www.arrowavia.aero/",
+        category: { name: "Corporate" },
+        description: "Aviation Services",
+        image: arrowavia,
+    },
+    {
+        title: "Banian Group",
+        href: "http://www.banian.ae/",
+        category: { name: "Corporate" },
+        description: "General Contracting",
+        image: banian,
+    },
+    {
+        title: "Saif Alfalasi",
+        href: "https://www.saifalfalasi.com/",
+        category: { name: "Corporate" },
+        description: "Motivational Speaker",
+        image: saifalfalasi,
+    },
+    {
+        title: "KTCCP",
+        href: "https://www.ktccp.ae/",
+        category: { name: "Corporate" },
+        description: "Training Centre",
+        image: ktccp,
+    },
+    {
+        title: "Al Mathal",
+        href: "https://www.al-mathal.com/",
+        category: { name: "Corporate" },
+        description: "Transport Services",
+        image: almathal,
+    },
+    {
+        title: "Inner Seed",
+        href: "https://www.innerseeduae.com/",
+        category: { name: "Corporate" },
+        description: "Lifestyle Consultancy",
+        image: innerseed,
+    },
+    {
+        title: "Ocean Dream Boats",
+        href: "https://www.oceandreamboats.com/",
+        category: { name: "Corporate" },
+        description: "Boat Rental",
+        image: ocreandreamboats,
+    },
+    {
+        title: "Prime Focus Educational Services",
+        href: "https://www.fla.ae/",
+        category: { name: "Corporate" },
+        description: "Language Courses",
+        image: fla,
+    },
+    {
+        title: "BrandCare",
+        href: "https://brandcaresolutions.ae/",
+        category: { name: "Corporate" },
+        description: "Advertising Agency",
+        image: brandcare,
+    },
+    {
+        title: "Desert Tigers",
+        href: "https://www.deserttigers.com/",
+        category: { name: "Corporate" },
+        description: "Transport and Contracting",
+        image: deserttigers,
+    },
+    {
+        title: "Quality Plus",
+        href: "http://www.qualityplus.ae/",
+        category: { name: "Corporate" },
+        description: "ISO Certification Services",
+        image: qualityplus,
+    },
+    {
+        title: "Schoeggl Energy Solutions",
+        href: "https://schoeggl-energy.com/",
+        category: { name: "Corporate" },
+        description: "Energy Solutions",
+        image: schoeggl,
+    },
+    {
+        title: "Global Migrate",
+        href: "https://global-migrate.com/",
+        category: { name: "Corporate" },
+        description: "",
+        image: globalMigrate,
+    },
+    {
+        title: "Al Noor LLC",
+        href: "https://www.alnoorllc.com/",
+        category: { name: "Corporate" },
+        description: "Legal Agency",
+        image: alnoorllc,
+    },
+    {
+        title: "Saif Mohammed Training",
+        href: "https://www.smtuae.org/",
+        category: { name: "Corporate" },
+        description: "Training Institute",
+        image: smtuae,
+    },
+    {
+        title: "Gulf International",
+        href: "https://www.gulfims.ae/",
+        category: { name: "Corporate" },
+        description: "Medical Services",
+        image: gulfims,
+    },
+    {
+        title: "Danas",
+        href: "https://www.danas.ae/",
+        category: { name: "Corporate" },
+        description: "Business Consultancy",
+        image: danas,
+    },
+    {
+        title: "The Harvest",
+        href: "https://www.theharvest.ae/",
+        category: { name: "E-commerce" },
+        description: "Online groceries",
+        image: theharvest,
+    },
+    {
+        title: "Al-Badeyah Eyes Tourism",
+        href: "https://www.abet-uae.com/",
+        category: { name: "Corporate" },
+        description: "Tourism Services",
+        image: abetuae,
+    },
+    {
+        title: "Diwan",
+        href: "https://www.diwanlrc.com/",
+        category: { name: "Corporate" },
+        description: "Leadership Consultancy",
+        image: diwanlrc,
+    },
+    {
+        title: "Abu Dhabi Talking",
+        href: "https://www.abudhabitalking.com/",
+        category: { name: "Blog" },
+        description: "News Blog",
+        image: abudhabitalking,
+    },
+    {
+        title: "Rolling Wheels",
+        href: "https://www.rollingwheels.ae/",
+        category: { name: "Corporate" },
+        description: "Skating Facility",
+        image: rollingwheels,
+    },
+    {
+        title: "Yolanda Divers",
+        href: "https://www.yolandadivers.com/",
+        category: { name: "Corporate" },
+        description: "Diving Center",
+        image: yolandadivers,
+    },
+    {
+        title: "Standard Mentors",
+        href: "http://www.standardmentors.com/",
+        category: { name: "Corporate" },
+        description: "Auditing & Insurance",
+        image: standardmentors,
+    },
+    {
+        title: "TESOL Arabia",
+        href: "https://www.tesol-arabia.org/",
+        category: { name: "Corporate" },
+        description: "English Language Teaching",
+        image: tesolarabia,
     },
 ];
 export default function Page() {
     return (
         <>
-            <div className="relative bg-indigo-800">
+            <div className="relative bg-blue-800">
                 <div className="absolute inset-0">
                     <img
                         className="w-full h-full object-cover"
@@ -44,19 +309,17 @@ export default function Page() {
                         alt=""
                     />
                     <div
-                        className="absolute inset-0 bg-indigo-800 mix-blend-multiply"
+                        className="absolute inset-0 bg-blue-800 mix-blend-multiply"
                         aria-hidden="true"
                     />
                 </div>
                 <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
                     <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-                        Get in touch
+                        Portfolio
                     </h1>
-                    <p className="mt-6 text-xl text-indigo-100 max-w-3xl">
-                        Mattis amet hendrerit dolor, quisque lorem pharetra.
-                        Pellentesque lacus nisi urna, arcu sociis eu. Orci vel
-                        lectus nisl eget eget ut consectetur. Sit justo viverra
-                        non adipisicing elit distinctio.
+                    <p className="mt-6 text-xl text-blue-100 max-w-3xl">
+                        Here are some of the websites that we have created over
+                        the past few years.
                     </p>
                 </div>
             </div>

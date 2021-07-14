@@ -2,6 +2,10 @@ html {
     @apply bg-gray-50
 }
 
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
 @font-face {
     font-family: "Gilroy";
     src: url("/fonts/Gilroy-Regular.eot");

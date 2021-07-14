@@ -11,8 +11,10 @@ export default function Layout({ children }) {
                     name="viewport"
                     content="width=device-width, initial-scale=1.0"
                 ></meta>
+                <script
+                    src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+                />
                 <link rel="icon" href="/favicon.ico" />
-                {/* <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /> */}
 
                 {/* Favicon */}
                 <link

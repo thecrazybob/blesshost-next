@@ -135,7 +135,7 @@ export default function Home({ homePosts }) {
                                     Search for a domain name
                                 </p>
                                 <form
-                                    action="#"
+                                    action="https://billing.blesshost.com/cart.php?a=add&domain=register&currency=1"
                                     method="POST"
                                     className="mt-3 sm:flex"
                                 >
@@ -144,8 +144,8 @@ export default function Home({ homePosts }) {
                                     </label>
                                     <input
                                         type="text"
-                                        name="email"
-                                        id="email"
+                                        name="sld"
+                                        id="domain-search"
                                         className="block w-full py-3 text-base rounded-md placeholder-gray-500 shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:flex-1 border-gray-300"
                                         placeholder="youramazingwebsite.com"
                                     />

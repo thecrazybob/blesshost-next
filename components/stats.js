@@ -1,27 +1,27 @@
 const metrics = [
     {
         id: 1,
-        stat: "8K+",
-        emphasis: "Companies",
-        rest: "use laoreet amet lacus nibh integer quis.",
+        stat: "1K+",
+        emphasis: "Websites",
+        rest: "that we are currently hosting on our servers.",
     },
     {
         id: 2,
-        stat: "25K+",
-        emphasis: "Countries around the globe",
-        rest: "lacus nibh integer quis.",
+        stat: "1K+",
+        emphasis: "Clients",
+        rest: "that trust us as their online solutions provider.",
     },
     {
         id: 3,
-        stat: "98%",
-        emphasis: "Customer satisfaction",
-        rest: "laoreet amet lacus nibh integer quis.",
+        stat: "90%",
+        emphasis: "Tickets",
+        rest: "are responded to within 2 hours.",
     },
     {
         id: 4,
-        stat: "12M+",
-        emphasis: "Issues resolved",
-        rest: "lacus nibh integer quis.",
+        stat: "10M+",
+        emphasis: "People",
+        rest: "have seen our work.",
     },
 ];
 
@@ -47,18 +47,18 @@ export default function Stats() {
                 <div className="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-1 xl:pb-24">
                     <h2 className="text-sm font-semibold tracking-wide uppercase">
                         <span className="bg-gradient-to-r from-blue-300 to-blue-300 bg-clip-text text-transparent">
-                            Valuable Metrics
+                            BlessHost in Numbers
                         </span>
                     </h2>
                     <p className="mt-3 text-3xl font-extrabold text-white">
-                        Get actionable data that will help grow your business
+                        See how BlessHost differs from others
                     </p>
                     <p className="mt-5 text-lg text-gray-300">
-                        Rhoncus sagittis risus arcu erat lectus bibendum. Ut in
-                        adipiscing quis in viverra tristique sem. Ornare feugiat
-                        viverra eleifend fusce orci in quis amet. Sit in et
-                        vitae tortor, massa. Dapibus laoreet amet lacus nibh
-                        integer quis. Eu vulputate diam sit tellus quis at.
+                        We are not just another web hosting company. Our aim is
+                        to maximise customer satisfaction by building and
+                        hosting awesome websites and providing top-notch
+                        customer service. We love making and maintaing appealing
+                        websites that are easy to use as well.
                     </p>
                     <div className="mt-12 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
                         {metrics.map((item) => (
