@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Example(props) {
     return (
         <div
@@ -31,10 +33,10 @@ export default function Example(props) {
                             className="flex flex-col rounded-lg shadow-lg overflow-hidden"
                         >
                             <div className="flex-shrink-0">
-                                <img
+                                <Image
+                                    layout="intrinsic"
                                     className="h-48 w-full object-cover"
-                                    src={item.imageUrl}
-                                    alt=""
+                                    src={item.image}
                                 />
                             </div>
                             <div className="flex-1 bg-white p-6 flex flex-col justify-between">
