@@ -71,40 +71,49 @@ export default function ContactForm() {
     const contact = async (e) => {
         e.preventDefault();
 
-        // 3. Send a request to our API with the user's email address.
-        const res = await fetch("/api/contact", {
-            body: JSON.stringify({
-                first_name: firstNameInput.current.value,
-                last_name: lastNameInput.current.value,
-                email: emailInput.current.value,
-                phone: phoneInput.current.value,
-                message: messageInput.current.value,
-            }),
-            headers: {
-                "Content-Type": "application/json",
-            },
-            method: "POST",
+        grecaptcha.ready(() => {
+            grecaptcha
+                .execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, {
+                    action: "submit",
+                })
+                .then(async (token) => {
+                    // 3. Send a request to our API with the user's email address.
+                    const res = await fetch("/api/contact", {
+                        body: JSON.stringify({
+                            first_name: firstNameInput.current.value,
+                            last_name: lastNameInput.current.value,
+                            email: emailInput.current.value,
+                            phone: phoneInput.current.value,
+                            message: messageInput.current.value,
+                            recaptchaResponse: token,
+                        }),
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        method: "POST",
+                    });
+
+                    const { error } = await res.json();
+
+                    if (error) {
+                        // 4. If there was an error, update the message in state.
+                        setMessage(error);
+
+                        return;
+                    }
+
+                    // 5. Clear the input value and show a success message.
+                    firstNameInput.current.value = "";
+                    lastNameInput.current.value = "";
+                    emailInput.current.value = "";
+                    phoneInput.current.value = "";
+                    messageInput.current.value = "";
+
+                    setMessage(
+                        "Success! 🎉 Our team will get back to you as soon as possible."
+                    );
+                });
         });
-
-        const { error } = await res.json();
-
-        if (error) {
-            // 4. If there was an error, update the message in state.
-            setMessage(error);
-
-            return;
-        }
-
-        // 5. Clear the input value and show a success message.
-        firstNameInput.current.value = "";
-        lastNameInput.current.value = "";
-        emailInput.current.value = "";
-        phoneInput.current.value = "";
-        messageInput.current.value = "";
-
-        setMessage(
-            "Success! 🎉 Our team will get back to you as soon as possible."
-        );
     };
 
     return (
@@ -445,6 +454,18 @@ export default function ContactForm() {
                                     >
                                         Submit
                                     </button>
+                                </div>
+                                <div className="text-xs">
+                                    This site is protected by reCAPTCHA and the
+                                    Google{" "}
+                                    <a href="https://policies.google.com/privacy">
+                                        Privacy Policy
+                                    </a>{" "}
+                                    and{" "}
+                                    <a href="https://policies.google.com/terms">
+                                        Terms of Service
+                                    </a>{" "}
+                                    apply.
                                 </div>
                             </form>
                         </div>

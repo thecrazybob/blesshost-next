@@ -6,7 +6,15 @@ const mailgun = mailgunSdk({ apiKey, domain });
 export default async (req, res) => {
     let response;
 
+    const SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
+
     try {
+        const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${SECRET_KEY}&response=${req.body.recaptchaResponse}`;
+
+        const recaptchaRes = await fetch(verifyUrl, { method: "POST" });
+
+        const recaptchaJson = await recaptchaRes.json();
+
         response = await mailgun.messages().send({
             to: "support@blesshost.com",
             from: req.body.email,
