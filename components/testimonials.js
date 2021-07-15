@@ -1,3 +1,6 @@
+import Image from "next/image";
+import lauraImg from "../public/img/testimonials/laura.jpg";
+
 export default function Testimonials() {
     return (
         <section className="bg-white overflow-hidden">
@@ -72,10 +75,13 @@ export default function Testimonials() {
 
                 <div className="relative lg:flex lg:items-center">
                     <div className="hidden lg:block lg:flex-shrink-0">
-                        <img
+                        <Image
+                            layout="intrinsic"
+                            height={256}
+                            width={256}
                             className="h-64 w-64 rounded-full xl:h-80 xl:w-80"
-                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt=""
+                            src={lauraImg}
+                            alt="Laura-Helene Kopinski, Founder at Inner Seed"
                         />
                     </div>
 
@@ -95,30 +101,32 @@ export default function Testimonials() {
                         <blockquote className="relative">
                             <div className="text-2xl leading-9 font-medium text-gray-900">
                                 <p>
-                                    Wasim was my representative on my transition
-                                    to BlessHost. I could not do this without
-                                    his exceptional expertise and his personal
-                                    commitment to help our company in the
-                                    successful transition. BlessHost truly has a
-                                    team of professional and experienced
-                                    individuals I have ever worked with.
+                                    BlessHost’s team is always there to support
+                                    us on any technical issues related to our
+                                    website. They are organized and creative.
+                                    They insure that the work is done the
+                                    soonest and this is something that we seek
+                                    for when running a business.
                                 </p>
                             </div>
                             <footer className="mt-8">
-                                <div className="flex">
+                                <div className="flex items-center">
                                     <div className="flex-shrink-0 lg:hidden">
-                                        <img
+                                        <Image
+                                            layout="intrinsic"
+                                            height={64}
+                                            width={64}
                                             className="h-12 w-12 rounded-full"
-                                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                            alt=""
+                                            src={lauraImg}
+                                            alt="Laura-Helene Kopinski, Founder at Inner Seed"
                                         />
                                     </div>
                                     <div className="ml-4 lg:ml-0">
                                         <div className="text-base font-medium text-gray-900">
-                                            Judith Black
+                                            Laura-Helene Kopinski
                                         </div>
                                         <div className="text-base font-medium text-blue-600">
-                                            CEO, Tuple
+                                            Founder, Inner Seed
                                         </div>
                                     </div>
                                 </div>
