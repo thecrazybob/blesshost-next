@@ -2,7 +2,7 @@ import { XIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import createPersistedState from "use-persisted-state";
 
-export default function Example() {
+export default function Topbar() {
     const useOfferState = createPersistedState("showOffer");
     const [showOffer, setShowOffer] = useOfferState(true);
     const onClick = () => setShowOffer(false);

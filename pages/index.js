@@ -553,8 +553,9 @@ export default function Home({ homePosts }) {
 
             <div className="relative bg-gray-900">
                 <div className="relative h-56 bg-blue-600 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
-                    <img
+                    <Image
                         className="w-full h-full object-cover"
+                        layout="fill"
                         src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&sat=-100"
                         alt=""
                     />

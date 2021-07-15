@@ -196,7 +196,7 @@ export default function Header() {
     const supportButtonRef = useRef();
 
     return (
-        <header className="sticky top-0 inset-y-0 z-50 filter shadow-md ">
+        <header className="sticky top-0 inset-y-0 z-50 filter shadow-md">
             <Topbar />
             <Popover className="z-10 relative bg-white">
                 {({ open }) => (

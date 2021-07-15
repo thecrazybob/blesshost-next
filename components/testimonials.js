@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, useTransform, animate, useMotionValue } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
+import Image from "next/image";
 const rotation = [-2, 1, -1, 2, -1, 1];
 
 const testimonials = [
@@ -107,8 +107,8 @@ function Testimonial({ testimonial, base, index, total }) {
                     className={`flex items-center space-x-4 p-6 md:px-10 md:py-6 bg-gradient-to-br rounded-b-xl leading-6 font-semibold text-white from-blue-400 to-blue-600`}
                 >
                     <div className="flex-none w-14 h-14 bg-white rounded-full flex items-center justify-center">
-                        <img
-                            src={testimonial.author.avatar.src}
+                        <Image
+                            src={testimonial.author.avatar}
                             alt=""
                             className="w-12 h-12 rounded-full bg-blue-100"
                             loading="lazy"
