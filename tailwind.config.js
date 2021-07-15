@@ -18,6 +18,10 @@ module.exports = {
                 teal: colors.teal,
                 cyan: colors.cyan,
             },
+            width: {
+                192: "48rem",
+                144: "36rem",
+            },
         },
     },
     variants: {
@@ -26,6 +30,6 @@ module.exports = {
     plugins: [
         require("@tailwindcss/forms"),
         require("@tailwindcss/aspect-ratio"),
-        require('@tailwindcss/typography')
+        require("@tailwindcss/typography"),
     ],
 };
