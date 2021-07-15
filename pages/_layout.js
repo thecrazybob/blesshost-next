@@ -5,6 +5,7 @@ import Header from "../components/header";
 export default function Layout({ children }) {
     return (
         <>
+        <html lang="en"/>
             <Head>
                 <title>Make a website in Dubai!</title>
                 <meta

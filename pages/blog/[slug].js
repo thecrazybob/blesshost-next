@@ -2,16 +2,69 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
 import Image from "next/image";
+import Head from "next/head";
 
-export default function Post({ post, posts, preview }) {
-    const router = useRouter();
-    const morePosts = posts?.edges;
-    if (!router.isFallback && !post?.slug) {
-        return <ErrorPage statusCode={404} />;
-    }
+export default function Post({ post, posts, premetaDescview }) {
+  const router = useRouter();
+  const morePosts = posts?.edges;
+  const baseUrl = "https://blesshost.com/blog"
+  const { title: seoTitle, metaDesc } = post?.seo;
+  console.log(metaDesc)
+  if (!router.isFallback && !post?.slug) {
+    return <ErrorPage statusCode={404} />;
+  }
 
   return (
     <>
+      <Head>
+      <title>{seoTitle} - Blesshost</title>
+      <meta name="description" content={metaDesc} />
+      <link rel="canonical" href={`${baseUrl}/${post.slug}`} />
+        <meta itemprop="name" content={seoTitle} />
+        <meta
+          itemprop="description"
+          content={metaDesc}
+        />
+        <meta
+          itemprop="image"
+          content={post.featuredImage.node.sourceUrl}
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@Blesshost" />
+        <meta
+          name="twitter:title"
+          content={seoTitle}
+        />
+        <meta
+          name="twitter:description"
+          content={metaDesc}
+        />
+        <meta name="twitter:creator" content="@Blesshost" />
+        <meta
+          name="twitter:image:src"
+          content={post.featuredImage.node.sourceUrl}
+        />
+        <meta
+          property="og:type"
+          content="article" />
+        <meta
+          property="og:title"
+          content={seoTitle}
+        />
+        <meta
+          property="og:url"
+          content={`${baseUrl}/${post.slug}`}
+        />
+        <meta
+          property="og:image"
+          content={post.featuredImage.node.sourceUrl}
+        />
+        <meta
+          property="og:description"
+          content={metaDesc}
+        />
+        <meta property="og:site_name" content="Blesshost" />
+      </Head>
       {router.isFallback ? (
         <h2>Loading…</h2>
       ) : (
@@ -125,8 +178,10 @@ export default function Post({ post, posts, preview }) {
                 <span className="block text-base text-center text-blue-600 font-semibold tracking-wide uppercase">
                   {post.categories.edges[0].node.name}
                 </span>
-                <span dangerouslySetInnerHTML={{ __html: post.title }} className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                </span>
+                <span
+                  dangerouslySetInnerHTML={{ __html: post.title }}
+                  className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+                ></span>
               </h1>
               <Image
                 className="w-full rounded-lg"
@@ -145,22 +200,21 @@ export default function Post({ post, posts, preview }) {
 }
 
 export async function getStaticProps({ params, preview = false, previewData }) {
-    const data = await getPostAndMorePosts(params.slug, preview, previewData);
-
-    return {
-        props: {
-            preview,
-            post: data.post,
-            posts: data.posts,
-        },
-    };
+  const data = await getPostAndMorePosts(params.slug, preview, previewData);
+  return {
+    props: {
+      preview,
+      post: data.post,
+      posts: data.posts,
+    },
+  };
 }
 
 export async function getStaticPaths() {
-    const allPosts = await getAllPostsWithSlug();
+  const allPosts = await getAllPostsWithSlug();
 
-    return {
-        paths: allPosts.edges.map(({ node }) => `/blog/${node.slug}`) || [],
-        fallback: true,
-    };
+  return {
+    paths: allPosts.edges.map(({ node }) => `/blog/${node.slug}`) || [],
+    fallback: true,
+  };
 }
