@@ -87,7 +87,7 @@ function Testimonial({ testimonial, base, index, total }) {
             style={{ x }}
         >
             <motion.figure
-                className="shadow-lg rounded-xl flex-none w-144 md:w-xl"
+                className="shadow-lg border rounded-xl flex-none w-144 md:w-xl"
                 initial={false}
                 animate={
                     straight
@@ -181,7 +181,7 @@ export default function Testimonials() {
             onMouseLeave={() => setDuration(150)}
         >
             <div
-                className="absolute right-0 bottom-1/2 left-0 bg-gradient-to-t from-gray-100 pointer-events-none"
+                className="absolute right-0 bottom-1/2 left-0 bg-gradient-to-t from-white pointer-events-none"
                 style={{ height: 350, maxHeight: "50vh" }}
             />
             <div className="bg-white flex overflow-hidden -my-8">
