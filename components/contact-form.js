@@ -253,7 +253,7 @@ export default function ContactForm() {
                                 Abu Dhabi, UAE
                                 <a
                                     className="my-6 border-b max-w-max flex items-center"
-                                    target="_blank"
+                                    rel="noopener"
                                     href="https://g.page/BlessHost?share"
                                 >
                                     Find us on Google Maps
