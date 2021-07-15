@@ -1,6 +1,5 @@
 import React from "react";
 import ContactForm from "../components/contact-form";
-import CTAImage from "../components/cta-image";
 import { getHomePosts } from "../lib/api";
 import LatestBlog from "../components/latest-blog";
 import Stats from "../components/stats";
@@ -21,7 +20,8 @@ import { SparklesIcon } from "@heroicons/react/outline";
 import { ExternalLinkIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import Image from "next/image";
-import lighthouseImg from "../public/img/lighthouse-100.png";
+import shouketImg from "../public/img/testimonials/shouket.jpg";
+import adnanImg from "../public/img/testimonials/adnan.jpg";
 
 const features = [
     {
@@ -418,22 +418,25 @@ export default function Home({ homePosts }) {
                                             When it comes to support, the
                                             BlessHost team is extremely helpful.
                                             I am a client of several years and
-                                            give them high marks for all they
-                                            do.&rdquo;
+                                            my website haven't faced any
+                                            downtime until now. &rdquo;
                                         </p>
                                     </div>
                                     <footer className="mt-3">
                                         <div className="flex items-center space-x-3">
-                                            <div className="flex-shrink-0">
-                                                <img
+                                            <div className="flex-shrink-0 h-10">
+                                                <Image
+                                                    layout="fixed"
+                                                    height={36}
+                                                    width={36}
                                                     className="h-6 w-6 rounded-full"
-                                                    src="https://images.unsplash.com/photo-1509783236416-c9ad59bae472?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                                                    alt=""
+                                                    src={adnanImg}
+                                                    alt="Adnan Yasin, Managing Partner at Crepeaholic"
                                                 />
                                             </div>
                                             <div className="text-base font-medium text-gray-700">
-                                                Marcia Hill, Digital Marketing
-                                                Manager
+                                                Adnan Yasin, Managing Partner at
+                                                Crepeaholic
                                             </div>
                                         </div>
                                     </footer>
@@ -502,16 +505,19 @@ export default function Home({ homePosts }) {
                                     </div>
                                     <footer className="mt-3">
                                         <div className="flex items-center space-x-3">
-                                            <div className="flex-shrink-0">
-                                                <img
+                                            <div className="flex-shrink-0 h-10">
+                                                <Image
+                                                    layout="fixed"
+                                                    height={36}
+                                                    width={36}
                                                     className="h-6 w-6 rounded-full"
-                                                    src="https://images.unsplash.com/photo-1509783236416-c9ad59bae472?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                                                    alt=""
+                                                    src={shouketImg}
+                                                    alt="Shouket Ali, General Manager at Al Jazira Royal Hotel"
                                                 />
                                             </div>
                                             <div className="text-base font-medium text-gray-700">
-                                                Marcia Hill, Digital Marketing
-                                                Manager
+                                                Shouket Ali, General Manager at
+                                                Al Jazira Royal Hotel
                                             </div>
                                         </div>
                                     </footer>
@@ -522,7 +528,7 @@ export default function Home({ homePosts }) {
                             <div className="pr-4 -ml-48 sm:pr-6 md:-ml-16 lg:px-0 lg:m-0 lg:relative lg:h-full">
                                 <img
                                     className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
-                                    src="https://tailwindui.com/img/component-images/inbox-app-screenshot-2.jpg"
+                                    src="/img/website-design.jpg"
                                     alt="Customer profile user interface"
                                 />
                             </div>
