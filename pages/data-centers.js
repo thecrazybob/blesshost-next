@@ -8,22 +8,22 @@ import montreal from "../public/img/datacenters/montreal.jpg";
 const datacenters = [
     {
         location: "Dubai, UAE",
-        ip: "192.168.1.1",
+        ip: "86.96.202.170",
         image: dubai,
     },
     {
         location: "Abu Dhabi, UAE",
-        ip: "192.168.1.1",
+        ip: "Available on request",
         image: abudhabi,
     },
     {
         location: "Falkenstein, Germany",
-        ip: "192.168.1.1",
+        ip: "136.243.115.120",
         image: falkenstein,
     },
     {
         location: "Montreal, Canada",
-        ip: "192.168.1.1",
+        ip: "144.217.74.1",
         image: montreal,
     },
 ];
@@ -127,7 +127,7 @@ export default function DataCenters() {
                                     {item.location}
                                 </p>
                                 <div className="mt-3 text-base text-gray-500">
-                                    {item.ip}
+                                    Sample IP: {item.ip}
                                 </div>
                             </div>
                         </div>
