@@ -327,7 +327,7 @@ export default function Footer() {
                         ))}
                     </div>
                     <div className="order-2 text-gray-400 mt-8 md:mt-0">
-                        Made with love in Abu Dhabi, UAE 🇦🇪
+                        Made with ❤️ in Abu Dhabi and worldwide
                     </div>
                     <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
                         &copy; 2021 BlessHost. All rights reserved.
