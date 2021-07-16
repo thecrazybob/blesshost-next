@@ -1,3 +1,5 @@
+import React from "react";
+
 import { XIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import createPersistedState from "use-persisted-state";
