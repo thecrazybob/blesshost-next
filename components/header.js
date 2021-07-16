@@ -323,7 +323,7 @@ export default function Header() {
                                                                             <div className="text-base font-medium text-gray-900">
                                                                                 Transfers
                                                                             </div>
-                                                                            <span className="ml-3 inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium leading-5 bg-blue-100 text-blue-800">
+                                                                            <span className="ml-3 inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium leading-5 bg-blue-100 text-blue-700">
                                                                                 Free
                                                                             </span>
                                                                         </div>
@@ -444,8 +444,8 @@ export default function Header() {
                                                                         <div className="text-base font-medium text-gray-900">
                                                                             Portfolio
                                                                         </div>
-                                                                        <span className="ml-3 inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium leading-5 bg-blue-100 text-blue-800">
-                                                                            Free
+                                                                        <span className="ml-3 inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium leading-5 bg-blue-100 text-blue-700">
+                                                                            Updated
                                                                         </span>
                                                                     </div>
                                                                     <p className="mt-1 text-sm text-gray-500">
@@ -560,7 +560,7 @@ export default function Header() {
                                                                             SEO
                                                                             Report
                                                                         </div>
-                                                                        <span className="ml-3 inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium leading-5 bg-blue-100 text-blue-800">
+                                                                        <span className="ml-3 inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium leading-5 bg-blue-100 text-blue-700">
                                                                             Free
                                                                         </span>
                                                                     </div>
@@ -676,13 +676,13 @@ export default function Header() {
                             </Popover.Group>
                             <div className="hidden lg:flex items-center justify-end lg:flex-1 lg:w-0">
                                 <a
-                                    href="#"
+                                    href="https://billing.blesshost.com/index.php?rp=/login"
                                     className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
                                 >
                                     Sign in
                                 </a>
                                 <a
-                                    href="#"
+                                    href="https://billing.blesshost.com/register.php"
                                     className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
                                 >
                                     Sign up
@@ -776,9 +776,9 @@ export default function Header() {
                                                 </a>
                                             </Link>
 
-                                            <Link href="/affiliates">
+                                            <Link href="/blog">
                                                 <a className="text-base font-medium text-gray-900 hover:text-gray-700">
-                                                    Affiliates
+                                                    Blog
                                                 </a>
                                             </Link>
 
@@ -790,7 +790,7 @@ export default function Header() {
                                         </div>
                                         <div className="mt-6">
                                             <a
-                                                href="#"
+                                                href="https://billing.blesshost.com/register.php"
                                                 className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
                                             >
                                                 Sign up
@@ -798,7 +798,7 @@ export default function Header() {
                                             <p className="mt-6 text-center text-base font-medium text-gray-500">
                                                 Existing customer?{" "}
                                                 <a
-                                                    href="#"
+                                                    href="https://billing.blesshost.com/index.php?rp=/login"
                                                     className="text-blue-600 hover:text-blue-500"
                                                 >
                                                     Sign in

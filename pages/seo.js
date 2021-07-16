@@ -199,7 +199,7 @@ export default function Example() {
                         </p>
                         <div className="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                             <a
-                                href="#"
+                                href="#pricing"
                                 className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
                             >
                                 View plans
