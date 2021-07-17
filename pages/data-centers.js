@@ -111,7 +111,7 @@ export default function DataCenters() {
             <div className="mt-12 max-w-lg mx-auto grid gap-3 lg:grid-cols-4 lg:max-w-none">
                 {datacenters.map((item) => (
                     <div
-                        key={item.title}
+                        key={item.location}
                         className="flex flex-col rounded-lg shadow-lg overflow-hidden"
                     >
                         <div className="flex-shrink-0">
@@ -193,8 +193,8 @@ export default function DataCenters() {
 
                     <div className="mt-12 lg:mt-0 lg:col-span-2">
                         <dl className="flex flex-col space-y-3">
-                            {security.map((item) => (
-                                <div key={item} className="relative">
+                            {security.map((item, id) => (
+                                <div key={id} className="relative">
                                     <dt>
                                         <CheckIcon
                                             className="absolute h-6 w-6 text-green-500"
@@ -221,8 +221,8 @@ export default function DataCenters() {
 
                     <div className="mt-12 lg:mt-0 lg:col-span-2">
                         <dl className="flex flex-col space-y-3">
-                            {conditions.map((item) => (
-                                <div key={item} className="relative">
+                            {conditions.map((item, id) => (
+                                <div key={id} className="relative">
                                     <dt>
                                         <CheckIcon
                                             className="absolute h-6 w-6 text-green-500"
@@ -252,8 +252,8 @@ export default function DataCenters() {
 
                     <div className="mt-12 lg:mt-0 lg:col-span-2">
                         <dl className="flex flex-col space-y-3">
-                            {interconnectivity.map((item) => (
-                                <div key={item} className="relative">
+                            {interconnectivity.map((item, id) => (
+                                <div key={id} className="relative">
                                     <dt>
                                         <CheckIcon
                                             className="absolute h-6 w-6 text-green-500"
@@ -280,8 +280,8 @@ export default function DataCenters() {
 
                     <div className="mt-12 lg:mt-0 lg:col-span-2">
                         <dl className="flex flex-col space-y-3">
-                            {power.map((item) => (
-                                <div key={item} className="relative">
+                            {power.map((item, id) => (
+                                <div key={id} className="relative">
                                     <dt>
                                         <CheckIcon
                                             className="absolute h-6 w-6 text-green-500"

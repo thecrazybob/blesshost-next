@@ -1,6 +1,12 @@
 import { MailIcon, PhoneIcon } from "@heroicons/react/outline";
 import { ExternalLinkIcon } from "@heroicons/react/solid";
-import React, { useRef, useState } from "react";
+import React, { useRef, Fragment, useState } from "react";
+import { Listbox, Transition } from "@headlessui/react";
+import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
+
+function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+}
 
 const social = [
     {
@@ -57,7 +63,13 @@ const social = [
     },
 ];
 
-export default function ContactForm() {
+export default function ContactForm({ selectedPlan, plans }) {
+    const [planId, setPlanId] = useState(0);
+
+    React.useEffect(() => {
+        setPlanId(selectedPlan?.id);
+    }, [selectedPlan]);
+
     // 1. Create a reference to the input so we can fetch/clear it's value.
     const firstNameInput = useRef(null);
     const lastNameInput = useRef(null);
@@ -117,7 +129,7 @@ export default function ContactForm() {
     };
 
     return (
-        <div className="bg-gray-100">
+        <div id="contact" className="bg-gray-100">
             <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
                 <div className="relative bg-white shadow-xl">
                     <h2 className="sr-only">Contact us</h2>
@@ -162,6 +174,7 @@ export default function ContactForm() {
                                     </defs>
                                 </svg>
                             </div>
+
                             <div
                                 className="hidden absolute top-0 right-0 bottom-0 w-1/2 pointer-events-none sm:block lg:hidden"
                                 aria-hidden="true"
@@ -419,6 +432,223 @@ export default function ContactForm() {
                                         />
                                     </div>
                                 </div>
+                                {plans ? (
+                                    <div>
+                                        <div className="flex justify-between">
+                                            <label
+                                                htmlFor="phone"
+                                                className="block text-sm font-medium text-gray-900"
+                                            >
+                                                Plan
+                                            </label>
+                                        </div>
+                                        <div className="mt-1">
+                                            {/* <Listbox
+                                                value={planId}
+                                                onChange={setPlanId}
+                                            >
+                                                <div className="relative mt-1">
+                                                    <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-blue-500 sm:text-sm">
+                                                        <span className="block truncate">
+                                                            {plans[planId]
+                                                                ?.title ??
+                                                                plans[0].title}
+                                                        </span>
+                                                        <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                                                            <SelectorIcon
+                                                                className="w-5 h-5 text-gray-400"
+                                                                aria-hidden="true"
+                                                            />
+                                                        </span>
+                                                    </Listbox.Button>
+                                                    <Transition
+                                                        as={Fragment}
+                                                        leave="transition ease-in duration-100"
+                                                        leaveFrom="opacity-100"
+                                                        leaveTo="opacity-0"
+                                                    >
+                                                        <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                                                            {plans.map(
+                                                                (plan) => (
+                                                                    <Listbox.Option
+                                                                        key={
+                                                                            plan.id
+                                                                        }
+                                                                        className={({
+                                                                            active,
+                                                                        }) =>
+                                                                            `${
+                                                                                active
+                                                                                    ? "text-amber-900 bg-amber-100"
+                                                                                    : "text-gray-900"
+                                                                            }
+                                                                  cursor-default select-none relative py-2 pl-10 pr-4`
+                                                                        }
+                                                                        value={
+                                                                            plan.id
+                                                                        }
+                                                                    >
+                                                                        {({
+                                                                            selected,
+                                                                            active,
+                                                                        }) => (
+                                                                            <>
+                                                                                <span
+                                                                                    className={`${
+                                                                                        selected
+                                                                                            ? "font-medium"
+                                                                                            : "font-normal"
+                                                                                    } block truncate`}
+                                                                                >
+                                                                                    {
+                                                                                        plan.title
+                                                                                    }
+                                                                                </span>
+                                                                                {selected ? (
+                                                                                    <span
+                                                                                        className={`${
+                                                                                            active
+                                                                                                ? "text-amber-600"
+                                                                                                : "text-amber-600"
+                                                                                        }
+                                                                        absolute inset-y-0 left-0 flex items-center pl-3`}
+                                                                                    >
+                                                                                        <CheckIcon
+                                                                                            className="w-5 h-5"
+                                                                                            aria-hidden="true"
+                                                                                        />
+                                                                                    </span>
+                                                                                ) : null}
+                                                                            </>
+                                                                        )}
+                                                                    </Listbox.Option>
+                                                                )
+                                                            )}
+                                                        </Listbox.Options>
+                                                    </Transition>
+                                                </div>
+                                            </Listbox> */}
+                                            <Listbox
+                                                value={planId}
+                                                onChange={setPlanId}
+                                            >
+                                                {({ open }) => (
+                                                    <>
+                                                        <div className="mt-1 relative">
+                                                            <Listbox.Button className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                                                <span className="w-full inline-flex truncate">
+                                                                    <span className="truncate">
+                                                                        {plans[
+                                                                            planId
+                                                                        ]
+                                                                            ?.title ??
+                                                                            plans[0]
+                                                                                .title}
+                                                                    </span>
+                                                                    <span className="ml-2 truncate text-gray-500">
+                                                                        $999
+                                                                    </span>
+                                                                </span>
+                                                                <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                                                                    <SelectorIcon
+                                                                        className="h-5 w-5 text-gray-400"
+                                                                        aria-hidden="true"
+                                                                    />
+                                                                </span>
+                                                            </Listbox.Button>
+
+                                                            <Transition
+                                                                show={open}
+                                                                as={Fragment}
+                                                                leave="transition ease-in duration-100"
+                                                                leaveFrom="opacity-100"
+                                                                leaveTo="opacity-0"
+                                                            >
+                                                                <Listbox.Options
+                                                                    static
+                                                                    className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
+                                                                >
+                                                                    {plans.map(
+                                                                        (
+                                                                            plan
+                                                                        ) => (
+                                                                            <Listbox.Option
+                                                                                key={
+                                                                                    plan.id
+                                                                                }
+                                                                                className={({
+                                                                                    active,
+                                                                                }) =>
+                                                                                    classNames(
+                                                                                        active
+                                                                                            ? "text-white bg-blue-600"
+                                                                                            : "text-gray-900",
+                                                                                        "cursor-default select-none relative py-2 pl-3 pr-9"
+                                                                                    )
+                                                                                }
+                                                                                value={
+                                                                                    plan.id
+                                                                                }
+                                                                            >
+                                                                                {({
+                                                                                    selected,
+                                                                                    active,
+                                                                                }) => (
+                                                                                    <>
+                                                                                        <div className="flex">
+                                                                                            <span
+                                                                                                className={classNames(
+                                                                                                    selected
+                                                                                                        ? "font-semibold"
+                                                                                                        : "font-normal",
+                                                                                                    "truncate"
+                                                                                                )}
+                                                                                            >
+                                                                                                {
+                                                                                                    plan.title
+                                                                                                }
+                                                                                            </span>
+                                                                                            <span
+                                                                                                className={classNames(
+                                                                                                    active
+                                                                                                        ? "text-blue-200"
+                                                                                                        : "text-gray-500",
+                                                                                                    "ml-2 truncate"
+                                                                                                )}
+                                                                                            >
+                                                                                                $998
+                                                                                            </span>
+                                                                                        </div>
+
+                                                                                        {selected ? (
+                                                                                            <span
+                                                                                                className={classNames(
+                                                                                                    active
+                                                                                                        ? "text-white"
+                                                                                                        : "text-blue-600",
+                                                                                                    "absolute inset-y-0 right-0 flex items-center pr-4"
+                                                                                                )}
+                                                                                            >
+                                                                                                <CheckIcon
+                                                                                                    className="h-5 w-5"
+                                                                                                    aria-hidden="true"
+                                                                                                />
+                                                                                            </span>
+                                                                                        ) : null}
+                                                                                    </>
+                                                                                )}
+                                                                            </Listbox.Option>
+                                                                        )
+                                                                    )}
+                                                                </Listbox.Options>
+                                                            </Transition>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </Listbox>
+                                        </div>
+                                    </div>
+                                ) : null}
                                 <div className="sm:col-span-2">
                                     <div className="flex justify-between">
                                         <label

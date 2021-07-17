@@ -18,9 +18,15 @@ module.exports = {
                 teal: colors.teal,
                 cyan: colors.cyan,
             },
+            height: {
+                192: "48rem",
+                144: "36rem",
+                120: "30rem",
+            },
             width: {
                 192: "48rem",
                 144: "36rem",
+                120: "30rem",
             },
         },
     },

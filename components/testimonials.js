@@ -34,29 +34,20 @@ const testimonials = [
     },
     {
         content:
-            "BlessHost's team is always there to support us on any technical issues related to our website. They are organized and creative. They insure that the work is done the soonest and this is something that we seek for when running a business.",
+            "EXCELLENT HOSTING. Blesshost has Hosted three of my websites and none of them has gone down in the past whole year. I am so happy I found them. After trying 3 other hosting providers I finally contacted BlessHost and that is when it began. Buy hosting from them. You will be so happy you did.",
         author: {
-            name: "Laura-Helene Kopinski",
-            role: "Founder, Inner Seed",
-            avatar: require("../public/img/testimonials/laura.jpg").default,
+            name: "Stephanie St. James",
+            role: "Singer",
+            avatar: require("../public/img/testimonials/stephanie.jpg").default,
         },
     },
     {
         content:
-            "For a small/medium size business the cost is attractive and the customer support is awesome. When it comes to support, the BlessHost team is extremely helpful. I am a client of several years and my website haven't faced any downtime until now.",
+            "I'd like to thank you for a long partnership with outstanding customer service every time I deal with you - this is why I continue to recommend you guys and don't use anyone else for any of my websites or domain names! Keep up the excellent work!",
         author: {
-            name: "Adnan Yasin",
-            role: "Managing Partner at Crepeaholic",
-            avatar: require("../public/img/testimonials/adnan.jpg").default,
-        },
-    },
-    {
-        content:
-            "Brilliant and skilled people with extensive web development experience in complex e-commerce websites. Thanks to their highly creative approach that led to successful results.",
-        author: {
-            name: "Shouket Ali",
-            role: "General Manager at Al Jazira Royal Hotel",
-            avatar: require("../public/img/testimonials/shouket.jpg").default,
+            name: "Madian Romero",
+            role: "Illustration Artist",
+            avatar: require("../public/img/testimonials/madian.jpg").default,
         },
     },
 ];
@@ -89,7 +80,7 @@ function Testimonial({ testimonial, base, index, total }) {
                         : { rotate: rotation[index % rotation.length] }
                 }
             >
-                <blockquote className="rounded-t-xl bg-white px-6 py-8 md:p-10 text-lg md:text-xl leading-8 md:leading-8 font-semibold text-gray-900">
+                <blockquote className="rounded-t-xl bg-white px-6 py-8 md:p-10 text-lg md:text-xl leading-8 md:leading-8 font-medium text-gray-900">
                     <svg
                         width="45"
                         height="36"
@@ -104,7 +95,7 @@ function Testimonial({ testimonial, base, index, total }) {
                     )}
                 </blockquote>
                 <figcaption
-                    className={`flex items-center space-x-4 p-6 md:px-10 md:py-6 bg-gradient-to-br rounded-b-xl leading-6 font-semibold text-white from-blue-400 to-blue-600`}
+                    className={`flex items-center space-x-4 p-6 md:px-10 md:py-6 bg-gradient-to-br rounded-b-xl leading-6 font-medium text-white from-blue-400 to-blue-600`}
                 >
                     <div className="flex-none w-14 h-14 bg-white rounded-full flex items-center justify-center">
                         <Image
@@ -119,7 +110,7 @@ function Testimonial({ testimonial, base, index, total }) {
                         {testimonial.author.role && (
                             <>
                                 <br />
-                                <span className="text-gray-300">
+                                <span className="text-gray-200">
                                     {testimonial.author.role}
                                 </span>
                             </>
@@ -163,7 +154,7 @@ export default function Testimonials() {
                 className="absolute right-0 bottom-1/2 left-0 bg-gradient-to-t from-white pointer-events-none"
                 style={{ height: 350, maxHeight: "50vh" }}
             />
-            <div className="bg-white flex overflow-hidden -my-8">
+            <div className="pt-8 bg-white flex overflow-hidden">
                 <ul className="flex items-center w-full py-8 mb-10">
                     {testimonials.map((testimonial, i) => (
                         <Testimonial
