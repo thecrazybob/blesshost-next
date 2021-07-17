@@ -1,9 +1,8 @@
-import { ChevronDownIcon } from "@heroicons/react/solid";
 import Link from "next/link";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
-import createPersistedState from "use-persisted-state";
+import { SelectorIcon, ChevronDownIcon } from "@heroicons/react/solid";
+import { useCurrency } from "../contexts/CurrencyContext.js";
 
 const allCurrencies = [{ name: "AED" }, { name: "USD" }];
 
@@ -91,8 +90,12 @@ const navigation = {
 };
 
 export default function Footer() {
-  const useSelectedState = createPersistedState("selected");
-  const [selected, setSelected] = useSelectedState(allCurrencies[0]);
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
+
+  const { currency, setCurrency } = useCurrency("");
+
   return (
     <footer className="bg-gray-800" aria-labelledby="footerHeading">
       <h2 id="footerHeading" className="sr-only">
@@ -189,70 +192,6 @@ export default function Footer() {
                     <option>English</option>
                     <option>Arabic</option>
                   </select>
-
-                  <Listbox value={selected} onChange={setSelected}>
-                    <div className="relative mt-1 ">
-                      <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
-                        <span className="block truncate">{selected.name}</span>
-                        <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                          <SelectorIcon
-                            className="w-5 h-5 text-gray-400"
-                            aria-hidden="true"
-                          />
-                        </span>
-                      </Listbox.Button>
-                      <Transition
-                        as={Fragment}
-                        leave="transition ease-in duration-100"
-                        leaveFrom="opacity-100"
-                        leaveTo="opacity-0"
-                      >
-                        <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                          {allCurrencies.map((currencies, currenciesIdx) => (
-                            <Listbox.Option
-                              key={currenciesIdx}
-                              className={({ active }) =>
-                                `${
-                                  active
-                                    ? "text-amber-900 bg-amber-100"
-                                    : "text-gray-900"
-                                }
-                          cursor-default select-none relative py-2 pl-10 pr-4`
-                              }
-                              value={currencies}
-                            >
-                              {({ selected, active }) => (
-                                <>
-                                  <span
-                                    className={`${
-                                      selected ? "font-medium" : "font-normal"
-                                    } block truncate`}
-                                  >
-                                    {currencies.name}
-                                  </span>
-                                  {selected ? (
-                                    <span
-                                      className={`${
-                                        active
-                                          ? "text-amber-600"
-                                          : "text-amber-600"
-                                      }
-                                absolute inset-y-0 left-0 flex items-center pl-3`}
-                                    >
-                                      <CheckIcon
-                                        className="w-5 h-5"
-                                        aria-hidden="true"
-                                      />
-                                    </span>
-                                  ) : null}
-                                </>
-                              )}
-                            </Listbox.Option>
-                          ))}
-                        </Listbox.Options>
-                      </Transition>
-                    </div>
-                  </Listbox>
                   <div className="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
                     <ChevronDownIcon
                       className="h-4 w-4 text-white"
@@ -265,22 +204,71 @@ export default function Footer() {
                 <label htmlFor="currency" className="sr-only">
                   Currency
                 </label>
-                <div className="mt-1.5 relative">
-                  <select
-                    id="currency"
-                    name="currency"
-                    className="appearance-none w-full bg-none bg-gray-700 border border-transparent rounded-md block py-2 pl-3 pr-10 text-base text-white focus:outline-none focus:ring-white focus:border-white sm:text-sm"
-                    defaultValue="AED"
-                  >
-                    <option>AED</option>
-                    <option>USD</option>
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
-                    <ChevronDownIcon
-                      className="h-4 w-4 text-white"
-                      aria-hidden="true"
-                    />
-                  </div>
+                <div className=" relative">
+                  <Listbox value={currency} onChange={setCurrency}>
+                    {({ open }) => (
+                      <>
+                        <div className="mt-1 relative">
+                          <Listbox.Button className="relative w-full bg-gray-700 text-white  rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-white focus:border-white sm:text-sm">
+                            <span className="block truncate">
+                              {currency.name}
+                            </span>
+                            <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                              <SelectorIcon
+                                className="h-5 w-5 text-gray-400"
+                                aria-hidden="true"
+                              />
+                            </span>
+                          </Listbox.Button>
+
+                          <Transition
+                            show={open}
+                            as={Fragment}
+                            leave="transition ease-in duration-100"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                          >
+                            <Listbox.Options
+                              static
+                              className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
+                            >
+                              {allCurrencies.map((item) => (
+                                <Listbox.Option
+                                  key={item.id}
+                                  className={({ active }) =>
+                                    classNames(
+                                      active
+                                        ? "text-white bg-indigo-600"
+                                        : "text-gray-900",
+                                      "cursor-default select-none relative py-2 pl-4 pr-4"
+                                    )
+                                  }
+                                  value={item}
+                                >
+                                  {({ currency }) => (
+                                    <>
+                                      {console.log(currency)}
+
+                                      <span
+                                        className={classNames(
+                                          currency
+                                            ? "font-semibold"
+                                            : "font-normal",
+                                          "block truncate"
+                                        )}
+                                      >
+                                        {item?.name}
+                                      </span>
+                                    </>
+                                  )}
+                                </Listbox.Option>
+                              ))}
+                            </Listbox.Options>
+                          </Transition>
+                        </div>
+                      </>
+                    )}
+                  </Listbox>
                 </div>
               </fieldset>
             </form>

@@ -4,6 +4,7 @@ import Testimonials from "../components/testimonials";
 import SimpleCTA from "../components/cta-simple";
 import FAQSDark from "../components/faqs-dark";
 import { useState } from "react";
+import { useCurrency } from "../contexts/CurrencyContext.js";
 
 const plans = [
   {
@@ -15,23 +16,23 @@ const plans = [
     prices: [
       {
         unit_amount: 50,
-        currency: "usd",
+        currency: "USD",
         interval: "month",
       },
       {
         unit_amount: 200,
-        currency: "usd",
+        currency: "USD",
         interval: "year",
       },
       {
         unit_amount: 200,
-        currency: "aed",
+        currency: "AED",
         interval: "month",
       },
       {
         unit_amount: 1200,
-        currency: "aed",
-        interval: "Yearly",
+        currency: "AED",
+        interval: "year",
       },
     ],
     mainFeatures: [
@@ -201,6 +202,9 @@ function classNames(...classes) {
 
 export default function Example() {
   const [billingInterval, setBillingInterval] = useState("month");
+  const {currency, setCurrency} = useCurrency("");
+
+
   return (
     <main>
       {/* Hero card */}
@@ -310,13 +314,15 @@ export default function Example() {
             <div className="relative space-y-6 lg:space-y-0 lg:grid lg:grid-cols-3">
               {plans.map((plan) => {
                 const price = plan.prices?.find(
-                  (price) => price.interval === billingInterval
+                  (price) =>
+                    price.interval === billingInterval &&
+                    price.currency === currency?.name
                 );
                 const priceString = new Intl.NumberFormat("en-US", {
                   style: "currency",
-                  currency: price?.currency || 'aed',
+                  currency: price?.currency || "usd",
                   minimumFractionDigits: 0,
-                }).format(price?.unit_amount / 100);
+                }).format(price?.unit_amount);
 
                 return (
                   <div
@@ -345,7 +351,7 @@ export default function Example() {
                               "text-4xl font-extrabold tracking-tight"
                             )}
                           >
-                            ${price?.unit_amount}
+                            {priceString}
                           </p>
                           <div className="ml-4">
                             <p
