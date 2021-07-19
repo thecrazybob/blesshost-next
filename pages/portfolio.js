@@ -36,6 +36,27 @@ import rollingwheels from "../public/img/portfolio/rollingwheels.ae.jpeg";
 import yolandadivers from "../public/img/portfolio/yolandadivers.com.jpeg";
 import standardmentors from "../public/img/portfolio/standardmentors.com.jpeg";
 import tesolarabia from "../public/img/portfolio/tesol-arabia.org.jpeg";
+import theskininstitute from "../public/img/portfolio/bless-_0000_Skincare-min.jpg";
+import medicalcenter from "../public/img/portfolio/bless-_0001_7DButterfly-min.jpg";
+import blackfredrick from "../public/img/portfolio/bless-_0002_Blackfedrick-min.jpg";
+import degreesplus from "../public/img/portfolio/bless-_0004_Degreesplus-min.jpg";
+import gmp from "../public/img/portfolio/bless-_0005_GMP-min.jpg";
+import kanzy from "../public/img/portfolio/bless-_0006_Kanzy-min.jpg";
+import megatronix from "../public/img/portfolio/bless-_0007_Meghatronix-min.jpg";
+import hayat from "../public/img/portfolio/bless-_0010_hayatt-min.jpg";
+import dustbusters from "../public/img/portfolio/bless-_0011_dustbuster-min.jpg";
+import suraholding from "../public/img/portfolio/bless-_0013_suraholding-min.jpg";
+import wildhorse from "../public/img/portfolio/bless-_0014_Wildhorse-min.jpg";
+import medfmc from "../public/img/portfolio/bless-_0015_Medfmc-min.jpg";
+import zimembassyuae from "../public/img/portfolio/bless-_0019_zimbabwe-embassy-min.jpg";
+import trbei from "../public/img/portfolio/bless-_0020_trbei-min.jpg";
+import pizzadirocco from "../public/img/portfolio/bless-_0021_pizzaderocco-min.jpg";
+import procleanuae from "../public/img/portfolio/bless-_0022_proclean-min.jpg";
+import nidamovers from "../public/img/portfolio/bless-_0023_nidamovers-min.jpg";
+import truststore from "../public/img/portfolio/bless-_0024_truststore-min.jpg";
+import nsfatma from "../public/img/portfolio/bless-_0025_Nsfatma-min.jpg";
+import mangroveuae from "../public/img/portfolio/bless-_0026_Mangrove-min.jpg";
+import areejaldar from "../public/img/portfolio/bless-_0027_Areej-min.jpg";
 
 const portfolio = [
     {
@@ -296,6 +317,153 @@ const portfolio = [
         category: { name: "Corporate" },
         description: "English Language Teaching",
         image: tesolarabia,
+    },
+    {
+        title: "The Skin Institute",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: theskininstitute,
+    },
+    {
+        title: "7D Medical Center",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: medicalcenter,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: blackfredrick,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: degreesplus,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: gmp,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: kanzy,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: megatronix,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: hayat,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: dustbusters,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: suraholding,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: wildhorse,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: medfmc,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: zimembassyuae,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: trbei,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: pizzadirocco,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: procleanuae,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: nidamovers,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: truststore,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: nsfatma,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: mangroveuae,
+    },
+    {
+        title: "",
+        href: "",
+        category: { name: "" },
+        description: "",
+        image: areejaldar,
     },
 ];
 export default function Page() {
