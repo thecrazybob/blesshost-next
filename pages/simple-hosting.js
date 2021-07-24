@@ -5,6 +5,7 @@ import SimpleCTA from "../components/cta-simple";
 import FAQSDark from "../components/faqs-dark";
 import { useState } from "react";
 import { useCurrency } from "../contexts/CurrencyContext.js";
+import priceString from "../lib/pricing";
 
 const plans = [
     {
@@ -34,7 +35,7 @@ const plans = [
             },
         ],
         mainFeatures: [
-            { id: 1, value: "24x7 email, phone and chat" },
+            { id: 1, value: "Basic invoicing" },
             { id: 2, value: "Easy to use accounting" },
             { id: 3, value: "Mutli-accounts" },
         ],
@@ -242,35 +243,6 @@ export default function simpleHostingPage() {
     const [billingInterval, setBillingInterval] = useState("year");
     const { currency, setCurrency } = useCurrency("");
 
-    function priceString(id, term, monthlyPricing = false) {
-        // The parameter 'monthlyPricing' represents the amount when the term is greater than a month e.g. $200 / 12 = $16.67
-
-        // Use the parameter if available else use value stored in state
-        term = term ?? billingInterval;
-
-        // Find the price array
-        const price = plans[id].prices?.find(
-            (price) =>
-                price.interval === term && price.currency === currency?.name
-        );
-
-        // Amount represents the numeric value
-        let amount = 0;
-
-        if (term == "year" && monthlyPricing == true) {
-            amount = price.unit_amount / 12;
-        } else {
-            amount = price.unit_amount;
-        }
-
-        // Return formatted value
-        return new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: price?.currency || "usd",
-            minimumFractionDigits: 0,
-        }).format(amount);
-    }
-
     return (
         <main>
             {/* Hero card */}
@@ -422,7 +394,10 @@ export default function simpleHostingPage() {
                                                         {priceString(
                                                             id,
                                                             null,
-                                                            true
+                                                            true,
+                                                            plans,
+                                                            currency,
+                                                            billingInterval
                                                         )}
                                                     </p>
                                                     <div className="ml-4">
@@ -450,7 +425,10 @@ export default function simpleHostingPage() {
                                                             (
                                                             {priceString(
                                                                 id,
-                                                                billingInterval
+                                                                billingInterval,
+                                                                null,
+                                                                plans,
+                                                                currency
                                                             )}
                                                             )
                                                         </p>
