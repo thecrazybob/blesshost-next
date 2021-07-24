@@ -1,51 +1,62 @@
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
+import Image from "next/image";
+import Link from "next/link";
+import lauraImg from "../public/img/testimonials/laura.jpg";
+import madianImg from "../public/img/testimonials/madian.jpg";
 
 const plans = [
     {
-        title: "Starter",
+        title: "Standard",
         featured: false,
-        description: "All your essential business finances, taken care of.",
+        description: "Included free-of-charge with all of our services.",
         priceMonthly: 5,
         priceYearly: 56,
         mainFeatures: [
-            { id: 1, value: "Basic invoicing" },
-            { id: 2, value: "Easy to use accounting" },
-            { id: 3, value: "Mutli-accounts" },
+            { id: 1, value: "24x7 email, phone and chat" },
+            { id: 2, value: "Access to knowledgebase" },
+            { id: 3, value: "cPanel support" },
         ],
     },
     {
-        title: "Scale",
+        title: "Enterprise",
         featured: true,
-        description: "The best financial services for your thriving business.",
+        description:
+            "The best and quickest support that you can get for your business.",
         priceMonthly: 19,
         priceYearly: 220,
         mainFeatures: [
-            { id: 1, value: "Advanced invoicing" },
-            { id: 2, value: "Easy to use accounting" },
-            { id: 3, value: "Mutli-accounts" },
-            { id: 4, value: "Tax planning toolkit" },
-            { id: 5, value: "VAT & VATMOSS filing" },
-            { id: 6, value: "Free bank transfers" },
+            { id: 1, value: "24x7 email, phone and chat" },
+            { id: 2, value: "Access to knowledgebase" },
+            { id: 3, value: "cPanel support" },
+            { id: 4, value: "3-6 hour avg. response time" },
+            { id: 5, value: "Senior support team" },
+            { id: 6, value: "Support for WordPress & Laravel" },
+            { id: 7, value: "Dedicated account manager" },
+            { id: 9, value: "Server, email setup and configuration" },
+            { id: 10, value: "Website optimization & troubleshooting" },
+            { id: 11, value: "Proactive monitoring" },
+            { id: 12, value: "Backup configuration and restoration" },
         ],
     },
     {
-        title: "Growth",
+        title: "Premium",
         featured: false,
-        description:
-            "Convenient features to take your business to the next level.",
+        description: "For startups and fast-growing businesses.",
         priceMonthly: 12,
         priceYearly: 140,
         mainFeatures: [
-            { id: 1, value: "Basic invoicing" },
-            { id: 2, value: "Easy to use accounting" },
-            { id: 3, value: "Mutli-accounts" },
-            { id: 4, value: "Tax planning toolkit" },
+            { id: 1, value: "24x7 email, phone and chat" },
+            { id: 2, value: "Access to knowledgebase" },
+            { id: 3, value: "cPanel support" },
+            { id: 4, value: "12-24 hour avg. response time" },
+            { id: 5, value: "Senior support team" },
+            { id: 6, value: "Support for WordPress & Laravel" },
         ],
     },
 ];
 const features = [
     {
-        title: "Tax Savings",
+        title: "Email, phone and chat",
         tiers: [
             { title: "starter", value: true },
             { title: "popular", featured: true, value: true },
@@ -53,31 +64,23 @@ const features = [
         ],
     },
     {
-        title: "Easy to use accounting",
+        title: "Technical support",
         tiers: [
-            { title: "starter", value: true },
-            { title: "popular", featured: true, value: true },
-            { title: "intermediate", value: true },
+            { title: "starter", value: "Basic" },
+            { title: "popular", featured: true, value: "Expert" },
+            { title: "intermediate", value: "Expert" },
         ],
     },
     {
-        title: "Multi-accounts",
+        title: "Response times",
         tiers: [
-            { title: "starter", value: "3 accounts" },
-            { title: "popular", featured: true, value: "Unlimited accounts" },
-            { title: "intermediate", value: "7 accounts" },
+            { title: "starter", value: "12-48 hours" },
+            { title: "popular", featured: true, value: "3-6 hours" },
+            { title: "intermediate", value: "12-24 hours" },
         ],
     },
     {
-        title: "Invoicing",
-        tiers: [
-            { title: "starter", value: "3 invoices" },
-            { title: "popular", featured: true, value: "Unlimited invoices" },
-            { title: "intermediate", value: "10 invoices" },
-        ],
-    },
-    {
-        title: "Exclusive offers",
+        title: "Dedicated phone number",
         tiers: [
             { title: "starter", value: false },
             { title: "popular", featured: true, value: true },
@@ -85,19 +88,19 @@ const features = [
         ],
     },
     {
-        title: "6 months free advisor",
-        tiers: [
-            { title: "starter", value: false },
-            { title: "popular", featured: true, value: true },
-            { title: "intermediate", value: true },
-        ],
-    },
-    {
-        title: "Mobile and web access",
+        title: "Dedicated account manager",
         tiers: [
             { title: "starter", value: false },
             { title: "popular", featured: true, value: true },
             { title: "intermediate", value: false },
+        ],
+    },
+    {
+        title: "Assistance via TeamViewer, AnyDesk",
+        tiers: [
+            { title: "starter", value: false },
+            { title: "popular", featured: true, value: true },
+            { title: "intermediate", value: "Urgent issues only" },
         ],
     },
 ];
@@ -111,31 +114,7 @@ const perks = [
         ],
     },
     {
-        title: "Instant notifications",
-        tiers: [
-            { title: "starter", value: true },
-            { title: "popular", featured: true, value: true },
-            { title: "intermediate", value: true },
-        ],
-    },
-    {
-        title: "Budgeting tools",
-        tiers: [
-            { title: "starter", value: true },
-            { title: "popular", featured: true, value: true },
-            { title: "intermediate", value: true },
-        ],
-    },
-    {
-        title: "Digital receipts",
-        tiers: [
-            { title: "starter", value: true },
-            { title: "popular", featured: true, value: true },
-            { title: "intermediate", value: true },
-        ],
-    },
-    {
-        title: "Pots to separate money",
+        title: "WordPress support",
         tiers: [
             { title: "starter", value: false },
             { title: "popular", featured: true, value: true },
@@ -143,7 +122,15 @@ const perks = [
         ],
     },
     {
-        title: "Free bank transfers",
+        title: "Laravel support",
+        tiers: [
+            { title: "starter", value: false },
+            { title: "popular", featured: true, value: true },
+            { title: "intermediate", value: true },
+        ],
+    },
+    {
+        title: "Linux & Windows Server support",
         tiers: [
             { title: "starter", value: false },
             { title: "popular", featured: true, value: true },
@@ -151,7 +138,23 @@ const perks = [
         ],
     },
     {
-        title: "Business debit card",
+        title: "Proactive monitoring",
+        tiers: [
+            { title: "starter", value: false },
+            { title: "popular", featured: true, value: true },
+            { title: "intermediate", value: false },
+        ],
+    },
+    {
+        title: "Backup restoration",
+        tiers: [
+            { title: "starter", value: false },
+            { title: "popular", featured: true, value: true },
+            { title: "intermediate", value: false },
+        ],
+    },
+    {
+        title: "Emergency support",
         tiers: [
             { title: "starter", value: false },
             { title: "popular", featured: true, value: true },
@@ -163,17 +166,43 @@ const perks = [
 const faqs = [
     {
         id: 1,
-        question: "What's the best thing about Switzerland?",
-        answer: "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+        question: "Which support level should I get?",
+        answer: "We have different levels of support depending on what you need displayed above. If you are unsure about your needs, don't hesitate to contact us.",
     },
-    // More questions...
+    {
+        id: 2,
+        question: "How fast would my concerns be resolved?",
+        answer: "Depending on the complexity of the problem, the duration could range from a few minutes to a couple of days. However, our team will keep you updated along the way. Rest assured that a well-trained team of support personnel are working on your tickets.",
+    },
+    {
+        id: 3,
+        question:
+            "Can I ask for assistance via remote control apps like Teamviewer and AnyDesk?",
+        answer: "Yes, both our premium and enterprise plans include support via remote control applications.",
+    },
+    {
+        id: 4,
+        question:
+            "What if I am not satisfied with my dedicated account manager?",
+        answer: "You can always request to change your dedicated account manager. We will assign a new account manager to you almost instantly upon receiving your request.",
+    },
+    {
+        id: 5,
+        question: "How do I get in touch with my dedicated account manager?",
+        answer: "Once you have signed up for our Enterprise plan, your dedicated account manager will get in touch with you and provide you a phone number and email through which you can reach out to your account manager.",
+    },
+    {
+        id: 6,
+        question: "Is it possible to upgrade/downgrade from a support plan?",
+        answer: "Yes, at any time you may choose to upgrade or downgrade your support plan. At the end of the billing period, your account will be automatically switched to your newly requested plan.",
+    },
 ];
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
 }
 
-export default function Page() {
+export default function dedicatedSupportPage() {
     return (
         <>
             {/* Hero card */}
@@ -184,40 +213,38 @@ export default function Page() {
                         <div className="absolute inset-0">
                             <img
                                 className="h-full w-full object-cover"
-                                src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100"
-                                alt="People working on laptops"
+                                src="https://images.unsplash.com/photo-1574790398664-0cb03682ed1c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2702&q=80"
+                                alt="People working on computers"
                             />
                             <div className="absolute inset-0 bg-blue-700 mix-blend-multiply" />
                         </div>
                         <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-48 lg:px-8">
                             <h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
                                 <span className="block text-white">
-                                    Take control of your
+                                    Get the help you need with our
                                 </span>
                                 <span className="block text-blue-200">
-                                    customer support
+                                    dedicated support plans
                                 </span>
                             </h1>
                             <p className="mt-6 max-w-lg mx-auto text-center text-xl text-blue-200 sm:max-w-3xl">
-                                Anim aute id magna aliqua ad ad non deserunt
-                                sunt. Qui irure qui lorem cupidatat commodo.
-                                Elit sunt amet fugiat veniam occaecat fugiat
-                                aliqua.
+                                Let one of our expert team members help you with
+                                your concerns and almost instant response times.
                             </p>
                             <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                                 <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
                                     <a
-                                        href="#"
+                                        href="#pricing"
                                         className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-blue-700 bg-white hover:bg-blue-50 sm:px-8"
                                     >
-                                        Get started
+                                        View plans
                                     </a>
-                                    <a
-                                        href="#"
-                                        className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8"
-                                    >
-                                        Live demo
-                                    </a>
+
+                                    <Link href="/contact">
+                                        <a className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8">
+                                            Contact us
+                                        </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -226,7 +253,7 @@ export default function Page() {
             </div>
 
             {/* Pricing section */}
-            <div>
+            <div id="pricing">
                 <div className="relative bg-blue-600">
                     {/* Overlapping background */}
                     <div
@@ -729,7 +756,7 @@ export default function Page() {
                                                             feature.tiers
                                                                 .length -
                                                                 1
-                                                            ? "pl-4"
+                                                            ? "px-4"
                                                             : "px-4",
                                                         "relative w-1/4 py-0 text-center"
                                                     )}
@@ -854,7 +881,7 @@ export default function Page() {
                                                         index ===
                                                             perk.tiers.length -
                                                                 1
-                                                            ? "pl-4"
+                                                            ? "px-4"
                                                             : "px-4",
                                                         "relative w-1/4 py-0 text-center"
                                                     )}
@@ -914,11 +941,6 @@ export default function Page() {
                         <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
                             Frequently asked questions
                         </h2>
-                        <p className="mt-4 text-gray-400">
-                            Ac euismod vel sit maecenas id pellentesque eu sed
-                            consectetur. Malesuada adipiscing sagittis vel nulla
-                            nec. Urna, sed a lectus elementum blandit et.
-                        </p>
                     </div>
                     <div className="mt-20">
                         <dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10">
@@ -940,13 +962,6 @@ export default function Page() {
             <section className="bg-blue-800">
                 <div className="max-w-7xl mx-auto md:grid md:grid-cols-2 md:px-6 lg:px-8">
                     <div className="py-12 px-4 sm:px-6 md:flex md:flex-col md:py-16 md:pl-0 md:pr-10 md:border-r md:border-blue-900 lg:pr-16">
-                        <div className="md:flex-shrink-0">
-                            <img
-                                className="h-12"
-                                src="https://tailwindui.com/img/logos/tuple-logo-blue-300.svg"
-                                alt="Tuple"
-                            />
-                        </div>
                         <blockquote className="mt-6 md:flex-grow md:flex md:flex-col">
                             <div className="relative text-lg font-medium text-white md:flex-grow">
                                 <svg
@@ -958,27 +973,32 @@ export default function Page() {
                                     <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                                 </svg>
                                 <p className="relative">
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Nemo expedita voluptas
-                                    culpa sapiente alias molestiae. Numquam
-                                    corrupti in laborum sed rerum et corporis.
+                                    BlessHost's team is always there to support
+                                    us on any technical issues related to our
+                                    website. They are organized and creative.
+                                    They insure that the work is done the
+                                    soonest and this is something that we seek
+                                    for when running a business.
                                 </p>
                             </div>
                             <footer className="mt-8">
                                 <div className="flex items-start">
                                     <div className="flex-shrink-0 inline-flex rounded-full border-2 border-white">
-                                        <img
-                                            className="h-12 w-12 rounded-full"
-                                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                            alt=""
+                                        <Image
+                                            className="rounded-full"
+                                            src={lauraImg}
+                                            layout="fixed"
+                                            width={48}
+                                            height={48}
+                                            alt="Laura-Helene Kopinski"
                                         />
                                     </div>
                                     <div className="ml-4">
                                         <div className="text-base font-medium text-white">
-                                            Judith Black
+                                            Laura-Helene Kopinski
                                         </div>
                                         <div className="text-base font-medium text-blue-200">
-                                            CEO, Tuple
+                                            Founder, Inner Seed
                                         </div>
                                     </div>
                                 </div>
@@ -986,13 +1006,6 @@ export default function Page() {
                         </blockquote>
                     </div>
                     <div className="py-12 px-4 border-t-2 border-blue-900 sm:px-6 md:py-16 md:pr-0 md:pl-10 md:border-t-0 md:border-l lg:pl-16">
-                        <div className="md:flex-shrink-0">
-                            <img
-                                className="h-12"
-                                src="https://tailwindui.com/img/logos/workcation-logo-blue-300.svg"
-                                alt="Workcation"
-                            />
-                        </div>
                         <blockquote className="mt-6 md:flex-grow md:flex md:flex-col">
                             <div className="relative text-lg font-medium text-white md:flex-grow">
                                 <svg
@@ -1003,29 +1016,32 @@ export default function Page() {
                                     <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                                 </svg>
                                 <p className="relative">
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Nemo expedita voluptas
-                                    culpa sapiente alias molestiae. Numquam
-                                    corrupti in laborum sed rerum et corporis.
-                                    Nemo expedita voluptas culpa sapiente alias
-                                    molestiae.
+                                    I'd like to thank you for a long partnership
+                                    with outstanding customer service every time
+                                    I deal with you - this is why I continue to
+                                    recommend you guys and don't use anyone else
+                                    for any of my websites or domain names! Keep
+                                    up the excellent work!
                                 </p>
                             </div>
                             <footer className="mt-8">
                                 <div className="flex items-start">
                                     <div className="flex-shrink-0 inline-flex rounded-full border-2 border-white">
-                                        <img
-                                            className="h-12 w-12 rounded-full"
-                                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                            alt=""
+                                        <Image
+                                            className="rounded-full"
+                                            src={madianImg}
+                                            layout="fixed"
+                                            width={48}
+                                            height={48}
+                                            alt="Madian Romero"
                                         />
                                     </div>
                                     <div className="ml-4">
                                         <div className="text-base font-medium text-white">
-                                            Joseph Rodriguez
+                                            Madian Romero
                                         </div>
                                         <div className="text-base font-medium text-blue-200">
-                                            CEO, Workcation
+                                            Illustration Artist
                                         </div>
                                     </div>
                                 </div>
@@ -1038,26 +1054,27 @@ export default function Page() {
             <div className="bg-gray-50">
                 <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
                     <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                        <span className="block">Ready to dive in?</span>
+                        <span className="block">
+                            Ready for dedicated support?
+                        </span>
                         <span className="block text-blue-600">
-                            Start your free trial today.
+                            Get started by contacting us right now.
                         </span>
                     </h2>
                     <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
                         <div className="inline-flex rounded-md shadow">
-                            <a
-                                href="#"
-                                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-                            >
-                                Get started
-                            </a>
+                            <Link href="/contact">
+                                <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                                    Contact Us
+                                </a>
+                            </Link>
                         </div>
                         <div className="ml-3 inline-flex rounded-md shadow">
                             <a
-                                href="#"
+                                href="#pricing"
                                 className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50"
                             >
-                                Learn more
+                                View plans
                             </a>
                         </div>
                     </div>

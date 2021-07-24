@@ -34,7 +34,7 @@ const plans = [
             },
         ],
         mainFeatures: [
-            { id: 1, value: "Basic invoicing" },
+            { id: 1, value: "24x7 email, phone and chat" },
             { id: 2, value: "Easy to use accounting" },
             { id: 3, value: "Mutli-accounts" },
         ],

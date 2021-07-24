@@ -704,7 +704,7 @@ export default function Header() {
                                                                                     "Status" ? (
                                                                                         <svg
                                                                                             xmlns="http://www.w3.org/2000/svg"
-                                                                                            class="ml-1 mb-1 w-5 h-5 inline"
+                                                                                            className="ml-1 mb-1 w-5 h-5 inline"
                                                                                             viewBox="0 0 20 20"
                                                                                             fill="currentColor"
                                                                                         >
