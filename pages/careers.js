@@ -18,6 +18,22 @@ const jobs = [
       "Ability to use Google Adwords, Hootsuite etc.",
     ],
   },
+  {
+    department: "Development",
+    title: "WordPress Developer",
+    description:
+      "We are looking for someone who has extensive expertise in website development. Additionally, expertise in graphics design is a plus. The applicant should have a portfolio of at least 5 websites.",
+    requirements: [
+      "Expert in WordPress and its customization",
+      "Knowledge of HTML, CSS, PHP, JavaScript",
+      "Ability to design responsive websites",
+      "Familiar with Search Engine Optimization",
+      "Ability to create reports",
+      "Fluent or Native English",
+      "Remote option is available",
+      "Ability to use Google Adwords, Hootsuite etc.",
+    ],
+  },
 ];
 
 export default function careersPage() {
@@ -69,7 +85,7 @@ export default function careersPage() {
           </div>
           {jobs.map((job) => {
             return (
-              <div className="border-t border-gray-200 py-16 xl:grid xl:grid-cols-3 xl:gap-x-8">
+              <div className="border-t border-gray-200 py-16 xl:grid xl:grid-cols-3 xl:items-center xl:gap-x-8">
                 <div>
                   <h2 className="text-base font-semibold text-blue-600 tracking-wide uppercase">
                     {job.department}
