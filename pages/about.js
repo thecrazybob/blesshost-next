@@ -1,3 +1,8 @@
+import Link from "next/link";
+import Image from "next/image";
+import useSWR from "swr";
+import fetcher from "../lib/fetcher";
+
 import {
   NewspaperIcon,
   OfficeBuildingIcon,
@@ -39,6 +44,8 @@ const supportLinks = [
 ];
 
 export default function aboutPage() {
+  const { data } = useSWR("/api/tickets", fetcher);
+
   return (
     <>
       {/* Title and Cards section */}
@@ -96,13 +103,12 @@ export default function aboutPage() {
                   </p>
                 </div>
                 <div className="p-6 bg-gray-50 rounded-bl-2xl rounded-br-2xl md:px-8">
-                  <a
-                    href={link.href}
-                    className="text-base font-medium text-blue-700 hover:text-blue-600"
-                  >
-                    {link.label}
-                    <span aria-hidden="true"> &rarr;</span>
-                  </a>
+                  <Link href={link.href}>
+                    <a className="text-base font-medium text-blue-700 hover:text-blue-600">
+                      {link.label}
+                      <span aria-hidden="true"> &rarr;</span>
+                    </a>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -157,17 +163,19 @@ export default function aboutPage() {
               <div className="relative pt-64 pb-10 rounded-2xl shadow-xl overflow-hidden">
                 <img
                   className="absolute inset-0 h-full w-full object-cover"
-                  src="https://images.unsplash.com/photo-1521510895919-46920266ddb3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&fp-x=0.5&fp-y=0.6&fp-z=3&width=1440&height=1440&sat=-100"
-                  alt=""
+                  src="/img/testimonials/shouket.jpg"
+                  alt="Shouket Ali"
                 />
                 <div className="absolute inset-0 bg-blue-500 mix-blend-multiply" />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-600 via-blue-600 opacity-90" />
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-600 via-blue-600 opacity-70" />
                 <div className="relative px-8">
                   <div>
-                    <img
+                    <Image
+                      width={144}
+                      height={50}
                       className="h-12"
-                      src="https://tailwindui.com/img/logos/workcation.svg?color=white"
-                      alt="Workcation"
+                      src="/img/aljazira.png"
+                      alt="Al Jazira Royal Hotel"
                     />
                   </div>
                   <blockquote className="mt-8">
@@ -181,15 +189,16 @@ export default function aboutPage() {
                         <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                       </svg>
                       <p className="relative">
-                        Tincidunt integer commodo, cursus etiam aliquam neque,
-                        et. Consectetur pretium in volutpat, diam. Montes, magna
-                        cursus nulla feugiat dignissim id lobortis amet.
+                        Brilliant and skilled people with extensive web
+                        development experience in complex e-commerce websites.
+                        Thanks to their highly creative approach that led to
+                        successful results.
                       </p>
                     </div>
 
                     <footer className="mt-4">
                       <p className="text-base font-semibold text-blue-200">
-                        Sarah Williams, CEO at Workcation
+                        Shouket Ali, General Manager at Al Jazira Royal Hotel
                       </p>
                     </footer>
                   </blockquote>
@@ -202,30 +211,29 @@ export default function aboutPage() {
             {/* Content area */}
             <div className="pt-12 sm:pt-16 lg:pt-20">
               <h2 className="text-3xl text-gray-900 font-extrabold tracking-tight sm:text-4xl">
-                On a mission to empower teams
+                On a mission to empower online businesses
               </h2>
               <div className="mt-6 text-gray-500 space-y-6">
                 <p className="text-lg">
-                  Sagittis scelerisque nulla cursus in enim consectetur quam.
-                  Dictum urna sed consectetur neque tristique pellentesque.
-                  Blandit amet, sed aenean erat arcu morbi. Cursus faucibus nunc
-                  nisl netus morbi vel porttitor vitae ut. Amet vitae fames
-                  senectus vitae.
+                  Since day one, our aim is to help businesses get online and
+                  help the existing online business reach their maximum
+                  potential.
                 </p>
                 <p className="text-base leading-7">
-                  Sollicitudin tristique eros erat odio sed vitae, consequat
-                  turpis elementum. Lorem nibh vel, eget pretium arcu vitae.
-                  Eros eu viverra donec ut volutpat donec laoreet quam urna.
-                  Sollicitudin tristique eros erat odio sed vitae, consequat
-                  turpis elementum. Lorem nibh vel, eget pretium arcu vitae.
-                  Eros eu viverra donec ut volutpat donec laoreet quam urna.
+                  We are not just another company providing web hosting and
+                  development services. As our motto "Quality with
+                  Affordability" defines it, we strive to deliver quality
+                  services at an affordable price. We make sure we stay true to
+                  our promise by working closely with our clients to ensure
+                  their satisfaction.
                 </p>
                 <p className="text-base leading-7">
-                  Rhoncus nisl, libero egestas diam fermentum dui. At quis
-                  tincidunt vel ultricies. Vulputate aliquet velit faucibus
-                  semper. Pellentesque in venenatis vestibulum consectetur nibh
-                  id. In id ut tempus egestas. Enim sit aliquam nec, a. Morbi
-                  enim fermentum lacus in. Viverra.
+                  In the UAE, BlessHost has helped thousands of clients create
+                  and optimize incredible online businesses. Unlike others, our
+                  team is based in the United Arab Emirates and we are always
+                  reachable. We have been expanding contiously over the past few
+                  years, which has allowed us to provide hosting services from 4
+                  data centers around the world.
                 </p>
               </div>
             </div>
@@ -237,11 +245,10 @@ export default function aboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-              Trusted by developers from over 80 planets
+              BlessHost has helped thousands get online
             </h2>
             <p className="mt-3 text-xl text-gray-500 sm:mt-4">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Repellendus repellat laudantium.
+              Here are some of the milestones that we have achieved.
             </p>
           </div>
         </div>
@@ -253,26 +260,26 @@ export default function aboutPage() {
                 <dl className="rounded-lg bg-white shadow-lg sm:grid sm:grid-cols-3">
                   <div className="flex flex-col border-b border-gray-100 p-6 text-center sm:border-0 sm:border-r">
                     <dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
-                      Pepperoni
+                      Tickets solved
                     </dt>
                     <dd className="order-1 text-5xl font-extrabold text-blue-600">
-                      100%
+                      {data ?? "1391"}
                     </dd>
                   </div>
                   <div className="flex flex-col border-t border-b border-gray-100 p-6 text-center sm:border-0 sm:border-l sm:border-r">
                     <dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
-                      Delivery
+                      Data centers
                     </dt>
                     <dd className="order-1 text-5xl font-extrabold text-blue-600">
-                      24/7
+                      4
                     </dd>
                   </div>
                   <div className="flex flex-col border-t border-gray-100 p-6 text-center sm:border-0 sm:border-l">
                     <dt className="order-2 mt-2 text-lg leading-6 font-medium text-gray-500">
-                      Calories
+                      Websites
                     </dt>
                     <dd className="order-1 text-5xl font-extrabold text-blue-600">
-                      100k
+                      1K+
                     </dd>
                   </div>
                 </dl>
@@ -290,87 +297,123 @@ export default function aboutPage() {
           </p>
           <div className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
             <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
+              <Image
+                layout="fixed"
+                height={48}
+                width={300}
                 className="max-h-12"
-                src="https://tailwindui.com/img/logos/transistor-logo-gray-400.svg"
-                alt="Workcation"
+                src="/img/logos/amd.svg"
+                alt="AMD"
               />
             </div>
             <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
+              <Image
+                layout="fixed"
+                height={48}
+                width={300}
                 className="max-h-12"
-                src="https://tailwindui.com/img/logos/mirage-logo-gray-400.svg"
-                alt="Mirage"
+                src="/img/logos/cpanel.svg"
+                alt="cPanel"
               />
             </div>
             <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
+              <Image
+                layout="fixed"
+                height={48}
+                width={300}
                 className="max-h-12"
-                src="https://tailwindui.com/img/logos/tuple-logo-gray-400.svg"
-                alt="Tuple"
-              />
-            </div>
-            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
-                className="max-h-12"
-                src="https://tailwindui.com/img/logos/laravel-logo-gray-400.svg"
-                alt="Laravel"
-              />
-            </div>
-            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
-                className="max-h-12"
-                src="https://tailwindui.com/img/logos/statickit-logo-gray-400.svg"
-                alt="StaticKit"
-              />
-            </div>
-            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
-                className="max-h-12"
-                src="https://tailwindui.com/img/logos/statamic-logo-gray-400.svg"
+                src="/img/logos/statamic.svg"
                 alt="Statamic"
               />
             </div>
             <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
+              <Image
+                layout="fixed"
+                height={48}
+                width={300}
                 className="max-h-12"
-                src="https://tailwindui.com/img/logos/transistor-logo-gray-400.svg"
-                alt="Workcation"
-              />
-            </div>
-            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
-                className="max-h-12"
-                src="https://tailwindui.com/img/logos/mirage-logo-gray-400.svg"
-                alt="Mirage"
-              />
-            </div>
-            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
-                className="max-h-12"
-                src="https://tailwindui.com/img/logos/tuple-logo-gray-400.svg"
-                alt="Tuple"
-              />
-            </div>
-            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
-                className="max-h-12"
-                src="https://tailwindui.com/img/logos/laravel-logo-gray-400.svg"
+                src="/img/logos/laravel.svg"
                 alt="Laravel"
               />
             </div>
             <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
+              <Image
+                layout="fixed"
+                height={48}
+                width={300}
                 className="max-h-12"
-                src="https://tailwindui.com/img/logos/statickit-logo-gray-400.svg"
-                alt="StaticKit"
+                src="/img/logos/dell.svg"
+                alt="Dell"
               />
             </div>
             <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-              <img
+              <Image
+                layout="fixed"
+                height={48}
+                width={300}
                 className="max-h-12"
-                src="https://tailwindui.com/img/logos/statamic-logo-gray-400.svg"
-                alt="Statamic"
+                src="/img/logos/microsoft.svg"
+                alt="Microsoft"
+              />
+            </div>
+            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
+              <Image
+                layout="fixed"
+                height={48}
+                width={300}
+                className="max-h-12"
+                src="/img/logos/intel.svg"
+                alt="Intel"
+              />
+            </div>
+            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
+              <Image
+                layout="fixed"
+                height={48}
+                width={300}
+                className="max-h-12"
+                src="/img/logos/wordpress.svg"
+                alt="WordPress"
+              />
+            </div>
+            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
+              <Image
+                layout="fixed"
+                height={48}
+                width={300}
+                className="max-h-12"
+                src="/img/logos/cloudflare.svg"
+                alt="Cloudflare"
+              />
+            </div>
+            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
+              <Image
+                layout="fixed"
+                height={48}
+                width={300}
+                className="max-h-12"
+                src="/img/logos/sectigo.svg"
+                alt="Sectigo"
+              />
+            </div>
+            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
+              <Image
+                layout="fixed"
+                height={48}
+                width={300}
+                className="max-h-12"
+                src="/img/logos/codeguard.svg"
+                alt="CodeGuard"
+              />
+            </div>
+            <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
+              <Image
+                layout="fixed"
+                height={48}
+                width={300}
+                className="max-h-12"
+                src="/img/logos/google-workspace.svg"
+                alt="Google Workspace"
               />
             </div>
           </div>
@@ -398,7 +441,7 @@ export default function aboutPage() {
                   <img
                     className="object-cover object-center rounded-3xl shadow-2xl"
                     src="https://images.unsplash.com/photo-1507207611509-ec012433ff52?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=934&q=80"
-                    alt=""
+                    alt="Two people talking in an office"
                   />
                 </div>
               </div>
@@ -484,16 +527,16 @@ export default function aboutPage() {
                   Join our team
                 </h2>
                 <p className="text-lg text-white">
-                  Varius facilisi mauris sed sit. Non sed et duis dui leo,
-                  vulputate id malesuada non. Cras aliquet purus dui laoreet
-                  diam sed lacus, fames.
+                  Become a part of the BlessHost family and use your talents to
+                  the best. We are one of the fastest growing digital agencies
+                  in the UAE.
                 </p>
-                <a
-                  className="block w-full py-3 px-5 text-center bg-white border border-transparent rounded-md shadow-md text-base font-medium text-blue-700 hover:bg-blue-gray-50 sm:inline-block sm:w-auto"
-                  href="#"
-                >
-                  Explore open positions
-                </a>
+
+                <Link href="/contact">
+                  <a className="block w-full py-3 px-5 text-center bg-white border border-transparent rounded-md shadow-md text-base font-medium text-blue-700 hover:bg-blue-gray-50 sm:inline-block sm:w-auto">
+                    Explore open positions
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
