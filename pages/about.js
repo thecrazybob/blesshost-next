@@ -532,7 +532,7 @@ export default function aboutPage() {
                   in the UAE.
                 </p>
 
-                <Link href="/contact">
+                <Link href="/careers">
                   <a className="block w-full py-3 px-5 text-center bg-white border border-transparent rounded-md shadow-md text-base font-medium text-blue-700 hover:bg-blue-gray-50 sm:inline-block sm:w-auto">
                     Explore open positions
                   </a>

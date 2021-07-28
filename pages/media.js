@@ -79,6 +79,19 @@ const files = [
     source: "/img/media-kit/5a.svg",
     dark: true,
   },
+  {
+    title: "BH cloud",
+    png: "/img/media-kit/6.png",
+    svg: "/img/media-kit/6.svg",
+    source: "/img/media-kit/6.svg",
+  },
+  {
+    title: "BH cloud Dark",
+    png: "/img/media-kit/6a.png",
+    svg: "/img/media-kit/6a.svg",
+    source: "/img/media-kit/6a.svg",
+    dark: true,
+  },
 ];
 
 export default function mediaPage() {
