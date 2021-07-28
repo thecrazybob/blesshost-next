@@ -89,51 +89,53 @@ export default function mediaPage() {
         title="Media Kit"
         description="You can find a wide variety of our logos and banners designed to the perfection by the best of our designers."
       />
-      <ul
-        role="list"
-        className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
-      >
-        {files.map((file) => (
-          <li key={file.source} className="relative">
-            <div
-              className={` ${
-                file.dark === true ? "bg-gray-800" : "bg-gray-100"
-              } group block w-full aspect-w-10 aspect-h-7 rounded-lg focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-blue-500 overflow-hidden" `}
-            >
-              <img
-                src={file.source}
-                alt={file.title}
-                className="px-6 pointer-events-none group-hover:opacity-75"
-              />
-              <a
-                href={file.source}
-                className="absolute inset-0 focus:outline-none"
+      <div>
+        <ul
+          role="list"
+          className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
+        >
+          {files.map((file) => (
+            <li key={file.source} className="relative">
+              <div
+                className={`${
+                  file.dark === true ? "bg-gray-800" : "bg-gray-100"
+                } group block w-full aspect-w-10 aspect-h-7 rounded-lg focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-blue-500 overflow-hidden`}
               >
-                <span className="sr-only">View details for {file.title}</span>
-              </a>
-            </div>
-            <p className="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">
-              {file.title}
-            </p>
-            <p className="block text-sm font-medium text-gray-500">
-              <a
-                download
-                className="hover:border-b border-gray-800 transition-all ease-in-out duration-75"
-                href={file.svg}
-              >
-                SVG
-              </a>{" "}
-              <a
-                download
-                className="hover:border-b border-gray-800 transition-all ease-in-out duration-75"
-                href={file.png}
-              >
-                PNG
-              </a>
-            </p>
-          </li>
-        ))}
-      </ul>
+                <img
+                  src={file.source}
+                  alt={file.title}
+                  className="px-6 pointer-events-none group-hover:opacity-75"
+                />
+                <a
+                  href={file.source}
+                  className="absolute inset-0 focus:outline-none"
+                >
+                  <span className="sr-only">View details for {file.title}</span>
+                </a>
+              </div>
+              <p className="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">
+                {file.title}
+              </p>
+              <p className="block text-sm font-medium text-gray-500">
+                <a
+                  download
+                  className="hover:border-b border-gray-800 transition-all ease-in-out duration-75"
+                  href={file.svg}
+                >
+                  SVG
+                </a>{" "}
+                <a
+                  download
+                  className="hover:border-b border-gray-800 transition-all ease-in-out duration-75"
+                  href={file.png}
+                >
+                  PNG
+                </a>
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
       <TitleBar
         title="Brand Colors"
         description="The amazing colors we use that make up our identity"
@@ -150,7 +152,6 @@ export default function mediaPage() {
             </div>
             <div className="flex-1 min-w-0">
               <div className="focus:outline-none">
-                <span className="absolute inset-0" aria-hidden="true" />
                 <p className="text-sm font-medium text-gray-900">
                   {color.name}
                 </p>
