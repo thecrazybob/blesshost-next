@@ -1,5 +1,7 @@
 import { LockClosedIcon } from "@heroicons/react/solid";
 import { useRef, useState } from "react";
+import useUser from "../lib/useUser";
+import fetchJson from "../lib/fetchJson";
 
 export default function Example() {
   // 1. Create a reference to the input so we can fetch/clear it's value.
@@ -7,33 +9,41 @@ export default function Example() {
   const passwordInput = useRef(null);
   const [message, setMessage] = useState("");
 
-  const validate = async (e) => {
+  const { mutateUser } = useUser({
+    redirectTo: "/",
+    redirectIfFound: true,
+  });
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    const res = await fetch("/api/validate", {
-      body: JSON.stringify({
-        email: emailInput.current.value,
-        password: passwordInput.current.value,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
-    const { result, message = "You will be redirected" } = await res.json();
 
-    if (result) {
-      // 4. If there was an error, update the message in state.
-      setMessage(message);
+    const body = {
+      email: emailInput.current.value,
+      password: passwordInput.current.value,
+    };
 
-      return;
+    try {
+      mutateUser(
+        await fetchJson("/api/validate", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify(body),
+        })
+      );
+    } catch (error) {
+      console.error("An unexpected error happened:", error);
+      setMessage(error.data.message);
     }
 
-    // 5. Clear the input value and show a success message.
-    emailInput.current.value = "";
-    passwordInput.current.value = "";
 
-    setMessage("Success! 🎉 You will be redirected IA.");
-  };
+    // 5. Clear the input value and show a success message.
+    // emailInput.current.value = "";
+    // passwordInput.current.value = "";
+
+    // setMessage("Success! 🎉 You will be redirected IA.");
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -57,7 +67,7 @@ export default function Example() {
             </a>
           </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={validate}>
+        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
