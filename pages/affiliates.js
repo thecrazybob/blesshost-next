@@ -109,7 +109,7 @@ const faqs = [
 export default function Page() {
   return (
     <>
-      <div className="bg-gradient-to-l from-blue-700 to-gray-900">
+      <div className="bg-gradient-to-b md:bg-gradient-to-l from-blue-700 to-gray-900">
         <div className="text-center md:text-left sm:py-4 md:py-20 mx-auto max-w-7xl px-4 sm:px-6">
           <div>
             <div className="grid grid-cols-1 items-center justify-between gap-x-5 md:grid-cols-2">
