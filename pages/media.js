@@ -143,7 +143,7 @@ export default function mediaPage() {
         {colors.map((color) => (
           <div
             key={color.name}
-            className="rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+            className="rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400"
           >
             <div className="flex-shrink-0">
               <div className={`h-10 w-10 rounded-full ${color.class}`} />
@@ -164,7 +164,7 @@ export default function mediaPage() {
                 navigator.clipboard.writeText(color.hex);
               }}
               type="button"
-              className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               Copy to clipboard
             </button>
