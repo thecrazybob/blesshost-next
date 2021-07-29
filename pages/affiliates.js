@@ -1,15 +1,12 @@
-import CTASimple from "../components/cta-simple";
 import FAQSDark from "../components/faqs-dark";
 import {
   CashIcon,
   ChartSquareBarIcon,
   CurrencyDollarIcon,
-  DocumentReportIcon,
   DocumentTextIcon,
   LinkIcon,
   ShareIcon,
   ShoppingCartIcon,
-  SupportIcon,
 } from "@heroicons/react/outline";
 const firstFeatures = [
   {
@@ -106,9 +103,10 @@ const faqs = [
   },
 ];
 
-export default function Page() {
+export default function affiliatesPage() {
   return (
     <>
+      {/* Hero */}
       <div className="bg-gradient-to-b md:bg-gradient-to-l from-blue-700 to-gray-900">
         <div className="text-center md:text-left sm:py-4 md:py-20 mx-auto max-w-7xl px-4 sm:px-6">
           <div>
@@ -286,6 +284,8 @@ export default function Page() {
           </div>
         </div>
       </div>
+
+      {/* Main Feature */}
       <div className="relative bg-gray-50 pt-16 sm:pt-24 md:pt-16 overflow-hidden">
         <div className="mx-auto max-w-md px-4 text-center sm:px-6 sm:max-w-3xl lg:px-8 lg:max-w-7xl">
           <div>
@@ -413,6 +413,7 @@ export default function Page() {
         </div>
       </div>
 
+      {/* Alternating Features */}
       <div className="py-16 bg-gray-50 overflow-hidden">
         <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
           <svg
@@ -1041,7 +1042,10 @@ export default function Page() {
         </div>
       </div>
 
+      {/* FAQs */}
       <FAQSDark faqs={faqs} />
+
+      {/* CTA */}
       <div className="bg-white">
         <div className="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
           <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
