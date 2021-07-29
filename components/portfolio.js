@@ -1,12 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Example(props) {
+export default function portfolio(props) {
   return (
     <div
       className={
         props.header
-          ? "relative bg-gray-50 pb-20 px-4 sm:px-6 lg:pb-28 lg:px-8 pt-16 lg:pt-24"
-          : "relative bg-gray-50 pb-20 px-4 sm:px-6 lg:pb-28 lg:px-8 pt-0"
+          ? "relative bg-gray-50 pb-20 px-4 sm:px-6 lg:pb-16 lg:px-8 pt-16 lg:pt-24"
+          : "relative bg-gray-50 pb-20 px-4 sm:px-6 lg:pb-16 lg:px-8 pt-0"
       }
     >
       {props.header ? (
@@ -21,8 +22,8 @@ export default function Example(props) {
               Some of our work
             </h2>
             <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa
-              libero labore natus atque, ducimus sed.
+              Here are some of the websites that we have helped our clients
+              with.
             </p>
           </div>
         ) : null}
@@ -60,6 +61,14 @@ export default function Example(props) {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="flex justify-center mt-10">
+          <Link href="/portfolio">
+            <a className="inline-flex border items-center justify-center px-5 py-3 border-gray-400 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+              See our complete portfolio
+            </a>
+          </Link>
         </div>
       </div>
     </div>
