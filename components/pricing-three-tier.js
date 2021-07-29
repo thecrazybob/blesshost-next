@@ -1,9 +1,9 @@
 import { CheckIcon } from "@heroicons/react/outline";
+import priceString from "../lib/pricing";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-
 export default function threeTierPricing({
   showHeader = true,
   title,
@@ -11,6 +11,8 @@ export default function threeTierPricing({
   pricing,
   tier,
   setTier,
+  currency,
+  term,
 }) {
   return (
     <div id="pricing" className="bg-white">
@@ -44,12 +46,14 @@ export default function threeTierPricing({
                   </p>
                 ) : null}
                 <p className="mt-4 flex items-baseline text-gray-900">
-                  <span className="text-5xl font-extrabold tracking-tight">
-                    ${tier.price}
+                  <span className="text-4xl font-extrabold tracking-tight">
+                    {priceString(tier.pid, term, currency)}
                   </span>
-                  <span className="ml-1 text-xl font-semibold">
-                    {tier.frequency}
-                  </span>
+                  {tier.pid != "-1" ? (
+                    <span className="ml-1 text-xl font-semibold">
+                      {tier.frequency}
+                    </span>
+                  ) : null}
                 </p>
                 <p className="mt-6 text-gray-500">{tier.description}</p>
 
