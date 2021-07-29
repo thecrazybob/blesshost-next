@@ -3,11 +3,8 @@ import FAQSDark from "../components/faqs-dark";
 import CTASimple from "../components/cta-simple";
 import Testimonials from "../components/testimonials";
 import { useState } from "react";
-import webmasterImg from "../public/img/webmaster.jpg";
-import youtubeThumbnail from "../public/img/seo-video.jpg";
 import {
   AdjustmentsIcon,
-  CheckIcon,
   DocumentReportIcon,
   DocumentSearchIcon,
   DocumentTextIcon,
@@ -15,7 +12,8 @@ import {
   PresentationChartLineIcon,
   SupportIcon,
 } from "@heroicons/react/outline";
-import Image from "next/image";
+import { useCurrency } from "../contexts/CurrencyContext";
+import Pricing from "../components/pricing-three-tier";
 
 const firstFeatures = [
   {
@@ -82,8 +80,8 @@ const pricing = {
   tiers: [
     {
       id: 0,
+      pid: 168,
       title: "Essential",
-      price: 24,
       frequency: "/month",
       description:
         "The essentials to get you started on your journey to the first-page.",
@@ -99,8 +97,8 @@ const pricing = {
     },
     {
       id: 1,
+      pid: 169,
       title: "Professional",
-      price: 32,
       frequency: "/month",
       description: "A plan that scales with your rapidly growing business.",
       features: [
@@ -115,8 +113,8 @@ const pricing = {
     },
     {
       id: 2,
+      pid: 170,
       title: "Business",
-      price: 48,
       frequency: "/month",
       description:
         "Boost your journey with a dedicated specialist and a personalized campaign.",
@@ -176,7 +174,9 @@ const faqs = [
 ];
 
 export default function googleMarketingPage() {
-  const [tier, setTier] = useState(null);
+  const [tier, setTier] = useState(pricing.tiers[0]);
+  const [billingInterval, setBillingInterval] = useState("monthly");
+  const { currency, setCurrency } = useCurrency("");
 
   return (
     <>
@@ -1399,76 +1399,21 @@ export default function googleMarketingPage() {
           </div>
         </div>
       </div>
-      <div id="pricing" className="bg-white">
-        <div className="max-w-7xl mx-auto py-24 px-4  sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-5xl sm:leading-none sm:tracking-tight lg:text-6xl">
-            Pricing plans for teams of all sizes
-          </h2>
-          <p className="mt-6 max-w-2xl text-xl text-gray-500">
-            Choose an affordable plan that's packed with the best features for
-            engaging your audience, creating customer loyalty, and driving
-            sales.
-          </p>
-
-          {/* Tiers */}
-          <div className="mt-24 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-8">
-            {pricing.tiers.map((tier) => (
-              <div
-                key={tier.title}
-                className="relative p-8 bg-white border border-gray-200 rounded-2xl shadow-sm flex flex-col"
-              >
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-gray-900">
-                    {tier.title}
-                  </h3>
-                  {tier.mostPopular ? (
-                    <p className="absolute top-0 py-1.5 px-4 bg-blue-600 rounded-full text-xs font-semibold uppercase tracking-wide text-white transform -translate-y-1/2">
-                      Most popular
-                    </p>
-                  ) : null}
-                  <p className="mt-4 flex items-baseline text-gray-900">
-                    <span className="text-5xl font-extrabold tracking-tight">
-                      ${tier.price}
-                    </span>
-                    <span className="ml-1 text-xl font-semibold">
-                      {tier.frequency}
-                    </span>
-                  </p>
-                  <p className="mt-6 text-gray-500">{tier.description}</p>
-
-                  {/* Feature list */}
-                  <ul role="list" className="mt-6 space-y-6">
-                    {tier.features.map((feature) => (
-                      <li key={feature} className="flex">
-                        <CheckIcon
-                          className="flex-shrink-0 w-6 h-6 text-blue-500"
-                          aria-hidden="true"
-                        />
-                        <span className="ml-3 text-gray-500">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <a
-                  onClick={() => setTier(tier)}
-                  href="#contact"
-                  className={classNames(
-                    tier.mostPopular
-                      ? "bg-blue-600 text-white hover:bg-blue-600"
-                      : "bg-blue-100 text-blue-700 hover:bg-blue-200",
-                    "mt-8 block w-full py-3 px-6 border border-transparent rounded-md text-center font-medium"
-                  )}
-                >
-                  {tier.cta}
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <Pricing
+        pricing={pricing}
+        tier={tier}
+        setTier={setTier}
+        currency={currency}
+        term={billingInterval}
+      />
       <Testimonials />
-      <ContactForm selectedPlan={tier} plans={pricing.tiers} />
+      <ContactForm
+        tier={tier}
+        setTier={setTier}
+        term={billingInterval}
+        currency={currency}
+        plans={pricing.tiers}
+      />
       <FAQSDark
         title="Frequently asked questions"
         description="Here are some of the frequently asked questions. If you have further queries, do not hesitate to contact us."
