@@ -8,6 +8,7 @@ export default function Example() {
   const emailInput = useRef(null);
   const passwordInput = useRef(null);
   const [message, setMessage] = useState("");
+  let res;
 
   const { mutateUser } = useUser({
     redirectTo: "/",
@@ -24,25 +25,28 @@ export default function Example() {
 
     try {
       mutateUser(
-        await fetchJson("/api/validate", {
+        (res = await fetchJson("/api/validate", {
           headers: {
             "Content-Type": "application/json",
           },
           method: "POST",
           body: JSON.stringify(body),
-        })
+        }))
       );
     } catch (error) {
       console.error("An unexpected error happened:", error);
       setMessage(error.data.message);
     }
 
+    if (res.result === "success") {
+      setMessage("Success! 🎉 You will be redirected IA.");
+    } else {
+      setMessage(res.message);
+    }
 
     // 5. Clear the input value and show a success message.
     // emailInput.current.value = "";
     // passwordInput.current.value = "";
-
-    // setMessage("Success! 🎉 You will be redirected IA.");
   }
 
   return (
