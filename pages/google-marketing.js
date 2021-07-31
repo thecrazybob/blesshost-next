@@ -1263,7 +1263,7 @@ export default function googleMarketingPage() {
       />
       <CTASimple
         normalText="Read enough?"
-        strongText="Boost your Google ranking today!"
+        strongText="Advertise your business on Google today!"
         normalButton={{ label: "View plans", href: "#pricing" }}
         strongButton={{ label: "Get started", href: "#contact" }}
       />
