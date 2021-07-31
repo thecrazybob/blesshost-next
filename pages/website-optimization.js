@@ -6,6 +6,7 @@ import Image from "next/image";
 import priceString from "../lib/pricing";
 import { useCurrency } from "../contexts/CurrencyContext";
 import { useState } from "react";
+import ReactDOMServer from 'react-dom/server';
 
 const features = [
   "Custom Server Configuration",
@@ -660,7 +661,7 @@ export default function websiteOptimizationPage() {
         }}
         strongButton={{
           label: "Get started",
-          href: <WHMCSLink raw={true} pid={164} currency={currency} />,
+          href: ReactDOMServer.renderToString(<WHMCSLink raw={true} pid={164} currency={currency} />),
         }}
       />
     </div>
