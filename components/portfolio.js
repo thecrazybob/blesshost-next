@@ -1,22 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function portfolio(props) {
+export default function portfolio({ header, footer = true, portfolio }) {
   return (
     <div
       className={
-        props.header
+        header
           ? "relative bg-gray-50 pb-20 px-4 sm:px-6 lg:pb-16 lg:px-8 pt-16 lg:pt-24"
           : "relative bg-gray-50 pb-20 px-4 sm:px-6 lg:pb-16 lg:px-8 pt-0"
       }
     >
-      {props.header ? (
+      {header ? (
         <div className="absolute inset-0">
           <div className="bg-white h-1/3 sm:h-2/3" />
         </div>
       ) : null}
       <div className="relative max-w-7xl mx-auto">
-        {props.header ? (
+        {header ? (
           <div className="text-center">
             <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
               Some of our work
@@ -28,7 +28,7 @@ export default function portfolio(props) {
           </div>
         ) : null}
         <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-          {props.portfolio.map((item) => (
+          {portfolio.map((item) => (
             <div
               key={item.title}
               className="flex flex-col rounded-lg shadow-lg overflow-hidden"
@@ -63,13 +63,15 @@ export default function portfolio(props) {
           ))}
         </div>
 
-        <div className="flex justify-center mt-10">
-          <Link href="/portfolio">
-            <a className="inline-flex border items-center justify-center px-5 py-3 border-gray-400 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
-              See our complete portfolio
-            </a>
-          </Link>
-        </div>
+        {footer ? (
+          <div className="flex justify-center mt-10">
+            <Link href="/portfolio">
+              <a className="inline-flex border items-center justify-center px-5 py-3 border-gray-400 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                See our complete portfolio
+              </a>
+            </Link>
+          </div>
+        ) : null}
       </div>
     </div>
   );

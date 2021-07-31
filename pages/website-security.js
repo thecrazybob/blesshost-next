@@ -1048,9 +1048,9 @@ export default function websiteSecurityPage() {
         normalButton={{ label: "View pricing", href: "#pricing" }}
         strongButton={{
           label: "Get started",
-          href: ReactDOMServer.renderToString(
+          href: `${ReactDOMServer.renderToString(
             <WHMCSLink raw={true} pid={201} currency={currency} />
-          ),
+          )}`,
         }}
       />
     </>
