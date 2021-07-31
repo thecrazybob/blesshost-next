@@ -1,10 +1,10 @@
+import ReactDOMServer from "react-dom/server";
 import WHMCSLink from "../components/whmcs-link";
 import CTASimple from "../components/cta-simple";
 import GradientFeatures from "../components/features-gradient";
 import Testimonials from "../components/testimonials";
 import {
   AdjustmentsIcon,
-  CalendarIcon,
   ChartSquareBarIcon,
   CheckIcon,
   CloudIcon,
@@ -13,8 +13,6 @@ import {
   ShieldExclamationIcon,
   ShoppingBagIcon,
   SupportIcon,
-  ViewBoardsIcon,
-  ViewListIcon,
 } from "@heroicons/react/outline";
 
 const features = [
@@ -1044,7 +1042,17 @@ export default function websiteSecurityPage() {
 
       <GradientFeatures features={gradientFeatures} />
       <Testimonials />
-      <CTASimple />
+      <CTASimple
+        normalText="Ready to secure your website?"
+        strongText="Sign up for our website security today."
+        normalButton={{ label: "View pricing", href: "#pricing" }}
+        strongButton={{
+          label: "Get started",
+          href: ReactDOMServer.renderToString(
+            <WHMCSLink raw={true} pid={201} currency={currency} />
+          ),
+        }}
+      />
     </>
   );
 }
