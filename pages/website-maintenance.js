@@ -1,22 +1,24 @@
 import CTASimple from "../components/cta-simple";
-import FAQSDark from "../components/faqs-dark";
 const firstFeatures = [
   {
     id: 1,
     name: "Dedicated Support Team",
-    description: "",
+    description:
+      "BlessHost provides you direct access to an experienced and knowledgeable support team who provides you with personalised service. We guarantee a prompt response to all your queries using a variety of support channels such as phone, live chat and e-mail, etc.",
     icon: PresentationChartLineIcon,
   },
   {
     id: 2,
     name: "Site Speed Monitoring",
-    description: "",
+    description:
+      "We track the real-time speed & performance of your website to detect changes in its speed and performance. This timely detection help in prompt fixing of speed and performance issues.",
     icon: DocumentSearchIcon,
   },
   {
     id: 3,
     name: "Broken Links Fixing",
-    description: "",
+    description:
+      "We help with bug fixing and troubleshooting on an ongoing basis. We find and fix complex and hidden problems in a website to ensure it's running uninterrupted.",
     icon: AdjustmentsIcon,
   },
 ];
@@ -24,19 +26,22 @@ const secondFeatures = [
   {
     id: 1,
     name: "Off-site Backups",
-    description: "",
+    description:
+      "We backup your website, database and emails in a remote location to ensure your data is safe and secure.",
     icon: LinkIcon,
   },
   {
     id: 2,
-    name: "Site Audits",
-    description: "",
+    name: "On-site Backups",
+    description:
+      "We backup your data on a local server and provide you with up to hassle-free 90 days of restoration of all your website data.",
     icon: DocumentTextIcon,
   },
   {
     id: 3,
     name: "CMS & Plugin Updates",
-    description: "",
+    description:
+      "BlessHost regularly updates the content management systems and plugins to ensure the websites are secure and operate smoothly.",
     icon: DocumentTextIcon,
   },
 ];
@@ -44,19 +49,15 @@ const thirdFeatures = [
   {
     id: 1,
     name: "Site Security Setup",
-    description: "",
+    description:
+      "Our team will install and configure SSL certificate on your website. Additionally, to protect against brute-force and DDoS attacks, a firewall will be added to your website.",
     icon: LinkIcon,
   },
   {
     id: 2,
     name: "Malware & Vulnerability Scanning",
-    description: "",
-    icon: DocumentTextIcon,
-  },
-  {
-    id: 3,
-    name: "SSL & Firewall Setup",
-    description: "",
+    description:
+      "We will regularly scan your website through our automatic bots and manually if required to see for malicious scripts such as malicious mining and adware scripts.",
     icon: DocumentTextIcon,
   },
 ];
@@ -74,45 +75,6 @@ import {
 
 import Testimonials from "../components/testimonials";
 import { useCurrency } from "../contexts/CurrencyContext";
-
-const faqs = [
-  {
-    id: 1,
-    question: "What's the best thing about Switzerland?",
-    answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
-  },
-  {
-    id: 2,
-    question: "How do you make holy water?",
-    answer:
-      "You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
-  },
-  {
-    id: 3,
-    question: "Why do you never see elephants hiding in trees?",
-    answer:
-      "Because they're so good at it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
-  },
-  {
-    id: 4,
-    question: "What do you call someone with no body and no nose?",
-    answer:
-      "Nobody knows. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
-  },
-  {
-    id: 5,
-    question: "Why can't you hear a pterodactyl go to the bathroom?",
-    answer:
-      "Because the pee is silent. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
-  },
-  {
-    id: 6,
-    question: "Why did the invisible man turn down the job offer?",
-    answer:
-      "He couldn't see himself doing it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
-  },
-];
 
 const pricing = {
   tiers: [
@@ -427,13 +389,13 @@ export default function websiteMaintenancePage() {
 
           <div className="relative">
             <h2 className="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              Who are we and how do we differ from others?
+              Why do you need website maintenance?
             </h2>
             <p className="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">
-              We’re an exciting team of web developers and technical experts
-              ready to help you plan, create, launch, and maintain a website
-              with the right design and features to help you take your business
-              to the next level.
+              Outsourcing your website maintenance gives you peace of mind and
+              the opportunity to focus on your business. BlessHost maintenance
+              and support team takes into consideration the client’s
+              requirements to ensure smooth website operations and scalability.
             </p>
           </div>
 
@@ -598,7 +560,9 @@ export default function websiteMaintenancePage() {
                   Backup in the Clouds!
                 </h3>
                 <p className="mt-3 text-lg text-gray-500">
-                  Text needs to be added here
+                  BlessHost thoroughly examines your business needs. It then
+                  comes up with the best solution to ensure your business data
+                  is safe and secure.
                 </p>
 
                 <dl className="mt-10 space-y-10">
@@ -1033,10 +997,13 @@ export default function websiteMaintenancePage() {
           <div className="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
             <div className="relative">
               <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
-                Make your Website Secure!
+                Make your website secure!
               </h3>
               <p className="mt-3 text-lg text-gray-500">
-                Text needs to be added here
+                We will make sure your website meets all the security
+                requirements. From SSL certificate to DDoS Protection, our team
+                of experts will implement the best security strategies to ensure
+                your website and business is not affected by malicious attacks.
               </p>
 
               <dl className="mt-10 space-y-10">
@@ -1252,8 +1219,18 @@ export default function websiteMaintenancePage() {
         plans={pricing.tiers}
       />
       <Testimonials />
-      <FAQSDark faqs={faqs} />
-      <CTASimple />
+      <CTASimple
+        normalText="Ready to go hands-free on your website?"
+        strongText="Get started with our maintenance services today"
+        strongButton={{
+          label: "Get in touch with us",
+          href: "#contact",
+        }}
+        normalButton={{
+          label: "View plans",
+          href: "#pricing",
+        }}
+      />
     </>
   );
 }
