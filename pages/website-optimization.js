@@ -1,622 +1,668 @@
-import {
-    AnnotationIcon,
-    GlobeAltIcon,
-    LightningBoltIcon,
-    MailIcon,
-    ScaleIcon,
-    CheckIcon,
-} from "@heroicons/react/outline";
-import { CheckCircleIcon } from "@heroicons/react/solid";
-import GradientFeatures from "../components/features-gradient";
+import WHMCSLink from "../components/whmcs-link";
+import { CheckIcon } from "@heroicons/react/outline";
 import Testimonials from "../components/testimonials";
 import CTASimple from "../components/cta-simple";
-
-const includedFeatures = [
-    "Private forum access",
-    "Member resources",
-    "Entry to annual conference",
-    "Official member t-shirt",
-];
+import Image from "next/image";
+import priceString from "../lib/pricing";
+import { useCurrency } from "../contexts/CurrencyContext";
+import { useState } from "react";
 
 const features = [
-    "Vitae in pulvinar odio id utobortis in inter.",
-    "Sed sed id viverra viverra augue eget massa.",
-    "Urna, gravida amet, a, integer venenatis.",
-    "Lobortis sed pharetra amet vitae eleifend.",
-    "Ullamcorper blandit a consequat donec elit aoreet.",
-    "Dolor quo assumenda.",
-    "Esse rerum distinctio maiores maiores.",
-    "Eos enim officiis ratione.",
-    "Tempore molestiae aliquid excepturi.",
-    "Perspiciatis eveniet inventore eum et aliquam.",
+  "Custom Server Configuration",
+  "Image Optimization",
+  "Code Optimization (HTML/CSS/JS)",
+  "Website Cache Setup",
+  "Custom DNS Configuration",
+  "Page Speed Before-After Report",
+  "Database Optimization",
+  "CDN Setup & Configuration",
+  "Server Software Configuration",
+  "WordPress Plugin Installation",
 ];
 
-const transferFeatures = [
-    {
-        id: 1,
-        name: "Competitive exchange rates",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-        icon: GlobeAltIcon,
-    },
-    {
-        id: 2,
-        name: "No hidden fees",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-        icon: ScaleIcon,
-    },
-    {
-        id: 3,
-        name: "Transfers are instant",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-        icon: LightningBoltIcon,
-    },
-];
+export default function websiteOptimizationPage() {
+  const [billingInterval, setBillingInterval] = useState("annually");
+  const { currency, setCurrency } = useCurrency("");
 
-const communicationFeatures = [
-    {
-        id: 1,
-        name: "Mobile notifications",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-        icon: AnnotationIcon,
-    },
-    {
-        id: 2,
-        name: "Reminder emails",
-        description:
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-        icon: MailIcon,
-    },
-];
-
-const navigation = [
-    { name: "Product", href: "#" },
-    { name: "Features", href: "#" },
-    { name: "Marketplace", href: "#" },
-    { name: "Company", href: "#" },
-];
-
-export default function Example() {
-    return (
-        <div className="bg-gray-50">
-            <div className="relative pt-6 pb-16 sm:pb-24">
-                <div className="mt-16 mx-auto max-w-7xl px-4 sm:mt-24 sm:px-6">
-                    <div className="text-center">
-                        <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                            <span className="block">Data to enrich your</span>
-                            <span className="block text-blue-600">
-                                online business
-                            </span>
-                        </h1>
-                        <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                            Anim aute id magna aliqua ad ad non deserunt sunt.
-                            Qui irure qui lorem cupidatat commodo. Elit sunt
-                            amet fugiat veniam occaecat fugiat aliqua.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div className="relative">
-                <div
-                    className="absolute inset-0 flex flex-col"
-                    aria-hidden="true"
-                >
-                    <div className="flex-1" />
-                    <div className="flex-1 w-full bg-gray-800" />
-                </div>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    <img
-                        className="relative rounded-lg shadow-lg"
-                        src="https://tailwindui.com/img/component-images/top-nav-with-multi-column-layout-screenshot.jpg"
-                        alt="App screenshot"
-                    />
-                </div>
-            </div>
-            <div className="bg-gray-800">
-                <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-                    <h2 className="text-center text-gray-400 text-sm font-semibold uppercase tracking-wide">
-                        Trusted by over 26,000 forward-thinking companies
-                    </h2>
-                    <div className="mt-8 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
-                        <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                            <img
-                                className="h-12"
-                                src="https://tailwindui.com/img/logos/tuple-logo-gray-400.svg"
-                                alt="Tuple"
-                            />
-                        </div>
-                        <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                            <img
-                                className="h-12"
-                                src="https://tailwindui.com/img/logos/mirage-logo-gray-400.svg"
-                                alt="Mirage"
-                            />
-                        </div>
-                        <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                            <img
-                                className="h-12"
-                                src="https://tailwindui.com/img/logos/statickit-logo-gray-400.svg"
-                                alt="StaticKit"
-                            />
-                        </div>
-                        <div className="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
-                            <img
-                                className="h-12"
-                                src="https://tailwindui.com/img/logos/transistor-logo-gray-400.svg"
-                                alt="Transistor"
-                            />
-                        </div>
-                        <div className="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
-                            <img
-                                className="h-12"
-                                src="https://tailwindui.com/img/logos/workcation-logo-gray-400.svg"
-                                alt="Workcation"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="py-16 bg-gray-50 overflow-hidden lg:py-24">
-                <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
-                    <svg
-                        className="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4"
-                        width={404}
-                        height={784}
-                        fill="none"
-                        viewBox="0 0 404 784"
-                        aria-hidden="true"
-                    >
-                        <defs>
-                            <pattern
-                                id="b1e6e422-73f8-40a6-b5d9-c8586e37e0e7"
-                                x={0}
-                                y={0}
-                                width={20}
-                                height={20}
-                                patternUnits="userSpaceOnUse"
-                            >
-                                <rect
-                                    x={0}
-                                    y={0}
-                                    width={4}
-                                    height={4}
-                                    className="text-gray-200"
-                                    fill="currentColor"
-                                />
-                            </pattern>
-                        </defs>
-                        <rect
-                            width={404}
-                            height={784}
-                            fill="url(#b1e6e422-73f8-40a6-b5d9-c8586e37e0e7)"
-                        />
-                    </svg>
-
-                    <div className="relative">
-                        <h2 className="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                            A better way to send money
-                        </h2>
-                        <p className="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Possimus magnam voluptatum cupiditate
-                            veritatis in, accusamus quisquam.
-                        </p>
-                    </div>
-
-                    <div className="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
-                        <div className="relative">
-                            <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
-                                Transfer funds world-wide
-                            </h3>
-                            <p className="mt-3 text-lg text-gray-500">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Pariatur minima sequi
-                                recusandae, porro maiores officia assumenda
-                                aliquam laborum ab aliquid veritatis impedit
-                                odit adipisci optio iste blanditiis facere.
-                                Totam, velit.
-                            </p>
-
-                            <dl className="mt-10 space-y-10">
-                                {transferFeatures.map((item) => (
-                                    <div key={item.id} className="relative">
-                                        <dt>
-                                            <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
-                                                <item.icon
-                                                    className="h-6 w-6"
-                                                    aria-hidden="true"
-                                                />
-                                            </div>
-                                            <p className="ml-16 text-lg leading-6 font-medium text-gray-900">
-                                                {item.name}
-                                            </p>
-                                        </dt>
-                                        <dd className="mt-2 ml-16 text-base text-gray-500">
-                                            {item.description}
-                                        </dd>
-                                    </div>
-                                ))}
-                            </dl>
-                        </div>
-
-                        <div
-                            className="mt-10 -mx-4 relative lg:mt-0"
-                            aria-hidden="true"
-                        >
-                            <svg
-                                className="absolute left-1/2 transform -translate-x-1/2 translate-y-16 lg:hidden"
-                                width={784}
-                                height={404}
-                                fill="none"
-                                viewBox="0 0 784 404"
-                            >
-                                <defs>
-                                    <pattern
-                                        id="ca9667ae-9f92-4be7-abcb-9e3d727f2941"
-                                        x={0}
-                                        y={0}
-                                        width={20}
-                                        height={20}
-                                        patternUnits="userSpaceOnUse"
-                                    >
-                                        <rect
-                                            x={0}
-                                            y={0}
-                                            width={4}
-                                            height={4}
-                                            className="text-gray-200"
-                                            fill="currentColor"
-                                        />
-                                    </pattern>
-                                </defs>
-                                <rect
-                                    width={784}
-                                    height={404}
-                                    fill="url(#ca9667ae-9f92-4be7-abcb-9e3d727f2941)"
-                                />
-                            </svg>
-                            <img
-                                className="relative mx-auto"
-                                width={490}
-                                src="https://tailwindui.com/img/features/feature-example-1.png"
-                                alt=""
-                            />
-                        </div>
-                    </div>
-
-                    <svg
-                        className="hidden lg:block absolute right-full transform translate-x-1/2 translate-y-12"
-                        width={404}
-                        height={784}
-                        fill="none"
-                        viewBox="0 0 404 784"
-                        aria-hidden="true"
-                    >
-                        <defs>
-                            <pattern
-                                id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d"
-                                x={0}
-                                y={0}
-                                width={20}
-                                height={20}
-                                patternUnits="userSpaceOnUse"
-                            >
-                                <rect
-                                    x={0}
-                                    y={0}
-                                    width={4}
-                                    height={4}
-                                    className="text-gray-200"
-                                    fill="currentColor"
-                                />
-                            </pattern>
-                        </defs>
-                        <rect
-                            width={404}
-                            height={784}
-                            fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)"
-                        />
-                    </svg>
-
-                    <div className="relative mt-12 sm:mt-16 lg:mt-24">
-                        <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
-                            <div className="lg:col-start-2">
-                                <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
-                                    Always in the loop
-                                </h3>
-                                <p className="mt-3 text-lg text-gray-500">
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Impedit ex obcaecati natus
-                                    eligendi delectus, cum deleniti sunt in
-                                    labore nihil quod quibusdam expedita nemo.
-                                </p>
-
-                                <dl className="mt-10 space-y-10">
-                                    {communicationFeatures.map((item) => (
-                                        <div key={item.id} className="relative">
-                                            <dt>
-                                                <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-blue-500 text-white">
-                                                    <item.icon
-                                                        className="h-6 w-6"
-                                                        aria-hidden="true"
-                                                    />
-                                                </div>
-                                                <p className="ml-16 text-lg leading-6 font-medium text-gray-900">
-                                                    {item.name}
-                                                </p>
-                                            </dt>
-                                            <dd className="mt-2 ml-16 text-base text-gray-500">
-                                                {item.description}
-                                            </dd>
-                                        </div>
-                                    ))}
-                                </dl>
-                            </div>
-
-                            <div className="mt-10 -mx-4 relative lg:mt-0 lg:col-start-1">
-                                <svg
-                                    className="absolute left-1/2 transform -translate-x-1/2 translate-y-16 lg:hidden"
-                                    width={784}
-                                    height={404}
-                                    fill="none"
-                                    viewBox="0 0 784 404"
-                                    aria-hidden="true"
-                                >
-                                    <defs>
-                                        <pattern
-                                            id="e80155a9-dfde-425a-b5ea-1f6fadd20131"
-                                            x={0}
-                                            y={0}
-                                            width={20}
-                                            height={20}
-                                            patternUnits="userSpaceOnUse"
-                                        >
-                                            <rect
-                                                x={0}
-                                                y={0}
-                                                width={4}
-                                                height={4}
-                                                className="text-gray-200"
-                                                fill="currentColor"
-                                            />
-                                        </pattern>
-                                    </defs>
-                                    <rect
-                                        width={784}
-                                        height={404}
-                                        fill="url(#e80155a9-dfde-425a-b5ea-1f6fadd20131)"
-                                    />
-                                </svg>
-                                <img
-                                    className="relative mx-auto"
-                                    width={490}
-                                    src="https://tailwindui.com/img/features/feature-example-2.png"
-                                    alt=""
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <GradientFeatures features={transferFeatures} />
-
-            <div className="bg-white">
-                <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-                    <div className="pb-16 xl:flex xl:items-center xl:justify-between">
-                        <div>
-                            <h1 className="text-4xl font-extrabold sm:text-5xl sm:tracking-tight">
-                                <span className="text-gray-900">
-                                    Everything you need for{" "}
-                                </span>
-                                <span className="text-blue-600">
-                                    $99 a month
-                                </span>
-                            </h1>
-                            <p className="mt-5 text-xl text-gray-500">
-                                Includes every feature we offer plus unlimited
-                                projects and unlimited users.
-                            </p>
-                        </div>
-                        <a
-                            href="#"
-                            className="mt-8 w-full bg-blue-600 border border-transparent px-5 py-3 inline-flex items-center justify-center text-base font-medium rounded-md text-white hover:bg-blue-700 sm:mt-10 sm:w-auto xl:mt-0"
-                        >
-                            Get started today
-                        </a>
-                    </div>
-                    <div className="border-t border-gray-200 pt-16 xl:grid xl:grid-cols-3 xl:gap-x-8">
-                        <div>
-                            <h2 className="text-base font-semibold text-blue-600 tracking-wide uppercase">
-                                Everything you need
-                            </h2>
-                            <p className="mt-2 text-3xl font-extrabold text-gray-900">
-                                All-in-one platform
-                            </p>
-                            <p className="mt-4 text-lg text-gray-500">
-                                Ac euismod vel sit maecenas id pellentesque eu
-                                sed consectetur. Malesuada adipiscing sagittis
-                                vel nulla nec. Urna, sed a lectus elementum
-                                blandit et.
-                            </p>
-                        </div>
-                        <div className="mt-4 sm:mt-8 md:mt-10 md:grid md:grid-cols-2 md:gap-x-8 xl:mt-0 xl:col-span-2">
-                            <ul className="divide-y divide-gray-200">
-                                {features
-                                    .slice(0, 5)
-                                    .map((feature, featureIdx) =>
-                                        featureIdx === 0 ? (
-                                            <li
-                                                key={feature}
-                                                className="py-4 flex md:py-0 md:pb-4"
-                                            >
-                                                <CheckIcon
-                                                    className="flex-shrink-0 h-6 w-6 text-green-500"
-                                                    aria-hidden="true"
-                                                />
-                                                <span className="ml-3 text-base text-gray-500">
-                                                    {feature}
-                                                </span>
-                                            </li>
-                                        ) : (
-                                            <li
-                                                key={feature}
-                                                className="py-4 flex"
-                                            >
-                                                <CheckIcon
-                                                    className="flex-shrink-0 h-6 w-6 text-green-500"
-                                                    aria-hidden="true"
-                                                />
-                                                <span className="ml-3 text-base text-gray-500">
-                                                    {feature}
-                                                </span>
-                                            </li>
-                                        )
-                                    )}
-                            </ul>
-                            <ul className="border-t border-gray-200 divide-y divide-gray-200 md:border-t-0">
-                                {features.slice(5).map((feature, featureIdx) =>
-                                    featureIdx === 0 ? (
-                                        <li
-                                            key={feature}
-                                            className="py-4 flex md:border-t-0 md:py-0 md:pb-4"
-                                        >
-                                            <CheckIcon
-                                                className="flex-shrink-0 h-6 w-6 text-green-500"
-                                                aria-hidden="true"
-                                            />
-                                            <span className="ml-3 text-base text-gray-500">
-                                                {feature}
-                                            </span>
-                                        </li>
-                                    ) : (
-                                        <li key={feature} className="py-4 flex">
-                                            <CheckIcon
-                                                className="flex-shrink-0 h-6 w-6 text-green-500"
-                                                aria-hidden="true"
-                                            />
-                                            <span className="ml-3 text-base text-gray-500">
-                                                {feature}
-                                            </span>
-                                        </li>
-                                    )
-                                )}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div className="bg-gray-100">
-                <div className="pt-12 sm:pt-16 lg:pt-20">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center">
-                            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl">
-                                Simple no-tricks pricing
-                            </h2>
-                            <p className="mt-4 text-xl text-gray-600">
-                                If you're not satisfied, contact us within the
-                                first 14 days and we'll send you a full refund.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div className="mt-8 bg-white pb-16 sm:mt-12 sm:pb-20 lg:pb-28">
-                    <div className="relative">
-                        <div className="absolute inset-0 h-1/2 bg-gray-100" />
-                        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="max-w-lg mx-auto rounded-lg shadow-lg overflow-hidden lg:max-w-none lg:flex">
-                                <div className="flex-1 bg-white px-6 py-8 lg:p-12">
-                                    <h3 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
-                                        Lifetime Membership
-                                    </h3>
-                                    <p className="mt-6 text-base text-gray-500">
-                                        Lorem ipsum dolor sit amet consect etur
-                                        adipisicing elit. Itaque amet indis
-                                        perferendis blanditiis repellendus etur
-                                        quidem assumenda.
-                                    </p>
-                                    <div className="mt-8">
-                                        <div className="flex items-center">
-                                            <h4 className="flex-shrink-0 pr-4 bg-white text-sm tracking-wider font-semibold uppercase text-blue-600">
-                                                What's included
-                                            </h4>
-                                            <div className="flex-1 border-t-2 border-gray-200" />
-                                        </div>
-                                        <ul className="mt-8 space-y-5 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-5">
-                                            {includedFeatures.map((feature) => (
-                                                <li
-                                                    key={feature}
-                                                    className="flex items-start lg:col-span-1"
-                                                >
-                                                    <div className="flex-shrink-0">
-                                                        <CheckCircleIcon
-                                                            className="h-5 w-5 text-green-400"
-                                                            aria-hidden="true"
-                                                        />
-                                                    </div>
-                                                    <p className="ml-3 text-sm text-gray-700">
-                                                        {feature}
-                                                    </p>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="py-8 px-6 text-center bg-gray-50 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12">
-                                    <p className="text-lg leading-6 font-medium text-gray-900">
-                                        Pay once, own it forever
-                                    </p>
-                                    <div className="mt-4 flex items-center justify-center text-5xl font-extrabold text-gray-900">
-                                        <span>$349</span>
-                                        <span className="ml-3 text-xl font-medium text-gray-500">
-                                            USD
-                                        </span>
-                                    </div>
-                                    <p className="mt-4 text-sm">
-                                        <a
-                                            href="#"
-                                            className="font-medium text-gray-500 underline"
-                                        >
-                                            Learn about our membership policy
-                                        </a>
-                                    </p>
-                                    <div className="mt-6">
-                                        <div className="rounded-md shadow">
-                                            <a
-                                                href="#"
-                                                className="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
-                                            >
-                                                Get Access
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div className="mt-4 text-sm">
-                                        <a
-                                            href="#"
-                                            className="font-medium text-gray-900"
-                                        >
-                                            Get a free sample{" "}
-                                            <span className="font-normal text-gray-500">
-                                                (20MB)
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <Testimonials />
-
-            <CTASimple />
+  return (
+    <div className="bg-gray-50">
+      <div className="relative pt-6 pb-16">
+        <div className="mt-16 mx-auto max-w-7xl px-4 sm:mt-24 sm:px-6">
+          <div className="text-center">
+            <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+              <span className="block">Super-charge your website with our</span>
+              <span className="block text-blue-600">speed optimization</span>
+            </h1>
+            <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+              Your customers have high web performance expectations for your
+              website. Improve your website load times by up-to 20x with our
+              website speed optimization service and get a similar rating as
+              below from Google.
+            </p>
+          </div>
         </div>
-    );
+      </div>
+
+      <div className="relative">
+        <div className="absolute inset-0 flex flex-col" aria-hidden="true">
+          <div className="flex-1" />
+          <div className="flex-1 w-full bg-gray-800" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-10">
+          <Image
+            className="relative rounded-lg shadow-lg"
+            layout="responsive"
+            width={1000}
+            height={490}
+            src={"/img/lighthouse-100.png"}
+            alt="App screenshot"
+          />
+        </div>
+      </div>
+      <div className="py-16 bg-gray-50 overflow-hidden lg:py-24">
+        <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
+          <svg
+            className="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4"
+            width={404}
+            height={784}
+            fill="none"
+            viewBox="0 0 404 784"
+            aria-hidden="true"
+          >
+            <defs>
+              <pattern
+                id="b1e6e422-73f8-40a6-b5d9-c8586e37e0e7"
+                x={0}
+                y={0}
+                width={20}
+                height={20}
+                patternUnits="userSpaceOnUse"
+              >
+                <rect
+                  x={0}
+                  y={0}
+                  width={4}
+                  height={4}
+                  className="text-gray-200"
+                  fill="currentColor"
+                />
+              </pattern>
+            </defs>
+            <rect
+              width={404}
+              height={784}
+              fill="url(#b1e6e422-73f8-40a6-b5d9-c8586e37e0e7)"
+            />
+          </svg>
+
+          <div className="relative">
+            <h2 className="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+              Why does your website speed matter?
+            </h2>
+            <p className="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">
+              47 per cent of e-commerce customers expect page loading speed of
+              less than two seconds until they consider leaving – 40 per cent of
+              users will leave the site in the third second of loading, before a
+              performance monitoring tool even detects their presence on the
+              site. The total conversion peak load time is just 2 seconds-faster
+              than millions of websites.
+            </p>
+          </div>
+
+          <div className="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+            <div className="relative">
+              <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
+                Improve your search ranking on Google
+              </h3>
+              <p className="mt-3 text-lg text-gray-500">
+                Google has weighed the loading speed of a site as essential
+                criterion since 2010, when deciding how it ranks in comparison
+                to other comparable sites. To put it another way, quicker
+                loading sites are seen more favorably than the slower
+                counterparts. By significantly speeding up the loading speed of
+                your websites we will help you boost your search ranking. We'll
+                send you a report before and after you've used our service.
+              </p>
+            </div>
+
+            <div
+              className="mt-10 -mx-4 relative lg:mt-0 justify-self-center"
+              aria-hidden="true"
+            >
+              <svg
+                className="h-96"
+                viewBox="0 0 400 400"
+                height="400"
+                width="400"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g transform="matrix(2,0,0,2,0,0)">
+                  <path
+                    d="M100.68,85.483a5.593,5.593,0,0,0-1.964-.214c-2.52.249-3.42,3.619-.757,4.17,1.021.209,2.008-.225,2.58.067.264.132.288.5.146.6a9.1,9.1,0,0,1-3.112.788.5.5,0,1,0,.078.993c1.365.014,2.6.206,3.824-.443a1.952,1.952,0,0,0-.177-3.405,3.82,3.82,0,0,0-2.262-.232c-.677.061-1.216.076-.935-.426.37-.679,1.759-.893,2.471-.921a.49.49,0,1,0,.108-.974Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M29.618,49.732a2.617,2.617,0,0,0-2.972-2.245c-.014-.641-.055-1.894-.059-2a7.9,7.9,0,0,1,.943-.067.49.49,0,1,0,.11-.974,9.944,9.944,0,0,0-1.152-.194,13.447,13.447,0,0,0-.334-1.439.491.491,0,0,0-.98.049c-.072.5-.161.878-.2,1.405-3.345.537-3.828,5.042.052,4.994.024.657.051,1.347.115,2-.524.075-1.037.133-1.5.2a.5.5,0,1,0,.078.994c.489,0,1.032.011,1.585.008.078.483.167.962.256,1.448a.5.5,0,1,0,.993-.071c.021-.486.057-.964.085-1.447C28.374,52.2,29.788,51.47,29.618,49.732Zm-5.6-2.388c-.282-.213.156-.914.415-1.152a1.584,1.584,0,0,1,.5-.3c.008.57.027,1.139.037,1.709A1.437,1.437,0,0,1,24.02,47.344ZM27.781,50.5a3.89,3.89,0,0,1-1.092.468c.011-.606,0-1.168-.014-1.829a1.826,1.826,0,0,1,.911.169C28.042,49.537,28.178,50.25,27.781,50.5Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M123.382,41.31c-.133-1.278-1.17-2.322-3.117-2.24-.018-.668-.045-1.335-.083-1.978a8.147,8.147,0,0,1,1.112-.09.491.491,0,1,0,.109-.975,9.743,9.743,0,0,0-1.315-.208c-.046-.508-.1-.988-.17-1.424a.491.491,0,0,0-.98.049c-.018.378-.035.845-.048,1.383a3.411,3.411,0,0,0-1.778.738,3.335,3.335,0,0,0-1.062,1.951c-.131,1.219.816,2.4,2.885,2.323.027.649.065,1.315.115,1.985-.575.086-1.143.149-1.65.224a.5.5,0,1,0,.077.993c.517,0,1.092.014,1.677.008.048.485.1.969.165,1.448a.5.5,0,0,0,.993-.071c-.007-.374-.007-.865-.006-1.436C122.077,43.805,123.555,43.075,123.382,41.31Zm-5.6-2.388c-.283-.213.156-.914.415-1.153a1.811,1.811,0,0,1,.67-.365c0,.553,0,1.146.014,1.767A1.581,1.581,0,0,1,117.784,38.922Zm3.76,3.154a4.106,4.106,0,0,1-1.237.507c0-.587,0-1.214-.01-1.861.684-.047,1.38.1,1.474.776A.563.563,0,0,1,121.544,42.076Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M170.224,35.794c-.122-1.21-1.113-2.2-2.908-2.13-.016-.589-.038-1.17-.069-1.727a7.323,7.323,0,0,1,.983-.088.49.49,0,0,0,.108-.974,8.951,8.951,0,0,0-1.184-.2c-.042-.46-.094-.89-.157-1.277a.49.49,0,0,0-.979.049c-.02.364-.037.776-.049,1.227a3.114,3.114,0,0,0-1.648.691,3.08,3.08,0,0,0-1,1.843c-.129,1.151.762,2.277,2.692,2.222.026.571.06,1.151.1,1.734-.519.08-1.032.14-1.491.21a.5.5,0,0,0,.079.994c.469,0,.988.017,1.518.015.044.436.093.87.149,1.3a.5.5,0,0,0,.994-.071c0-.389-.006-.82-.006-1.28C169.018,38.156,170.388,37.459,170.224,35.794Zm-5.2-2.252c-.138-.105-.047-.273.013-.42a1.418,1.418,0,0,1,.913-.86c0,.478,0,.981.012,1.5A1.368,1.368,0,0,1,165.019,33.542Zm3.415,2.919a3.656,3.656,0,0,1-1.08.457c0-.52,0-1.058-.009-1.6C168.757,35.228,168.791,36.24,168.434,36.461Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M63.752,37.174c-.689.524-1.221.382-7.516,2.736-2.936,1.128-4.963,2.549-4.751,5.731a3.414,3.414,0,0,0-1.969,3.429,6.4,6.4,0,0,0,1.535,2.949,2.47,2.47,0,0,0,1.081,4.6c-.4.9-.611,1.507-.97,2.382a.5.5,0,0,0,.869.487,19.588,19.588,0,0,0,2.175-3.429.823.823,0,0,0-1-1.142c-.986.32-2.156-.243-1.6-1.358.411-1.212.611-.158,1.273-.877a6.373,6.373,0,0,0,1.625-4.476c3.729-.639,6.678-2.179,8.587-5.5A9.985,9.985,0,0,0,64.373,39.4C64.569,38.214,64.669,36.389,63.752,37.174Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M64.9,52.489a19.865,19.865,0,0,0-4.139-5.183.49.49,0,0,0-.754.626c2.929,4.563,2.306,3.5,3.058,4.729l-.639.435c-.821.561.129,1.343-.451,3.422a3.335,3.335,0,0,1-1.312,1.957c-1.209.849-2.675.529-4.033.116-.1-.03-1.062-.24-1.276.023-.3.383.177,1.571,1.771,1.887l-.207,1.25a.5.5,0,0,0,.964.256l.451-1.448a9.954,9.954,0,0,0,1.722-.169c2.807-.6,4.038-3.334,3.742-6.209l.858-.594A.832.832,0,0,0,64.9,52.489Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M57.819 49.905 A0.704 1.067 0 1 0 59.227 49.905 A0.704 1.067 0 1 0 57.819 49.905 Z"
+                    fill="#191919"
+                    transform="translate(-13.249 22.261) rotate(-19.391)"
+                  ></path>
+                  <path
+                    d="M54.8,67.981c1.053-1.248,1.292-1.794,1.79-1.475.68.435-.365,1.293-1,3.062a.774.774,0,0,1-1.26.213c-.594-.61-1.186-1.222-1.742-1.868-3.52-4.086-3.255-4.068-3.928-5.056a.49.49,0,1,1,.7-.691C51.324,63.479,51.286,63.844,54.8,67.981Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M78.177,43.556A7.076,7.076,0,0,1,80.512,39.5a.5.5,0,1,0-.506-.858A4.757,4.757,0,0,0,77.2,43.546C77.318,44.193,78.031,44.222,78.177,43.556Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M20.214,101.727c1.565,1.1,4.125.945,5.966-1.294a.5.5,0,1,0-.7-.708,4.757,4.757,0,0,1-4.855,1.112C19.97,100.677,19.672,101.346,20.214,101.727Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M25.916,39.138a9.453,9.453,0,0,0-9.673,9.383,9.694,9.694,0,1,0,19.387,0A9.322,9.322,0,0,0,25.916,39.138Zm0,.989c6.972.265,10.892,8.9,5.7,14.091a8.072,8.072,0,0,1-11.4.009A8.283,8.283,0,0,1,25.916,40.127Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M119.68,30.716a9.454,9.454,0,0,0-9.674,9.382,9.694,9.694,0,1,0,19.387,0A9.32,9.32,0,0,0,119.68,30.716Zm0,.988c6.972.265,10.891,8.9,5.7,14.091a8.072,8.072,0,0,1-11.4.009A8.284,8.284,0,0,1,119.68,31.7Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M166.738,25.957a8.793,8.793,0,0,0-9.015,8.723,9.034,9.034,0,1,0,18.067,0A8.656,8.656,0,0,0,166.738,25.957Zm0,.989c6.374.261,10.02,8.184,5.23,12.965a7.412,7.412,0,0,1-10.47.009A7.622,7.622,0,0,1,166.738,26.946Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M99.34,81.389a7.412,7.412,0,0,0-7.635,7.343,7.655,7.655,0,1,0,15.309,0A7.275,7.275,0,0,0,99.34,81.389Zm0,.988c5.16.255,8.168,6.708,4.255,10.61a6.033,6.033,0,0,1-8.52.009A6.243,6.243,0,0,1,99.34,82.377Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M150.058,46.062a4.717,4.717,0,0,0-4.938,4.649,4.96,4.96,0,1,0,9.919,0A4.581,4.581,0,0,0,150.058,46.062Zm0,.989c2.745.222,4.573,3.8,2.352,6.01a3.34,3.34,0,0,1-4.709.009A3.545,3.545,0,0,1,150.058,47.051Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M173.011,45.945c-1.265,2.262-.654,6.8,1.721,6.812,1.739.005,2.446-2.413,2.426-4.192C177.114,44.672,174.34,43.569,173.011,45.945Zm1.934-.055c.988,1.071.488,5.2-.213,5.2-.644,0-1.337-3.9-.3-5.148C174.729,45.588,174.755,45.679,174.945,45.89Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M175.1,60.312a.5.5,0,0,0-.5-.49l-19.829-.177a.668.668,0,0,0-.667.667c-.116,24.824-.178,85.665-.165,110.46a.831.831,0,0,0,.832.831H174.6a.831.831,0,0,0,.83-.831C175.431,134.8,175.208,96.375,175.1,60.312Zm-1,.5-18.656.166c.223,26.559.19,76.256.16,108.969h18.168C173.769,134.447,173.857,99.97,174.1,60.807Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M135.4,96.775a.5.5,0,0,0-.5-.49l-19.829-.232a.721.721,0,0,0-.721.722c-.093,36.709-.095,50.044-.111,74.315a.829.829,0,0,0,.832.829H134.9a.828.828,0,0,0,.825-.829C135.7,156.557,135.633,164.663,135.4,96.775Zm-1,.5-18.6.217c.128,13.03.1,45.5.1,72.773h18.171C134.078,149.138,134.155,127.524,134.4,97.271Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M89.392,124.246a.5.5,0,0,0-.5-.49c-3.616-.036-7.316-.112-11.009-.179,1.483-.46,1.948-1.891.528-2.587a41.589,41.589,0,0,0-5.987-1.517c-.737-.134-2.5-.551-2.173-1.224,1.22-2.5,2.6-5.026,3.624-7.673,1.622-4.206,2.735-8.862.994-12.971-3.479-8.213-15.179-7.249-15.077-7.74.2-.958.146-2.065.415-2.916,1.12-3.507,2.469-6.8,2.975-10.463,3.019,1.49,7.938,1.691,12.411-.466,6.8-3.274,11.393-11.138,9.777-21.587a19.645,19.645,0,0,0-2.072-6.8.821.821,0,0,0-.615-.405c-.61-2.617-.63-5.231,1.089-7.47a.49.49,0,0,0-.7-.691,7.048,7.048,0,0,0-1.315,8.863c-.714,2.1-3.451,3.113-3.987,2.746-.247-.169-.214-.369-.32-.8-.643-2.7-3.877-6.061-1.561-9.72a.5.5,0,0,0-.786-.612c-2.092,2.183-1.983,4.513-.769,7.271.473,1.081,1.43,3.013,1.929,3.884a1.96,1.96,0,0,1,.231,1.072c.562,5.821-4.916,10.4-10.616,11.134-3.322.424-4.116.485-6.627-1.458a.837.837,0,0,0-1.286.352l-1.116,2.574c-.1-.076-6.137-4.933-6.429-5.223a.833.833,0,0,0-1.036-.113c-.739.467-1.469,1.037-2.152,1.563C33.669,58.476,18,73.516,23.133,91.328a4.237,4.237,0,0,0,1.149,1.819c-.416,2.58-1.014,5.474-4.31,4.464a.5.5,0,1,0-.416.906c2.646,1.7,5.21.118,5.918-2.779a4.664,4.664,0,0,0,.162-1.582,6.5,6.5,0,0,0,4.2.835c-.873,9.1-5.447,8.441-5.113,9.653.179.647,1.505.222,2.128-.028,2.366-.954,4.86-5.206,4.123-10a3.048,3.048,0,0,0,1.273-1.236c.093-.149,1.076-3.675,2.474-9.767,1.253-.423,2.49-.905,3.71-1.457a41.929,41.929,0,0,0-2.415,5.137c-.778,2.251-1.135,4.759.431,6.568A5.179,5.179,0,0,0,38.905,95.4a16,16,0,0,0,2.408,8.9c-.1,5.486-3.381,32.415-7.676,44.6a.809.809,0,0,0,.171.69,32.485,32.485,0,0,0,3.38,3.257,5.55,5.55,0,0,0,1.277.811c-4.084-.093-7.877-.17-11.954-.163a.829.829,0,0,0-.829.825V171.3a.83.83,0,0,0,.829.833c6.307,0,13.54-.039,19.829-.065a.767.767,0,0,0,.77-.768c-.161-17.99-.185-17.032-.37-17.273a2.123,2.123,0,0,0-.657-3.328c-1.422-.809-2.738-.4-4.011-.746-1.325-.339-1.638-2.481-2.365-4.182-.006-.054,9.743-26.838,12.779-45.819,2.978-.645,7.689-.784,10.28-.017,4.843,1.434,6.192,3.37,5.122,8.743a38.107,38.107,0,0,1-4.9,13.115,1.089,1.089,0,0,0,.874,1.317c.445.141,4.743.438,4.843.445-.613.32-.492-2.358-.471,48.384a.826.826,0,0,0,.832.825H88.892a.824.824,0,0,0,.819-.825C89.708,156.795,89.477,139.424,89.392,124.246ZM45.585,170.522c-4.573-.034-9.733-.058-18.245-.059V155.142c6.968,0,11.588-.07,18.494-.319Zm-3.928-19.149c.968.3,3.976.272,3.976,1.175-3.809.282-3.393.3-3.923.291a6.687,6.687,0,0,1-3.4-1.226c-.974-.883-2.115-1.808-2.993-2.766l.27-1.122a19.247,19.247,0,0,0,3.224-1.3C39.413,148.424,39.575,150.691,41.657,151.373ZM55.962,92.11a28.277,28.277,0,0,1-3.933,1.156c.926-2.171,2.345-5.9,2.918-7.123,2.168-4.839,5.269-10.078,4.416-15.622a19.136,19.136,0,0,0-.882-3.375.49.49,0,0,0-.948.249,22.919,22.919,0,0,1,.341,3.269c.216,5.758-1.548,8.32-4.4,14.826-1.154,2.753-1.856,5.606-2.692,8.1-.663.176-1.327.353-2,.511-2.333.549-9.532,1.494-11.54-.925-2.308-2.779,1.067-8.114,2.823-11.311.343-.623.283-.4,1.99-1.561a7.851,7.851,0,0,0,2.813-2.776c.245-.335.436-1.458-1.772.012-3.713,2.442-3.182,2.78-8.1,4.451.1-.538.257-1.895-.265-2.074-1.323-.459-.994,2.166-3.869,12.689-1.061,1.891-5.57.423-6.18-1.726C19.848,73.894,35.007,60.1,47.308,62.31c.59.106.714-.3,2.44-1.5.117.108,6.338,5.1,7,5.54a.836.836,0,0,0,1.241-.4L59.1,63.405a13.556,13.556,0,0,0,1.164.713.494.494,0,0,0-.3.632c.109.667,0,.238.34,2.519-.1-.039-.223-.083-.364-.138a.491.491,0,0,0-.69.078c-.5.628,1.194,2.015,1.563,2.329a.831.831,0,0,0,1.345-.729,10.778,10.778,0,0,0-.644-3.246c-.846-1.876-1.133-.909,1.222-.767a18.2,18.2,0,0,0,3.356-.235c6.23-.8,12.216-5.7,12.1-12.122A6.7,6.7,0,0,0,82.569,49.9a25.333,25.333,0,0,1,1.11,12.932C81.692,72.7,72.773,77.651,65.385,75.763a8.061,8.061,0,0,1-1.945-.754c.006-.919-.269-2.893-1.166-2.711-.651.133-.559,1.584-.52,2.18C62,78.151,60.4,81.91,58.969,86.561,58.214,89,59.58,90.61,55.962,92.11Zm8.765,29.461c.062-.123,3.124-1.612,4.233-2.136a.591.591,0,0,1,.669.115c1.539,1.524,5.087,1.909,7.094,2.592a30.933,30.933,0,0,1-3.886-.013C64.138,121.762,64.652,121.721,64.727,121.571Zm23.35,49.539H69.9c.015-22.234-.011-33.02-.047-46.089,6.375-.066,11.881-.146,18.541-.275C88.237,137.879,88.091,155.521,88.077,171.11Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M11.619,166.166a10.555,10.555,0,0,1,.451-5.662c1.441-3.8,5.235-4.246,7.678,2.058.489-1.287,1.214-2.493,2.509-1.975,1.329.532,2.408,3.081,2.7,4.383a.5.5,0,0,1-.969.23c-.284-1.152-1.815-4.011-2.429-3.33-.6.662-.912,2.659-.962,3.779a.738.738,0,0,1-1.456.121,17.581,17.581,0,0,0-.53-1.811c-.529-1.517-2.117-4.88-3.6-4.583-.6.122-1.045.776-1.4,1.712a9.688,9.688,0,0,0,.338,7.1.837.837,0,0,1-1.334.941c-2.056-1.884-6.563-4.729-8.4-4.057-.833.314,2.667,5.7,5.415,7.87a.49.49,0,0,1-.589.782c-2.28-1.637-7.109-6.429-6.5-8.971.42-1.755,2.711-1.534,4.44-.993A16.582,16.582,0,0,1,11.619,166.166Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M8.764,169.545a24.2,24.2,0,0,0,5.458,4.41.5.5,0,0,0,.6-.794,50.29,50.29,0,0,0-5.4-4.344C8.854,168.453,8.352,169.043,8.764,169.545Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M15.1,164.921a45.344,45.344,0,0,0,3.737,7.379.5.5,0,0,0,.884-.461,50.093,50.093,0,0,0-3.75-7.367A.49.49,0,1,0,15.1,164.921Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M52.377,161.741c.747-2.674,3.094-6.93,5.169-8a2.776,2.776,0,0,1,3.857,1.377c1.159,2.106.877,5.512.54,7.895,2.22-.945,4.28.285,4.571,2.819.256,2.226-.651,4.234-1.42,6.337a.5.5,0,0,1-.943-.326c.6-1.813,1.306-3.964.991-5.817-.218-1.284-1.023-2.1-2.341-1.649a8.368,8.368,0,0,0-1.483.876.809.809,0,0,1-1.226-.809c.343-2.247,1.159-7.9-.724-9.186-1.28-.88-2.949,1.908-3.766,3.207a16.294,16.294,0,0,0-2.072,5.128.76.76,0,0,1-1.388.276c-.858-1.4-1.873-2.676-3.481-2.988a.49.49,0,0,1,.131-.972A5.426,5.426,0,0,1,52.377,161.741Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M56.619,161.106c-.265.9-.662,1.542-1.137,6.693-.055.588-.463,5.089.538,5.094.512,0,.464.223,1.321-6.7.463-3.736.4-3.372.253-4.989A.49.49,0,0,0,56.619,161.106Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M63.083,152.886c3.006-3.559,3.071-.364,4.039-.963a.5.5,0,0,0,.159-.683,3.014,3.014,0,0,0-.975-1.33c-1.452-1.115-3.586.424-4.536,2.049-.26.446-.741,1.682-.231,1.956C61.928,154.123,62.8,153.221,63.083,152.886Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M92.479,160.6c2.667-7.12,3.681-7.934,6.845-15.046a.5.5,0,0,0-.879-.469c-1.715,2.745-2.332,3.634-3.875,6.589a50.783,50.783,0,0,0-3.6,8.432c-.161.558-.966,3.611-.207,3.784C91.316,164.011,91.383,163.522,92.479,160.6Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M109.263,147.889a25.15,25.15,0,0,0,.735,4.832,19.118,19.118,0,0,0,2.743,6.392.5.5,0,1,0,.885-.457,65.645,65.645,0,0,1-2.011-6.331c-.971-4.085-.76-7.049-1.684-7.03C109.274,145.308,109.254,147.241,109.263,147.889Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M144.159,138.651c-1.694,13.213-.468,24.293-.541,28.638a.5.5,0,0,0,1,.04c.18-2.925.283-5.26.28-8.16-.014-12.609.483-11.255.245-20.468a.491.491,0,0,0-.98-.05Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M176.884,125.46c.453-.963,1.909-3.424,2.905-3.307,3.446.4,1.872,12.012.448,17.145a1.691,1.691,0,0,0,.007.941c.149.509.561,1.823,1.09,1.752a.5.5,0,0,0,.426-.56c-.04-.486-.312-.978-.4-1.454-.078-.422.577-1.328,1.344-4.524,1.086-4.516,1.74-14.494-2.745-14.914-2.154-.2-3.4,2.5-4,4.578A.49.49,0,0,0,176.884,125.46Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M177.238,133.622a85.709,85.709,0,0,0-1.066,14.862.5.5,0,0,0,1,.041c.322-3.9.865-10.88,1.044-14.79A.49.49,0,0,0,177.238,133.622Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M185.787,138.557c-.271-4.484,1.745-8.782,4.789-12.183,1.774-1.983,4.546-3.423,6.075-1.248,1.065,1.516,1,4.617.533,6.414a32.11,32.11,0,0,1-4.507,10.143,13.768,13.768,0,0,1-4.293,11.464,21.164,21.164,0,0,1-6.209,14.475.5.5,0,0,1-.708-.7,19.976,19.976,0,0,0,5.441-14.052.735.735,0,0,1,.232-.567,12.34,12.34,0,0,0,3.883-10.689.805.805,0,0,1,.131-.585,30.482,30.482,0,0,0,4.421-9.9c.37-1.439.482-4.774-.607-5.328-1.7-.871-5.317,3.995-6.544,7.016a12.9,12.9,0,0,0-.967,6.1.82.82,0,0,1-.4.785,11.967,11.967,0,0,0-6.046,9.123c-.047.644-.856.635-2.418,3a10.782,10.782,0,0,0-1.447,3.048.49.49,0,0,1-.948-.245,13.584,13.584,0,0,1,3.465-6.149A12.874,12.874,0,0,1,185.787,138.557Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M181.443,159.107c4.748-11.954,6.036-13.348,10.315-23.257a.5.5,0,0,0-.905-.417c-1.453,2.984-8.232,15.239-10.9,23.129-.035.1-1.741,5.113-.919,5.356C179.57,164.075,179.523,163.942,181.443,159.107Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M175.965,125.117c.595-2.083,1.841-4.778,4-4.578,1.681.158,2.64,1.658,3.125,3.709a.5.5,0,0,0,.31-.605,5.955,5.955,0,0,0-.977-2.136c.014-.1,3.186-43.035-5.417-52.188a.836.836,0,0,0-1.441.646c.879,9.987.326,20.3.255,30.4-.018,7.986.579,16.868-.231,24.77a.622.622,0,0,0,.843.644A.49.49,0,0,1,175.965,125.117Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M152.687,136.4c-.079-9.629.537-19.6.554-29.3.007-11.927-.318-24.8-.165-36.414a.809.809,0,0,0-.847-.819c-4.41.206-7.87,5.36-8.736,9.656-1.22,6.081-.094,13.568-3.156,18.945a16.641,16.641,0,0,1-4.184,4.213.83.83,0,0,0-.3.7c.007.1.507,27.87.362,38.824-.083,6.445.029,12.884,0,19.322-.034,8.877-.321,8.449.117,8.874a.837.837,0,0,0,.626.236l3.069-.269a.831.831,0,0,0,.655-1.225,11.224,11.224,0,0,1,.016-10.6.827.827,0,0,0-.187-.965,5.952,5.952,0,0,1-.653-.706,9.1,9.1,0,0,0,.6.971.735.735,0,0,1,.075.728c-1.486,3.273-2.049,7.1-.5,10.362a.49.49,0,0,1-.88.429,13.515,13.515,0,0,1-.133-10.994c-3.189-4.771-2.195-11.4.485-16.422,2.105-3.944-.835-10.008,1.787-14.513,3.493-6,7.485-4.659,8.989,1.354,1.1,4.409.189,8.6-1.214,12.92a19.706,19.706,0,0,1,.421,15.813c2.027,3.882.874,9.253-1.551,12.751a.5.5,0,0,1-.751.082.532.532,0,0,0,.072.181c.329.532.774.028,3.58.06.131,0,.773.021,1.443.1a.631.631,0,0,0,.7-.568C154.03,158.918,152.774,147.606,152.687,136.4Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M139.018,158.377c-3.189-4.771-2.195-11.4.485-16.422,2.105-3.944-.835-10.008,1.787-14.513,3.494-6,7.485-4.659,8.989,1.354,1.1,4.409.189,8.6-1.214,12.92a19.706,19.706,0,0,1,.421,15.813c2.027,3.882.874,9.253-1.551,12.751a.5.5,0,0,1-.823-.563c2.2-3.275,3.088-8.423,1.039-11.818a.671.671,0,0,1-.029-.635c2.09-4.421,1.586-10.837-.637-15.113a.808.808,0,0,1-.05-.621c1.318-4.077,2.29-8.158,1.235-12.33-1.291-5.108-3.495-5.1-5.934-.916-2.282,3.915.63,9.977-1.771,14.453-2.447,4.561-3.508,10.866-.506,15.115a.735.735,0,0,1,.075.728c-1.486,3.272-2.048,7.1-.5,10.362a.49.49,0,0,1-.88.429A13.515,13.515,0,0,1,139.018,158.377Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M113.775,161.978c-.639-.228.375.017.077.619a.491.491,0,0,1-.658.218,8.126,8.126,0,0,1-5.183-5.678c-4.028-1-4.532-7.76-1.462-10.377a11.417,11.417,0,0,1,.053-5.688c.954-3.249,3.9-4.563,5.857-1.476a6.37,6.37,0,0,1,.747,1.687.8.8,0,0,0,.178-.487c.335-12.033-.416-24.834.05-36.642a.833.833,0,0,0-.791-.862c-4.165-.21-8.64.634-10.951,4.087-2.854,4.261-1.9,10.427-3.271,15-1.188,3.952-3.588,4.948-7.519,5.922a.829.829,0,0,0-.628.87c.472,6.33.291,13.007.228,19.285a.888.888,0,0,1-.079.365c-.26.56-.168.886.075,1.033a7.435,7.435,0,0,1,1.72-3.106,19.359,19.359,0,0,1,5.074-12.418c3.731-4.138,6.258-2.709,7.324.909.69,2.348.959,8.2-.463,13.612a26.919,26.919,0,0,1-3.783,8.431c-2.913,4.222-1.246,7.829-5.7,10.909a6.859,6.859,0,0,1-1.606,4.022l2.208-.271a.491.491,0,0,0,.423-.518,7.249,7.249,0,0,1,.757-1.819,4.038,4.038,0,0,0-.722,1.57.49.49,0,0,1-.972-.129c.161-2.578,2.206-4.432,4.53-5.56a9.175,9.175,0,0,1,1.4-6.115,3.193,3.193,0,0,1,3.526-1.515,5.691,5.691,0,0,1,3.375,3.49c3.831,1.085,5.457,4.967,6,8.887a.5.5,0,0,1-.985.154,10.647,10.647,0,0,0-3.395-6.449c1.824,1.662,2.676,4.176,3.483,6.855a.681.681,0,0,0,1.331-.172c.121-2.606.035-5.32.23-7.914A.72.72,0,0,0,113.775,161.978Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M92.218,146.746a19.359,19.359,0,0,1,5.074-12.418c3.731-4.138,6.258-2.71,7.324.909.69,2.348.959,8.2-.463,13.612a26.919,26.919,0,0,1-3.783,8.431c-2.913,4.222-1.246,7.829-5.7,10.909a6.95,6.95,0,0,1-2.237,4.693.5.5,0,0,1-.69-.719,5.827,5.827,0,0,0,1.726-4.3.608.608,0,0,1,.266-.507c4.217-2.916,2.142-6.2,5.327-10.965a28.63,28.63,0,0,0,4.421-16.642c-.223-5.425-1.31-8.331-4.967-4.313a20.183,20.183,0,0,0-4.488,8.432c-.718,2.833-.267,3.263-.719,3.645a6.675,6.675,0,0,0-2.125,3.715.49.49,0,0,1-.962-.186A8.115,8.115,0,0,1,92.218,146.746Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M99.289,165.484a9.175,9.175,0,0,1,1.4-6.115,3.193,3.193,0,0,1,3.526-1.515,5.691,5.691,0,0,1,3.375,3.49c3.831,1.085,5.457,4.967,6,8.887a.5.5,0,0,1-.985.154c-.593-3.356-2.478-6.933-5.8-7.561a.81.81,0,0,1-.62-.562,4.674,4.674,0,0,0-1.886-2.586c-.916-.537-1.631-.181-2.259.68a8.171,8.171,0,0,0-1.073,5.546.815.815,0,0,1-.493.833c-1.958.823-4.313,2.335-4.743,4.438a.49.49,0,0,1-.972-.129C94.92,168.466,96.965,166.612,99.289,165.484Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M106.549,146.76a11.417,11.417,0,0,1,.053-5.688c.954-3.249,3.9-4.563,5.857-1.476a9.073,9.073,0,0,1,1.049,5.5.5.5,0,0,1-1-.033,7.878,7.878,0,0,0-1.185-4.7c-2.313-3.219-4.392,2.066-3.031,6.491a.828.828,0,0,1-.365.955c-2.453,1.478-2.32,7.486.837,7.815a.81.81,0,0,1,.716.658,7.917,7.917,0,0,0,4.15,5.661.49.49,0,1,1-.44.876,8.126,8.126,0,0,1-5.183-5.678C103.983,156.14,103.479,149.377,106.549,146.76Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M48.792,159.905a5.426,5.426,0,0,1,3.585,1.836c.747-2.674,3.094-6.929,5.169-8a2.776,2.776,0,0,1,3.857,1.377c.5.9-.135.562,1.092-1.631-.342.3-.73.553-.956.432-.51-.274-.029-1.51.231-1.956.95-1.625,3.084-3.165,4.536-2.049a3.007,3.007,0,0,1,.963,1.3c.111-7.41.017-12.979-.156-20.606a.836.836,0,0,0-.9-.814c-6.316.48-9.837,4.43-10.544,10.8-.333,2.96-.062,5.99-.687,8.924a6.783,6.783,0,0,1-1.324,2.7,24.227,24.227,0,0,1-5.5,4.824.568.568,0,0,0-.344.47,12.057,12.057,0,0,0,.2,2.951c.066.41.165.36.456.353A.491.491,0,0,1,48.792,159.905Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M65,151.254c.6.238.915,1.265,1.73.974a.8.8,0,0,0,.393-.305C66.434,152.358,66.183,150.824,65,151.254Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M25.184,156.53a.822.822,0,0,0-.794-.813c-2.85-.079-5.792.475-7.6,2.521a8.853,8.853,0,0,1,2.961,4.324c.489-1.287,1.214-2.493,2.509-1.975,1.5.6,2.78,4.032,2.711,4.574C25.125,164.823,25.2,157.534,25.184,156.53Z"
+                    fill="#2563eb"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <svg
+            className="hidden lg:block absolute right-full transform translate-x-1/2 translate-y-12"
+            width={404}
+            height={784}
+            fill="none"
+            viewBox="0 0 404 784"
+            aria-hidden="true"
+          >
+            <defs>
+              <pattern
+                id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d"
+                x={0}
+                y={0}
+                width={20}
+                height={20}
+                patternUnits="userSpaceOnUse"
+              >
+                <rect
+                  x={0}
+                  y={0}
+                  width={4}
+                  height={4}
+                  className="text-gray-200"
+                  fill="currentColor"
+                />
+              </pattern>
+            </defs>
+            <rect
+              width={404}
+              height={784}
+              fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)"
+            />
+          </svg>
+
+          <div className="z-10 relative mt-12 sm:mt-16 lg:mt-24">
+            <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
+              <div className="lg:col-start-2">
+                <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
+                  Put Images on a Diet
+                </h3>
+                <p className="mt-3 text-lg text-gray-500">
+                  The main reason why optimizing your images is so important is
+                  that 90% of most webpages rely heavily on graphics, so there
+                  is a great deal of digital images. Having left these images
+                  uncompressed and in the wrong format can significantly slow
+                  loading speed of your website. Enhancing web images can reduce
+                  your total loading time by 80 percent. Full optimization of
+                  images can be quite a process to perfect, as there are such a
+                  wide range of image data which you might be dealing with.
+                </p>
+              </div>
+
+              <div className="mt-10 -mx-4 relative lg:mt-0 lg:col-start-1 justify-self-center">
+                <svg
+                  viewBox="0 0 400 400"
+                  height="400"
+                  width="400"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g transform="matrix(2,0,0,2,0,0)">
+                    <path
+                      d="M148.081,53.659a7.878,7.878,0,0,1-.027,1.351.682.682,0,0,1-.53.366c-1.4.055-2.8.088-4.2.088-14.064,0-45.457-.017-47.13-.017V61.3c.29,0,34.526-.12,51.39-.175,1.11,0,.929-.175,1.246.957.066.23.126.459.2.733h-52.9v4.478h.727q6.858.017,13.714.044a3.964,3.964,0,0,1,.848.088.933.933,0,0,1,.793.984.948.948,0,0,1-.793.99,4.773,4.773,0,0,1-1.039.087c-4.725.005-9.449.005-14.217.005v3.347c7.234,0,27.652.022,30.649.044a4.092,4.092,0,0,1,1.033.131.88.88,0,0,1,.678.99.964.964,0,0,1-.8.913,3.387,3.387,0,0,1-.782.06L97.6,75.04c-.475,0-.951-.044-1.454-.071v3.144c2.548,0,5.058-.006,7.568,0a1.224,1.224,0,0,1,1.443,1.094c.011.284-.3.623-.547.858a1.072,1.072,0,0,1-.678.192c-2.581.011-5.156,0-7.781,0V88h54.485a4.712,4.712,0,0,1,.782.038,1.416,1.416,0,0,1,1.3,1.395c.269,5.908.214,62.45.213,64.951a12.794,12.794,0,0,1-.06,1.372c-.082.755-.306.946-1.055.946-3.07.007,6.014-.011-55.666-.011v5.791c89.5,0,64.861-.246,69.112.011a5.292,5.292,0,0,0,3.5-1.258,9.079,9.079,0,0,0,3.707-6.25,22.626,22.626,0,0,0,.29-3.325q.033-33,.038-66.006c0-1.553.093-3.1.143-4.653,0-.088,0-.175.016-.263.06-.437.18-.814.738-.825s.711.372.738.809c.082,1.307.181,2.619.181,3.932.042,18.8,0,52.3.038,66.728a17.526,17.526,0,0,1-1,6.758A10.278,10.278,0,0,1,167.805,164a6.567,6.567,0,0,1-2.346.405c-5.921.007-64.221.066-70.14.011a.9.9,0,0,1-1-.837,4.283,4.283,0,0,1-.038-.591c-.011-35.28-.017-107.585,0-108.46.016-.766.229-.99.973-.99q24.4-.033,48.809-.055C145.407,53.506,146.736,53.6,148.081,53.659Zm-6.146,79.48c.608-.7,4.344-5.621,8.011-10.34a2.259,2.259,0,0,0,.536-1.482q0-15.117.022-30.239v-.771h-54.4v.623c-.018,25.094-.014,22.079.028,22.884a2.077,2.077,0,0,0-.033.257c-.018,28.623-.02,25.876.044,26.515.852-.468,8.8-5.415,12.391-7.841.88-.6,1.241-.645,2.1-.022,3.112,2.234,17.85,11.992,20.664,13.851C133.422,144.2,141.853,133.244,141.935,133.139Zm-12.67,14.638a1.875,1.875,0,0,0-.273-.295c-6.988-4.932-.242-.436-19.018-12.522a.684.684,0,0,0-.875-.022c-.6.39-12.86,8.258-12.96,8.322v4.522C107.169,147.777,118.154,147.777,129.265,147.777Zm-33.137,6.677h54.31v-3.762H96.128Zm54.31-27.784-.153-.049c-5.534,7.032-11.068,14.064-16.7,21.211.509.027.831.06,1.154.06,5,.022,10.012.033,15.016.076.59.006.727-.164.727-.738C150.46,140.768,150.485,127.556,150.438,126.67Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M195,54.824a22.567,22.567,0,1,1-22.583-22.633A22.416,22.416,0,0,1,195,54.824Zm-42.766.913c1.028,2.018-2.436-4.082,8.442,13.8.3.5.553.552,1.023.175,4.14-3.32,12.83-9.945,29.632-24.377-.159-.148-.246-.235-.35-.317-1.969-1.553-3.943-3.112-5.911-4.659-.744-.58-.76-.591-1.444.1-.1.1-19.424,19.752-20.358,20.648-.479-1.1-1.725-5.195-2-6.135-.169-.591-.432-.706-.978-.6C159.822,54.472,161.164,54.228,152.232,55.737Z"
+                      fill="#2563eb"
+                    ></path>
+                    <path
+                      d="M89.342,62.928c-10.494.01-1.252-.056-61.473.011a8.266,8.266,0,0,0-2.274.175,8.836,8.836,0,0,0-5.742,5.167,14.5,14.5,0,0,0-.935,6.037q.033,26.6.022,53.21v.826c1.646-.257,1.646-.257,1.646-1.744,0-17.739-.022-35.472.027-53.211.006-2.893.771-5.583,3.248-7.475a5.64,5.64,0,0,1,3.527-1.339c20.111.021,40.2.011,60.937.011v5.8c-.235,0-27.821.04-58.9.114-2.138.006-4.276.208-6.414.318-.47.022-.853.2-.858.7-.006.552.4.722.9.733,1.57.044,3.145.12,4.72.12,14.891.015,45.837.017,60.5.017v4.155c-4.5,0,13.327.006-42.143-.016a1.474,1.474,0,0,0-.585.022c-.284.125-.656.279-.766.519a3.833,3.833,0,0,0-.36,1.5c-.033,8.766-.1,44.954-.126,50.641-.006.918.18,1.11,1.115,1.115.438,0,42.625.006,42.816.016v7.382c-.284,0-7.24.022-10.477.044a2.335,2.335,0,0,0-1.028.121c-.263.136-.585.513-.558.749a1.183,1.183,0,0,0,.662.738,2.8,2.8,0,0,0,1.1.087c3.215.017,10.105.033,10.307.033v2.576c-.158,0-15.688.027-23.343.043a1.965,1.965,0,0,0-.957.126,1.055,1.055,0,0,0-.514.771c.022.252.361.547.629.689a1.935,1.935,0,0,0,.842.071c7.568.017,23.13.049,23.371.049v2.379c-.219,0-3.883.006-5.523.022-.706,0-1.11.328-1.11.842s.388.815,1.121.842c.437.017.875.017,1.312.017h4.189v9.585c-.3,0-37.32-.038-41.651-.016a1.027,1.027,0,0,0-.694.2,14.021,14.021,0,0,0-.892,1.5c.437,0,38.567-.038,44.057-.055.935,0,.935.028.935-.908,0-24.059.011-87.047.022-94.484C90.015,63.278,90,62.928,89.342,62.928Zm-1.1,65.6H46.221V125.6H88.238Zm-42.029-5.119V106.618c4.435,5.632,8.782,11.15,13.217,16.787Zm42.056-.082H62.9c-.022-.043-.038-.082-.06-.125,2.925-2.061,1.747-1.452,14.972-9.859a.923.923,0,0,1,.8-.017q4.666,2.961,9.3,5.988a.824.824,0,0,1,.334.558C88.282,121.005,88.265,122.137,88.265,123.323Zm-.044-5.889c-2.524-1.561-1.7-.982-9.476-6.075a1.059,1.059,0,0,0-1.279.082c-1.635,1.1-15,10.185-16.323,10.9-.782-.963-11.154-14.551-14.7-18.811a1.277,1.277,0,0,1-.268-.765q-.033-12.042-.028-24.082c0-.082.017-.17.028-.317H88.243S88.244,116.985,88.221,117.434Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M34.212,165.658A20.152,20.152,0,0,1,10.4,161.486c-9.344-9.865-5.922-24.733,5.25-30.556a20.147,20.147,0,0,1,28.532,11.2C46.9,149.874,44.319,160.321,34.212,165.658ZM24.244,143.84c-.585-.552-6.037-5.5-8.219-7.4-.842-.738-1.339-.793-2.039-.235a11.689,11.689,0,0,0-1.362,1.389,1.251,1.251,0,0,0-.033,1.684c.443.645,5.343,6.66,7.339,9.033.268.323.448.564.1,1.007-2.024,2.57-4.009,5.167-6,7.764a.9.9,0,0,0,.143,1.46q1.984,1.7,3.991,3.385a1.215,1.215,0,0,0,1.942-.317c1.142-1.8,4.265-6.726,4.719-7.437.41.438,4.358,5.026,5.982,6.934.815.962,1.29,1.159,2.307.465a37.377,37.377,0,0,0,4.036-3.281c.656-.6.536-1.252-.1-1.876q-3.593-3.526-7.185-7.054c-.416-.41-1.083-.814-1.138-1.279s.514-1,.821-1.493c1.733-2.827,3.456-5.66,5.2-8.476.214-.344.235-.612-.06-.858-.815-.689-1.618-1.389-2.471-2.029a.923.923,0,0,0-1.351.181C30.2,136.206,25.824,141.795,24.244,143.84Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M34.037,67.548A1.094,1.094,0,0,1,32.862,68.6a1.135,1.135,0,0,1-1.154-1.22,1.1,1.1,0,0,1,1.154-1.077A1.231,1.231,0,0,1,34.037,67.548Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M37.122,66.17a1.116,1.116,0,0,1,1.137,1.1,1.1,1.1,0,0,1-1.083,1.143,1.152,1.152,0,0,1-1.17-1.148A1.051,1.051,0,0,1,37.122,66.17Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M28.455,66.187a1.011,1.011,0,0,0-.985,1.082,1.044,1.044,0,0,0,1.045,1.04.994.994,0,0,0,1-1A1.156,1.156,0,0,0,28.455,66.187Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M96.134,113.82c.8-.738,1.607-1.477,2.4-2.226.979-.913,1.324-.864,2.2.153,1.892,2.2,3.817,4.369,5.72,6.562q3.224,3.7,6.43,7.415c.9,1.039,1.821,2.061,2.712,3.106.263.306.427.158.646-.027l6.643-5.726c.416-.355.815-.721,1.231-1.077.924-.793,1.9-.76,3.029.1,1.717,1.307,3.429,2.63,5.151,3.932q4.462,3.37,8.946,6.72a7.527,7.527,0,0,0,.678.388c-7.264,9.386-5.088,6.592-10.149,12.905-.136.17-.29.323-.475.531-4.5-2.957-13.97-9.293-18.2-12.123-.836-.558-1.651-1.143-2.466-1.728-.864-.624-1.219-.574-2.1.022-3.083,2.1-8.487,5.438-11.872,7.557-.142.087-.3.164-.519.284-.022-.219-.049-.383-.049-.541q0-12.985,0-25.974C96.106,114,96.123,113.907,96.134,113.82Z"
+                      fill="#2563eb"
+                    ></path>
+                    <path
+                      d="M129.265,147.777H96.139v-4.522c.1-.064,12.387-7.948,12.96-8.323a.679.679,0,0,1,.875.022c18.738,12.062,12.019,7.583,19.018,12.522A2.782,2.782,0,0,1,129.265,147.777Z"
+                      fill="#2563eb"
+                    ></path>
+                    <path
+                      d="M150.438,126.67c.047.9.021,12.116.049,20.566,0,.568-.136.743-.727.738-5-.044-10.012-.055-15.016-.077-.322,0-.645-.032-1.153-.06,5.626-7.147,11.166-14.179,16.7-21.211C150.34,126.637,150.389,126.654,150.438,126.67Z"
+                      fill="#2563eb"
+                    ></path>
+                    <path
+                      d="M86.4,94.676a.736.736,0,0,0-1.1.115c-1.367,1.585-2.718,3.187-4.085,4.768-2.5,2.887-5.014,5.758-7.5,8.65-.361.422-.624.394-1.012.055-1.875-1.635-3.773-3.243-5.648-4.872a1.762,1.762,0,0,0-2.723-.093c-1.818,1.386-9.32,7.085-11.28,8.576,3.789,4.877,7.633,9.9,8.1,10.47,1.322-.719,14.689-9.8,16.323-10.9a1.059,1.059,0,0,1,1.279-.082c7.778,5.093,6.951,4.514,9.476,6.075.012-.236.018-11.02.02-21.2l0,0S86.811,95,86.4,94.676Z"
+                      fill="#2563eb"
+                    ></path>
+                    <path
+                      d="M62.838,123.2c1.351-.952,2.68-1.947,4.063-2.849q5.43-3.543,10.9-7.01a.9.9,0,0,1,.8-.017q4.675,2.961,9.3,5.988a.8.8,0,0,1,.333.558c.033,1.131.017,2.269.017,3.455H62.893A.83.83,0,0,0,62.838,123.2Z"
+                      fill="#2563eb"
+                    ></path>
+                    <path
+                      d="M46.21,106.618c4.434,5.638,8.781,11.15,13.216,16.787H46.21Z"
+                      fill="#2563eb"
+                    ></path>
+                    <path
+                      d="M144.046,100.729a4.764,4.764,0,0,1-4.84,4.921,4.832,4.832,0,0,1-4.877-4.861,5.148,5.148,0,0,1,4.872-5.238A4.919,4.919,0,0,1,144.046,100.729Z"
+                      fill="#2563eb"
+                    ></path>
+                    <path
+                      d="M51.224,86.474a3.833,3.833,0,0,1,3.811-4.03,4.1,4.1,0,0,1,3.8,4.15A3.79,3.79,0,0,1,55,90.334,3.643,3.643,0,0,1,51.224,86.474Z"
+                      fill="#2563eb"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <svg
+            className="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4"
+            width={404}
+            height={784}
+            fill="none"
+            viewBox="0 0 404 784"
+            aria-hidden="true"
+          >
+            <defs>
+              <pattern
+                id="b1e6e422-73f8-40a6-b5d9-c8586e37e0e7"
+                x={0}
+                y={0}
+                width={20}
+                height={20}
+                patternUnits="userSpaceOnUse"
+              >
+                <rect
+                  x={0}
+                  y={0}
+                  width={4}
+                  height={4}
+                  className="text-gray-200"
+                  fill="currentColor"
+                />
+              </pattern>
+            </defs>
+            <rect
+              width={404}
+              height={784}
+              fill="url(#b1e6e422-73f8-40a6-b5d9-c8586e37e0e7)"
+            />
+          </svg>
+
+          <div className="relative mt-12 lg:mt-24 lg:grid lg:justify-center lg:grid-cols-2 lg:gap-8 lg:items-center">
+            <div className="relative">
+              <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
+                Supercharge your WordPress Site
+              </h3>
+              <p className="mt-3 text-lg text-gray-500">
+                Got WordPress? No regrets on that! Let's get it to load faster
+                instantly. We'll optimize your WordPress to give your WordPress
+                website an SEO boost in a fast and reasonable manner! Our
+                WordPress optimization process includes cache configuration,
+                image optimization and CSS/JS minification.
+              </p>
+            </div>
+
+            <div
+              className="mt-10 -mx-4 relative lg:mt-0 justify-self-center"
+              aria-hidden="true"
+            >
+              <svg
+                className="h-96 z-10"
+                viewBox="0 0 400 400"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g transform="matrix(2,0,0,2,0,0)">
+                  <path
+                    d="M107.745,90.672c-8.415-2.8-12.808-11.095-12.051-19.915a32.41,32.41,0,0,1,1.214-6.146c1.615-5.651,4.819-10.285,10.041-13.035a15.576,15.576,0,0,1,2.911-1.183.256.256,0,0,0-.136-.492,16.657,16.657,0,0,0-9.947,6.449A26.488,26.488,0,0,0,95.1,67.522C92.633,79.476,98.8,89.137,107.556,91.771A2.326,2.326,0,0,1,107.745,90.672Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M133.491,59.983a16.493,16.493,0,0,0-7.444-7.915c-4.248-2.464-9.93-4.372-14.418-2.942a.375.375,0,0,0,.2.722,20.24,20.24,0,0,1,11.381,2.021,18.869,18.869,0,0,1,7.853,6.1c3.823,5.583,3.717,13.092,1.822,19.548-2.347,7.87-11.859,14.086-20.8,13.863a2.8,2.8,0,0,1-.115,1.109,23.915,23.915,0,0,0,16.229-6.062c4.381-3.857,5.732-7.24,6.607-12.208A24.178,24.178,0,0,0,133.491,59.983Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M109.912,129.306c-.988-.928-1.96-.595-7.235-1.528a70.2,70.2,0,0,1-15.852-5.214,31.579,31.579,0,0,1-5.381-2.88c-.576-.4-1.183-.743-1.728-1.193-.366-.3-.879.188-.534.534a10.5,10.5,0,0,0,2.471,2.125,22.511,22.511,0,0,0,2.335,1.361,4.312,4.312,0,0,0-.806,3.016c-.628-.3-1.246-.628-1.833-.984a4.194,4.194,0,0,1-1.884-2.231,4.6,4.6,0,0,1-.377-2.5.433.433,0,0,0-.785-.335,2.826,2.826,0,0,0-.147,2.366c.607,2.366,1.623,3.193,3.759,4.272,2.917,1.472,6.744,3.269,11.067,5.089,4.654,1.956,9.854,3.872,14.763,2.481a3.877,3.877,0,0,0,2.481-1.675A2.252,2.252,0,0,0,109.912,129.306Zm-25.463-3.172a6.9,6.9,0,0,1,.167-3.319c2.8,1.349,5.771,2.41,6.188,2.617a6.061,6.061,0,0,0-.7,3.33C84.717,126.3,85.406,126.581,84.449,126.134Zm6.481,2.995a16.722,16.722,0,0,0,.586-3.414,57.768,57.768,0,0,0,6.23,2.157c-.355,3.016-1.016,3.058-1.016,3.623C94.671,130.736,92.971,130.029,90.93,129.129Zm6.638,2.659a5.281,5.281,0,0,0,1-3.7c1.9.482,3.811.838,5.738,1.131a7.018,7.018,0,0,1-1.058,3.769A21.67,21.67,0,0,1,97.568,131.788Zm11.329.094a5.639,5.639,0,0,1-2.985,1.037,13.1,13.1,0,0,1-1.434.115,6.194,6.194,0,0,0,.838-3.665,26.912,26.912,0,0,1,3.057.44C109.679,130.128,109.641,131.206,108.9,131.882Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M106.363,136.992c-.081-.723-1.215-.733-1.141,0a55.286,55.286,0,0,1-7.183,33.829c-.325-1.246-.649-2.492-.963-3.738a.544.544,0,0,0-.984-.126c-3.225,6.031-6.66,12.387-12.251,16.512a28.283,28.283,0,0,0,.231-6.523c-.042-.461-.765-.806-1-.272-2.876,6.784-7.406,12.368-10.941,15.087a11.428,11.428,0,0,1-3.822,2c.178-5.769.22-11.549.157-17.328a.539.539,0,0,0-.806-.461c-1.225.859-2.44,1.707-3.665,2.565a49.946,49.946,0,0,1,1.78-17.192.553.553,0,0,0-.806-.617c-1.864,1.015-3.727,2.02-5.591,3.036,0-5.5,2.309-12.21,4.377-17.339,3.677-9.205,8.748-14.013,13.6-20,.294-.366-.178-.869-.523-.523a79.162,79.162,0,0,0-10.69,13.119,64.6,64.6,0,0,0-6.031,14.208,33.259,33.259,0,0,0-1.853,11.486.573.573,0,0,0,.848.492q2.622-1.445,5.266-2.88a50.8,50.8,0,0,0-1.392,17.234.553.553,0,0,0,.827.472c1.2-.849,2.4-1.7,3.6-2.545.073,5.665,0,11.329-.189,16.983a.539.539,0,0,0,.681.513c3.068-.607,5.539-2.68,7.633-4.89a43.089,43.089,0,0,0,7.569-10.889,28.1,28.1,0,0,1-.5,5.288c-.084.419.366.879.785.607,6.013-3.978,9.65-10.229,13.015-16.417.314,1.214.628,2.429.942,3.654a.543.543,0,0,0,.984.126A56.28,56.28,0,0,0,106.363,136.992Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M97.369,134.322a.3.3,0,0,0-.21-.283,36.132,36.132,0,0,1-10.145-3.853.3.3,0,0,0-.44.251c-5.161,4.639-10.718,12.936-13.433,22.281a.291.291,0,0,0,.481.283,25.109,25.109,0,0,1,4.23-3.131,41.612,41.612,0,0,0-1.581,18.459.289.289,0,0,0,.482.126,79.437,79.437,0,0,0,9.528-12.334c.052,1.675.1,3.361.157,5.036.01.22.314.4.482.2a33.331,33.331,0,0,0,5.737-10.23c.388.9.775,1.8,1.173,2.7.105.24.44.136.513-.063A53.887,53.887,0,0,0,97.369,134.322Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M127.994,85.028a29.377,29.377,0,0,0-4.889-7.7c-1.634-1.9-3.518-3.916-6.2-3.958a.283.283,0,0,0-.272.366c.105.293-.545.723-.754.859a4.307,4.307,0,0,1-4.565-.021c-.817-.471-1.434-.063-2.188.335-4.578,2.477-7.893,6.892-9.832,11.653a11.134,11.134,0,0,0-.827,6.9,14.261,14.261,0,0,0,2.88,5.644c2.972,3.471,7.612,3.565,11.7,1.235a21,21,0,0,0,9.35-11.255,24.018,24.018,0,0,0,5.57-3.728A.318.318,0,0,0,127.994,85.028Zm-6.031,3.445c-2.66-.02-4.955-.2-8.334,1.382a25.26,25.26,0,0,0-5.423,3.717,5.1,5.1,0,0,1-1.54,1.089c-.178.063-.293-.147-.22-.293a5.491,5.491,0,0,1,1.5-1.613c.4-.356.8-.7,1.2-1.036-.911-1.11-1.707-3.068-1.131-4.492.063-.168.356-.22.4,0,.238,1.212-.009,2.163,1.361,3.989a17.649,17.649,0,0,1,3.738-2.314c2.575-1.141,5.8-1.853,8.512-.879A.23.23,0,0,1,121.963,88.473Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M114.008,67.883c-.022-.132-.112-.356-.28-.389a.272.272,0,0,0-.287.122.651.651,0,0,0,.188.848C113.789,68.577,114.105,68.492,114.008,67.883Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M115.367,69.616a.249.249,0,0,0,.356-.147,1.514,1.514,0,0,0-.293-.952,1.919,1.919,0,0,0-.555-.859c-.136-.094-.272.031-.283.168a1.961,1.961,0,0,0,.293.984C115,69.1,115.086,69.456,115.367,69.616Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M117.346,64.151a3.375,3.375,0,0,0,.743-3.183,1.809,1.809,0,0,0-2.523-1.026c-.962.441-1.533,1.617-2.837,2.45-1.006.628-2.555.764-3.089,1.958a3.6,3.6,0,0,0-.126,1.968,5.845,5.845,0,0,0,.67,2.1,1.847,1.847,0,0,0-.513,1.916,1.6,1.6,0,0,0,2.094.786,11.366,11.366,0,0,1,.325,1.79c.046,1.207-.22,1.3-.063,1.717a.28.28,0,0,0,.461.126c.44-.4.356-1.382.314-1.916a3.919,3.919,0,0,0-.607-1.927.936.936,0,0,0,.314-.408.252.252,0,0,0-.178-.3c-.566-.146-1.121.451-1.676.042-.511-.378-.044-1.434.493-1.434.2.4.374.882.952.775a.947.947,0,0,0,.7-.943c.01-.534-.513-1.057-.011-1.5.565-.489,1.356-.478,2.377-1.016a4.278,4.278,0,0,0,.272.849c-.236,0-.368.345-.251.544a.331.331,0,0,0,.5.063c.021.042.031.073.052.115.51,1.3,1.087,2.484.147,3.4a4.558,4.558,0,0,1-1.738.8.208.208,0,0,0,0,.4,1.876,1.876,0,0,0,.869.042,2.123,2.123,0,0,0,.125.869c.115.325.293.859.681.911a.247.247,0,0,0,.3-.23c.042-.314-.261-.607-.376-.89a4.99,4.99,0,0,1-.241-.8,2.613,2.613,0,0,0,1.6-2.031,4.758,4.758,0,0,0-.524-2.2,13.522,13.522,0,0,0-.984-2.115A6.312,6.312,0,0,0,117.346,64.151Zm-.5-3.738a.987.987,0,0,1,.754.775,1.434,1.434,0,0,1-.136,1.308.139.139,0,0,1-.22-.031c-.146-.293,0-.607-.021-.922a1.166,1.166,0,0,0-.513-.9C116.592,60.538,116.738,60.394,116.843,60.413Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M149.039,14.114a14.373,14.373,0,0,0-1.078-5.6A6.063,6.063,0,0,0,143.825,5.2c-4.293-.994-7.989,1.854-11.161,4.325C107.49,29.13,95.7,47.022,88.919,65.878c-1.4.35-10.018,7.362-11.831,8.9C67.773,82.68,65.5,85.35,61.142,97.247Q55.3,113.291,50.808,128.259a.489.489,0,0,0,.712.545A166.006,166.006,0,0,0,74.544,111.12c1.759-1.613,3.56-3.225,5.172-4.984.235-.294.129-.636-.523,5.371-.231,2.188-.451,4.377-.639,6.575-.031.377.618.472.67.1,5.991-42.6,10.286-68.325,42.153-97.677,1.665-.125,3.34-.251,5.015-.219,13.966.232,21.548,8.407,21.548,8.407-.691,19.5-5.012,45.453-12.219,63.585a104.012,104.012,0,0,1-5.329,11.821c-5.01,9.156-12.135,17.877-19.307,25.516-.5.534.3,1.33.806.806a156.975,156.975,0,0,0,13.527-16.082,11.1,11.1,0,0,0,.189,3.633,164.206,164.206,0,0,0,9.329,33.767.489.489,0,0,0,.932,0q4.9-14.151,9.088-28.532c3.884-13.294,4.227-16.217,1.455-28.51-.255-1.134-3.7-15.662-4.816-16C146.831,57.853,150,35.5,149.039,14.114Zm-6.69-6.67a12.5,12.5,0,0,0-6.021,3.738,5.558,5.558,0,0,1-1.717,1.487c-.261.1-.5-.2-.439-.44a5.541,5.541,0,0,1,1.57-2.052c1.771-1.771,4.133-3.619,6.607-3.225C142.61,6.994,142.559,7.373,142.349,7.444Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M115.419,70.14c-.115.125-.2.366-.4.366-.158,0-.273-.272-.367-.377a.18.18,0,0,0-.3.126c.01.4.219.774.659.774a.794.794,0,0,0,.775-.722A.22.22,0,0,0,115.419,70.14Z"
+                    fill="#191919"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="pricing" className="bg-white">
+        <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+          <div className="pb-16 xl:flex xl:items-center xl:justify-between">
+            <div>
+              <h1 className="text-4xl font-extrabold sm:text-5xl sm:tracking-tight">
+                <span className="text-gray-900">
+                  Super-charge your website for{" "}
+                </span>
+                <span className="text-blue-600">
+                  {priceString({
+                    currency: currency,
+                    term: billingInterval,
+                    customPricingArray: { USD: "299", AED: "999" },
+                  })}{" "}
+                  a month
+                </span>
+              </h1>
+              <p className="mt-5 text-xl text-gray-500">
+                Don't subject your visitors to long waits when visiting your
+                site - they won't stick around.
+              </p>
+            </div>
+            <WHMCSLink
+              pid="164"
+              currency={currency}
+              label="Get started today"
+              className="mt-8 w-full bg-blue-600 border border-transparent px-5 py-3 inline-flex items-center justify-center text-base font-medium rounded-md text-white hover:bg-blue-700 sm:mt-10 sm:w-auto xl:mt-0"
+            />
+          </div>
+          <div className="border-t border-gray-200 pt-16 xl:grid xl:grid-cols-3 xl:gap-x-8">
+            <div>
+              <h2 className="text-base font-semibold text-blue-600 tracking-wide uppercase">
+                Website Speed Optimization
+              </h2>
+              <p className="mt-2 text-3xl font-extrabold text-gray-900">
+                Let us do the hard work!
+              </p>
+              <p className="mt-4 text-lg text-gray-500">
+                We carry out the process, relieving you from all the concerns.
+                Our website optimization strategies have been designed
+                efficiently. Focus on your company while we manage what makes
+                your website quicker and better.­­­­
+              </p>
+            </div>
+            <div className="mt-4 sm:mt-8 md:mt-10 md:grid md:grid-cols-2 md:gap-x-8 xl:mt-0 xl:col-span-2">
+              <ul className="divide-y divide-gray-200">
+                {features.slice(0, 5).map((feature, featureIdx) =>
+                  featureIdx === 0 ? (
+                    <li key={feature} className="py-4 flex md:py-0 md:pb-4">
+                      <CheckIcon
+                        className="flex-shrink-0 h-6 w-6 text-green-500"
+                        aria-hidden="true"
+                      />
+                      <span className="ml-3 text-base text-gray-500">
+                        {feature}
+                      </span>
+                    </li>
+                  ) : (
+                    <li key={feature} className="py-4 flex">
+                      <CheckIcon
+                        className="flex-shrink-0 h-6 w-6 text-green-500"
+                        aria-hidden="true"
+                      />
+                      <span className="ml-3 text-base text-gray-500">
+                        {feature}
+                      </span>
+                    </li>
+                  )
+                )}
+              </ul>
+              <ul className="border-t border-gray-200 divide-y divide-gray-200 md:border-t-0">
+                {features.slice(5).map((feature, featureIdx) =>
+                  featureIdx === 0 ? (
+                    <li
+                      key={feature}
+                      className="py-4 flex md:border-t-0 md:py-0 md:pb-4"
+                    >
+                      <CheckIcon
+                        className="flex-shrink-0 h-6 w-6 text-green-500"
+                        aria-hidden="true"
+                      />
+                      <span className="ml-3 text-base text-gray-500">
+                        {feature}
+                      </span>
+                    </li>
+                  ) : (
+                    <li key={feature} className="py-4 flex">
+                      <CheckIcon
+                        className="flex-shrink-0 h-6 w-6 text-green-500"
+                        aria-hidden="true"
+                      />
+                      <span className="ml-3 text-base text-gray-500">
+                        {feature}
+                      </span>
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Testimonials />
+
+      <CTASimple
+        normalText="Ready to give your site a speed boost?"
+        strongText="Get started with our website optimization today!"
+        normalButton={{
+          label: "View pricing",
+          href: "#pricing",
+        }}
+        strongButton={{
+          label: "Get started",
+          href: <WHMCSLink raw={true} pid={164} currency={currency} />,
+        }}
+      />
+    </div>
+  );
 }
