@@ -343,38 +343,48 @@ export default function homePage({ homePosts }) {
           </h2>
           <div className="mt-8 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
             <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-              <img
+              <Image
                 className="h-12"
-                src="https://tailwindui.com/img/logos/tuple-logo-gray-400.svg"
-                alt="Tuple"
+                width={170}
+                height={65}
+                src={"/img/uae-clients/arrow-aviation.svg"}
+                alt="Arrow Aviation Services"
               />
             </div>
             <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-              <img
+              <Image
                 className="h-12"
-                src="https://tailwindui.com/img/logos/mirage-logo-gray-400.svg"
-                alt="Mirage"
+                width={170}
+                height={65}
+                src={"/img/uae-clients/ocean-dream-boats.svg"}
+                alt="Arrow Aviation Services"
               />
             </div>
             <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-              <img
+              <Image
                 className="h-12"
-                src="https://tailwindui.com/img/logos/statickit-logo-gray-400.svg"
-                alt="StaticKit"
+                width={170}
+                height={65}
+                src={"/img/uae-clients/vaheed.svg"}
+                alt="Arrow Aviation Services"
               />
             </div>
             <div className="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
-              <img
+              <Image
                 className="h-12"
-                src="https://tailwindui.com/img/logos/transistor-logo-gray-400.svg"
-                alt="Transistor"
+                width={170}
+                height={65}
+                src={"/img/uae-clients/cascade-virtual.svg"}
+                alt="Arrow Aviation Services"
               />
             </div>
             <div className="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
-              <img
+              <Image
                 className="h-12"
-                src="https://tailwindui.com/img/logos/workcation-logo-gray-400.svg"
-                alt="Workcation"
+                width={170}
+                height={65}
+                src={"/img/uae-clients/inner-seed.svg"}
+                alt="Arrow Aviation Services"
               />
             </div>
           </div>
