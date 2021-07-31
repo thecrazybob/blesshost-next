@@ -47,7 +47,11 @@ export default function threeTierPricing({
                 ) : null}
                 <p className="mt-4 flex items-baseline text-gray-900">
                   <span className="text-4xl font-extrabold tracking-tight">
-                    {priceString(tier.pid, term, currency)}
+                    {priceString({
+                      pid: tier.pid,
+                      term: term,
+                      currency: currency,
+                    })}
                   </span>
                   {tier.pid != "-1" ? (
                     <span className="ml-1 text-xl font-semibold">

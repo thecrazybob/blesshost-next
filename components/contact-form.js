@@ -423,7 +423,11 @@ export default function ContactForm({ tier, setTier, plans, term, currency }) {
                                     {tier?.title}
                                   </span>
                                   <span className="ml-2 truncate text-gray-500">
-                                    {priceString(tier?.pid, term, currency)}
+                                    {priceString({
+                                      pid: tier?.pid,
+                                      term: term,
+                                      currency: currency,
+                                    })}
                                   </span>
                                 </span>
                                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
@@ -479,11 +483,11 @@ export default function ContactForm({ tier, setTier, plans, term, currency }) {
                                                 "ml-2 truncate"
                                               )}
                                             >
-                                              {priceString(
-                                                plan.pid,
-                                                term,
-                                                currency
-                                              )}
+                                              {priceString({
+                                                pid: plan.pid,
+                                                term: term,
+                                                currency: currency,
+                                              })}
                                             </span>
                                           </div>
 

@@ -315,12 +315,12 @@ export default function simpleHostingPage() {
                               "text-4xl font-extrabold tracking-tight"
                             )}
                           >
-                            {priceString(
-                              plan.pid,
-                              billingInterval,
-                              currency,
-                              true
-                            )}
+                            {priceString({
+                              pid: plan.pid,
+                              term: billingInterval,
+                              currency: currency,
+                              monthlyPricing: true,
+                            })}
                           </p>
                           <div className="ml-4">
                             <p
@@ -340,12 +340,11 @@ export default function simpleHostingPage() {
                               )}
                             >
                               Billed {billingInterval} (
-                              {priceString(
-                                plan.pid,
-                                billingInterval,
-                                currency,
-                                false
-                              )}
+                              {priceString({
+                                pid: plan.pid,
+                                term: billingInterval,
+                                currency: currency,
+                              })}
                               )
                             </p>
                           </div>
