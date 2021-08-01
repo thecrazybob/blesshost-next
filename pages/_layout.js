@@ -11,10 +11,6 @@ export default function Layout({ children }) {
           name="viewport"
           content="width=device-width, initial-scale=1.0"
         ></meta>
-        <script
-          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-          defer
-        />
         <link rel="icon" href="/favicon.ico" />
 
         {/* Favicon */}
@@ -100,6 +96,11 @@ export default function Layout({ children }) {
       {children}
 
       <Footer></Footer>
+      <script
+        src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+        async
+        defer
+      />
     </>
   );
 }
