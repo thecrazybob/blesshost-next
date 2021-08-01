@@ -175,10 +175,10 @@ export default function Footer() {
           </div>
           <div className="mt-12 xl:mt-0">
             <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-              Language &amp; Currency
+              Currency
             </h3>
             <form className="mt-4 sm:max-w-xs">
-              <fieldset className="w-full">
+              {/* <fieldset className="w-full">
                 <label htmlFor="language" className="sr-only">
                   Language
                 </label>
@@ -199,12 +199,12 @@ export default function Footer() {
                     />
                   </div>
                 </div>
-              </fieldset>
+              </fieldset>*/}
               <fieldset className="mt-4 w-full">
                 <label htmlFor="currency" className="sr-only">
                   Currency
                 </label>
-                <div className=" relative">
+                <div className="relative">
                   <Listbox value={currency} onChange={setCurrency}>
                     {({ open }) => (
                       <>

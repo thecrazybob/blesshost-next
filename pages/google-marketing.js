@@ -71,7 +71,7 @@ export default function googleMarketingPage() {
   return (
     <>
       {/* Hero */}
-      <div className="h-[screen-wh] bg-gradient-conic-b from-white via-blue-500 to-blue-700">
+      <div className="md:h-[screen-wh] bg-gradient-to-b from-blue-400 md:bg-gradient-conic-b md:from-white via-blue-500 to-blue-700">
         <div className="text-center md:text-left mx-auto max-w-7xl px-4 sm:px-6 h-full ">
           <div className="h-full grid grid-cols-1 items-center gap-x-10 md:grid-cols-2">
             <div>
@@ -88,7 +88,7 @@ export default function googleMarketingPage() {
                 search engine. Start an effective campaign on Google with help
                 of our experts right away.
               </p>
-              <div className="my-12 lg:my-0 lg:pt-6 flex justify-start sm:justify-center lg:justify-start lg:mt-0 lg:flex-shrink-0">
+              <div className="my-12 lg:my-0 lg:pt-6 flex justify-center md:justify-start lg:mt-0 lg:flex-shrink-0">
                 <div className="inline-flex rounded-md shadow">
                   <a
                     href="#contact"

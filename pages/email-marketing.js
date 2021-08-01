@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useCurrency } from "../contexts/CurrencyContext";
 import Pricing from "../components/pricing-three-tier";
 import { CheckIcon } from "@heroicons/react/outline";
+import FeaturesTick from "../components/features-tick";
 
 const features = [
   {
@@ -15,7 +16,7 @@ const features = [
   {
     name: "Increase sales",
     description:
-      "Reach out to your existing customer list and inform them about offers, new products and services.",
+      "Reach out to your existing customer list and inform them about offers, products and services.",
   },
   {
     name: "View reports",
@@ -28,24 +29,24 @@ const features = [
       "Adapt to your customers' needs and send personalized greetings to your email list.",
   },
   {
-    name: "Build confidence in brand",
+    name: "Builds confidence in brand",
     description:
-      "Ullamcorper in ipsum ac feugiat. Senectus at aliquam vulputate mollis nec. In at risus odio.",
+      "Actively using email marketing lets you gain the confidence of your customers.",
   },
   {
     name: "Inexpensive route to marketing",
     description:
-      "Magna a vel sagittis aliquam eu amet. Et lorem auctor quam nunc odio. Sed bibendum.",
+      "It is one of the least expensive way to generate sales and improve your brand's identity online.",
   },
   {
     name: "High conversion rates",
     description:
-      "Sed mi, dapibus turpis orci posuere integer. A porta viverra posuere adipiscing turpis.",
+      "Effectively designed email marketing campaigns are known to have higher conversion rates.",
   },
   {
     name: "Easy to get started",
     description:
-      "Quisque sapien nunc nisl eros. Facilisis sagittis maecenas id dignissim tristique proin sed.",
+      "There are no complicated things involved in starting an email marketing campaign. Start whenever you want!",
   },
 ];
 
@@ -57,10 +58,10 @@ const pricing = {
       title: "Essential",
       frequency: "/month",
       description:
-        "For those who are just getting started with a monthly Google Marketing campaign.",
+        "Our email marketing specialists will craft an email newsletter every month.",
       features: [
         "1000 Contacts",
-        "No Newsletter",
+        "Monthly Newsletter",
         "Responsive Email Design",
         "Email Analytics",
         "Proven Deliverability",
@@ -74,10 +75,11 @@ const pricing = {
       pid: 203,
       title: "Professional",
       frequency: "/month",
-      description: "For those who want to run their campaign all month long.",
+      description:
+        "Two creatively crafted email newsletters every month with upgraded contact list.",
       features: [
         "5000 Contacts",
-        "Monthly Newsletter",
+        "Bimonthly Newsletter",
         "Responsive Email Design",
         "Email Analytics",
         "Proven Deliverability",
@@ -92,7 +94,7 @@ const pricing = {
       title: "Business",
       frequency: "/month",
       description:
-        "For those who need instant results and run more than one campaign.",
+        "Our team designs and sends a newsletter on-demand to upto 10k contact list.",
       features: [
         "10000 Contacts",
         "On-demand Newsletter",
@@ -115,7 +117,7 @@ export default function emailMarketingPage() {
   return (
     <>
       {/* Hero */}
-      <div className="h-[screen-wh] bg-gradient-conic-b from-white via-blue-500 to-blue-700">
+      <div className="md:h-[screen-wh] bg-gradient-to-b from-blue-400 md:bg-gradient-conic-b md:from-white via-blue-500 to-blue-700">
         <div className="text-center md:text-left mx-auto max-w-7xl px-4 sm:px-6 h-full ">
           <div className="h-full grid grid-cols-1 items-center gap-x-10 md:grid-cols-2">
             <div>
@@ -130,7 +132,7 @@ export default function emailMarketingPage() {
               <p className="mt-3 max-w-md mx-auto text-base text-gray-200 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
                 Innovative email marketing services that drive brilliant results
               </p>
-              <div className="my-12 lg:my-0 lg:pt-6 flex justify-start sm:justify-center lg:justify-start lg:mt-0 lg:flex-shrink-0">
+              <div className="my-12 lg:my-0 lg:pt-6 flex justify-center md:justify-start lg:mt-0 lg:flex-shrink-0">
                 <div className="inline-flex rounded-md shadow">
                   <a
                     href="#contact"
@@ -235,7 +237,7 @@ export default function emailMarketingPage() {
         <div className="mx-auto max-w-md px-4 text-center sm:px-6 sm:max-w-3xl lg:px-8 lg:max-w-7xl">
           <div>
             <h2 className="text-base font-semibold tracking-wider text-blue-600 uppercase">
-              Google Marketing
+              Email Marketing
             </h2>
             <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
               How is this going to benefit my business?
@@ -246,7 +248,7 @@ export default function emailMarketingPage() {
               interested customers in your target market.
             </p>
           </div>
-          <div className="">
+          <div className="pb-16">
             <svg
               className="mx-auto h-96"
               viewBox="0 0 140 140"
@@ -382,40 +384,15 @@ export default function emailMarketingPage() {
           </div>
         </div>
       </div>
-      <div className="bg-white">
-        <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900">
-              61% OF BUSINESSES STATE THAT EMAIL DELIVERS AN ROI OF 300%
-            </h2>
-            <p className="mt-4 text-lg text-gray-500">
-              Email marketing comes with the following benefits to your
-              business:
-            </p>
-          </div>
-          <dl className="mt-12 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-8">
-            {features.map((feature) => (
-              <div key={feature.name} className="relative">
-                <dt>
-                  <CheckIcon
-                    className="absolute h-6 w-6 text-green-500"
-                    aria-hidden="true"
-                  />
-                  <p className="ml-9 text-lg leading-6 font-medium text-gray-900">
-                    {feature.name}
-                  </p>
-                </dt>
-                <dd className="mt-2 ml-9 text-base text-gray-500">
-                  {feature.description}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </div>
+      <FeaturesTick
+        title="61% OF BUSINESSES STATE THAT EMAIL DELIVERS AN ROI OF 300%"
+        description="Email marketing comes with the following benefits to your
+              business:"
+        features={features}
+      />
       <Pricing
-        title="Choose your budget"
-        description="Our Google certified search marketing team will work with you to target the right audience to deliver the best results"
+        title="Pricing plans that suit your business"
+        description="Our email marketing plans are crafted to meet your business needs. As your email list grows, you can opt-in for a higher tier."
         pricing={pricing}
         tier={tier}
         setTier={setTier}
@@ -431,8 +408,8 @@ export default function emailMarketingPage() {
         plans={pricing.tiers}
       />
       <CTASimple
-        normalText="Read enough?"
-        strongText="Advertise your business on Google today!"
+        normalText="Ready to get started?"
+        strongText="Start your own email marketing campaign today!"
         normalButton={{ label: "View plans", href: "#pricing" }}
         strongButton={{ label: "Get started", href: "#contact" }}
       />
