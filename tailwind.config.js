@@ -20,6 +20,7 @@ module.exports = {
         },
       },
       height: {
+        "[screen-wh]": "calc(100vh - 112px)",
         192: "48rem",
         144: "36rem",
         120: "30rem",

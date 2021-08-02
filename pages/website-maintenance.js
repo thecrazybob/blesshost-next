@@ -130,9 +130,6 @@ const pricing = {
 import { useState } from "react";
 import Pricing from "../components/pricing-three-tier";
 import ContactForm from "../components/contact-form";
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function websiteMaintenancePage() {
   const [tier, setTier] = useState(pricing.tiers[0]);
@@ -142,24 +139,46 @@ export default function websiteMaintenancePage() {
   return (
     <>
       {/* Hero */}
-      <div className="bg-gradient-to-r from-blue-800 to-blue-600">
-        <div className="mb-16 text-center md:text-left sm:py-4 md:py-20 lg:py-10 mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="grid grid-cols-1 items-center justify-center gap-x-5 md:grid-cols-2">
-            <div>
-              <h1 className="text-4xl tracking-tight font-bold text-gray-200 sm:text-5xl md:text-6xl">
-                <span className="inline text-blue-300">
-                  Maintenance & support{" "}
+      <div className="lg:h-[screen-wh] bg-gradient-to-r from-blue-800 to-blue-600">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 h-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-8 h-full items-center">
+            <div className="sm:text-center md:max-w-2xl md:mx-auto lg:mx-0 lg:col-span-6 lg:text-left">
+              <h1>
+                <span className="block text-sm font-semibold uppercase tracking-wide text-gray-200 sm:text-base lg:text-sm xl:text-base">
+                  Website Maintenance
                 </span>
-                <span className="inline">services for your website</span>
+                <span className="mt-1 block text-5xl tracking-tight font-extrabold">
+                  <span className="text-blue-300">Maintenance & support </span>
+                  <span className="block text-gray-200">
+                    services for your website
+                  </span>
+                </span>
               </h1>
-              <p className="mt-3 mb-20 md:mb-0 max-w-md mx-auto text-base text-gray-300 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+              <p className="mt-3 text-base text-gray-200 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
                 Stay focused on your business, not your website!
               </p>
+              <div className="my-12 lg:my-0 lg:pt-6 flex justify-start sm:justify-center lg:justify-start lg:mt-0 lg:flex-shrink-0">
+                <div className="inline-flex rounded-md shadow">
+                  <a
+                    href="#contact"
+                    className="inline-flex border items-center justify-center px-5 py-3 border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+                  >
+                    Get in touch with us
+                  </a>
+                </div>
+                <div className="ml-3 inline-flex rounded-md shadow">
+                  <a
+                    href="#pricing"
+                    className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50"
+                  >
+                    View pricing
+                  </a>
+                </div>
+              </div>
             </div>
-
-            <div className="order-first md:order-last">
+            <div className="order-first lg:order-last lg:col-span-6 justify-self-center">
               <svg
-                className="h-96 md:h-full mx-auto"
+                className="h-96 md:h-144"
                 viewBox="0 0 400 400"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -350,8 +369,9 @@ export default function websiteMaintenancePage() {
           </div>
         </div>
       </div>
+
       {/* Alternating Features */}
-      <div id="more" className="mt-16 lg:mt-0 pb-16 bg-gray-50 overflow-hidden">
+      <div id="more" className="mt-16 pb-16 bg-gray-50 overflow-hidden">
         <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
           <svg
             className="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4"
