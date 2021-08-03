@@ -172,7 +172,7 @@ export default function WebHosting() {
           <div className="grid grid-cols-1 items-center justify-between gap-x-8 md:grid-cols-2 h-full">
             <div className="text-center md:text-left">
               <span className="block mb-4 text-sm font-semibold uppercase tracking-wide text-gray-300 sm:text-base lg:text-sm xl:text-base">
-                UAE & EUROPEAN HOSTING
+                360 Web Hosting
               </span>
               <h1 className="text-4xl tracking-tight font-bold text-gray-200 sm:text-5xl md:text-6xl">
                 <span className="inline">360 </span>

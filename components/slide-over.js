@@ -3,7 +3,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 
 export default function Example({ open, setOpen }) {
-
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -36,7 +35,7 @@ export default function Example({ open, setOpen }) {
                         </Dialog.Title>
                         <div className="ml-3 h-7 flex items-center">
                           <button
-                            className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             onClick={() => setOpen(false)}
                           >
                             <span className="sr-only">Close panel</span>
@@ -48,20 +47,19 @@ export default function Example({ open, setOpen }) {
                     <div className="mt-6 relative flex-1 px-4 sm:px-6">
                       {/* Replace with your content */}
 
-
                       {/* /End replace */}
                     </div>
                   </div>
                   <div className="flex-shrink-0 px-4 py-4 flex justify-end">
                     <button
                       type="submit"
-                      className="flex-grow inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="flex-grow inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                     >
                       Checkout
                     </button>
                     <button
                       type="button"
-                      className="flex-grow bg-white py-2 px-2 ml-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="flex-grow bg-white py-2 px-2 ml-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                       onClick={() => setOpen(false)}
                     >
                       Continue Shopping

@@ -634,8 +634,9 @@ export default function Header() {
                   )}
                 </Popover>
               </Popover.Group>
-              <div className="hidden text-gray-500 lg:flex items-center justify-end lg:flex-1 lg:w-0">
+              <div className="hidden lg:flex items-center justify-end lg:flex-1 lg:w-0">
                 <button
+                  className="text-gray-500 mr-4 px-2 py-2 rounded flex-grow-0 max-w-max hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                   onClick={() => {
                     setIsOpen(true);
                   }}
@@ -643,7 +644,7 @@ export default function Header() {
                   <Checkout open={isOpen} setOpen={setIsOpen} />
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 mr-6 mb-1"
+                    className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
