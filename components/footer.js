@@ -247,8 +247,6 @@ export default function Footer() {
                                 >
                                   {({ currency }) => (
                                     <>
-                                      {console.log(currency)}
-
                                       <span
                                         className={classNames(
                                           currency

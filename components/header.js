@@ -1,4 +1,4 @@
-import { Fragment, useRef } from "react";
+import { Fragment, useRef, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import {
   ClockIcon,
@@ -21,6 +21,7 @@ import {
 } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import Link from "next/link";
+import Checkout from "../components/slide-over";
 
 const hosting = [
   {
@@ -187,6 +188,7 @@ export default function Header() {
   const websitesButtonRef = useRef();
   const marketingButtonRef = useRef();
   const supportButtonRef = useRef();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="sticky top-0 inset-y-0 z-50 filter shadow-md">
@@ -633,6 +635,27 @@ export default function Header() {
                 </Popover>
               </Popover.Group>
               <div className="hidden lg:flex items-center justify-end lg:flex-1 lg:w-0">
+                <button
+                  onClick={() => {
+                    setIsOpen(true);
+                  }}
+                >
+                  <Checkout open={isOpen} setOpen={setIsOpen} />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 mr-6 mb-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                    />
+                  </svg>
+                </button>
                 <a
                   href="https://billing.blesshost.com/index.php?rp=/login"
                   className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
