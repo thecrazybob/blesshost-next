@@ -6,7 +6,7 @@ import Image from "next/image";
 import priceString from "../lib/pricing";
 import { useCurrency } from "../contexts/CurrencyContext";
 import { useState } from "react";
-import ReactDOMServer from 'react-dom/server';
+import ReactDOMServer from "react-dom/server";
 
 const features = [
   "Custom Server Configuration",
@@ -553,7 +553,7 @@ export default function websiteOptimizationPage() {
             <div>
               <h1 className="text-4xl font-extrabold sm:text-5xl sm:tracking-tight">
                 <span className="text-gray-900">
-                  Super-charge your website for{" "}
+                  Super-charge your website for just{" "}
                 </span>
                 <span className="text-blue-600">
                   {priceString({
@@ -561,7 +561,6 @@ export default function websiteOptimizationPage() {
                     term: billingInterval,
                     customPricingArray: { USD: "299", AED: "999" },
                   })}{" "}
-                  a month
                 </span>
               </h1>
               <p className="mt-5 text-xl text-gray-500">
@@ -661,7 +660,9 @@ export default function websiteOptimizationPage() {
         }}
         strongButton={{
           label: "Get started",
-          href: ReactDOMServer.renderToString(<WHMCSLink raw={true} pid={164} currency={currency} />),
+          href: ReactDOMServer.renderToString(
+            <WHMCSLink raw={true} pid={164} currency={currency} />
+          ),
         }}
       />
     </div>

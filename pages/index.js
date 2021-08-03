@@ -357,7 +357,7 @@ export default function homePage({ homePosts }) {
                 width={170}
                 height={65}
                 src={"/img/uae-clients/ocean-dream-boats.svg"}
-                alt="Arrow Aviation Services"
+                alt="Ocean Dream Boats"
               />
             </div>
             <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
@@ -366,7 +366,7 @@ export default function homePage({ homePosts }) {
                 width={170}
                 height={65}
                 src={"/img/uae-clients/vaheed.svg"}
-                alt="Arrow Aviation Services"
+                alt="Vaheed"
               />
             </div>
             <div className="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
@@ -375,7 +375,7 @@ export default function homePage({ homePosts }) {
                 width={170}
                 height={65}
                 src={"/img/uae-clients/cascade-virtual.svg"}
-                alt="Arrow Aviation Services"
+                alt="Cascade Virtual"
               />
             </div>
             <div className="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
@@ -384,7 +384,7 @@ export default function homePage({ homePosts }) {
                 width={170}
                 height={65}
                 src={"/img/uae-clients/inner-seed.svg"}
-                alt="Arrow Aviation Services"
+                alt="Inner Seed"
               />
             </div>
           </div>

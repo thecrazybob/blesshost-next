@@ -180,91 +180,95 @@ export default function seoPage() {
 
   return (
     <>
-      <main className="mt-16 lg:mt-32 mx-auto max-w-7xl px-4 sm:mb-24 sm:px-6 lg:mb-32">
-        <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-          <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-            <h1>
-              <span className="block text-sm font-semibold uppercase tracking-wide text-gray-500 sm:text-base lg:text-sm xl:text-base">
-                Get your website to the top
-              </span>
-              <span className="mt-1 block text-4xl tracking-tight font-extrabold sm:text-5xl xl:text-6xl">
-                <span className="block text-gray-900">
-                  Appear on the{" "}
-                  <span className="block text-blue-600">
-                    first-page of Google
-                  </span>
-                  with our SEO services
+      <div className="md:h-[screen-wh] bg-gradient-to-b md:bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900">
+        <main className="pt-16 lg:pt-32 mx-auto max-w-7xl sm:pb-24 lg:pb-32 h-full">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center h-full">
+            <div className="sm:text-center md:max-w-2xl md:mx-auto lg:text-left">
+              <h1>
+                <span className="block text-sm font-semibold uppercase tracking-wide text-gray-300 sm:text-base lg:text-sm xl:text-base">
+                  Get your website to the top
                 </span>
-              </span>
-            </h1>
-            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-              Let us take care of your SEO with search optimization strategies
-              that are specifically designed for your business so you can appear
-              on the first-page of popular search engines including Google, Bing
-              and Yahoo!
-            </p>
-            <div className="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
-              <a
-                href="#pricing"
-                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
-              >
-                View plans
-              </a>
-            </div>
-          </div>
-          <div className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-            <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-              {showVideo ? (
-                <iframe
-                  width="560"
-                  height="315"
-                  src="https://www.youtube.com/embed/RoNPq-WnXuI?autoplay=1"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
-              ) : (
-                <button
-                  onClick={playVideo}
-                  type="button"
-                  className="relative block w-full bg-white rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                <span className="mt-1 block text-4xl tracking-tight font-extrabold sm:text-5xl xl:text-6xl">
+                  <span className="block text-gray-200">
+                    Appear on the{" "}
+                    <span className="block text-blue-300">
+                      first-page of Google
+                    </span>
+                    with our SEO services
+                  </span>
+                </span>
+              </h1>
+              <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+                Let us take care of your SEO with search optimization strategies
+                that are specifically designed for your business so you can
+                appear on the first-page of popular search engines including
+                Google, Bing and Yahoo!
+              </p>
+              <div className="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
+                <a
+                  href="#pricing"
+                  className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
                 >
-                  <span className="sr-only">Watch our video to learn more</span>
-                  <Image
-                    className="w-full"
-                    layout="responsive"
-                    objectFit="contain"
-                    src={youtubeThumbnail}
-                    height={315}
-                    width={560}
-                    alt=""
-                  />
-                  <div
-                    className="absolute inset-0 w-full h-full flex items-center justify-center"
-                    aria-hidden="true"
+                  View plans
+                </a>
+              </div>
+            </div>
+            <div className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0">
+              <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+                {showVideo ? (
+                  <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/RoNPq-WnXuI?autoplay=1"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                ) : (
+                  <button
+                    onClick={playVideo}
+                    type="button"
+                    className="relative block w-full bg-white rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
-                    <svg
-                      className="h-20 w-20 text-blue-500"
-                      fill="currentColor"
-                      viewBox="0 0 84 84"
+                    <span className="sr-only">
+                      Watch our video to learn more
+                    </span>
+                    <Image
+                      className="w-full"
+                      layout="responsive"
+                      objectFit="contain"
+                      src={youtubeThumbnail}
+                      height={315}
+                      width={560}
+                      alt=""
+                    />
+                    <div
+                      className="absolute inset-0 w-full h-full flex items-center justify-center"
+                      aria-hidden="true"
                     >
-                      <circle
-                        opacity="0.9"
-                        cx={42}
-                        cy={42}
-                        r={42}
-                        fill="white"
-                      />
-                      <path d="M55.5039 40.3359L37.1094 28.0729C35.7803 27.1869 34 28.1396 34 29.737V54.263C34 55.8604 35.7803 56.8131 37.1094 55.9271L55.5038 43.6641C56.6913 42.8725 56.6913 41.1275 55.5039 40.3359Z" />
-                    </svg>
-                  </div>
-                </button>
-              )}
+                      <svg
+                        className="h-20 w-20 text-blue-500"
+                        fill="currentColor"
+                        viewBox="0 0 84 84"
+                      >
+                        <circle
+                          opacity="0.9"
+                          cx={42}
+                          cy={42}
+                          r={42}
+                          fill="white"
+                        />
+                        <path d="M55.5039 40.3359L37.1094 28.0729C35.7803 27.1869 34 28.1396 34 29.737V54.263C34 55.8604 35.7803 56.8131 37.1094 55.9271L55.5038 43.6641C56.6913 42.8725 56.6913 41.1275 55.5039 40.3359Z" />
+                      </svg>
+                    </div>
+                  </button>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
       <div className="relative bg-gray-50 pt-16 overflow-hidden sm:pt-24 lg:pt-32">
         <div className="mx-auto max-w-md px-4 text-center sm:px-6 sm:max-w-3xl lg:px-8 lg:max-w-7xl">
           <div>
