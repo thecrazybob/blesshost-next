@@ -645,7 +645,7 @@ export default function WebHosting() {
             />
           </svg>
 
-          <div className="relative mt-12 sm:mt-16 lg:mt-24">
+          <div className="z-10 relative mt-12 sm:mt-16 lg:mt-24">
             <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
               <div className="lg:col-start-2">
                 <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
@@ -1065,10 +1065,11 @@ export default function WebHosting() {
               </div>
             </div>
             <div className="-mt-6 aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1">
-              <img
+              <Image
+                layout="fill"
                 className="transform translate-x-6 translate-y-6 rounded-md object-cover object-left-top sm:translate-x-16 lg:translate-y-20"
-                src="https://tailwindui.com/img/component-images/full-width-with-sidebar.jpg"
-                alt="App screenshot"
+                src={"/img/dashboard.jpg"}
+                alt="Dashboard screenshot"
               />
             </div>
           </div>

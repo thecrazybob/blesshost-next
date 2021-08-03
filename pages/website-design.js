@@ -62,7 +62,7 @@ const thirdFeatures = [
   },
   {
     id: 2,
-    name: "User-friendly and perfectly working on all modern browsers including Chrome, Firefox and Safari.",
+    name: "User-friendly and perfectly working on all modern browsers like Chrome.",
   },
   {
     id: 3,
@@ -967,7 +967,7 @@ export default function websiteDesignPage() {
                         className="absolute h-6 w-6 text-green-500"
                         aria-hidden="true"
                       />
-                      <p className="ml-9 text-lg leading-6 font-medium text-gray-700">
+                      <p className="ml-9 text-base leading-6 font-medium text-gray-500">
                         {feature.name}
                       </p>
                     </dt>
