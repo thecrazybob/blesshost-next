@@ -37,7 +37,7 @@ const hosting = [
     icon: CollectionIcon,
   },
   {
-    name: "Virtual Servers",
+    name: "VPS Hosting",
     description: "Get scalable dedicated resources with easy upgrade options.",
     href: "/vps-hosting",
     icon: DatabaseIcon,
@@ -789,7 +789,7 @@ export default function Header() {
                     <div className="grid grid-cols-2 gap-4">
                       <Link href="/vps-hosting">
                         <a className="text-base font-medium text-gray-900 hover:text-gray-700">
-                          Virtual Servers
+                          VPS Hosting
                         </a>
                       </Link>
 
