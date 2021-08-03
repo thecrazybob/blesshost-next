@@ -634,7 +634,7 @@ export default function Header() {
                   )}
                 </Popover>
               </Popover.Group>
-              <div className="hidden lg:flex items-center justify-end lg:flex-1 lg:w-0">
+              <div className="hidden text-gray-500 lg:flex items-center justify-end lg:flex-1 lg:w-0">
                 <button
                   onClick={() => {
                     setIsOpen(true);
