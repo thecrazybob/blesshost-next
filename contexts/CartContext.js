@@ -1,4 +1,7 @@
 import { createContext, useContext, useReducer } from "react";
+import createPersistedReducer from 'use-persisted-reducer';
+
+const usePersistedReducer = createPersistedReducer('state');
 
 export const CartContext = createContext();
 
@@ -32,7 +35,7 @@ export function CartContextProvider({ children }) {
     return state;
   }
 
-  const [globalState, dispatch] = useReducer(cartReducer, initialState);
+  const [globalState, dispatch] = usePersistedReducer(cartReducer, initialState);
 
   return (
     <CartContext.Provider value={{ globalState, dispatch }}>
