@@ -1,6 +1,7 @@
 html {
     @apply bg-gray-50;
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
 }
 .grecaptcha-badge {
     visibility: hidden;
