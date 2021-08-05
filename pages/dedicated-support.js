@@ -18,7 +18,7 @@ const plans = [
     ],
   },
   {
-    pid: 205,
+    pid: 206,
     title: "Enterprise",
     featured: true,
     description:
@@ -38,7 +38,7 @@ const plans = [
     ],
   },
   {
-    pid: 206,
+    pid: 205,
     title: "Premium",
     featured: false,
     description: "For startups and fast-growing businesses.",
