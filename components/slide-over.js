@@ -1,18 +1,37 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { GiftIcon, XIcon } from "@heroicons/react/outline";
 import { useCart } from "../contexts/CartContext";
 import { useCurrency } from "../contexts/CurrencyContext";
 import priceString from "../lib/pricing";
-("");
+
+
 
 export default function Checkout({ open, setOpen }) {
+
   const {
     globalState: { products },
-    dispatch
+    dispatch,
   } = useCart();
   const { currency } = useCurrency();
   const [promoCodeOpen, setPromoCodeOpen] = useState(false);
+  let total = 0.00
+
+  let maxDecimal = currency.name == "USD" ? 2 : 0;
+
+
+
+function format(number) {
+    return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: currency.name || "usd",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: maxDecimal,
+      }).format(number)
+}
+
+
+
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -60,9 +79,18 @@ export default function Checkout({ open, setOpen }) {
                       <div className="bg-white overflow-hidden shadow border border-gray-100 rounded-lg">
                         <div className="px-4 py-5 sm:p-6">
                           {/* Replace with your content */}
-                          {products.map((product) => {
+                          {products.map((product, idx) => {
+                              total += (+priceString({
+                                pid: product?.pid,
+                                term: product.billingInterval,
+                                currency: currency,
+                                raw:true
+                              }))
                             return (
-                              <div className="p-2 flex bg-white hover:bg-gray-100 cursor-pointer ">
+                              <div
+                                key={idx}
+                                className="p-2 flex bg-white hover:bg-gray-100 cursor-pointer "
+                              >
                                 <div className="pr-2">
                                   <svg
                                     className="h-12 w-12 text-blue-500"
@@ -113,7 +141,13 @@ export default function Checkout({ open, setOpen }) {
                                       ></path>
                                     </svg>
                                   </button>
-                                  <div>$2.71</div>
+                                  <div>
+                                    {priceString({
+                                      pid: product?.pid,
+                                      term: product.billingInterval,
+                                      currency: currency,
+                                    })}
+                                  </div>
                                 </div>
                               </div>
                             );
@@ -124,14 +158,14 @@ export default function Checkout({ open, setOpen }) {
                             {/* Promo code */}
                             <div>
                               <div className="text-left">
-                                <button
+                                {/* <button
                                   onClick={() =>
                                     setPromoCodeOpen(!promoCodeOpen)
                                   }
                                   className="font-normal text-sm text-gray-700 underline"
                                 >
                                   Do you have a promotional code?
-                                </button>
+                                </button> */}
                               </div>
                               {promoCodeOpen ? (
                                 <div className="my-4">
@@ -162,19 +196,19 @@ export default function Checkout({ open, setOpen }) {
                             {/* Totals */}
                             <div className="flex justify-between pb-2 border-b border-gray-200">
                               <div>Subtotal</div>
-                              <div>$0.00</div>
+                              <div>{currency.name === 'USD' ? format(total) :format((0.95 * total))}</div>
                             </div>
                             <div className="flex justify-between pb-2 border-b border-gray-200">
                               <div>Tax</div>
-                              <div>$0.00</div>
+                              <div>{currency.name === 'USD' ? format(0) :format((0.05 * total)) }</div>
                             </div>
-                            <div className="flex justify-between pb-2 border-b border-gray-200">
+                            {/* <div className="flex justify-between pb--2 border-b border-gray-200">
                               <div>Discount</div>
                               <div>$0.00</div>
-                            </div>
+                            </div> */}
                             <div className="flex justify-between pb-2 border-gray-200">
                               <div>Total</div>
-                              <div>$0.00</div>
+                              <div>{format(total)}</div>
                             </div>
                             {/* /Totals */}
                           </div>
