@@ -204,13 +204,13 @@ export default function Header() {
       <Popover className="z-10 relative bg-white">
         {({ open }) => (
           <>
-            <div className="flex justify-between items-center px-4 py-6 sm:px-6 lg:justify-start lg:space-x-10">
+            <div className="flex justify-between items-center px-4 py-6 sm:px-6 lg:justify-start lg:space-x-4">
               <div className="flex justify-start items-center h-16 lg:w-0 lg:flex-1">
                 <Link href="/">
                   <a>
                     <span className="sr-only">BlessHost</span>
                     <svg
-                      className="h-14 w-auto"
+                      className="h-10 md:h-12 xl:h-14"
                       version="1.1"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 548.7 100"
