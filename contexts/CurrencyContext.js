@@ -1,8 +1,10 @@
 import { createContext, useContext } from "react";
 import createPersistedState from "use-persisted-state";
 
-const allCurrencies = [{ name: "AED" }, { name: "USD" }];
-
+const allCurrencies = [
+  { symbol: "د.إ", name: "AED" },
+  { symbol: "$", name: "USD" },
+];
 export const CurrencyContext = createContext();
 
 export function CurrencyContextProvider({ children }) {
@@ -10,7 +12,7 @@ export function CurrencyContextProvider({ children }) {
   const [currency, setCurrency] = useSelectedState(allCurrencies[0]);
 
   return (
-    <CurrencyContext.Provider value={{currency, setCurrency }}>
+    <CurrencyContext.Provider value={{ currency, setCurrency }}>
       {children}
     </CurrencyContext.Provider>
   );

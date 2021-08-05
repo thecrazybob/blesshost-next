@@ -213,6 +213,10 @@ const tiersGermany = [
   },
 ];
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
 import { useCurrency } from "../contexts/CurrencyContext";
 import { useState } from "react";
 import LatestBlog from "../components/latest-blog";
@@ -226,16 +230,18 @@ export default function vpsHostingPage({ homePosts }) {
     {
       id: "uae",
       name: "United Arab Emirates",
+      flag: require("../public/img/flags/united-arab-emirates.svg").default,
     },
     {
       id: "germany",
       name: "Germany",
+      flag: require("../public/img/flags/germany.svg").default,
     },
   ];
 
   return (
     <main>
-      <div className="h-[screen-wh] pt-10 bg-gray-900 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
+      <div className="lg:h-[screen-wh] pt-10 bg-gray-900 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
         <div className="mx-auto max-w-7xl lg:px-8 h-full">
           <div className="grid lg:grid-cols-2 items-center lg:gap-8 h-full">
             <div className="pb-16 lg:pb-0 lg:order-none order-2 mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
@@ -674,22 +680,31 @@ export default function vpsHostingPage({ homePosts }) {
                 Get the plan that suits your business needs and upgrade as your
                 business grows.
               </p>
-              <div className="relative self-center mt-6 bg-gray-100 rounded-lg p-0.5 flex sm:mt-8">
-                <Tab.List>
-                  {toggleOptions.map((option) => (
-                    <Tab
-                      key={option.id}
-                      className={({ selected }) =>
+              <Tab.List className="relative self-center mt-6 bg-gray-100 rounded-lg p-0.5 flex sm:mt-8">
+                {toggleOptions.map((option) => (
+                  <Tab
+                    key={option.id}
+                    className={({ selected }) =>
+                      classNames(
+                        "flex items-center justify-center space-x-4 py-2 w-full font-medium rounded-md",
+                        "whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-blue-500 focus:z-10 sm:w-auto sm:px-8",
                         selected
-                          ? "relative w-1/2 bg-white border-gray-200 rounded-md shadow-sm py-2 text-sm font-medium text-gray-900 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-blue-500 focus:z-10 sm:w-auto sm:px-8"
-                          : "ml-0.5 relative w-1/2 border border-transparent rounded-md py-2 text-sm font-medium text-gray-700 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-blue-500 focus:z-10 sm:w-auto sm:px-8"
-                      }
-                    >
-                      {option.name}
-                    </Tab>
-                  ))}
-                </Tab.List>
-              </div>
+                          ? "shadow-sm text-gray-100 border-gray-200 bg-blue-500"
+                          : "text-gray-700 border border-transparent ml-0.5"
+                      )
+                    }
+                  >
+                    <Image
+                      layout="intrinsic"
+                      width={32}
+                      height={32}
+                      src={option.flag}
+                      alt={option.name}
+                    />
+                    <span>{option.name}</span>
+                  </Tab>
+                ))}
+              </Tab.List>
             </div>
             <Tab.Panels>
               <Tab.Panel>
@@ -1022,29 +1037,27 @@ export default function vpsHostingPage({ homePosts }) {
                 </p>
                 <Tab.Group>
                   <div className="flex justify-center my-6 mx-2 flex-col md:flex-row">
-                    <div className="relative self-center bg-gray-900 rounded-lg p-0.5 flex sm:mt-8 mb-8 lg:mt-0 border border-gray-900">
-                      <Tab.List>
-                        <Tab
-                          className={({ selected }) =>
-                            selected
-                              ? "bg-blue-500 border-gray-900 mt-0 relative w-1/2 border border-transparent rounded-md shadow-sm py-2 text-sm leading-5 font-medium text-white whitespace-no-wrap hover:text-white focus:outline-none focus:border-gray-900 focus:shadow-outline-black focus:z-10 active:bg-blue-500 active:text-white transition ease-in-out duration-150 sm:w-auto sm:px-8"
-                              : "mt-0 relative w-1/2 border border-transparent rounded-md shadow-sm py-2 text-sm leading-5 font-medium text-white whitespace-no-wrap hover:text-white focus:outline-none focus:border-gray-900 focus:shadow-outline-black focus:z-10 active:bg-blue-500 active:text-white transition ease-in-out duration-150 sm:w-auto sm:px-8"
-                          }
-                        >
-                          Control Panels
-                        </Tab>
-                        <Tab
-                          className={({ selected }) =>
-                            selected
-                              ? "bg-blue-500 border-gray-900 mt-0 relative w-1/2 border border-transparent rounded-md shadow-sm py-2 text-sm leading-5 font-medium text-white whitespace-no-wrap hover:text-white focus:outline-none focus:border-gray-900 focus:shadow-outline-black focus:z-10 active:bg-blue-500 active:text-white transition ease-in-out duration-150 sm:w-auto sm:px-8"
-                              : "mt-0 relative w-1/2 border border-transparent rounded-md shadow-sm py-2 text-sm leading-5 font-medium text-white whitespace-no-wrap hover:text-white focus:outline-none focus:border-gray-900 focus:shadow-outline-black focus:z-10 active:bg-blue-500 active:text-white transition ease-in-out duration-150 sm:w-auto sm:px-8"
-                          }
-                          type="button"
-                        >
-                          Operating Systems
-                        </Tab>
-                      </Tab.List>
-                    </div>
+                    <Tab.List className="relative self-center bg-gray-900 rounded-lg p-0.5 flex sm:mt-8 mb-8 lg:mt-0 border border-gray-900">
+                      <Tab
+                        className={({ selected }) =>
+                          selected
+                            ? "bg-blue-500 border-gray-900 mt-0 relative w-1/2 border border-transparent rounded-md shadow-sm py-2 text-sm leading-5 font-medium text-white whitespace-no-wrap hover:text-white focus:outline-none focus:border-gray-900 focus:shadow-outline-black focus:z-10 active:bg-blue-500 active:text-white transition ease-in-out duration-150 sm:w-auto sm:px-8"
+                            : "mt-0 relative w-1/2 border border-transparent rounded-md shadow-sm py-2 text-sm leading-5 font-medium text-white whitespace-no-wrap hover:text-white focus:outline-none focus:border-gray-900 focus:shadow-outline-black focus:z-10 active:bg-blue-500 active:text-white transition ease-in-out duration-150 sm:w-auto sm:px-8"
+                        }
+                      >
+                        Control Panels
+                      </Tab>
+                      <Tab
+                        className={({ selected }) =>
+                          selected
+                            ? "bg-blue-500 border-gray-900 mt-0 relative w-1/2 border border-transparent rounded-md shadow-sm py-2 text-sm leading-5 font-medium text-white whitespace-no-wrap hover:text-white focus:outline-none focus:border-gray-900 focus:shadow-outline-black focus:z-10 active:bg-blue-500 active:text-white transition ease-in-out duration-150 sm:w-auto sm:px-8"
+                            : "mt-0 relative w-1/2 border border-transparent rounded-md shadow-sm py-2 text-sm leading-5 font-medium text-white whitespace-no-wrap hover:text-white focus:outline-none focus:border-gray-900 focus:shadow-outline-black focus:z-10 active:bg-blue-500 active:text-white transition ease-in-out duration-150 sm:w-auto sm:px-8"
+                        }
+                        type="button"
+                      >
+                        Operating Systems
+                      </Tab>
+                    </Tab.List>
                   </div>
                   <Tab.Panels>
                     <Tab.Panel>
