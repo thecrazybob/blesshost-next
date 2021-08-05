@@ -7,7 +7,7 @@ export default function WHMCSLink({
   className,
   raw,
 }) {
-  currency = currency.name == "USD" ? 1 : 2;
+  currency = currency?.name == "USD" ? 1 : 2;
 
   let link = "#";
 

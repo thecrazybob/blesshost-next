@@ -116,8 +116,10 @@ const tiersUAE = [
     name: "8 GB RAM",
     description: "Suitable for high traffic sites with bigger storage",
     includedFeatures: [
-      "Potenti felis, in cras at at ligula nunc.",
-      "Orci neque eget pellentesque.",
+      "120 GB SSD Storage",
+      "1 TB Premium Bandwidth",
+      "8 vCPU",
+      "Dubai Data center",
     ],
   },
   {
@@ -125,9 +127,10 @@ const tiersUAE = [
     name: "16 GB RAM",
     description: "Suitable for high traffic sites with bigger storage",
     includedFeatures: [
-      "Potenti felis, in cras at at ligula nunc. ",
-      "Orci neque eget pellentesque.",
-      "Donec mauris sit in eu tincidunt etiam.",
+      "200 GB SSD",
+      "Unmetered",
+      "12 vCPU",
+      "Dubai Data Center",
     ],
   },
   {
@@ -135,10 +138,10 @@ const tiersUAE = [
     name: "32 GB RAM",
     description: "Suitable for high traffic sites with bigger storage",
     includedFeatures: [
-      "Potenti felis, in cras at at ligula nunc. ",
-      "Orci neque eget pellentesque.",
-      "Donec mauris sit in eu tincidunt etiam.",
-      "Faucibus volutpat magna.",
+      "400 GB SSD",
+      "Unmetered Bandwidth",
+      "16 vCPU",
+      "Dubai Data Center",
     ],
   },
   {
@@ -146,13 +149,32 @@ const tiersUAE = [
     name: "64 GB RAM",
     description: "Suitable for high traffic sites with bigger storage",
     includedFeatures: [
-      "Potenti felis, in cras at at ligula nunc. ",
-      "Orci neque eget pellentesque.",
-      "Donec mauris sit in eu tincidunt etiam.",
-      "Faucibus volutpat magna.",
-      "Id sed tellus in varius quisque.",
-      "Risus egestas faucibus.",
-      "Risus cursus ullamcorper.",
+      "800 GB SSD",
+      "Unmetered Bandwidth",
+      "24 vCPU",
+      "Dubai Data Center",
+    ],
+  },
+  {
+    pid: 118,
+    name: "2 GB RAM",
+    description: "Good for development / testing purposes",
+    includedFeatures: [
+      "60 GB SSD Storage",
+      "1 TB Premium Bandwidth",
+      "2 vCPU",
+      "Dubai Data Center",
+    ],
+  },
+  {
+    pid: 119,
+    name: "4 GB RAM",
+    description: "Suitable for personal blogs and static sites",
+    includedFeatures: [
+      "80 GB SSD Storage",
+      "1 TB Premium Bandwidth",
+      "4 vCPU",
+      "Dubai Data Center",
     ],
   },
 ];
@@ -160,46 +182,68 @@ const tiersUAE = [
 const tiersGermany = [
   {
     pid: 13,
-    name: "Hobby GERmany",
+    name: "8 GB RAM",
     description: "All the basics for starting a new business",
     includedFeatures: [
-      "Potenti felis, in cras at at ligula nunc.",
-      "Orci neque eget pellentesque.",
+      "100 GB SSD Storage",
+      "2.5 TB Premium Bandwidth",
+      "4 Core",
+      "Germany Data center",
     ],
   },
   {
     pid: 14,
-    name: "Freelancer",
+    name: "16 GB RAM",
     description: "All the basics for starting a new business",
     includedFeatures: [
-      "Potenti felis, in cras at at ligula nunc. ",
-      "Orci neque eget pellentesque.",
-      "Donec mauris sit in eu tincidunt etiam.",
+      "125 GB SSD Storage",
+      "3 TB Premium Bandwidth",
+      "6 Core",
+      "Germany Data center",
     ],
   },
   {
     pid: 157,
-    name: "Startup",
+    name: "32 GB RAM",
     description: "All the basics for starting a new business",
     includedFeatures: [
-      "Potenti felis, in cras at at ligula nunc. ",
-      "Orci neque eget pellentesque.",
-      "Donec mauris sit in eu tincidunt etiam.",
-      "Faucibus volutpat magna.",
+      "240 GB SSD Storage",
+      "20 TB Premium Bandwidth",
+      "8 Core",
+      "Germany Data center",
     ],
   },
   {
     pid: 158,
-    name: "Enterprise",
+    name: "64 GB RAM",
     description: "All the basics for starting a new business",
     includedFeatures: [
-      "Potenti felis, in cras at at ligula nunc. ",
-      "Orci neque eget pellentesque.",
-      "Donec mauris sit in eu tincidunt etiam.",
-      "Faucibus volutpat magna.",
-      "Id sed tellus in varius quisque.",
-      "Risus egestas faucibus.",
-      "Risus cursus ullamcorper.",
+      "360 GB SSD Storage",
+      "20 TB Premium Bandwidth",
+      "16 Core",
+      "Germany Data center",
+    ],
+  },
+  {
+    pid: 11,
+    name: "2 GB RAM",
+    description: "Good for development / testing purposes",
+    includedFeatures: [
+      "360 GB SSD Storage",
+      "1.5 TB Premium Bandwidth",
+      "1 Core",
+      "Germany Data center",
+    ],
+  },
+  {
+    pid: 12,
+    name: "4 GB RAM",
+    description: "Suitable for personal blogs and static sites",
+    includedFeatures: [
+      "75 GB SSD Storage",
+      "2 TB Premium Bandwidth",
+      "2 Cores",
+      "Germany Data center",
     ],
   },
 ];
@@ -223,6 +267,7 @@ import { Fragment, useState } from "react";
 import LatestBlog from "../components/latest-blog";
 import Image from "next/image";
 import priceString from "../lib/pricing";
+import WHMCSLink from "../components/whmcs-link";
 
 export default function vpsHostingPage({ homePosts }) {
   const [billingInterval, setBillingInterval] = useState("annually");
@@ -713,77 +758,9 @@ export default function vpsHostingPage({ homePosts }) {
                   </Tab>
                 ))}
               </Tab.List>
-
-              <div className="w-72 mx-auto">
-                <Listbox value={billingInterval} onChange={setBillingInterval}>
-                  <div className="relative mt-1">
-                    <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md border cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
-                      <span className="block truncate">
-                        {terms.find((term) => term.id == billingInterval).name}
-                      </span>
-                      <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                        <SelectorIcon
-                          className="w-5 h-5 text-gray-400"
-                          aria-hidden="true"
-                        />
-                      </span>
-                    </Listbox.Button>
-                    <Transition
-                      as={Fragment}
-                      leave="transition ease-in duration-100"
-                      leaveFrom="opacity-100"
-                      leaveTo="opacity-0"
-                    >
-                      <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                        {terms.map((term) => (
-                          <Listbox.Option
-                            key={term.id}
-                            className={({ active }) =>
-                              `${
-                                active
-                                  ? "text-amber-900 bg-amber-100"
-                                  : "text-gray-900"
-                              }
-                          cursor-default select-none relative py-2 pl-10 pr-4`
-                            }
-                            value={term.id}
-                          >
-                            {({ selected, active }) => (
-                              <>
-                                <span
-                                  className={`${
-                                    selected ? "font-medium" : "font-normal"
-                                  } block truncate`}
-                                >
-                                  {term.name}
-                                </span>
-                                {selected ? (
-                                  <span
-                                    className={`${
-                                      active
-                                        ? "text-amber-600"
-                                        : "text-amber-600"
-                                    }
-                                absolute inset-y-0 left-0 flex items-center pl-3`}
-                                  >
-                                    <CheckIcon
-                                      className="w-5 h-5"
-                                      aria-hidden="true"
-                                    />
-                                  </span>
-                                ) : null}
-                              </>
-                            )}
-                          </Listbox.Option>
-                        ))}
-                      </Listbox.Options>
-                    </Transition>
-                  </div>
-                </Listbox>
-              </div>
             </div>
             <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-4">
-              {tiers.map((tier) => (
+              {tiers.slice(0, 4).map((tier) => (
                 <div
                   key={tier.name}
                   className="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200"
@@ -805,19 +782,102 @@ export default function vpsHostingPage({ homePosts }) {
                         })}
                       </span>{" "}
                       <span className="text-base font-medium text-gray-500">
-                        / mo (Billed{" "}
+                        / mo
+                      </span>
+                      <span className="text-base block font-medium text-gray-500">
+                        (Billed{" "}
                         {terms
                           .find((term) => term.id == billingInterval)
                           .name.toLowerCase()}
                         )
                       </span>
                     </p>
-                    <a
-                      href={tier.href}
+                    <div className="w-full mt-6 mx-auto">
+                      <Listbox
+                        value={billingInterval}
+                        onChange={setBillingInterval}
+                      >
+                        <div className="relative mt-1">
+                          <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md border cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
+                            <Listbox.Label className="block text-sm font-medium text-gray-700">
+                              Billing cycle
+                            </Listbox.Label>
+                            <span className="block truncate">
+                              {
+                                terms.find((term) => term.id == billingInterval)
+                                  .name
+                              }
+                            </span>
+                            <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                              <SelectorIcon
+                                className="w-5 h-5 text-gray-400"
+                                aria-hidden="true"
+                              />
+                            </span>
+                          </Listbox.Button>
+                          <Transition
+                            as={Fragment}
+                            leave="transition ease-in duration-100"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                          >
+                            <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                              {terms.map((term) => (
+                                <Listbox.Option
+                                  key={term.id}
+                                  className={({ active }) =>
+                                    `${
+                                      active
+                                        ? "text-amber-900 bg-amber-100"
+                                        : "text-gray-900"
+                                    }
+                          cursor-default select-none relative py-2 pl-10 pr-4`
+                                  }
+                                  value={term.id}
+                                >
+                                  {({ selected, active }) => (
+                                    <>
+                                      <span
+                                        className={`${
+                                          selected
+                                            ? "font-medium"
+                                            : "font-normal"
+                                        } block truncate`}
+                                      >
+                                        {term.name}
+                                      </span>
+                                      {selected ? (
+                                        <span
+                                          className={`${
+                                            active
+                                              ? "text-amber-600"
+                                              : "text-amber-600"
+                                          }
+                                absolute inset-y-0 left-0 flex items-center pl-3`}
+                                        >
+                                          <CheckIcon
+                                            className="w-5 h-5"
+                                            aria-hidden="true"
+                                          />
+                                        </span>
+                                      ) : null}
+                                    </>
+                                  )}
+                                </Listbox.Option>
+                              ))}
+                            </Listbox.Options>
+                          </Transition>
+                        </div>
+                      </Listbox>
+                    </div>
+
+                    <WHMCSLink
+                      currency={currency}
+                      term={billingInterval}
+                      pid={tier.pid}
+                      label={`Buy ${tier.name}`}
                       className="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
-                    >
-                      Buy {tier.name}
-                    </a>
+                    />
                   </div>
                   <div className="pt-6 pb-8 px-6">
                     <h3 className="text-xs font-medium text-gray-900 tracking-wide uppercase">
@@ -836,6 +896,133 @@ export default function vpsHostingPage({ homePosts }) {
                         </li>
                       ))}
                     </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0">
+              {tiers.slice(4, 6).map((tier) => (
+                <div className="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
+                  <div className="p-6">
+                    <h2 className="text-lg  leading-6 font-bold text-gray-900">
+                      {tier.name}
+                    </h2>
+                    <p className="mb-5 text-sm leading-5 text-gray-500">
+                      {tier.description}
+                    </p>
+                    {tier.includedFeatures.map((feature) => (
+                      <li key={feature} className="flex space-x-3">
+                        <CheckIcon
+                          className="flex-shrink-0 h-5 w-5 text-green-500"
+                          aria-hidden="true"
+                        />
+                        <span className="text-sm text-gray-500">{feature}</span>
+                      </li>
+                    ))}
+
+                    <div className="w-72 my-6">
+                      <Listbox
+                        value={billingInterval}
+                        onChange={setBillingInterval}
+                      >
+                        <div className="relative mt-1">
+                          <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md border cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
+                            <Listbox.Label className="block text-sm font-medium text-gray-700">
+                              Billing cycle
+                            </Listbox.Label>
+                            <span className="block truncate">
+                              {
+                                terms.find((term) => term.id == billingInterval)
+                                  .name
+                              }
+                            </span>
+                            <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                              <SelectorIcon
+                                className="w-5 h-5 text-gray-400"
+                                aria-hidden="true"
+                              />
+                            </span>
+                          </Listbox.Button>
+                          <Transition
+                            as={Fragment}
+                            leave="transition ease-in duration-100"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                          >
+                            <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                              {terms.map((term) => (
+                                <Listbox.Option
+                                  key={term.id}
+                                  className={({ active }) =>
+                                    `${
+                                      active
+                                        ? "text-amber-900 bg-amber-100"
+                                        : "text-gray-900"
+                                    }
+                          cursor-default select-none relative py-2 pl-10 pr-4`
+                                  }
+                                  value={term.id}
+                                >
+                                  {({ selected, active }) => (
+                                    <>
+                                      <span
+                                        className={`${
+                                          selected
+                                            ? "font-medium"
+                                            : "font-normal"
+                                        } block truncate`}
+                                      >
+                                        {term.name}
+                                      </span>
+                                      {selected ? (
+                                        <span
+                                          className={`${
+                                            active
+                                              ? "text-amber-600"
+                                              : "text-amber-600"
+                                          }
+                                absolute inset-y-0 left-0 flex items-center pl-3`}
+                                        >
+                                          <CheckIcon
+                                            className="w-5 h-5"
+                                            aria-hidden="true"
+                                          />
+                                        </span>
+                                      ) : null}
+                                    </>
+                                  )}
+                                </Listbox.Option>
+                              ))}
+                            </Listbox.Options>
+                          </Transition>
+                        </div>
+                      </Listbox>
+                    </div>
+
+                    <p className="mt-2 flex items-center space-x-2">
+                      <span className="text-4xl leading-10 font-extrabold text-gray-900">
+                        {priceString({
+                          pid: tier.pid,
+                          currency: currency,
+                          term: billingInterval,
+                          monthlyPricing: true,
+                        })}
+                      </span>
+                      <span className="text-base leading-6 font-medium text-gray-500">
+                        / mo (Billed{" "}
+                        {terms
+                          .find((term) => term.id == billingInterval)
+                          .name.toLowerCase()}
+                        )
+                      </span>
+                    </p>
+                    <WHMCSLink
+                      currency={currency}
+                      term={billingInterval}
+                      pid={tier.pid}
+                      label={`Buy ${tier.name}`}
+                      className="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
+                    />
                   </div>
                 </div>
               ))}
@@ -1711,7 +1898,11 @@ export default function vpsHostingPage({ homePosts }) {
 
       <CTAImage></CTAImage>
 
-      <SimpleCTA></SimpleCTA>
+      <SimpleCTA
+        strongText="Get your own VPS today."
+        normalButton={{ href: "#more", label: "Learn more" }}
+        strongButton={{ href: "#pricing", label: "View plans" }}
+      ></SimpleCTA>
     </main>
   );
 }

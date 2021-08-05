@@ -404,7 +404,7 @@ export default function WebHosting() {
               </ul>
               <WHMCSLink
                 pid={91}
-                currency={2}
+                currency={currency}
                 label="Get started today"
                 className="w-full bg-white border border-transparent rounded-md py-4 px-8 flex items-center justify-center text-lg leading-6 font-medium text-blue-700 hover:bg-blue-50 md:px-10"
               />
@@ -1116,6 +1116,7 @@ export default function WebHosting() {
             <WHMCSLink
               label="Order now"
               pid="91"
+              currency={currency}
               className="mt-8 w-full bg-blue-50 border border-transparent rounded-md py-3 px-5 inline-flex items-center justify-center text-base font-medium text-blue-700 hover:bg-blue-100 sm:w-auto"
             />
             <a
