@@ -10,7 +10,6 @@ import {
 import SimpleCTA from "../components/cta-simple";
 import FAQs from "../components/faqs-white";
 import CTAImage from "../components/cta-image";
-import WHMCSLink from "../components/whmcs-link";
 import { getHomePosts } from "../lib/api";
 import { Tab } from "@headlessui/react";
 
@@ -113,20 +112,18 @@ const features = [
 
 const tiersUAE = [
   {
-    name: "Hobby",
-    href: "#",
-    priceMonthly: 12,
-    description: "All the basics for starting a new business",
+    pid: 120,
+    name: "8 GB RAM",
+    description: "Suitable for high traffic sites with bigger storage",
     includedFeatures: [
       "Potenti felis, in cras at at ligula nunc.",
       "Orci neque eget pellentesque.",
     ],
   },
   {
-    name: "Freelancer",
-    href: "#",
-    priceMonthly: 24,
-    description: "All the basics for starting a new business",
+    pid: 154,
+    name: "16 GB RAM",
+    description: "Suitable for high traffic sites with bigger storage",
     includedFeatures: [
       "Potenti felis, in cras at at ligula nunc. ",
       "Orci neque eget pellentesque.",
@@ -134,10 +131,9 @@ const tiersUAE = [
     ],
   },
   {
-    name: "Startup",
-    href: "#",
-    priceMonthly: 32,
-    description: "All the basics for starting a new business",
+    pid: 155,
+    name: "32 GB RAM",
+    description: "Suitable for high traffic sites with bigger storage",
     includedFeatures: [
       "Potenti felis, in cras at at ligula nunc. ",
       "Orci neque eget pellentesque.",
@@ -146,10 +142,9 @@ const tiersUAE = [
     ],
   },
   {
-    name: "Enterprise",
-    href: "#",
-    priceMonthly: 48,
-    description: "All the basics for starting a new business",
+    pid: 156,
+    name: "64 GB RAM",
+    description: "Suitable for high traffic sites with bigger storage",
     includedFeatures: [
       "Potenti felis, in cras at at ligula nunc. ",
       "Orci neque eget pellentesque.",
@@ -164,9 +159,8 @@ const tiersUAE = [
 
 const tiersGermany = [
   {
+    pid: 13,
     name: "Hobby GERmany",
-    href: "#",
-    priceMonthly: 12,
     description: "All the basics for starting a new business",
     includedFeatures: [
       "Potenti felis, in cras at at ligula nunc.",
@@ -174,9 +168,8 @@ const tiersGermany = [
     ],
   },
   {
+    pid: 14,
     name: "Freelancer",
-    href: "#",
-    priceMonthly: 24,
     description: "All the basics for starting a new business",
     includedFeatures: [
       "Potenti felis, in cras at at ligula nunc. ",
@@ -185,9 +178,8 @@ const tiersGermany = [
     ],
   },
   {
+    pid: 157,
     name: "Startup",
-    href: "#",
-    priceMonthly: 32,
     description: "All the basics for starting a new business",
     includedFeatures: [
       "Potenti felis, in cras at at ligula nunc. ",
@@ -197,9 +189,8 @@ const tiersGermany = [
     ],
   },
   {
+    pid: 158,
     name: "Enterprise",
-    href: "#",
-    priceMonthly: 48,
     description: "All the basics for starting a new business",
     includedFeatures: [
       "Potenti felis, in cras at at ligula nunc. ",
@@ -213,18 +204,30 @@ const tiersGermany = [
   },
 ];
 
+const allTiers = [tiersUAE, tiersGermany];
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+import { Listbox, Transition } from "@headlessui/react";
+import { SelectorIcon } from "@heroicons/react/solid";
+
+const terms = [
+  { id: "annually", name: "Yearly" },
+  { id: "monthly", name: "Monthly" },
+];
+
 import { useCurrency } from "../contexts/CurrencyContext";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import LatestBlog from "../components/latest-blog";
 import Image from "next/image";
+import priceString from "../lib/pricing";
 
 export default function vpsHostingPage({ homePosts }) {
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency, setCurrency } = useCurrency("");
+  const [tiers, setTiers] = useState(tiersUAE);
 
   const toggleOptions = [
     {
@@ -670,7 +673,11 @@ export default function vpsHostingPage({ homePosts }) {
       </div>
 
       <div id="pricing" className="bg-white">
-        <Tab.Group>
+        <Tab.Group
+          onChange={(index) => {
+            setTiers(allTiers[index]);
+          }}
+        >
           <div className="max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
             <div className="sm:flex sm:flex-col sm:align-center">
               <h1 className="text-5xl font-extrabold text-gray-900 sm:text-center">
@@ -680,6 +687,7 @@ export default function vpsHostingPage({ homePosts }) {
                 Get the plan that suits your business needs and upgrade as your
                 business grows.
               </p>
+
               <Tab.List className="relative self-center mt-6 bg-gray-100 rounded-lg p-0.5 flex sm:mt-8">
                 {toggleOptions.map((option) => (
                   <Tab
@@ -705,111 +713,133 @@ export default function vpsHostingPage({ homePosts }) {
                   </Tab>
                 ))}
               </Tab.List>
+
+              <div className="w-72 mx-auto">
+                <Listbox value={billingInterval} onChange={setBillingInterval}>
+                  <div className="relative mt-1">
+                    <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md border cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
+                      <span className="block truncate">
+                        {terms.find((term) => term.id == billingInterval).name}
+                      </span>
+                      <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                        <SelectorIcon
+                          className="w-5 h-5 text-gray-400"
+                          aria-hidden="true"
+                        />
+                      </span>
+                    </Listbox.Button>
+                    <Transition
+                      as={Fragment}
+                      leave="transition ease-in duration-100"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
+                    >
+                      <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                        {terms.map((term) => (
+                          <Listbox.Option
+                            key={term.id}
+                            className={({ active }) =>
+                              `${
+                                active
+                                  ? "text-amber-900 bg-amber-100"
+                                  : "text-gray-900"
+                              }
+                          cursor-default select-none relative py-2 pl-10 pr-4`
+                            }
+                            value={term.id}
+                          >
+                            {({ selected, active }) => (
+                              <>
+                                <span
+                                  className={`${
+                                    selected ? "font-medium" : "font-normal"
+                                  } block truncate`}
+                                >
+                                  {term.name}
+                                </span>
+                                {selected ? (
+                                  <span
+                                    className={`${
+                                      active
+                                        ? "text-amber-600"
+                                        : "text-amber-600"
+                                    }
+                                absolute inset-y-0 left-0 flex items-center pl-3`}
+                                  >
+                                    <CheckIcon
+                                      className="w-5 h-5"
+                                      aria-hidden="true"
+                                    />
+                                  </span>
+                                ) : null}
+                              </>
+                            )}
+                          </Listbox.Option>
+                        ))}
+                      </Listbox.Options>
+                    </Transition>
+                  </div>
+                </Listbox>
+              </div>
             </div>
-            <Tab.Panels>
-              <Tab.Panel>
-                <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-4">
-                  {tiersUAE.map((tier) => (
-                    <div
-                      key={tier.name}
-                      className="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200"
+            <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-4">
+              {tiers.map((tier) => (
+                <div
+                  key={tier.name}
+                  className="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200"
+                >
+                  <div className="p-6">
+                    <h2 className="text-lg leading-6 font-medium text-gray-900">
+                      {tier.name}
+                    </h2>
+                    <p className="mt-4 text-sm text-gray-500">
+                      {tier.description}
+                    </p>
+                    <p className="mt-8">
+                      <span className="text-4xl font-extrabold text-gray-900">
+                        {priceString({
+                          pid: tier.pid,
+                          currency: currency,
+                          term: billingInterval,
+                          monthlyPricing: true,
+                        })}
+                      </span>{" "}
+                      <span className="text-base font-medium text-gray-500">
+                        / mo (Billed{" "}
+                        {terms
+                          .find((term) => term.id == billingInterval)
+                          .name.toLowerCase()}
+                        )
+                      </span>
+                    </p>
+                    <a
+                      href={tier.href}
+                      className="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
                     >
-                      <div className="p-6">
-                        <h2 className="text-lg leading-6 font-medium text-gray-900">
-                          {tier.name}
-                        </h2>
-                        <p className="mt-4 text-sm text-gray-500">
-                          {tier.description}
-                        </p>
-                        <p className="mt-8">
-                          <span className="text-4xl font-extrabold text-gray-900">
-                            ${tier.priceMonthly}
-                          </span>{" "}
-                          <span className="text-base font-medium text-gray-500">
-                            /mo
+                      Buy {tier.name}
+                    </a>
+                  </div>
+                  <div className="pt-6 pb-8 px-6">
+                    <h3 className="text-xs font-medium text-gray-900 tracking-wide uppercase">
+                      What's included
+                    </h3>
+                    <ul className="mt-6 space-y-4">
+                      {tier.includedFeatures.map((feature) => (
+                        <li key={feature} className="flex space-x-3">
+                          <CheckIcon
+                            className="flex-shrink-0 h-5 w-5 text-green-500"
+                            aria-hidden="true"
+                          />
+                          <span className="text-sm text-gray-500">
+                            {feature}
                           </span>
-                        </p>
-                        <a
-                          href={tier.href}
-                          className="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
-                        >
-                          Buy {tier.name}
-                        </a>
-                      </div>
-                      <div className="pt-6 pb-8 px-6">
-                        <h3 className="text-xs font-medium text-gray-900 tracking-wide uppercase">
-                          What's included
-                        </h3>
-                        <ul className="mt-6 space-y-4">
-                          {tier.includedFeatures.map((feature) => (
-                            <li key={feature} className="flex space-x-3">
-                              <CheckIcon
-                                className="flex-shrink-0 h-5 w-5 text-green-500"
-                                aria-hidden="true"
-                              />
-                              <span className="text-sm text-gray-500">
-                                {feature}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  ))}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </Tab.Panel>
-              <Tab.Panel>
-                <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-4">
-                  {tiersGermany.map((tier) => (
-                    <div
-                      key={tier.name}
-                      className="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200"
-                    >
-                      <div className="p-6">
-                        <h2 className="text-lg leading-6 font-medium text-gray-900">
-                          {tier.name}
-                        </h2>
-                        <p className="mt-4 text-sm text-gray-500">
-                          {tier.description}
-                        </p>
-                        <p className="mt-8">
-                          <span className="text-4xl font-extrabold text-gray-900">
-                            ${tier.priceMonthly}
-                          </span>{" "}
-                          <span className="text-base font-medium text-gray-500">
-                            /mo
-                          </span>
-                        </p>
-                        <a
-                          href={tier.href}
-                          className="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
-                        >
-                          Buy {tier.name}
-                        </a>
-                      </div>
-                      <div className="pt-6 pb-8 px-6">
-                        <h3 className="text-xs font-medium text-gray-900 tracking-wide uppercase">
-                          What's included
-                        </h3>
-                        <ul className="mt-6 space-y-4">
-                          {tier.includedFeatures.map((feature) => (
-                            <li key={feature} className="flex space-x-3">
-                              <CheckIcon
-                                className="flex-shrink-0 h-5 w-5 text-green-500"
-                                aria-hidden="true"
-                              />
-                              <span className="text-sm text-gray-500">
-                                {feature}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </Tab.Panel>
-            </Tab.Panels>
+              ))}
+            </div>
           </div>
         </Tab.Group>
       </div>

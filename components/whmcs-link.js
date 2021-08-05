@@ -7,14 +7,14 @@ export default function WHMCSLink({
   className,
   raw,
 }) {
-  currency = currency == "USD" ? 1 : 2;
+  currency = currency.name == "USD" ? 1 : 2;
 
   let link = "#";
 
   if (pid > 0) {
     link = `https://billing.blesshost.com/cart.php?a=add&pid=${
       pid ?? 91
-    }&currency=${currency ?? 1}&promocode=${promo ?? ""}`;
+    }&currency=${currency}&promocode=${promo ?? ""}`;
   } else {
     label = "Included";
   }
