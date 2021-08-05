@@ -169,7 +169,7 @@ export default function WebHosting() {
       {/* Hero */}
       <div className="lg:h-[screen-wh] bg-gradient-to-l from-blue-700 to-blue-900">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 h-full">
-          <div className="grid grid-cols-1 items-center justify-between gap-x-8 md:grid-cols-2 h-full">
+          <div className="pb-16 md:pb-0 grid grid-cols-1 items-center justify-between gap-x-8 md:grid-cols-2 h-full">
             <div className="text-center md:text-left">
               <span className="block mb-4 text-sm font-semibold uppercase tracking-wide text-gray-300 sm:text-base lg:text-sm xl:text-base">
                 360 Web Hosting
@@ -178,11 +178,11 @@ export default function WebHosting() {
                 <span className="inline">360 </span>
                 <span className="inline text-blue-300">Website Hosting </span>
               </h1>
-              <p className="mt-3 mb-20 md:mb-0 max-w-md mx-auto text-base text-gray-300 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+              <p className="mt-3 md:mb-0 max-w-md mx-auto text-base text-gray-300 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
                 For a flat price, get unlimited website hosting hosted in either
                 the United Arab Emirates or the EU
               </p>
-              <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
+              <div className="pt-8 sm:flex sm:justify-center md:justify-start justify-start">
                 <div className="rounded-md shadow">
                   <WHMCSLink
                     label="Order now"

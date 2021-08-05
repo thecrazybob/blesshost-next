@@ -293,10 +293,10 @@ export default function simpleHostingPage() {
               />
               <div className="absolute inset-0 bg-blue-800 mix-blend-multiply" />
             </div>
-            <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-48 lg:px-8">
+            <div className="relative flex h-full flex-col justify-center px-4 py-16 sm:px-6 sm:py-24 lg:py-48 lg:px-8">
               <h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
                 <span className="block text-white">
-                  Traditional hosting with{" "}
+                  Traditional Hosting with{" "}
                 </span>
                 <span className="block text-blue-200">
                   Reliability, Security & Performance Built-In

@@ -1,7 +1,11 @@
 import BlogCard from "./blog-card";
 
-export default function LatestBlog({ homePosts: { edges } }) {
+export default function LatestBlog({ homePosts: { edges }, className }) {
   const posts = edges.slice(0);
 
-  return <>{posts.length > 0 && <BlogCard posts={posts} />}</>;
+  return (
+    <div className={className}>
+      {posts.length > 0 && <BlogCard posts={posts} />}
+    </div>
+  );
 }

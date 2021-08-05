@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import { SelectorIcon, ChevronDownIcon } from "@heroicons/react/solid";
+import { SelectorIcon } from "@heroicons/react/solid";
 import { useCurrency } from "../contexts/CurrencyContext.js";
 
-const allCurrencies = [{ name: "AED" }, { name: "USD" }];
+const allCurrencies = [
+  { symbol: "د.إ", name: "AED" },
+  { symbol: "$", name: "USD" },
+];
 
 const navigation = {
   solutions: [
@@ -211,7 +214,7 @@ export default function Footer() {
                         <div key={currency.name} className="mt-1 relative">
                           <Listbox.Button className="relative w-full bg-gray-700 text-white  rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-white focus:border-white sm:text-sm">
                             <span className="block truncate">
-                              {currency.name}
+                              {currency.symbol} {currency.name}
                             </span>
                             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                               <SelectorIcon
@@ -255,7 +258,7 @@ export default function Footer() {
                                           "block truncate"
                                         )}
                                       >
-                                        {item?.name}
+                                        {item?.symbol} {item?.name}
                                       </span>
                                     </>
                                   )}

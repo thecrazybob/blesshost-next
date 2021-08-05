@@ -1,5 +1,10 @@
 import { Fragment, useRef, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
+import { Listbox } from "@headlessui/react";
+const allCurrencies = [
+  { symbol: "د.إ", name: "AED" },
+  { symbol: "$", name: "USD" },
+];
 import {
   ClockIcon,
   CloudIcon,
@@ -182,6 +187,7 @@ function classNames(...classes) {
 }
 
 import Topbar from "../components/topbar";
+import { useCurrency } from "../contexts/CurrencyContext";
 
 export default function Header() {
   const hostingButtonRef = useRef();
@@ -189,6 +195,8 @@ export default function Header() {
   const marketingButtonRef = useRef();
   const supportButtonRef = useRef();
   const [isOpen, setIsOpen] = useState(false);
+
+  const { currency, setCurrency } = useCurrency("");
 
   return (
     <header className="sticky top-0 inset-y-0 z-50 filter shadow-md">
@@ -271,7 +279,84 @@ export default function Header() {
                   </a>
                 </Link>
               </div>
-              <div className="-mr-2 -my-2 lg:hidden">
+              <div className="-mr-2 -my-2 flex space-x-2 lg:hidden">
+                <Listbox value={currency} onChange={setCurrency}>
+                  {({ open }) => (
+                    <>
+                      <div key={currency.name} className="mt-1 relative">
+                        <Listbox.Button className="relative w-full text-gray-600 px-2 py-2">
+                          <span className="block">
+                            {currency.symbol} {currency.name}
+                          </span>
+                        </Listbox.Button>
+
+                        <Transition
+                          show={open}
+                          as={Fragment}
+                          leave="transition ease-in duration-100"
+                          leaveFrom="opacity-100"
+                          leaveTo="opacity-0"
+                        >
+                          <Listbox.Options
+                            static
+                            className="absolute z-10 mt-1 w-24 bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
+                          >
+                            {allCurrencies.map((item) => (
+                              <Listbox.Option
+                                key={item}
+                                className={({ active }) =>
+                                  classNames(
+                                    active
+                                      ? "text-white bg-blue-600"
+                                      : "text-gray-900",
+                                    "cursor-default select-none relative py-2 px-6 mx-auto"
+                                  )
+                                }
+                                value={item}
+                              >
+                                {({ currency }) => (
+                                  <>
+                                    <span
+                                      className={classNames(
+                                        currency
+                                          ? "font-semibold"
+                                          : "font-normal",
+                                        "block"
+                                      )}
+                                    >
+                                      {item?.symbol} {item?.name}
+                                    </span>
+                                  </>
+                                )}
+                              </Listbox.Option>
+                            ))}
+                          </Listbox.Options>
+                        </Transition>
+                      </div>
+                    </>
+                  )}
+                </Listbox>
+                <button
+                  className="text-gray-500 mr-4 px-2 py-2 rounded flex-grow-0 max-w-max hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                  onClick={() => {
+                    setIsOpen(true);
+                  }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                    />
+                  </svg>
+                </button>
                 <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
                   <span className="sr-only">Open menu</span>
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
@@ -635,6 +720,62 @@ export default function Header() {
                 </Popover>
               </Popover.Group>
               <div className="hidden lg:flex items-center justify-end lg:flex-1 lg:w-0">
+                <Listbox value={currency} onChange={setCurrency}>
+                  {({ open }) => (
+                    <>
+                      <div key={currency.name} className="mt-1 relative">
+                        <Listbox.Button className="relative w-full text-gray-600 px-2 py-2">
+                          <span className="block">
+                            {currency.symbol} {currency.name}
+                          </span>
+                        </Listbox.Button>
+
+                        <Transition
+                          show={open}
+                          as={Fragment}
+                          leave="transition ease-in duration-100"
+                          leaveFrom="opacity-100"
+                          leaveTo="opacity-0"
+                        >
+                          <Listbox.Options
+                            static
+                            className="absolute z-10 mt-1 w-24 bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
+                          >
+                            {allCurrencies.map((item) => (
+                              <Listbox.Option
+                                key={item}
+                                className={({ active }) =>
+                                  classNames(
+                                    active
+                                      ? "text-white bg-blue-600"
+                                      : "text-gray-900",
+                                    "cursor-default select-none relative py-2 px-6 mx-auto"
+                                  )
+                                }
+                                value={item}
+                              >
+                                {({ currency }) => (
+                                  <>
+                                    <span
+                                      className={classNames(
+                                        currency
+                                          ? "font-semibold"
+                                          : "font-normal",
+                                        "block"
+                                      )}
+                                    >
+                                      {item?.symbol} {item?.name}
+                                    </span>
+                                  </>
+                                )}
+                              </Listbox.Option>
+                            ))}
+                          </Listbox.Options>
+                        </Transition>
+                      </div>
+                    </>
+                  )}
+                </Listbox>
                 <button
                   className="text-gray-500 mr-4 px-2 py-2 rounded flex-grow-0 max-w-max hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                   onClick={() => {
