@@ -1,37 +1,64 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { GiftIcon, XIcon } from "@heroicons/react/outline";
 import { useCart } from "../contexts/CartContext";
 import { useCurrency } from "../contexts/CurrencyContext";
 import priceString from "../lib/pricing";
-
-
+import { fetchPostJSON } from "../lib/stripe-helpers";
+import getStripe from "../lib/get-stripe";
 
 export default function Checkout({ open, setOpen }) {
-
   const {
     globalState: { products },
     dispatch,
   } = useCart();
   const { currency } = useCurrency();
   const [promoCodeOpen, setPromoCodeOpen] = useState(false);
-  let total = 0.00
+  const [loading, setLoading] = useState(false);
+
+  let total = 0.0;
 
   let maxDecimal = currency.name == "USD" ? 2 : 0;
 
+  //Stripe Checkout Button Handler
 
+  const handleCheckout  = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    // Create a Checkout Session.
+    const response = await fetchPostJSON("/api/checkout_sessions", {
+      amount: total,
+      currency : currency.name
+    });
 
-function format(number) {
+    if (response.statusCode === 500) {
+      console.error(response.message);
+      return;
+    }
+
+    // Redirect to Checkout.
+    const stripe = await getStripe();
+    const { error } = await stripe.redirectToCheckout({
+      // Make the id field from the Checkout Session creation API response
+      // available to this file, so you can provide it as parameter here
+      // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+      sessionId: response.id,
+    });
+    // If `redirectToCheckout` fails due to a browser or network
+    // error, display the localized error message to your customer
+    // using `error.message`.
+    console.warn(error.message);
+    setLoading(false);
+  };
+
+  function format(number) {
     return new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: currency.name || "usd",
-        minimumFractionDigits: 0,
-        maximumFractionDigits: maxDecimal,
-      }).format(number)
-}
-
-
-
+      style: "currency",
+      currency: currency.name || "usd",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: maxDecimal,
+    }).format(number);
+  }
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -80,12 +107,12 @@ function format(number) {
                         <div className="px-4 py-5 sm:p-6">
                           {/* Replace with your content */}
                           {products.map((product, idx) => {
-                              total += (+priceString({
-                                pid: product?.pid,
-                                term: product.billingInterval,
-                                currency: currency,
-                                raw:true
-                              }))
+                            total += +priceString({
+                              pid: product?.pid,
+                              term: product.billingInterval,
+                              currency: currency,
+                              raw: true,
+                            });
                             return (
                               <div
                                 key={idx}
@@ -196,11 +223,19 @@ function format(number) {
                             {/* Totals */}
                             <div className="flex justify-between pb-2 border-b border-gray-200">
                               <div>Subtotal</div>
-                              <div>{currency.name === 'USD' ? format(total) :format((0.95 * total))}</div>
+                              <div>
+                                {currency.name === "USD"
+                                  ? format(total)
+                                  : format(0.95 * total)}
+                              </div>
                             </div>
                             <div className="flex justify-between pb-2 border-b border-gray-200">
                               <div>Tax</div>
-                              <div>{currency.name === 'USD' ? format(0) :format((0.05 * total)) }</div>
+                              <div>
+                                {currency.name === "USD"
+                                  ? format(0)
+                                  : format(0.05 * total)}
+                              </div>
                             </div>
                             {/* <div className="flex justify-between pb--2 border-b border-gray-200">
                               <div>Discount</div>
@@ -218,12 +253,13 @@ function format(number) {
                     </div>
                   </div>
                   <div className="flex-shrink-0 px-4 py-4 flex justify-end">
-                    <button
-                      type="submit"
-                      className="flex-grow inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                      {products.length > 0  ?  <button
+                    onClick={handleCheckout}
+                    className="flex-grow inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                     >
                       Checkout
-                    </button>
+                    </button> : null}
+
                     <button
                       type="button"
                       className="flex-grow bg-white py-2 px-2 ml-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
