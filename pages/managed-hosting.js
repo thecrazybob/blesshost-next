@@ -1,284 +1,1161 @@
-import { ChevronRightIcon } from "@heroicons/react/solid";
-import ContactForm from "../components/contact-form";
+import { CheckIcon } from "@heroicons/react/outline";
+import SimpleCTA from "../components/cta-simple";
+import FAQs from "../components/faqs-brand";
 import CTAImage from "../components/cta-image";
-import CTASimple from "../components/cta-simple";
-import FAQsBrand from "../components/faqs-brand";
+import { getHomePosts } from "../lib/api";
+import { Tab } from "@headlessui/react";
+import ContactForm from "../components/contact-form";
+
+const faqs = [
+  {
+    id: 1,
+    question: "What types of servers do you support?",
+    answer:
+      "We Support Red Hat Enterprise Linux, CentOS, Ubuntu, Debian, Windows Servers, Plesk Control Panel, cPanel/WHM. We may provide support for other systems if they are derived from Red Hat Linux or for add-ons such as CloudLinux.",
+  },
+  {
+    id: 2,
+    question: "Can you help me choose a new server?",
+    answer:
+      "Sure, if you don't have a server yet, or if you are looking to move to a new server, feel free to contact us and we'll gladly help you choose one that fits your needs and budget.",
+  },
+  {
+    id: 3,
+    question: "Is there a contract or long-term agreement?",
+    answer:
+      "All management services are provided on a monthly/yearly basis. You may cancel at any time before the due date of your service renewal.",
+  },
+  {
+    id: 4,
+    question: "Can you install 3rd-party software?",
+    answer:
+      "Yes, we will be more than glad to install any 3rd party software made for or used by cPanel such as Softaculous, Ioncube, GD, Curl, Perl modules, PostgreSQL, etc.",
+  },
+];
+
+const tiers = [
+  {
+    name: "Essential",
+    pid: 159,
+    description:
+      "All the essentials included for a secure server configuration.",
+    features: [
+      "Server Hardening",
+      "Firewall Setup",
+      "Health Monitoring",
+      "Backup Configuration",
+      "Server Updates",
+      "24/7/365 Support",
+    ],
+  },
+  {
+    name: "Complete",
+    pid: 160,
+    description: "Complete monitoring and protection for your server.",
+    features: [
+      "Everything in Essential plan",
+      "+ SMS & Email Alerts",
+      "+ 3rd Party Software Installation",
+      "+ Server Optimization",
+      "+ Advanced Tech Setup",
+      "+ PCI Compliance",
+    ],
+  },
+];
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+import { Listbox, Transition } from "@headlessui/react";
+import { SelectorIcon } from "@heroicons/react/solid";
+
+const terms = [
+  { id: "annually", name: "Yearly" },
+  { id: "monthly", name: "Monthly" },
+];
+
+import { useCurrency } from "../contexts/CurrencyContext";
+import { Fragment, useState } from "react";
+import LatestBlog from "../components/latest-blog";
+import Image from "next/image";
+import priceString from "../lib/pricing";
+import WHMCSLink from "../components/whmcs-link";
 import Testimonials from "../components/testimonials";
-import AlternatingFeature from "../components/features-alternating";
-import TitleBar from "../components/title-bar";
 
-export default function Example() {
-    return (
-        <>
-            <div className="py-24 bg-gray-800">
-                <div className="mx-auto max-w-7xl">
-                    <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-                        <div className="px-4 sm:px-6 sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left lg:flex lg:items-center">
-                            <div>
-                                <a
-                                    href="#"
-                                    className="inline-flex items-center text-white bg-gray-900 rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base hover:text-gray-200"
-                                >
-                                    <span className="px-3 py-0.5 text-white text-xs font-semibold leading-5 uppercase tracking-wide bg-blue-500 rounded-full">
-                                        We're hiring
-                                    </span>
-                                    <span className="ml-4 text-sm">
-                                        Visit our careers page
-                                    </span>
-                                    <ChevronRightIcon
-                                        className="ml-2 w-5 h-5 text-gray-500"
-                                        aria-hidden="true"
-                                    />
-                                </a>
-                                <h1 className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:leading-none lg:mt-6 lg:text-5xl xl:text-6xl">
-                                    <span className="md:block">
-                                        Data to enrich your
-                                    </span>{" "}
-                                    <span className="text-blue-400 md:block">
-                                        online business
-                                    </span>
-                                </h1>
-                                <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                                    Anim aute id magna aliqua ad ad non deserunt
-                                    sunt. Qui irure qui lorem cupidatat commodo.
-                                    Elit sunt amet fugiat veniam occaecat fugiat
-                                    aliqua ad ad non deserunt sunt.
-                                </p>
-                                <p className="mt-8 text-sm text-white uppercase tracking-wide font-semibold sm:mt-10">
-                                    Used by
-                                </p>
-                                <div className="mt-5 w-full sm:mx-auto sm:max-w-lg lg:ml-0">
-                                    <div className="flex flex-wrap items-start justify-between">
-                                        <div className="flex justify-center px-1">
-                                            <img
-                                                className="h-9 sm:h-10"
-                                                src="https://tailwindui.com/img/logos/tuple-logo-gray-400.svg"
-                                                alt="Tuple"
-                                            />
-                                        </div>
-                                        <div className="flex justify-center px-1">
-                                            <img
-                                                className="h-9 sm:h-10"
-                                                src="https://tailwindui.com/img/logos/workcation-logo-gray-400.svg"
-                                                alt="Workcation"
-                                            />
-                                        </div>
-                                        <div className="flex justify-center px-1">
-                                            <img
-                                                className="h-9 sm:h-10"
-                                                src="https://tailwindui.com/img/logos/statickit-logo-gray-400.svg"
-                                                alt="StaticKit"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="mt-16 sm:mt-24 lg:mt-0 lg:col-span-6">
-                            <div className="bg-white sm:max-w-md sm:w-full sm:mx-auto sm:rounded-lg sm:overflow-hidden">
-                                <div className="px-4 py-8 sm:px-10">
-                                    <div>
-                                        <p className="text-sm font-medium text-gray-700">
-                                            Sign in with
-                                        </p>
+export default function vpsHostingPage({ homePosts }) {
+  const [billingInterval, setBillingInterval] = useState("annually");
+  const { currency, setCurrency } = useCurrency("");
 
-                                        <div className="mt-1 grid grid-cols-3 gap-3">
-                                            <div>
-                                                <a
-                                                    href="#"
-                                                    className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-                                                >
-                                                    <span className="sr-only">
-                                                        Sign in with Facebook
-                                                    </span>
-                                                    <svg
-                                                        className="w-5 h-5"
-                                                        aria-hidden="true"
-                                                        fill="currentColor"
-                                                        viewBox="0 0 20 20"
-                                                    >
-                                                        <path
-                                                            fillRule="evenodd"
-                                                            d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z"
-                                                            clipRule="evenodd"
-                                                        />
-                                                    </svg>
-                                                </a>
-                                            </div>
-
-                                            <div>
-                                                <a
-                                                    href="#"
-                                                    className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-                                                >
-                                                    <span className="sr-only">
-                                                        Sign in with Twitter
-                                                    </span>
-                                                    <svg
-                                                        className="w-5 h-5"
-                                                        aria-hidden="true"
-                                                        fill="currentColor"
-                                                        viewBox="0 0 20 20"
-                                                    >
-                                                        <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
-                                                    </svg>
-                                                </a>
-                                            </div>
-
-                                            <div>
-                                                <a
-                                                    href="#"
-                                                    className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-                                                >
-                                                    <span className="sr-only">
-                                                        Sign in with GitHub
-                                                    </span>
-                                                    <svg
-                                                        className="w-5 h-5"
-                                                        aria-hidden="true"
-                                                        fill="currentColor"
-                                                        viewBox="0 0 20 20"
-                                                    >
-                                                        <path
-                                                            fillRule="evenodd"
-                                                            d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"
-                                                            clipRule="evenodd"
-                                                        />
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="mt-6 relative">
-                                        <div
-                                            className="absolute inset-0 flex items-center"
-                                            aria-hidden="true"
-                                        >
-                                            <div className="w-full border-t border-gray-300" />
-                                        </div>
-                                        <div className="relative flex justify-center text-sm">
-                                            <span className="px-2 bg-white text-gray-500">
-                                                Or
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div className="mt-6">
-                                        <form
-                                            action="#"
-                                            method="POST"
-                                            className="space-y-6"
-                                        >
-                                            <div>
-                                                <label
-                                                    htmlFor="name"
-                                                    className="sr-only"
-                                                >
-                                                    Full name
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    name="name"
-                                                    id="name"
-                                                    autoComplete="name"
-                                                    placeholder="Full name"
-                                                    required
-                                                    className="block w-full shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm border-gray-300 rounded-md"
-                                                />
-                                            </div>
-
-                                            <div>
-                                                <label
-                                                    htmlFor="mobile-or-email"
-                                                    className="sr-only"
-                                                >
-                                                    Mobile number or email
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    name="mobile-or-email"
-                                                    id="mobile-or-email"
-                                                    autoComplete="email"
-                                                    placeholder="Mobile number or email"
-                                                    required
-                                                    className="block w-full shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm border-gray-300 rounded-md"
-                                                />
-                                            </div>
-
-                                            <div>
-                                                <label
-                                                    htmlFor="password"
-                                                    className="sr-only"
-                                                >
-                                                    Password
-                                                </label>
-                                                <input
-                                                    id="password"
-                                                    name="password"
-                                                    type="password"
-                                                    placeholder="Password"
-                                                    autoComplete="current-password"
-                                                    required
-                                                    className="block w-full shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm border-gray-300 rounded-md"
-                                                />
-                                            </div>
-
-                                            <div>
-                                                <button
-                                                    type="submit"
-                                                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                                                >
-                                                    Create your account
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div className="px-4 py-6 bg-gray-50 border-t-2 border-gray-200 sm:px-10">
-                                    <p className="text-xs leading-5 text-gray-500">
-                                        By signing up, you agree to our{" "}
-                                        <a
-                                            href="#"
-                                            className="font-medium text-gray-900 hover:underline"
-                                        >
-                                            Terms
-                                        </a>
-                                        ,{" "}
-                                        <a
-                                            href="#"
-                                            className="font-medium text-gray-900 hover:underline"
-                                        >
-                                            Data Policy
-                                        </a>{" "}
-                                        and{" "}
-                                        <a
-                                            href="#"
-                                            className="font-medium text-gray-900 hover:underline"
-                                        >
-                                            Cookies Policy
-                                        </a>
-                                        .
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  return (
+    <main>
+      <div className="lg:h-[screen-wh] pt-10 bg-gray-900 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
+        <div className="mx-auto max-w-7xl lg:px-8 h-full">
+          <div className="grid lg:grid-cols-2 items-center lg:gap-8 h-full">
+            <div className="pb-16 lg:pb-0 lg:order-none order-2 mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
+              <div className="lg:py-24">
+                <span className="block text-sm font-semibold uppercase tracking-wide text-gray-300 sm:text-base lg:text-sm xl:text-base">
+                  Server Management
+                </span>
+                <h1 className="mt-2 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
+                  <span className="block bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-700">
+                    Professional
+                  </span>
+                  <span className="pb-3 sm:pb-5 block"> Server Management</span>
+                </h1>
+                <p className="text-base text-gray-300 sm:text-xl lg:text-lg xl:text-xl">
+                  Server Management doesn't have to be a headache! Let us focus
+                  on your servers so you can focuson growing your business!
+                </p>
+                <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
+                  <div className="rounded-md shadow">
+                    <a
+                      href="#pricing"
+                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10"
+                    >
+                      View plans
+                    </a>
+                  </div>
+                  <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                    <a
+                      href="#more"
+                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
+                    >
+                      Learn more
+                    </a>
+                  </div>
                 </div>
+              </div>
+            </div>
+            <div className="lg:pb-0 pb-8 lg:order-none order-1 justify-self-center">
+              <svg
+                className="h-96"
+                viewBox="0 0 400 400"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g transform="matrix(2,0,0,2,0,0)">
+                  <path
+                    d="M14.969,54.817c-.044,3.884-.088,7.725-.131,11.61.6-.2.074.153,8.6,4.015,2.794,1.266,5.849,2.838,8.9,3.492,0-4.452,0-8.9.088-13.312C26.4,59.836,20.6,56.824,14.969,54.817ZM27.976,69.788a97.915,97.915,0,0,0-11.349-4.714.361.361,0,0,1,.175-.7,44.5,44.5,0,0,1,11.566,4.714A.4.4,0,0,1,27.976,69.788Zm5.456-9.341c0,4.627-.044,9.21-.088,13.836,7.791-5.623,17.314-9.893,25.883-14.971,2.7-1.6,6.8-3.735,7.115-4.364.044-.044.174-.131.174-.175.022-4.1.088-8.206.088-12.309C55.343,48.008,44.474,54.337,33.432,60.447Zm25.1-4.234A227.623,227.623,0,0,1,35.4,70.093c-.349.177-.652-.343-.306-.523,7.969-4.149,15.243-9.531,23.09-13.968A.352.352,0,0,1,58.529,56.213Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M116.886,68.478l6.154-3.1a.539.539,0,0,1,.786.393V69.4a9.807,9.807,0,0,0-.218,1.528l13.967,13.356a.569.569,0,0,0,.567.131l13.793-5.325c.349-.131,1.833-1.353,1.833-1l-.305,9.209a.518.518,0,0,1-.437.524l-12.963,4.758a.5.5,0,0,1-.524-.175L116.711,69.351A.544.544,0,0,1,116.886,68.478Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M52.986,156.341c-.262.349-1.354.609-1.746.786-1.443.648-2.925,1.309-4.321,2.095a23.464,23.464,0,0,1,0-2.488,58.229,58.229,0,0,1,6.023-2.837c0,.48-.044,1-.044,1.484A9.02,9.02,0,0,0,52.986,156.341Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M63.679,160.1a7.442,7.442,0,0,1-1.92.829c-16.746,7.565-14.16,6.655-15.277,7.027-.043-1.091-.087-2.226-.174-3.317,5.848-2.706,11.741-5.325,17.546-8.118C63.985,157.738,64.116,159.658,63.679,160.1Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M51.414,172.971c0,.655,0,1.266-.043,1.92a25.022,25.022,0,0,0-4.234,1.659c-.044-.568-.131-1.091-.175-1.659C48.446,174.28,49.93,173.626,51.414,172.971Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M60.842,170.7c-1.222.655-2.488,1.266-3.753,1.833-.088-.567-.131-1.178-.175-1.746a18.6,18.6,0,0,1,3.885-1.833C60.8,169.523,60.842,170.09,60.842,170.7Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M37.447,157.563a73.876,73.876,0,0,1-8.467-3.186c-1.353-.569-2.794-1-4.06-1.615-1.178-.568-1.153-.478-1.266-1.79a12.949,12.949,0,0,1,0-1.92c6.143,2.345,6.34,2.58,12.527,4.8a5.47,5.47,0,0,1,1.615.568C37.8,154.464,37.534,156.472,37.447,157.563Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M36.792,165.507c-1.92-.349-3.622-1.353-5.412-2.008.044-.916-.131-1.789-.131-2.706,3.532,1.247,4.286,1.6,5.369,1.746A22.555,22.555,0,0,1,36.792,165.507Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M142.42,39.278c1.7-.345,3.361-1.045,5.019-1.484.655-.173.4-1.207-.262-1a29.051,29.051,0,0,0-5.063,1.79C141.678,38.754,141.983,39.366,142.42,39.278Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M150.8,36.485a9.391,9.391,0,0,0,1.484-.35c.522-.136,1.094-.167,1.615-.349a.471.471,0,0,0-.131-.916,6.535,6.535,0,0,0-3.143.873C150.32,35.961,150.407,36.523,150.8,36.485Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M143.336,44.69a13.3,13.3,0,0,0,2.576-.873c.569-.214.349-1.132-.262-.916a13.994,13.994,0,0,0-2.619,1.091A.39.39,0,0,0,143.336,44.69Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M148.53,43.119c2.445-1.047,4.967-1.818,7.464-2.619a.456.456,0,1,0-.262-.873,33.329,33.329,0,0,0-7.638,2.837C147.656,42.679,148.094,43.337,148.53,43.119Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M143.118,50.583a103.572,103.572,0,0,0,11.96-4.67.429.429,0,0,0-.306-.786,114.771,114.771,0,0,0-11.828,4.67C142.459,50.005,142.637,50.755,143.118,50.583Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M143.642,55.166a21.342,21.342,0,0,0,3.317-1.048.456.456,0,0,0-.262-.873,21.62,21.62,0,0,0-3.361,1.222C142.948,54.651,143.25,55.256,143.642,55.166Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M149.4,53.245c1.179-.436,2.367-.849,3.536-1.353.484-.208.13-1.005-.349-.829-1.18.433-2.3.99-3.449,1.484C148.71,52.733,149.011,53.42,149.4,53.245Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M143.424,59.88c1.351-.443,2.706-1.048,4.015-1.615.437-.218.129-1.009-.349-.83a37.2,37.2,0,0,0-3.972,1.746C142.769,59.4,143.03,60.009,143.424,59.88Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M143.249,62.8c3.952-1.369,7.964-2.756,11.741-4.5.391-.179.131-.873-.305-.742-3.885,1.441-7.726,3.056-11.654,4.452C142.594,62.237,142.766,62.971,143.249,62.8Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M144.035,67.387a17.611,17.611,0,0,0,3.186-1c.485-.253.13-.838-.349-.785a19.036,19.036,0,0,0-3.1,1C143.336,66.776,143.555,67.562,144.035,67.387Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M126.881,30.854c3.352,2.307,6.468,4.908,9.69,7.377.444.339.91-.427.436-.742-3.365-2.243-6.285-5.195-9.777-7.246C126.838,29.981,126.492,30.586,126.881,30.854Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M130.809,39.147A22.877,22.877,0,0,0,134.17,41.5a.48.48,0,0,0,.48-.829c-1.171-.667-2.182-1.746-3.448-2.183C130.809,38.405,130.5,38.929,130.809,39.147Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M126.838,42.77c2.451,1.648,4.852,3.479,7.376,4.976a.44.44,0,0,0,.524-.7c-2.223-1.968-5.022-3.4-7.551-4.975C126.837,41.854,126.446,42.506,126.838,42.77Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M126.052,49.623A31.5,31.5,0,0,0,129.2,52.11c.391.264.836-.312.523-.654a24.457,24.457,0,0,0-3.142-2.357C126.226,48.793,125.657,49.276,126.052,49.623Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M131.726,53.9c.454.363,3.454,2.641,4.1,3.012a.41.41,0,0,0,.48-.655A7.25,7.25,0,0,0,134.65,54.9c-.791-.56-1.621-1.125-2.444-1.659C131.81,52.988,131.338,53.589,131.726,53.9Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M173.06,35.83c3.972-.175,7.944-.349,11.916-.568,0,1.4.044,2.838.044,4.234a39.515,39.515,0,0,0-11.785.219Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M81.88,64.288a24.582,24.582,0,0,0,.131,4.016c2.925,0,5.849-.044,8.73-.044.819,0,2.692.058,3.1-.655.314-.629.062-2.877-.131-3.841a55.337,55.337,0,0,1-11.7.611Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M147.745,159.353c.131,1.178.262,2.357.48,3.492a.629.629,0,0,0,.786.611c3.4-.022,6.765-.044,10.169-.088-.218-1.265-.436-2.488-.7-3.753a.472.472,0,0,0-.131-.306c-.044-.044-.131-.041-.218-.044-2.752-.065-5.542-.283-8.293-.436-2.381-.132-2.422.349-2.706.349Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M163.545,82.882a.463.463,0,0,0-.873-.218c-.7,1.178-1.4,2.313-2.051,3.492-.306.392.349.742.611.349l1.282-1.961c-.082,1.413-.2,2.832-.235,4.274,0,.568.917.7,1,.131A40.018,40.018,0,0,0,163.545,82.882Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M164.113,93.139a.352.352,0,0,0-.257.074c-1.418-.288-2.036,1.593-2.231,2.807-.219,1.4-.742,4.234,1.222,4.714,1.789.437,2.619-1.833,2.75-3.186C165.728,96.107,166.12,93.4,164.113,93.139Zm-.044,1c.089.009.226.278.263.359a20.331,20.331,0,0,0-1.87,2.657C162.508,96.187,162.613,94,164.069,94.143Zm.044,4.889c-.387.363-.986.678-1.353.524a.623.623,0,0,1-.278-.81.538.538,0,0,0,.365-.238c.6-.9,1.275-1.824,1.794-2.793C164.8,96.981,164.629,98.547,164.113,99.032Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M164.113,111.122a19.812,19.812,0,0,1-.481-5.98.5.5,0,0,0-.916-.262,24.846,24.846,0,0,0-1.921,3.274.382.382,0,0,0,.655.393c.393-.565.744-1.17,1.116-1.756a18.22,18.22,0,0,0,.455,4.637A.567.567,0,1,0,164.113,111.122Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M165.815,115.618a.463.463,0,0,0-.7-.253,1.883,1.883,0,0,0-2.835.515c-1.084,1.485-.875,3.71-.189,5.382a.479.479,0,0,0,.219.48c.707,1.341,2.035,1.408,2.938.117A7.439,7.439,0,0,0,165.815,115.618Zm-.873.7a.344.344,0,0,0,.046.059c.038.226.072.45.1.674a16.651,16.651,0,0,0-2.34,2.9,5.52,5.52,0,0,1-.205-1.536C162.541,117.5,163.5,114.483,164.942,116.316Zm-.393,4.627c-.174.655-.48.785-.917.305a1.591,1.591,0,0,1-.334-.272,27.9,27.9,0,0,1,1.841-2.719A6.656,6.656,0,0,1,164.549,120.943Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M13.746,115.138c5.937,2.968,12.615,4.321,18.42,7.551a.541.541,0,0,0,.742-.044.161.161,0,0,0,.131-.044c11.174-6.9,21.562-15.058,32.823-21.823a.477.477,0,0,0,.349-.437c.218-11.442.8-22.872,1.178-34.263.22-6.586.044-29.615.044-32.911a.432.432,0,0,0-.262-.654A151.569,151.569,0,0,1,48.883,24.7a.461.461,0,0,0-.524-.131c-5.493,2.607-33.871,15.46-33.871,16.062a.454.454,0,0,0-.261.349c-.309,10.78-1.03,65.926-.961,73.721A.447.447,0,0,0,13.746,115.138Zm51.505-15.015c-11,6.765-21.257,14.709-32.212,21.562.043-5.325.043-10.694.087-16.019.044,0,.087,0,.087-.044C44.474,99.948,54.994,93.1,65.644,86.374,65.513,90.957,65.338,95.54,65.251,100.123ZM14.532,98.028a47.69,47.69,0,0,0,7.508,3.841c3.147,1.474,6.372,3.186,9.777,4.015a.465.465,0,0,0,.349-.043c-.044,5.237-.088,10.519-.131,15.757-5.849-2.576-11.872-4.845-17.9-7.115C14.358,109.027,14.445,103.527,14.532,98.028Zm.437-43.211c5.674,1.964,11.479,5.019,17.415,5.805-.044,4.452-.044,8.9-.087,13.312-3.056-.654-6.115-2.217-8.9-3.492-8.794-4.016-8.027-4.206-8.6-4.015C14.881,62.586,14.925,58.7,14.969,54.817Zm51.635,0a27.6,27.6,0,0,1-4.976,3.142c-15.619,8.925-21.464,11.4-28.284,16.324.044-4.626.088-9.209.088-13.836,11-6.11,21.867-12.439,33.215-17.939C66.647,46.611,66.647,50.714,66.6,54.817Zm-.917,30.466c-10.3,7.376-21.474,13.443-32.561,19.6.044-4.8.044-9.6.087-14.4C44.3,84.759,54.906,78.037,66.124,72.538,65.993,76.815,65.818,81.049,65.687,85.283Zm.48-13.793a.333.333,0,0,0-.174.087c-10.65,6.5-22,11.829-32.736,18.07,0-.1.13-14.259.131-14.36,6.329-4.19,12.966-7.808,19.6-11.435,1.653-.9,12.145-6.663,13.661-7.813C66.627,56.553,66.17,71.382,66.167,71.49Zm.524-30.073C55.517,47.266,44.213,52.94,33.475,59.531c0-3.492-.043-6.984-.087-10.476,11.043-5.281,21.78-11.3,33.3-15.495ZM32.384,59.749c-5.98-.742-11.654-3.928-17.415-5.674h-.044c.044-4.147.044-8.293.044-12.4A141.466,141.466,0,0,0,32.6,48.968C32.515,52.547,32.428,56.126,32.384,59.749ZM14.838,67.256a107.923,107.923,0,0,0,17.5,7.769c0,3.492-.087,13.575-.087,15.146l-.044-.043c-5.892-2.226-11.7-4.845-17.59-7.071C14.619,78.87,14.782,69.463,14.838,67.256Zm17.11,23.788a.358.358,0,0,0,.3,0c-.145,15.482-.015,13.967-.175,13.967a54.862,54.862,0,0,1-10.038-4.146,64.292,64.292,0,0,1-7.464-3.754c.043-4.365.043-8.729.087-13.094A161.846,161.846,0,0,0,31.948,91.044ZM48.621,25.4c5.935,3.957,14.878,6.476,17.284,7.508A120.82,120.82,0,0,0,50.8,39.5c-5.895,2.876-11.785,5.762-17.59,8.773-.043,0-.043-.043-.131-.043-6.241-1.7-11.828-4.889-17.851-7.2C22.124,37.972,32.62,32.383,48.621,25.4Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M33.213,90.477c0,4.1-.087,13.7-.087,14.36,0-.655,5.936-3.317,6.765-3.754.449-.449,13.872-7.378,25.84-15.8.131-4.234.305-8.468.436-12.745C51.294,79.974,47.661,82.924,33.213,90.477Zm20.427-.131c-5.824,4.013-11.778,7.868-17.939,11.3a.353.353,0,0,1-.349-.612c5.98-3.753,11.96-7.594,17.939-11.392C53.684,89.429,54.029,90.078,53.64,90.346Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M14.576,84.017c-.044,4.365-.044,8.729-.088,13.094a69.444,69.444,0,0,0,7.464,3.754c1.849.888,6.692,3.363,8.861,3.8.393.131.829.218,1.222.349h.043c.044,0,.044,0,.088.044.043-4.67.087-9.341.087-14.011C31.38,91.044,20.314,86.745,14.576,84.017Zm12.57,16.892c-3.662-1.57-7.158-3.449-10.824-5.02-.349-.175-.088-.783.262-.655a64.957,64.957,0,0,1,10.955,4.976C27.976,100.471,27.578,101.094,27.146,100.909Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M68.612,137.311c0-.131-.088-.219-.219-.306-7.114-3.928-14.615-7.067-21.78-10.868a.661.661,0,0,0-.48,0c-8.9,4.059-26.1,14.054-26.1,14.4-.2,11.091-.48,22.3-.349,33.39a.35.35,0,0,0,.7,0c.218-10.918.48-21.955.3-32.823,3.547,1.96,21.755,10.17,22.086,10.17-.785,10.694-1.266,21.562-1.222,32.3,0,.524.75.481.786,0,.8-10.812,1-21.686,1.222-32.474a.374.374,0,0,0-.044-.218c4.147-1.571,8.078-4.141,11.96-6.2,4.106-2.176,8.205-4.5,12.439-6.372-.916,11.959-1.091,24.093-1.135,36.1,0,.48.749.481.786,0,.943-12.123.524-24.312,1.135-36.489A.4.4,0,0,0,68.612,137.311Zm-13.269,6.5c-4.107,2.22-8.293,4.278-12.353,6.5-3.928-1.7-18.2-8.119-21.474-9.6,6.416-3.623,16.106-10.257,25.01-13.749.044,0,.044-.043.087-.043,4.506,3.048,9.339,4.5,20.864,10.606C63.287,139.406,59.311,141.669,55.343,143.814Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M53.9,153.2a.459.459,0,0,0-.7-.392,38.639,38.639,0,0,0-6.722,3.36.438.438,0,0,0-.436.437,19.56,19.56,0,0,0,0,3.448.458.458,0,0,0,.7.393,52.929,52.929,0,0,1,6.9-3.361.384.384,0,0,0,.219-.393C53.771,155.512,53.946,154.377,53.9,153.2Zm-2.662,3.929c-1.428.681-2.925,1.309-4.321,2.095a23.464,23.464,0,0,1,0-2.488,58.229,58.229,0,0,1,6.023-2.837c0,.48-.044,1-.044,1.484,0,.393.131.873.088.916C52.724,156.647,51.592,156.959,51.24,157.127Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M61.846,147.961c-1.72,1.089-3.63,1.774-5.412,2.706-.658.344-.568.436-.611,1.222a10.237,10.237,0,0,0,.043,2.313c-.174.349.045.876.524.7,1.969-.73,3.885-1.615,5.805-2.488a.513.513,0,0,0,.262-.437,34.251,34.251,0,0,1,.088-3.666A.486.486,0,0,0,61.846,147.961Zm-.262,1.135c-.043.872-.131,1.7-.131,2.575-1.615.611-3.186,1.4-4.8,2.095a13.635,13.635,0,0,0,0-2.313C58.311,150.667,59.969,149.968,61.584,149.1Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M61.41,151.627c0-.873.087-1.7.131-2.575-1.615.873-3.274,1.615-4.933,2.357a13.532,13.532,0,0,1,0,2.313C58.223,153.024,59.8,152.238,61.41,151.627Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M64.683,155.905a.446.446,0,0,0-.654-.393c-6.122,2.764-12.326,5.464-18.332,8.424a.4.4,0,0,0-.175.567c0,1.353.022,2.706.044,4.1a.522.522,0,0,0,.611.48c2.531-.611,5.191-2.363,7.551-3.448,3.531-1.624,7.027-3.274,10.606-4.8a.518.518,0,0,0,.349-.437C64.683,158.916,64.771,157.389,64.683,155.905Zm-1,4.19a7.442,7.442,0,0,1-1.92.829c-15.115,6.828-14.261,6.64-15.277,7.027-.043-1.091-.087-2.226-.174-3.317,5.848-2.706,11.7-5.325,17.5-8.118C63.985,157.738,64.116,159.658,63.679,160.1Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M52.287,172.316c.008-.349-.349-.48-.654-.393-1.659.7-3.361,1.4-5.02,2.139-.218-.044-.487.044-.48.349.022.961.044,1.921.131,2.837a.511.511,0,0,0,.742.437c1.659-.786,3.448-1.266,5.107-2.008a.409.409,0,0,0,.218-.437A26.414,26.414,0,0,1,52.287,172.316Zm-.873.655c0,.655,0,1.309-.043,1.92a25.022,25.022,0,0,0-4.234,1.659c-.044-.568-.131-1.091-.175-1.659C48.446,174.28,49.93,173.626,51.414,172.971Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M61.1,167.864a15.436,15.436,0,0,0-4.8,2.226c-.152.152-.262.228-.262.437a17.315,17.315,0,0,0,.175,2.706c.04.262.3.608.611.48a52.212,52.212,0,0,0,4.757-2.27.567.567,0,0,0,.262-.436c-.022-.918-.153-1.789-.174-2.663A.449.449,0,0,0,61.1,167.864Zm-4.19,2.924a18.6,18.6,0,0,1,3.885-1.833c0,.568.043,1.179.043,1.746-1.222.655-2.488,1.266-3.753,1.833C57.045,171.923,56.958,171.356,56.914,170.788Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M38.276,153.722c-5.019-1.658-9.939-3.785-14.883-5.674-.349-.133-.568.218-.524.524-.087,1.353-.153,2.749-.175,4.1a.576.576,0,0,0,.349.48c5.02,1.615,9.655,4.074,14.753,5.5a.425.425,0,0,0,.568-.436,20.028,20.028,0,0,1,.218-3.972C38.582,153.984,38.495,153.766,38.276,153.722Zm-13.4-.96c-1.182-.56-1.154-.478-1.266-1.79a12.238,12.238,0,0,1,0-1.876c2.4.916,10.824,4.19,12.527,4.8a4.825,4.825,0,0,1,1.571.567c.044.044-.175,2.095-.3,3.186a76.843,76.843,0,0,1-8.512-3.186C27.626,153.809,26.182,153.381,24.877,152.762Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M37.011,161.666a12.318,12.318,0,0,1-3.318-.96c-.918-.3-1.83-.618-2.706-.917a.444.444,0,0,0-.523.611c-.131,1.179.156,2.318-.044,3.448-.039.22.174.393.349.437,2.139.786,4.1,1.973,6.416,2.313a.5.5,0,0,0,.611-.48,19.767,19.767,0,0,0-.349-4.1A.4.4,0,0,0,37.011,161.666Zm-.393.873c.131,1,.174,1.964.218,2.968a29.792,29.792,0,0,1-5.412-2.008c.043-.916-.131-1.789-.131-2.706A41.573,41.573,0,0,0,36.618,162.539Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M86.856,167.209c-.055,1,.351,2.663.088,3.623-.348,1.266-3.274,1.09-4.5,1.179-2.968.215-5.939.441-8.9.7a.35.35,0,0,0,0,.7c4.626-.305,9.427-.916,14.054-.873a.528.528,0,0,0,.524-.523,39.877,39.877,0,0,1-.218-4.845C87.912,166.555,86.892,166.554,86.856,167.209Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M90.392,162.146c-4.059,0-8.118.318-12.178.7a.527.527,0,0,0-.349.873c0,.829.087,1.614.131,2.444a.437.437,0,0,0,.436.436c4.016-.218,7.988-.524,11.96-.873a.51.51,0,0,0,.48-.48C90.843,163.972,91.257,162.146,90.392,162.146Zm-4.583,3.012c-1.22.115-2.445.211-3.667.305-.524.041-2.917.516-3.273.219-.215-.18-.218-1.179-.218-1.834,2.269-.174,4.494-.408,6.765-.523a12.179,12.179,0,0,1,3.361-.131c.742-.262,1.135,0,1.266.785C90.205,165.442,86.993,165.046,85.809,165.158Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M123.52,70.573a.36.36,0,0,0,.044.524c4.627,4.627,9.124,9.389,13.967,13.793a.466.466,0,0,0,.786-.349.282.282,0,0,0,.262,0,71.917,71.917,0,0,0,15.407-6.067c.442-.254.04-.839-.392-.655-5.069,2.158-10.127,4.016-15.233,5.98-.044,0-.044.043-.088.043.405-4.881,2.5-44.992,2.314-48.623.043-.044,17.415-6.547,17.9-6.766-.087,13.4-.327,26.8-.305,40.2a.436.436,0,0,0,.872,0c-.067-41.538.543-40.885.131-41.16a157.062,157.062,0,0,0-15.058-11.261.388.388,0,0,0-.436-.174c-6.361,1.2-12.417,4.264-18.594,6.11-.3.091-.131.655-.131.7C125,38.711,122.822,54.642,123.52,70.573ZM137.575,83.58c-4.452-4.321-8.686-8.947-13.4-13.05.48-15.713,1.833-31.47,1.615-47.227,4.8,3.841,9.6,7.726,14.1,11.959C139.487,38.7,138.677,69.488,137.575,83.58Zm2.837-49.147c-1.659-2.182-4.5-3.973-6.591-5.674-2.53-2.053-5.15-4.1-7.769-6.067,6.023-1.571,11.785-4.1,17.764-5.849A155.835,155.835,0,0,1,158,27.668c-.131.043-.262.131-.306.131C153.156,29.894,141.369,34.071,140.412,34.433Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M113.089,68.609c3.71,4.419,7.318,7.625,16.018,16.325-2.357,1.178-4.678,2.382-7.114,3.4a.452.452,0,1,0,.349.829,54.475,54.475,0,0,0,7.333-3.71,79.117,79.117,0,0,1,9.209,10,.462.462,0,0,0,.655.131,13.359,13.359,0,0,0,2.837-.961,32.517,32.517,0,0,0,4.278-1.7.409.409,0,0,0-.306-.742c-1.984.39-5.609,2.341-6.9,2.575-5.168-6.518-18.856-18.863-25.621-26.363a26.394,26.394,0,0,1,4.059-1.659c.435-.133.262-.828-.175-.7a25.359,25.359,0,0,0-4.626,1.921.522.522,0,0,0,0,.654Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M162.629,38.231c2.575,0,5.106-.175,7.682-.175.523,0,.525-.861,0-.786a54.346,54.346,0,0,1-7.682.306C162.192,37.532,162.192,38.231,162.629,38.231Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M173.41,40.238a42,42,0,0,1,11.653-.218c.263.038.484-.262.481-.48-.022-1.4-.066-2.837-.088-4.234a.439.439,0,0,0-.436-.436c-12.688.7-12.571.528-12.571,1.091a11.81,11.81,0,0,0,.393,3.71A.485.485,0,0,0,173.41,40.238Zm11.173-2.4c.219.567.088.96-.392,1.135a42.117,42.117,0,0,0-10.65.261c-.088-1-.306-2.051-.393-3.055,2.4-.087,4.845-.165,7.245-.262C182.358,35.838,185.151,34.957,184.583,37.838Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M73.413,46.393c5.151.678,8.062-1,15.888-.262h.087A1.948,1.948,0,0,0,90,47.178c.7.516,2.356.185,3.186.219,1.527.062,3.056.13,4.54.218-.088,1.964.043,3.927.087,5.892a.461.461,0,0,0,.48.48c1.353.131,2.706.262,4.016.393.087.48.174.96.3,1.441a.524.524,0,0,0,.524.392c2.313,0,4.67.022,6.983,0,1.266-.012,1.651-.26,1.484-1.527a7.651,7.651,0,0,0-.523-2.794c-.349-.436-1.005-.431-1.528-.524a26.352,26.352,0,0,0-7.071-.436.508.508,0,0,0-.262.917c-.043.48-.043,1-.043,1.484-1.135-.088-2.314-.175-3.449-.306-.131-1.789-.131-3.623-.261-5.412q2.029.13,4.059.3c.61.052,1.7.353,2.313-.087,1.139-.823.284-4.146.262-5.281a.532.532,0,0,0-.524-.524c-4.977.065-9.957.159-14.884-.262-.437-.037-.611.393-.523.742a13.881,13.881,0,0,0,0,2.706c-5.282-.567-10.476,1.048-15.714.393C73.107,45.694,73.021,46.341,73.413,46.393Zm36.227,6.154c.915.183.619.217.742,1.135a7.4,7.4,0,0,0,.175,1,.685.685,0,0,1-1,.48,9.4,9.4,0,0,1-1.92,0h-4.06a13.132,13.132,0,0,1-.48-3.186A33.373,33.373,0,0,1,109.64,52.547Zm-5.5-9.384c.131,1.222.483,3.5-.218,3.972a11.621,11.621,0,0,1-2.707-.219c-1.632-.077-3.088-.257-8.074-.436A3.557,3.557,0,0,1,90.785,46c-.916-.7-.873-1.877-.873-2.968C94.669,43.206,99.383,43.294,104.141,43.163Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M71.056,67.125c3.449-.043,6.9-.218,10.388-.436,0,.524.044,1.047.087,1.615a.517.517,0,0,0,.48.48c3.449,0,7.419.515,10.825-.175,2.4-.486,1.666-3.056,1.353-4.976-.043-.262-.348-.343-.567-.3a56.724,56.724,0,0,1-11.654.611.383.383,0,0,0-.48.349c-.044.48-.044,1-.088,1.484-3.448.218-6.9.368-10.344.611A.371.371,0,0,0,71.056,67.125ZM91.483,64.55c1.18-.115,1.622-.656,1.964.873.713,3.183-3.4,2.357-5.281,2.357s-3.8,0-5.674.044c-.088-1-.175-1.965-.175-2.968A61.361,61.361,0,0,0,91.483,64.55Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M30.725,127.446c1.009.382,2.575,1.3,3.71,1.179,1.265-.139,2.312-1.312,3.274-2.008.51-.369,14.777-10.089,17.765-12.09,20.342,11.624,19.9,12.278,21.911,12.788a.454.454,0,0,0,.349-.829c-1.266-.917-2.885-1.607-4.234-2.4-7.854-4.619-12.312-7.985-17.2-10.039,7.005-4.67,13.993-9.559,21.256-13.356a.572.572,0,0,0,0-.96c-2.138-1.047-4.455-1.7-6.678-2.575-.655-.26-.961.832-.305,1.091,1.786.706,3.71,1.266,5.5,2.051-12.427,7.08-24.23,15.518-36.707,24.007-1.482,1.007-2.973,2.433-4.671,3.1-.656.257-1.35-.1-2.313-.393-3.9-1.2-19.055-6.679-26.843-10.868-.4-.213-.784.388-.349.611C13.32,120.912,22.405,124.3,30.725,127.446Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M194.142,142.417c-4.13,1.727-8.286,3.292-12.527,4.8-1.612.574-3.537,1.725-5.194,1.92-1.078.127-2.985-1.439-10.432-6.023-6.579-4.051-13.094-8.381-19.772-12.265,2.313-.655,4.626-1.268,6.94-1.964.436-.132.262-.83-.175-.7-2.706.655-5.355,1.4-8.031,2.052a.5.5,0,0,0-.131.873c5.238,3.1,10.345,6.329,15.5,9.6-5.194,3.012-10.294,6.21-15.582,9.079-2.746,1.49-6.332,4.372-9.471,2.881-3.016-1.433-5.831-3.483-8.817-5.02a.383.383,0,0,0-.393.655,94.935,94.935,0,0,0,9.515,5.674c2.448,1.216,4.669-.656,6.9-1.833,6.37-3.366,12.789-6.853,18.769-10.825,1.833,1.179,9.157,5.819,10.955,6.984a19.4,19.4,0,0,0,3.143,2.051c.828.308,1.222-.043,2.139-.392,5.717-2.178,12.249-4.293,17.241-6.548C195.368,143.124,194.793,142.146,194.142,142.417Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M168.041,152.718c.022,2.969.305,5.936.48,8.9-1.79-.131-3.58-.252-5.369-.349-.742-.04-.741,1.089,0,1.135,2.009.125,3.972.262,5.98.393a.61.61,0,0,0,.568-.567c-.262-3.143-.394-6.336-.873-9.472C168.746,152.237,168.037,152.2,168.041,152.718Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M155.383,158.567c-3.169-.147-7.272-.806-8.555.306-.393.305.044,1,.48.829h.044c.044,1.4-.048,3.72,1.309,4.234,1.176.445,3.667,0,4.933,0h5.543a.54.54,0,0,0,.524-.7c-.175-1.047-.088-3.535-.961-4.277C158.046,158.262,156.256,158.607,155.383,158.567Zm-3.579,4.365c-.829,0-2.45.355-3.1-.218-.44-.389-.48-2.357-.524-3.23a24.676,24.676,0,0,1,5.369.087c.916.045,2.881-.218,3.666.175,1.048.523,1.179,1.876,1.31,3.011C156.3,162.888,154.074,162.932,151.8,162.932Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M173.1,65.03c-5.849,1.833-11.436,4.627-17.241,6.591a.415.415,0,0,0-.436.349c-.742,18.812.48,37.712.393,56.524a.273.273,0,0,0,.087.349c4.888,4.234,11.427,7.35,17.11,10.214a.481.481,0,0,0,.654-.175c5.893-1.659,11.654-4.016,17.46-6.023a.4.4,0,0,0,.654-.306c.044-10.039-.5-20.078-.567-30.117-.066-10,.305-19.99.262-29.942a.409.409,0,0,0-.175-.611c-5.7-2.794-11.872-4.67-17.764-6.94A.447.447,0,0,0,173.1,65.03Zm.524,73.066c.393-17.2.48-57,.567-59.753,5.369-1.921,10.912-3.536,16.324-5.282-.523,9.777-.392,19.642-.349,29.419.044,9.821-.043,19.772.742,29.549C185.151,133.906,179.3,135.87,173.628,138.1Zm.174-60.408c-2.618-1.178-5.676-1.828-8.336-2.793-2.752-1-5.5-2.052-8.293-2.881,5.456-1.746,11.173-3.579,16.193-6.2,5.5,2.27,11.043,4.321,16.542,6.634A161.344,161.344,0,0,0,173.8,77.688Zm-17.328,50.719c.48-18.638-.174-37.319-.3-55.957,5.415,1.7,6.208,2.552,17.241,6.111-.365,5.321-.484,55.585-.437,59.361-3.186-1.746-6.428-3.3-9.6-5.151C161.005,131.39,158.831,129.716,156.474,128.407Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M112.041,117.1c1.833-3.536,5.019-5.631,6.853-9.3a37.535,37.535,0,0,0,2.749-5.936c1.64-5.973-2.4-5.413-4.539-7.551-.829-.83.35-2.666-.786-2.925-2.529-.575-6.33-2.439-10.431-3.448-8.471-2.084-8.394-6.357-13.88-3.753-2.276,1.079-3.162,4.236-2.881,6.547a4.763,4.763,0,0,0,3.841,4.19,37.212,37.212,0,0,0-3.186,11.043c-.439,3.229-1.082,6.977.829,9.908,1.931,2.961,5.5,4.1,9.166,4.1-.175,3.142-.131,6.328-.131,9.471,0,1.179-.127,1.435.742,2.182,3.378,2.905,7.682,2.838,10.606-.654a.472.472,0,0,0,.393-.48A104.48,104.48,0,0,1,112.041,117.1Zm-.7-2.226a84.947,84.947,0,0,0-1,15.538c-1.921,1.79-4.057,3.094-6.766,2.139a6.518,6.518,0,0,1-3.011-1.92c.043,0-.044-.35,0-.655,0-.1.025-8.547,0-10.039a16.635,16.635,0,0,0,7.987-2.4.43.43,0,0,0-.436-.742,14.9,14.9,0,0,1-10.476,1.964c-2.881-.431-5.732-1.7-6.852-4.626-1.15-3.006-.364-7.03.131-10.083a32.445,32.445,0,0,1,2.837-9.035,7.015,7.015,0,0,0,2.706-.174,12.406,12.406,0,0,1,7.42.174c2.664,1.042,4.062,3.664,5.849,5.762,2.31,2.71-1.047,3.274-.48,5.019.255.788,1.047.917,1.789.7,1.8-.528,1.477-2.517,2.924-1.964.788.3,2.126,1,1.746,2.095-.271.783-1.054,1.122-1.7,1.484C111.666,109.418,111.671,112.566,111.343,114.876Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M98.161,108.023c-1.13.322-2.6.61-2.706-1.222a5.669,5.669,0,0,1,.611-2.051,16.062,16.062,0,0,1,1.92-3.012c.217-.307-.219-.569-.48-.349a9.526,9.526,0,0,0-3.055,6.11c.022,2.008,2.8,1.851,4.016,1.266C98.906,108.553,98.6,107.9,98.161,108.023Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M104.053,110.773a10.016,10.016,0,0,1-4.495,2.575.408.408,0,0,0,.218.786,7.682,7.682,0,0,0,4.8-2.968C104.789,110.9,104.315,110.511,104.053,110.773Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M93.185,98.071a3.9,3.9,0,0,1,1.833.044,7,7,0,0,1,1.484.742.4.4,0,0,0,.568-.436c-.524-1.659-2.75-1.484-4.016-.961A.313.313,0,1,0,93.185,98.071Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M101.74,98.813c-.393.006-.524.655-.087.7a5.686,5.686,0,0,1,3.972,2.095.417.417,0,0,0,.7-.393C105.864,99.245,103.4,98.792,101.74,98.813Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M101.566,104.531a6.72,6.72,0,0,0,2.618-.393.539.539,0,0,0-.131-1.047,6.525,6.525,0,0,0-2.618.262A.6.6,0,0,0,101.566,104.531Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M94.975,102.174c-.7-.564-1.492-.993-2.226-1.527-.53-.386-1.135.436-.7.873a5.748,5.748,0,0,0,2.4,1.527C94.93,103.181,95.41,102.525,94.975,102.174Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M88.122,131.9a.408.408,0,0,0,.218.786c1.661-.291,3.314-.806,4.976-1.091,1.917-.329,3.8-.406,5.718-.611.436-.047.48-.7,0-.7A24.884,24.884,0,0,0,88.122,131.9Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M75.29,135.827a.36.36,0,0,0,.174.7c3.715-.765,7.331-1.717,11.087-2.27.61-.089.348-1.007-.262-.916A53.088,53.088,0,0,0,75.29,135.827Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M134.039,140.584c.441.255.78-.383.393-.654-5.89-4.131-9.774-4.75-10.824-5.587a21.223,21.223,0,0,0-10.258-4.321c-.48-.088-.745.667-.218.785a20.445,20.445,0,0,1,5.718,1.79c1.4.785,2.706,1.746,4.147,2.488-1.4.916-2.66,1.968-3.972,2.968-1.438,1.095-2.925,2.007-4.409,3.055-.043,0-1.7-1.571-1.877-1.7a49.752,49.752,0,0,0-6.634-3.972c-.74-.184-1.575.648-2.139,1a42.469,42.469,0,0,0-5.892,5.281,38.052,38.052,0,0,1-9.6-7.42.371.371,0,0,0-.524.524c2.576,3.011,6.329,7.114,10.345,7.987.3.044,6.2-5.718,7.507-6.721a30.59,30.59,0,0,1,4.976,2.924c1.184.866,2.139,2.226,3.405,2.968.686.915,2.847-1.2,9.777-6.547A78.2,78.2,0,0,1,134.039,140.584Z"
+                    fill="#f3f4f6"
+                  ></path>
+                  <path
+                    d="M103.835,144.687s-2.575-2.051-1.047-3.972,2.564-3.348,3.579-2.488c.993.842,3.142,2.357,3.142,3.8,0,1.309-2.225,4.2-3.579,4.321C105.407,146.393,103.835,144.687,103.835,144.687Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M103.617,147.262a.245.245,0,0,1,.436-.131c.524.7,1.4,1.834,1.834,1.877.48.088,1.531-1.219,2.095-1.964a.245.245,0,0,1,.436.131c2.558,27.766,2.457,26.089,2.357,26.189l-3.361,6.329a.228.228,0,0,1-.393.043c-5.191-7.036-4.713-6.324-4.713-6.5Z"
+                    fill="#2563eb"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="pricing" className="bg-gray-50">
+        <div className="">
+          <div className="pt-12 sm:pt-16 lg:pt-24">
+            <div className="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+              <div className="max-w-3xl mx-auto space-y-2 lg:max-w-none">
+                <h2 className="text-lg leading-6 font-semibold text-gray-500 uppercase tracking-wider">
+                  Pricing
+                </h2>
+                <p className="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl">
+                  The right price for you, whoever you are
+                </p>
+                <p className="text-xl text-gray-500">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Harum sequi unde repudiandae natus.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 pb-12 bg-gray-50 sm:mt-12 sm:pb-16 lg:mt-16 lg:pb-24">
+            <div className="relative">
+              <div className="absolute inset-0 h-3/4 " />
+              <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-md mx-auto space-y-4 lg:max-w-5xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
+                  {tiers.map((tier) => (
+                    <div
+                      key={tier.name}
+                      className="flex flex-col rounded-lg shadow-lg overflow-hidden"
+                    >
+                      <div className="px-6 py-8 bg-white sm:p-10 sm:pb-6">
+                        <div>
+                          <h3
+                            className="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-blue-100 text-blue-600"
+                            id="tier-standard"
+                          >
+                            {tier.name}
+                          </h3>
+                        </div>
+                        <div className="mt-4 flex items-baseline text-6xl font-extrabold">
+                          {priceString({
+                            pid: tier.pid,
+                            currency: currency,
+                            term: billingInterval,
+                            monthlyPricing: true,
+                          })}
+                          <span className="ml-1 text-2xl font-medium text-gray-500">
+                            /mo
+                          </span>
+                        </div>
+                        <p className="mt-5 text-lg text-gray-500">
+                          {tier.description}
+                        </p>
+                      </div>
+                      <div className="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
+                        <ul className="space-y-4">
+                          {tier.features.map((feature) => (
+                            <li key={feature} className="flex items-start">
+                              <div className="flex-shrink-0">
+                                <CheckIcon
+                                  className="h-6 w-6 text-green-500"
+                                  aria-hidden="true"
+                                />
+                              </div>
+                              <p className="ml-3 text-base text-gray-700">
+                                {feature}
+                              </p>
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="rounded-md shadow">
+                          <WHMCSLink
+                            label="Get started"
+                            pid={tier.pid}
+                            currency={currency}
+                            term={billingInterval}
+                            className="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:mt-5">
+              <div className="max-w-md mx-auto lg:max-w-5xl">
+                <div className="rounded-lg bg-gray-100 px-6 py-8 sm:p-10 lg:flex lg:items-center">
+                  <div className="flex-1">
+                    <div>
+                      <h3 className="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-white text-gray-800">
+                        Discounted Server Management
+                      </h3>
+                    </div>
+                    <div className="mt-4 text-lg text-gray-600">
+                      If you are looking for server management for multiple
+                      server or if you have custom needs for your servers,
+                      contact us to get discounted pricing.
+                    </div>
+                  </div>
+                  <div className="mt-6 rounded-md shadow lg:mt-0 lg:ml-10 lg:flex-shrink-0">
+                    <a
+                      href="#contact"
+                      className="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50"
+                    >
+                      Contact us
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Alternating Features */}
+      <div className="py-16 bg-gray-50 overflow-hidden">
+        <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
+          <svg
+            className="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4"
+            width={404}
+            height={784}
+            fill="none"
+            viewBox="0 0 404 784"
+            aria-hidden="true"
+          >
+            <defs>
+              <pattern
+                id="b1e6e422-73f8-40a6-b5d9-c8586e37e0e7"
+                x={0}
+                y={0}
+                width={20}
+                height={20}
+                patternUnits="userSpaceOnUse"
+              >
+                <rect
+                  x={0}
+                  y={0}
+                  width={4}
+                  height={4}
+                  className="text-gray-200"
+                  fill="currentColor"
+                />
+              </pattern>
+            </defs>
+            <rect
+              width={404}
+              height={784}
+              fill="url(#b1e6e422-73f8-40a6-b5d9-c8586e37e0e7)"
+            />
+          </svg>
+
+          <div id="more" className="relative">
+            <h2 className="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+              Why choose our server management solutions?
+            </h2>
+            <p className="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">
+              Many businesses are seeking assistance to get the most out of
+              their cloud. Migration, architecture design, security and
+              operations can take your focus away from your core business. Our
+              managed hosting solutions blends technology and automation to
+              deliver ongoing architecture, security, and 24x7x365 operations
+              backed by certified engineers and architects.
+            </p>
+          </div>
+
+          <div className="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+            <div className="relative">
+              <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
+                Automatic Server Updates
+              </h3>
+              <p className="mt-3 text-lg text-gray-500">
+                Stay informed on all software updates to avoid unexpectded
+                incidents. We will regularly check and install updates so you'll
+                never miss an important update.
+              </p>
             </div>
 
-            <AlternatingFeature />
+            <div
+              className="mt-10 -mx-4 relative lg:mt-0 justify-self-center"
+              aria-hidden="true"
+            >
+              <svg
+                className="h-96"
+                viewBox="0 0 400 400"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g transform="matrix(2,0,0,2,0,0)">
+                  <path
+                    d="M192.621,81.888c-3.606-1.389-7.741.88-8.794,1.143.7-.527,1.41-1.139,2.11-1.758,3.359-2.972,7.05-9.069,3.694-13.368a3.634,3.634,0,0,0-4.045-1.319c-3.074,1.069-4.57,5.454-5.629,8.179-1.4,3.607-2.462,7.387-3.517,11.081.263.791.439,1.671.7,2.462a61.588,61.588,0,0,0,8.706.7c2.815,0,8.974-.179,9.147-4.31C195.055,83.294,193.841,82.358,192.621,81.888Zm-7.387-13.015a2.014,2.014,0,0,1,2.638-.264c3.63,2.872-.306,8.661-2.638,10.905-2.022,1.946-4.882,3.929-6.6,5.452-.088.088-.176.176-.264.176C179.1,84.524,181.463,72.276,185.234,68.873Zm8,15.917c.088,1.056-1.4,1.678-2.2,2.023-2.891,1.256-6.244.616-9.234.352a12.366,12.366,0,0,0-2.462-.264c3.254-1.583,7.738-4.124,11.52-3.694C191.876,83.323,193.237,83.76,193.237,84.79Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M45.4,84.175A2.045,2.045,0,0,0,43.382,86.2,2.107,2.107,0,0,0,45.4,88.22a2.023,2.023,0,1,0,0-4.045Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M21.4,87.165c-3.607.608-7.61,1.266-10.2,4.309-2.829,3.322-1.85,6.871-.88,11.081.69,2.993,1.231,6.068,1.935,9.146.088.528.871.265.791-.176-1.766-9.755-3.852-15.062-1.407-18.644,2.214-3.243,6.42-3.694,9.85-4.749C22.187,87.78,21.923,87.076,21.4,87.165Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M25,144.152c1.318-.1.53-.892-.528-1.143-3.508-.833-4.561-3.588-5.365-7.212-.1-.438-.879-.264-.7.176C19.173,139.808,21.1,144.46,25,144.152Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M124.817,55.593a8.637,8.637,0,1,0,5.452,9.5,9,9,0,0,0,.088-1.407A8.425,8.425,0,0,0,124.817,55.593Zm4.4,8.091a7.3,7.3,0,0,1-12.927,4.661,7.3,7.3,0,0,1-.616-8.355,7.494,7.494,0,0,1,7.651-3.429A7.342,7.342,0,0,1,129.214,63.684Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M122.53,63.068c0-1.158-.087-1.509-.087-3.341a8.154,8.154,0,0,1,2.11.263c.44.176.788-.607.352-.791a8.967,8.967,0,0,0-2.55-.7,1.112,1.112,0,0,0-.088-.527c-.088-.616-.968-.616-.968,0V58.5a4.544,4.544,0,0,0-2.2.7c-1.7,1.246-1.769,3.434-.088,4.485a5.331,5.331,0,0,0,2.374.7c0,.968,0,1.935.088,2.991a3.652,3.652,0,0,1-2.023-.968c-.615-.615-1.5.358-.967.968a4.513,4.513,0,0,0,3.078,1.407v.879c.088.792,1.319.792,1.231,0a2.427,2.427,0,0,0-.088-.791c2.708,0,4.035-1.841,3.518-3.518S123.938,63.244,122.53,63.068Zm-3.341-1.846a2.315,2.315,0,0,1,2.11-1.5V62.98C120.278,62.98,118.774,62.189,119.189,61.222Zm5.716,5.188a2.154,2.154,0,0,1-.967.792,3.669,3.669,0,0,1-1.32.176c-.088-.968,0-1.935-.088-2.99.754,0,2.125.393,2.375,1.143A1,1,0,0,1,124.905,66.41Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M104.483,64.831l4.856,10.9A6.791,6.791,0,0,1,106,84.7l-15.39,6.86c.264.44.44.967.7,1.407l15.39-6.86a8.239,8.239,0,0,0,4.133-10.992c-3.86-8.361-4.652-10.573-4.852-10.848Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M74.865,57.616,90.607,50.58a6.831,6.831,0,0,1,8.97,3.43l4.513,10.008c.088-.088.264-.088.352-.176a5.4,5.4,0,0,1,1.055-.44L100.984,53.4a8.343,8.343,0,0,0-10.992-4.222L74.162,56.3A4.656,4.656,0,0,1,74.865,57.616Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M64.928,62.1l8.53-3.869a10.727,10.727,0,0,0-.615-1.5l-8.619,3.87a.776.776,0,0,0-.439,1.055A.9.9,0,0,0,64.928,62.1Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M89.369,92.12l-2.719,1.2a3.471,3.471,0,0,0-1.056-2.2l-8.266-7.475a1.553,1.553,0,0,0-2.551.7,19.466,19.466,0,0,1-9.322,11.7c-.088-.176-5.339-11.873-5.339-11.873a10.674,10.674,0,0,0-1.495.616L60.267,88.4,21.66,94.9a4.552,4.552,0,0,0-3.43,5.628l7.739,32.715a5.133,5.133,0,0,0,4.837,3.957c.44,0-3.3.137,47.049-8.09a4.323,4.323,0,0,0,3.342-5.541L77.592,106.6a34.381,34.381,0,0,0,7.3-8.618L90.079,124.1c1.594,6.664-.838,13.851-7.651,14.95l-51.974,9.762c-6.156,1.143-13.631-1.671-15.39-9.058l-8.53-38.783C4.852,94.246,8.755,87.266,15.5,86.109L56.045,79.25,58.156,84a10.5,10.5,0,0,1,1.407-.7l-4.309-9.5a6.791,6.791,0,0,1,3.342-8.97l1.759-.791a.808.808,0,1,0-.616-1.5l-1.759.791a8.391,8.391,0,0,0-4.221,11.081l1.759,3.87L15.24,85.142C7.832,86.507,3.661,94.06,5.39,101.324l8.531,38.783c1.832,7.617,9.405,11.161,16.621,9.849l17.5-3.254v8c-10.378,2.375-17.977,6.42-17.941,9.938.044,4.222,10.9,6.068,24.185,4.133S78.348,161.916,78.3,157.7c-.044-3.518-7.563-5.364-17.852-4.837V144.24L82.6,140.107c7.277-1.324,10.152-8.93,8.355-16.27l-5.453-27.35c.264-.44.44-.88.616-1.231L89.9,93.527A4.6,4.6,0,0,0,89.369,92.12ZM71.524,157.167a.5.5,0,0,1,.615.792C68,162.1,54.676,167.176,38.017,164.818c-.439-.087-.352-.879.088-.791C49.779,165.265,61.657,163.662,71.524,157.167Zm-12.576,1.671a.624.624,0,1,1-1.232.176,85.028,85.028,0,0,1-.615-10.553c.013-.527.791-.528.879,0A94.119,94.119,0,0,0,58.948,158.838Zm-.44-46.609c-.2,0,.191.651-5.013-9.85a1.027,1.027,0,0,1,0-.88.9.9,0,0,1,.7-.439c5.452-.528,18.38-3.078,22.161-16.182l8.267,7.387a1.745,1.745,0,0,1,.44,1.935C83.07,99.172,76.185,110.821,58.508,112.229Zm21.634,11.608a3.351,3.351,0,0,1-2.55,4.221l-46.258,8a3.951,3.951,0,0,1-4.4-3.078L19.2,100.268a3.388,3.388,0,0,1,2.551-4.309l38.871-6.508c4.573,10.192,2.989,6.77,3.341,7.475a31.756,31.756,0,0,1-10.113,2.727,2.45,2.45,0,0,0-2.023,3.517l4.837,9.762a1.853,1.853,0,0,0,1.583.967h.176a34.066,34.066,0,0,0,18.028-6.507Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M82.868,74.677c7.768-3.329,23.166-10.05,23.305-10.114a.924.924,0,0,0-.791-1.671c-.2.083-2.082.929-2.2.968-8.537,3.794-5.232,1.994-16.445,7.123-1.5.688-3.078,1.407-4.573,2.023-1.9-4.235-5.492-11.95-8.179-17.325a6.1,6.1,0,0,1,.44-1.143c1.411-2.822,3.079-3.633,5.276-7.915,1.757-3.423,3.442-7.759,2.375-11.433-1.134-3.9-4.91-5.723-7.915-4.221-3.1,1.55-3.932,6.306-4.133,9.762-.072,1.232,0,2.374,0,3.606-.88-2.111-2.112-4.219-4.486-4.661-2.405-.449-4.972,1.647-4.221,5.276a9.528,9.528,0,0,0,1.847,3.606,17.327,17.327,0,0,0,5.8,5.364,14.569,14.569,0,0,0,3.166,1.319c.246.122.309.472.44.88.513,1.6,7.218,16.46,7.739,17.5-.1.044-21.991,9.854-22.6,10.465-.615.352-.18,1.482.528,1.231,2.863-1.014,14.5-6.466,23.041-10.2.306.662,8.357,18.569,8.443,18.731a.979.979,0,0,0,1.319.352.968.968,0,0,0,.352-1.319C91.2,92.445,86.562,82.68,82.868,74.677Zm-5.8-41.861a3.266,3.266,0,0,1,3.078,2.726c.546,2.728-.405,7.142-1.847,10.026-1.7,3.407-2.944,4.512-4.837,7.035a46.557,46.557,0,0,1-1.319-9.762C71.769,38.582,72.792,32.205,77.064,32.816ZM63.7,45.919c-.732-1.431-.935-3.268.527-3.957.98-.462,2.6.425,3.078,1.143,1.228,1.579,3.224,7.671,4.222,10.465C69.577,52.273,66.2,50.827,63.7,45.919Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M76.009,98.861c-1.314-1.314-3.559.229-5.013,1.319q-.528-.791-1.055-1.583a24.39,24.39,0,0,1,2.374-1.143c.436-.184.44-.967-.088-.967a6.021,6.021,0,0,0-3.078.967c-.088-.176-.264-.352-.352-.528-.351-.439-.967.088-.7.528l.264.528a5.027,5.027,0,0,0-2.375,3.342c0,1.4.695,1.67,2.111,1.67a5.635,5.635,0,0,0,2.814-1.143c.44.7.967,1.319,1.407,1.935a8.26,8.26,0,0,1-2.9.7c-.88,0-.881,1.394,0,1.319a9.532,9.532,0,0,0,3.694-.968c.175.176.263.44.439.616.44.528,1.407-.176.968-.792a1.934,1.934,0,0,0-.352-.439C75.943,103.038,77.525,100.377,76.009,98.861Zm-8.267,2.99c-.264,0-.528,0-.528-.176-.088-.263.176-.615.264-.879a7.515,7.515,0,0,1,1.407-1.5c.352.528.7,1.055,1.056,1.671,0,.088-1.144.615-1.232.7A7.839,7.839,0,0,0,67.742,101.851Zm6.86.176a4.7,4.7,0,0,1-1.32,1.319c-.527-.7-1.055-1.407-1.495-2.11a10.1,10.1,0,0,1,2.463-1.5.962.962,0,0,1,.967.088C75.569,100.532,74.953,101.5,74.6,102.027Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M140.119,55.857a1.086,1.086,0,0,0,.352.7l11.345,7.914a.876.876,0,0,0,1.055,0,.959.959,0,0,0,.352-1.055L148.65,49.877a1.063,1.063,0,0,0-.616-.616,1.081,1.081,0,0,0-.879.176l-1.759,1.5c-11.734-11.737-25.457-13.008-36.848-7.827a32.557,32.557,0,0,0-6.332,3.694,1.068,1.068,0,0,0-.264,1.231.892.892,0,0,0,1.231.352c6.921-4.091,15.654-5.895,23.481-4.133,8.579,1.93,14.543,8.281,15.742,9.234l-2.023,1.67C140.207,55.241,140.119,55.505,140.119,55.857Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M179.518,98.246a158.938,158.938,0,0,0-6.244-22.162c-.452-1.315-.88-2.814-2.2-3.43a8.174,8.174,0,0,0-3.869-.615c-6.853,0-5.25.234-9.938.351-.615.016-1.231.088-1.847.088s-1.231.176-1.847.176c-2.646.166-6.921.62-8.266.7-1.178.168-4.68.239-6.42.967-1.311.549-8.794,5.98-9.41,6.42a6.4,6.4,0,0,0-1.583,1.407,3.3,3.3,0,0,0-.264,2.2c.3,1.361,2.319,14.113,3.43,18.556-5.277-.792-8.706-1.495-8.794-1.495a.784.784,0,0,0-.968.791c.308,24.366-9.937,57.339-10.025,57.691a.991.991,0,0,0,.088.7.891.891,0,0,0,.615.352c40.1,3.078,62.088,5.98,62.264,5.98a.78.78,0,0,0,.879-.791c.352-25.951-2.022-59.274-2.11-59.538a.77.77,0,0,0-.792-.7c-1.055.088-2.2.088-3.254.088-1.73-5.536-6.66-22.146-6.683-22.25a2.314,2.314,0,0,0-2.463-2.111c-3.87-.044-7.739.352-11.52.616s-15.566.967-17.677,1.143c-.527.088-.527.792,0,.792,5.591,0,29.413-1.507,29.813-1.407.7.176.787,1.144.967,1.758,1.032,3.525,5.365,17.853,6.508,21.547a227.074,227.074,0,0,1-35.7-2.9V103c-3.047-19.391-3.624-19.417-2.99-20.051a7.6,7.6,0,0,1,1.583-1.232c4.937-3.471,7.179-6.173,11.169-6.507,2.155-.181,13.546-1.583,23.129-1.583,5.264,0,6.015.031,6.595,1.67,4.435,12.526,6.61,22.112,6.772,23.569a.65.65,0,0,0,.88.528C179.67,99.234,179.6,98.6,179.518,98.246Zm-8,9.058c.439,5.012,2.638,34.21,2.022,57.778-4.4-.527-25.415-3.078-60.5-5.8,1.671-5.54,10.113-34.122,9.849-56.284C127.9,104.05,151.376,108.271,171.515,107.3Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M168.789,74.5c-.419.209-5.032,4.68-6.157,5.8-.351.352.176.88.616.616,1.355-1.13,6.206-5.112,6.42-5.541A.657.657,0,0,0,168.789,74.5Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M156.652,72.3c.452-.3.176-1.26-.7-.967a15.351,15.351,0,0,0-1.671.879,4.912,4.912,0,0,0-.7.44c-.263.176-.611.358-.879.528-1.206.763-2.39,1.689-2.99,2.11a109.394,109.394,0,0,0-8.794,7.124c-.429.428-.758.663-.616,1.231a131.15,131.15,0,0,1,7.035,16.709c1.486,4.491,1.158,3.649,1.495,4.661.528.088,1.144.088,1.671.176,0-2.71-4.607-15.014-8.09-21.546.838-.838,4.18-3.635,5.1-4.4,1.978-1.637,5.941-4.442,7.3-5.541C156.591,72.264,156.419,72.536,156.652,72.3Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M46.548,102.819l-.792-3.87L26.5,101.939s1.671,7.563,3.166,14.6C34.747,109.928,41.092,107.911,46.548,102.819Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M30.894,122.694c.7,3.342,1.231,5.8,1.231,5.98L51.3,125.508,47.6,107.919C41.355,112.605,34.166,115.985,30.894,122.694Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M56.133,120.935c2.288-.044,16.189-2.7,17.5-2.99a.781.781,0,0,0,.528-.88.716.716,0,0,0-.88-.527c-4.468,1.04-16.013,3.051-17.236,3.43C55.514,120.132,55.606,120.945,56.133,120.935Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M56.133,123.221c-.527.176-.527,1.141.176,1.056,7.472-.907,17.061-2.99,18.38-3.254a.779.779,0,0,0-.439-1.495C71.87,120.03,57.453,122.782,56.133,123.221Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M38.9,130.081a53.285,53.285,0,0,0-5.365,1.407.575.575,0,0,0,.176,1.055c.969.169,4.749-.7,5.628-.879a.731.731,0,0,0,.528-.967A.81.81,0,0,0,38.9,130.081Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M183.563,98.773a.719.719,0,0,0-1.231-.439l-7.651,6.683a.8.8,0,0,0-.264.616c3.693,34.386,2.9,53.645,2.55,58.834a.716.716,0,0,0,1.143.615l14.6-9.673a.715.715,0,0,0,.264-.792C186.827,135.349,184.358,105.614,183.563,98.773Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M160.082,112.492a67.192,67.192,0,0,1-8.882,16.27,19.452,19.452,0,0,1-6.508,5.54A6.87,6.87,0,0,1,136.6,132.9c-2.089-2.219-2.362-5.892-2.462-8.706a53.841,53.841,0,0,1,1.671-14.775c.088-.439-.528-.791-.792-.351-2.022,3.869-2.55,8.354-2.55,12.575,0,4.046.257,8.888,2.99,12.224,4.474,5.462,11.922,1.638,15.654-2.638a41.482,41.482,0,0,0,3.781-5.188,56.852,56.852,0,0,0,5.981-13.456C161.05,112.141,160.265,111.967,160.082,112.492Z"
+                    fill="#191919"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+          </div>
 
-            <TitleBar
-                title="Get a quote"
-                subheading="Quotation"
-                description="Good"
+          <svg
+            className="hidden lg:block absolute right-full transform translate-x-1/2 translate-y-12"
+            width={404}
+            height={784}
+            fill="none"
+            viewBox="0 0 404 784"
+            aria-hidden="true"
+          >
+            <defs>
+              <pattern
+                id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d"
+                x={0}
+                y={0}
+                width={20}
+                height={20}
+                patternUnits="userSpaceOnUse"
+              >
+                <rect
+                  x={0}
+                  y={0}
+                  width={4}
+                  height={4}
+                  className="text-gray-200"
+                  fill="currentColor"
+                />
+              </pattern>
+            </defs>
+            <rect
+              width={404}
+              height={784}
+              fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)"
             />
-            <CTAImage />
-            <FAQsBrand />
-            <Testimonials />
-            <ContactForm />
-            <CTASimple />
-        </>
-    );
+          </svg>
+
+          <div className="z-10 relative mt-12 sm:mt-16 lg:mt-24">
+            <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
+              <div className="lg:col-start-2">
+                <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
+                  Security and Firewall Hardening
+                </h3>
+                <p className="mt-3 text-lg text-gray-500">
+                  We will ensure our managed firewall configuration gives
+                  maximum protection. Filter all traffic that is fraudulent to
+                  your server.
+                </p>
+              </div>
+
+              <div className="mt-10 -mx-4 relative lg:mt-0 lg:col-start-1 justify-self-center">
+                <svg
+                  className="h-96"
+                  viewBox="0 0 400 400"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g transform="matrix(2,0,0,2,0,0)">
+                    <path
+                      d="M51.852,83.658c-5.144,4.043-4.981-5.824-2.572-4.96.547.2,2.545,2.2,2.94.918.172-.555-1.286-6.8-1.837-8.084a24.8,24.8,0,0,0,8.451-11.943c0-.551-1.469.184-1.469.184a5.435,5.435,0,0,0,.367-2.389.345.345,0,0,0-.551,0c-.919,1.838-3.123,2.2-4.961,2.389-2.2,0-9.922-1.1-12.678.184-1.286.551-2.756,2.388-2.2,5.7,0,.368.551,2.573.918,2.756a7.867,7.867,0,0,1,4.042,1.1c.184.183,0,.367-.183.367-.735,0-1.287-.184-1.838-.184-2.572-.183-6.247-.183-6.614,3.124-.368,2.572.551,5.145,1.47,7.35,1.1,2.755,7.165,11.759,7.9,12.126a2.427,2.427,0,0,0,.76-.106c.191,1.934.542,3.86.894,5.618.183,1.1,1.286,1.286,1.1,0-.523-1.918-.881-3.836-1.387-5.754,2.617-.612,8.162-2.178,9.288-2.881C54.058,88.987,52.4,83.107,51.852,83.658Zm2.022-21.129a.4.4,0,0,1,.367.367c0,1.133-3.534,1.8-3.675,1.838-.183,0-.367-.368-.183-.368C50.587,64.161,53.37,62.361,53.874,62.529ZM44.5,85.312a.18.18,0,0,1-.184.184c-.551.184-1.1-.368-1.286-.735a16.558,16.558,0,0,1-1.1-1.47,11.078,11.078,0,0,0,1.1,4.226.612.612,0,0,1-.918.735,18.76,18.76,0,0,1-3.124-4.41c-.882-1.673-1.837-3.307-1.653-5.328,0-.184.367-.368.367,0a14.207,14.207,0,0,0,2.2,4.777A12.339,12.339,0,0,0,41.2,85.312a8.149,8.149,0,0,1-.184-3.675.482.482,0,0,1,.919-.183C42.767,83.127,44.743,84.352,44.5,85.312ZM40.645,62.161c-.19.09-.348-.027-.184-.183a6.034,6.034,0,0,1,4.961-1.286,31.121,31.121,0,0,0,4.409.367c.1,0,2.716-.327,1.654.735-1.246.934-4.037.479-5.512.184A8.524,8.524,0,0,0,40.645,62.161Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M61.591,79.616a3.925,3.925,0,0,0,1.469-3.123c0-2.47-2-4.013-3.674-6.064-.908-1.111-2.021-2.021-3.124-3.123-.184-.184-.551,0-.367.367.735.919,1.47,2.022,2.2,2.94,2.162,2.7,3.4,4,3.674,5.512a5.307,5.307,0,0,1-.735,2.756,1.394,1.394,0,0,0-.367-.735c-.184-.183-.429-.17-.368.184.481,2.769,1.1,5.88.184,8.819a6.749,6.749,0,0,1-1.47,2.756c-.735.919-1.837,1.287-2.756,2.022-.184.183-.184.551.184.551,1.286.183,2.388-.735,3.307-1.47A8.94,8.94,0,0,0,61.774,87.7,13.467,13.467,0,0,0,61.591,79.616Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M92.091,98.725c3.077-.88,4.974-2.12,11.024-5.145,2.31-.77,3.409-1.227,4.409-3.307C116,72.634,117.068,61.091,118,58.3A20.215,20.215,0,0,0,118.365,55c0-.552-.735-.552-.919-.184a55.526,55.526,0,0,0-1.1,5.88,131.358,131.358,0,0,1-7.717,24.988c-.9,2.03-1.47,4.96-3.491,6.063a54.577,54.577,0,0,1-6.247,2.94c-2.225,1.061-4.41,2.388-6.8,3.491C91.539,98.357,91.723,98.725,92.091,98.725Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M117.079,52.056c-1.1-.919-2.216-1.639-3.491-2.572a5.25,5.25,0,0,1-1.838-1.654,2.924,2.924,0,0,1,0-2.756,20.5,20.5,0,0,1,1.286-2.94c.368-.918.919-1.837,1.287-2.756.183-.367-.368-.735-.735-.367a13.686,13.686,0,0,0-1.654,2.756c-.735,1.653-1.876,3.679-1.654,5.512a4.411,4.411,0,0,0,2.2,2.94c1.3.9,2.756,1.837,4.042,2.572C117.079,52.791,117.446,52.423,117.079,52.056Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M115.425,42.869c.605-3.327.754-7.094,1.1-9.187.184-1.1.184-2.2.368-3.307.184-.735.367.184.551.368.184.735.545,1.471.735,2.388.534,2.576.735,5.329,1.1,7.9a.462.462,0,0,0,.919,0,29.118,29.118,0,0,0-1.837-11.208,1.376,1.376,0,0,0-1.286-1.1c-1.286,0-1.1,2.2-1.286,2.939a104.274,104.274,0,0,0-.552,10.841C114.874,43.053,115.241,43.053,115.425,42.869Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M125.163,37.173a4.737,4.737,0,0,1,1.47,2.389,6.949,6.949,0,0,1,0,2.756.82.82,0,0,0,0,.919c.184.183.367,0,.551-.184.72-.72.62-2.663.368-3.675a4.287,4.287,0,0,0-2.205-2.756C125.085,36.529,124.979,36.99,125.163,37.173Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M129.389,51.137a15.625,15.625,0,0,0,1.286-4.042c.334-2.393.368-5.512-1.286-7.533-.184-.368-.735,0-.551.367a11.333,11.333,0,0,1,.551,6.982c-.368,2.2-1.7,4.022-2.572,6.064-.389.91.925,11.023,1.286,16.168.374,5.328.367,10.657.367,15.985,0,5.145-.361,10.29-.735,15.618a34.277,34.277,0,0,1-1.286,7.533,11.447,11.447,0,0,1-3.123,4.777,29.706,29.706,0,0,1-6.064,4.777c-1.282.741-2.388,1.47-3.674,2.2a25.2,25.2,0,0,0-3.675,2.389c-.368.183,0,.735.367.551a28.876,28.876,0,0,0,6.982-3.491,41.559,41.559,0,0,0,5.7-4.226,19.217,19.217,0,0,0,3.859-4.593,18.77,18.77,0,0,0,1.837-6.982c2.009-14.568,1.167-35.266-1.1-49.793C128.47,53.526,129.205,51.688,129.389,51.137Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M9.226,151.641c-.26,3.9-2.382,13.641-3.307,17.454C5.093,172.5,5,172.3,5,173.138c0,.367.367.551.735.183a7.994,7.994,0,0,0,1.286-3.307c.535-2.436,2.94-14.532,2.94-18.373C9.777,151.089,9.226,151.089,9.226,151.641Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M120.57,35.887c.367.551.918.919,1.1,1.47a8.232,8.232,0,0,1,.735,3.675c0,1.277,1.437.1.919-2.2a6.807,6.807,0,0,0-1.1-2.572,4.408,4.408,0,0,0-1.47-1.1C120.57,35.336,120.386,35.7,120.57,35.887Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M72.431,140.249c-.368.184-.554-.372-.184-.551,2.739-1.324,36.931-13.78,37.3-13.964-1.469-3.859-12.494-32.521-12.861-33.991a.672.672,0,0,0-.919-.368c-4.042,2.756-28.479,11.392-29.03,11.576C60.672,96.52,42.3,95.6,34.581,99.092a.574.574,0,0,0,0,1.1c1.824.564,3.06,3.059,3.308,3.307-6.615,2.2-12.737,5.835-16.9,11.391-5.362,7.152-5.9,11.774-14.331,38.952a.678.678,0,0,0,.183.552c4.043.735,8.268.918,12.311,1.653-.32-8.945-.16-19.073,2.2-27.744a45.807,45.807,0,0,1,4.41-11.391c.184-.184.551,0,.368.183a29.865,29.865,0,0,0-2.389,6.8c-4.405,13.214-2.863,31.994-2.572,45.933.042,2.021.183,4.043.367,6.064a20.291,20.291,0,0,0,6.247.918c1.838,0,13.776-.786,18.006-1.1,8.812-.658,34.91-1.837,39.32-1.47a.59.59,0,0,0,.551-.551c.092-4.78,2.021-35.277,2.021-37.3A123.68,123.68,0,0,0,72.431,140.249ZM59.2,122.059A32.508,32.508,0,0,0,63.244,132.9a.538.538,0,0,1-.184.918c-.367,0-.735-.735-.918-.918-.735-1.1-1.47-2.389-2.205-3.675a31.491,31.491,0,0,1-2.2-8.268c-.676-5.391,1.2-10.748,3.307-13.229.168-.2,2.573-2.389,2.389-1.654-.184.551-.936,1.086-1.286,1.47a11.858,11.858,0,0,0-2.021,3.675A21.036,21.036,0,0,0,59.2,122.059Zm-5.7-19.292a4.989,4.989,0,0,1,3.124,1.47.352.352,0,0,1-.184.551c-2.791,0-2.485-1.47-14.148-1.47-.367,0-.183-.367,0-.367C44.854,102.754,50.872,102.328,53.506,102.767Z"
+                      fill="#2563eb"
+                    ></path>
+                    <path
+                      d="M133.247,23.393c-4.091,0-26.553-.386-30.132,0-2.018.218-4.226.551-5.7,2.2a5.479,5.479,0,0,0-1.47,3.124,44.636,44.636,0,0,0,0,7.165c.17,2.023.16,4.066,1.837,5.7,3.263,3.17,8.817,1.562,12.862,1.654a.276.276,0,0,0,0-.552c-1.654,0-3.491-.183-5.145-.183-3.242,0-6.288-.083-7.717-2.94-.918-1.837-.735-4.226-.735-6.247,0-1.837-.183-4.41.735-6.063s2.944-2.35,4.778-2.573a62.527,62.527,0,0,1,7.533-.367c27.857,0,29.592-.081,30.316,0a7.067,7.067,0,0,1,4.593,2.94,8.96,8.96,0,0,1,1.1,6.063c-.045.272-.254,4.514-1.286,6.247-1.595,2.677-7.584,2.762-9,2.94h-3.308c-.183,0-.918,0-.735.367h.184a45.216,45.216,0,0,0,8.268,0c1.838-.184,3.675-.551,4.777-2.021,1.1-1.286,1.261-2.943,1.47-4.593a30.766,30.766,0,0,0,.368-3.859,22.113,22.113,0,0,0,0-3.491,7.326,7.326,0,0,0-3.675-4.777C142.287,23.687,139.38,23.393,133.247,23.393Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M164.482,81.454a76.382,76.382,0,0,0,12.127.183,13.15,13.15,0,0,0,4.41-.735,6.066,6.066,0,0,0,3.307-3.307,8.334,8.334,0,0,0,.367-2.94c0-2.211.052-2.6-.183-3.307,0-.184-.368-.184-.368,0a5.905,5.905,0,0,0-.184,2.572,12.677,12.677,0,0,1-.367,2.756,4.9,4.9,0,0,1-2.756,3.308,17.028,17.028,0,0,1-4.226.735c-1.47,0-3.124.183-4.593.183-2.389,0-4.961,0-7.35.184C164.3,81.27,164.3,81.454,164.482,81.454Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M121.672,120.038c6.836.149,26.057.614,30.316.184,2.02-.2,4.065-.334,5.7-1.47,2.051-1.428,2.389-3.675,2.389-5.88.445-7.127.533-12.174-6.615-12.677-3.67-.259-7.349,0-11.208,0-9.726,0-9.1.183-10.84.183a.276.276,0,0,0,0,.552c.735,0,2.021.168,2.94.183,5.514.092,11.023-.356,16.536,0,2.939.19,6.833.173,7.9,3.675.949,3.114.731,7.349.183,10.473-.74,4.225-7.166,4.008-10.473,4.042-9,.092-17.822-.184-26.825.184C121.488,119.671,121.488,120.034,121.672,120.038Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M188.735,105.155c-4.079-.407-26.5-.073-27.009.184-.367.184.184,11.024.552,11.024,4.6-.329,26.7-.518,28.479-.918,2.217-.5,3.49-2.94,3.49-5.145C194.431,107.36,191.492,105.523,188.735,105.155Z"
+                      fill="#2563eb"
+                    ></path>
+                    <path
+                      d="M112.485,66.939a117.8,117.8,0,0,0-15.434-.552c-2.572,0-5.144,0-7.716.184a27.1,27.1,0,0,0-3.859.184,22.711,22.711,0,0,0-3.675.183,6.051,6.051,0,0,0-4.409,4.043c-.735,1.837.189,3.852,1.653,5.144a8.4,8.4,0,0,0,5.88,1.838c9.352,0,15.463.063,24.988-.552.367,0,.367-.735,0-.551a215.522,215.522,0,0,1-21.865.184c-2.021,0-4.4.156-6.43-.551-1.646-.574-3.491-2.2-3.491-4.226a4.515,4.515,0,0,1,1.1-2.572A4.169,4.169,0,0,1,81.8,67.857c2.236-.372,4.55.006,7.166-.367,4.525,0-3.412-.184,23.7-.184C112.669,67.206,112.669,67.122,112.485,66.939Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M192.043,28.722C190.215,27.6,188,27.8,185.8,27.8c-35.716,0-37.482.139-37.482.919a83.176,83.176,0,0,1-.552,9.554.4.4,0,0,0,.184.735c10.309.589,23.283.039,39.32-.184,1.653-.023,3.491,0,4.96-1.1C195.853,35.71,196.054,31.178,192.043,28.722Z"
+                      fill="#2563eb"
+                    ></path>
+                    <path
+                      d="M193.145,68.592c-1.653-1.653-7.717-2.021-7.717-1.286,0,2.94,0,9.738.368,10.105a2.465,2.465,0,0,0,1.653.368,11.849,11.849,0,0,0,3.491-.368,5.521,5.521,0,0,0,3.859-3.858A6.108,6.108,0,0,0,193.145,68.592Z"
+                      fill="#2563eb"
+                    ></path>
+                    <path
+                      d="M183.958,65.469c-3-4.5-9.238-3.491-13.412-3.491-2.389,0-4.961,0-7.35-.184-15.27,0-22.5-.786-25.539.735a5.1,5.1,0,0,0-2.94,2.572,5.523,5.523,0,0,0-.57,1.641c-2.516-.005-3.766-.061-4.023.2v.551a1.407,1.407,0,0,0,.919.367c1.794,0,2.559.054,2.958.06-.062.944-.019,1.886-.019,2.7a24.247,24.247,0,0,0,.528,6.8c-3.109,0-3.36-.054-3.835.184l.025.735c.1.1-.462,0,4.151,0a5.119,5.119,0,0,0,2.806,2.756c1.984.661,3.253.551,11.759.551,7.244,0,12-.2,13.045-.183a.276.276,0,1,0,0-.552c-1.1,0-2.388-.183-3.491-.183H147.579c-3.124,0-7.35.735-10.106-.735a5.081,5.081,0,0,1-2.388-4.594c-.184-2.756-.551-6.43.183-9.187a4.2,4.2,0,0,1,1.287-1.837c2.477-2.477,7.834-1.837,38.4-1.837,2.389,0,4.777,0,6.615,1.286a5.626,5.626,0,0,1,2.388,5.512c.184.184.184.184.368,0A4.1,4.1,0,0,0,183.958,65.469Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M144.272,68.225c-1.5,4.487.367,8.855.367,7.165C144.864,74.715,145.083,66.6,144.272,68.225Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M151.253,67.673c-.349,1.223-.183,2.032-.183,6.064,0,1.13.084,1.653.918,1.653.515-.343.368-.623.368-3.674C152.356,65.785,151.033,67.673,151.253,67.673Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M159.705,75.39c.324-.485-.085-10.118-1.286-7.717C158.519,67.673,158.1,77,159.705,75.39Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M165.585,67.857a43.573,43.573,0,0,0-.184,6.063c0,.552,0,1.47.368,1.838.183.184.5.176.551,0a6.883,6.883,0,0,0,.183-2.021,30.906,30.906,0,0,0-.367-6.064C166.136,67.49,165.585,67.49,165.585,67.857Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M173.485,68.041c0,.1-.583,6.6.552,7.533,1.336,1.095.689-4.974.567-5.725C174.083,66.637,173.5,67.641,173.485,68.041Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M105.687,29.824c-.673,2.02-.128,1.983-.551,3.675,0,1.1-.184,2.572.367,3.491.184.367.552.183.552,0,.231-.694.183-1,.183-5.329,0-.551-.183-1.1-.183-1.837C106.238,29.64,105.871,29.456,105.687,29.824Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M112.669,29.273a23.68,23.68,0,0,0-.367,6.063c0,.551,0,1.47.551,1.654h.367c.551-.368.368-1.1.368-1.654a23.986,23.986,0,0,0-.368-6.063C113.036,29.089,112.669,28.905,112.669,29.273Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M127,29.456a43.635,43.635,0,0,0-.183,6.064c0,.551,0,1.47.367,1.837.184.184.538.2.592.021a7.064,7.064,0,0,0,.143-2.042,30.892,30.892,0,0,0-.367-6.063C127.552,29.089,127,29.089,127,29.456Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M134.9,29.64c0,.1-.642,9.278,1.1,7.533.616-.922-.234-6.491-.551-7.717C135.365,29.12,134.9,29.273,134.9,29.64Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M135.82,106.442c-.144,1.008-.061,7.186.735,7.717a.345.345,0,0,0,.551,0c.583-.875-.372-7.089-.551-7.717C136.555,106.074,136,106.074,135.82,106.442Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M142.985,106.809a43.626,43.626,0,0,0-.183,6.063c0,.552,0,1.47.367,1.838.184.183.551.183.551,0,.368-.551.184-1.286.184-2.021a30.906,30.906,0,0,0-.367-6.064C143.537,106.258,142.985,106.442,142.985,106.809Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M152.172,112.321a28.623,28.623,0,0,0-.735-5.7c-.116-.376-.457-.216-.551.184a8.1,8.1,0,0,0-.184,2.021c0,1.955-.124,3.065,0,3.8a2.434,2.434,0,0,0,.74,1.71.344.344,0,0,0,.551,0C152.356,113.791,152.172,113.056,152.172,112.321Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M129.205,109.014c0,.919-.184,1.837-.184,2.756v2.021c0,.368.368.551.735.551,1.319,0,.306-3.261,0-5.144C129.663,108.624,129.205,108.83,129.205,109.014Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M95.4,28.354a8.735,8.735,0,0,0-2.389-.184c-3.861.092-7.9-.367-11.759.184a5.972,5.972,0,0,0-3.307,1.837,5.559,5.559,0,0,0,0,6.8c2.272,2.933,7.25,1.837,12.494,1.837a35.267,35.267,0,0,1,4.41,0,.462.462,0,0,0,0-.919,21.363,21.363,0,0,0-3.308,0c-1.284.2-2.756.184-4.042.368-3.879,0-5.908.195-7.533-.735a4.5,4.5,0,0,1-1.47-6.063c1.1-1.838,3.307-2.205,5.329-2.205,3.123-.184,6.247.183,9.37,0a10.466,10.466,0,0,0,2.389-.184C95.582,28.722,95.582,28.538,95.4,28.354Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M120.281,29.412a6.385,6.385,0,0,0-.079.779c0,1.684-.058,1.963.184,2.205.338.338.735-.5.735-.735a7.985,7.985,0,0,0-.12-2.232C120.935,29.208,120.33,29.138,120.281,29.412Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M57.365,82.189a2.11,2.11,0,0,0,1.653.918c.919,0,1.1.551.551.919a1.806,1.806,0,0,1-2.388-.735C56.547,82.3,56.63,81.454,57.365,82.189Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M55.16,70.8a1.467,1.467,0,0,0-1.47.735c-.551.735-1.011.568-.919-.184a1.753,1.753,0,0,1,1.838-1.653C55.9,69.695,56.078,70.613,55.16,70.8Z"
+                      fill="#191919"
+                    ></path>
+                    <path
+                      d="M54.425 73.553 A1.47 0.919 0 1 0 57.365 73.553 A1.47 0.919 0 1 0 54.425 73.553 Z"
+                      fill="#191919"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <svg
+            className="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4"
+            width={404}
+            height={784}
+            fill="none"
+            viewBox="0 0 404 784"
+            aria-hidden="true"
+          >
+            <defs>
+              <pattern
+                id="b1e6e422-73f8-40a6-b5d9-c8586e37e0e7"
+                x={0}
+                y={0}
+                width={20}
+                height={20}
+                patternUnits="userSpaceOnUse"
+              >
+                <rect
+                  x={0}
+                  y={0}
+                  width={4}
+                  height={4}
+                  className="text-gray-200"
+                  fill="currentColor"
+                />
+              </pattern>
+            </defs>
+            <rect
+              width={404}
+              height={784}
+              fill="url(#b1e6e422-73f8-40a6-b5d9-c8586e37e0e7)"
+            />
+          </svg>
+
+          <div className="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+            <div className="relative">
+              <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
+                Service Monitoring & Health Checks
+              </h3>
+              <p className="mt-3 text-lg text-gray-500">
+                You won't have to get up in the middle of the night or ruin your
+                weekends. To ensure optimum functionality our technicians will
+                monitor your servers constantly.
+              </p>
+            </div>
+
+            <div
+              className="mt-10 -mx-4 relative lg:mt-0 justify-self-center"
+              aria-hidden="true"
+            >
+              <svg
+                className="h-96"
+                viewBox="0 0 400 400"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g transform="matrix(2,0,0,2,0,0)">
+                  <path
+                    d="M26.286,113.739c-.121-.566-.737-.564-1.084-.261a.428.428,0,0,0-.3-.3c-2.558-.347-6.169-.263-6.85,2.775a18.4,18.4,0,0,0,.174,5.766c.179,1.516.215,3.383,1.43,4.508,1.689,1.564,5.28.859,6.72-.823,1.12-1.308.79-3.382.737-4.986A37.838,37.838,0,0,0,26.286,113.739Zm-7.067,4.075c.359-3.6,2.6-3.663,5.506-3.729a.638.638,0,0,0,.26-.086c0,.188.2,1.27.26,1.6a67.172,67.172,0,0,1-5.159,8.237l-.347-.347c-.173-.91-.264-1.82-.347-2.731A15.994,15.994,0,0,1,19.219,117.814Zm6.546,5.419c-.289,1.3-2.167,3.035-3.728,2.515-.3-.3-.607-.607-.911-.954a30.748,30.748,0,0,0,4.466-7.2c.087.91.173,1.864.217,2.818A19.072,19.072,0,0,1,25.765,123.233Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M43.323,113.522c.091-.476-.437-1.09-.953-.737-2.055,1.406-3.05,3.671-4.683,5.506-.306.344.129,1,.521.693,1.469-1.133,2.384-2.731,3.641-4.031-.3,3.468.456,6.892.477,10.361a.542.542,0,0,0,1.084,0C43.41,121.369,42.577,117.43,43.323,113.522Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M66.864,125.4c1.128-1.3.79-3.382.737-4.986a39.925,39.925,0,0,0-.78-6.676c-.115-.567-.737-.564-1.084-.26a.426.426,0,0,0-.3-.3c-2.558-.347-6.17-.263-6.85,2.775a18.369,18.369,0,0,0,.173,5.766c.179,1.516.215,3.384,1.431,4.508C61.832,127.745,65.434,127.049,66.864,125.4Zm-.607-2.168c-.289,1.3-2.167,3.035-3.728,2.515-.3-.3-.607-.607-.91-.954a30.777,30.777,0,0,0,4.465-7.2A29.511,29.511,0,0,1,66.257,123.233Zm-6.5-5.419c.359-3.6,2.6-3.663,5.506-3.729a.629.629,0,0,0,.26-.086c0,.188.2,1.27.26,1.6a67.172,67.172,0,0,1-5.159,8.237l-.346-.347c-.174-.91-.245-1.822-.347-2.731A14.221,14.221,0,0,1,59.754,117.814Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M82.341,114.953c-.3,3.468.456,6.892.477,10.361a.542.542,0,0,0,1.084,0c.022-3.945-.833-7.884-.087-11.792.091-.476-.437-1.09-.953-.737-2.055,1.406-3.05,3.671-4.683,5.506-.306.344.126.992.521.693C80.159,117.881,81.084,116.253,82.341,114.953Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M107.356,125.4c1.128-1.3.79-3.382.737-4.986a39.925,39.925,0,0,0-.78-6.676c-.115-.567-.737-.564-1.084-.26a.426.426,0,0,0-.3-.3c-2.558-.347-6.17-.263-6.85,2.775a18.369,18.369,0,0,0,.173,5.766c.179,1.516.215,3.384,1.431,4.508C102.324,127.745,105.926,127.049,107.356,125.4Zm-.607-2.168c-.289,1.3-2.167,3.035-3.728,2.515-.3-.3-.607-.607-.91-.954a30.777,30.777,0,0,0,4.465-7.2A29.511,29.511,0,0,1,106.749,123.233Zm-6.5-5.419c.359-3.6,2.6-3.663,5.506-3.729a.629.629,0,0,0,.26-.086c0,.188.2,1.27.26,1.6a67.172,67.172,0,0,1-5.159,8.237l-.346-.347c-.174-.91-.264-1.82-.347-2.731A15.909,15.909,0,0,1,100.246,117.814Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M122.877,114.953c-.3,3.468.455,6.892.477,10.361a.542.542,0,0,0,1.083,0c.022-3.945-.832-7.884-.086-11.792.091-.476-.438-1.09-.954-.737-2.055,1.406-3.05,3.671-4.682,5.506-.306.344.126.992.52.693C120.694,117.881,121.62,116.253,122.877,114.953Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M148.585,120.415a43.346,43.346,0,0,0-.78-6.676c-.115-.567-.737-.564-1.084-.26a.426.426,0,0,0-.3-.3c-2.558-.347-6.17-.263-6.85,2.775a18.369,18.369,0,0,0,.173,5.766c.179,1.516.215,3.383,1.431,4.508,1.688,1.564,5.309.884,6.72-.823C148.991,124.07,148.66,122.02,148.585,120.415Zm-7.847-2.6c.359-3.6,2.6-3.663,5.506-3.729a.629.629,0,0,0,.26-.086c0,.188.2,1.27.26,1.6a67.172,67.172,0,0,1-5.159,8.237l-.346-.347c-.174-.91-.264-1.82-.347-2.731A15.909,15.909,0,0,1,140.738,117.814Zm6.547,5.419c-.29,1.3-2.168,3.035-3.729,2.515-.3-.3-.607-.607-.91-.954a30.777,30.777,0,0,0,4.465-7.2c.087.91.174,1.864.217,2.818A19.072,19.072,0,0,1,147.285,123.233Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M163.846,125.314a.542.542,0,0,0,1.084,0c.021-3.945-.833-7.884-.087-11.792.091-.476-.438-1.09-.954-.737-2.055,1.406-3.05,3.671-4.682,5.506-.306.344.129,1,.52.693,1.47-1.133,2.385-2.731,3.642-4.031C163.065,118.421,163.8,121.845,163.846,125.314Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M68.338,139.664c-.12-.566-.737-.564-1.084-.26a.43.43,0,0,0-.3-.3c-2.558-.346-6.169-.263-6.85,2.775a18.368,18.368,0,0,0,.174,5.766c.179,1.517.215,3.383,1.43,4.509,1.689,1.563,5.279.858,6.72-.824,1.119-1.307.79-3.382.737-4.986A37.851,37.851,0,0,0,68.338,139.664Zm-7.023,4.075c.359-3.6,2.6-3.663,5.506-3.728a.651.651,0,0,0,.26-.087c0,.188.2,1.27.26,1.6a67.172,67.172,0,0,1-5.159,8.237l-.347-.347c-.173-.91-.241-1.822-.347-2.731A14.255,14.255,0,0,1,61.315,143.739Zm6.5,5.419c-.3,1.3-2.168,3.035-3.728,2.515-.3-.3-.607-.607-.911-.954a30.761,30.761,0,0,0,4.466-7.2A30.44,30.44,0,0,1,67.818,149.158Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M85.376,139.491c.091-.477-.438-1.091-.954-.737-2.054,1.405-3.05,3.671-4.682,5.5-.306.345.129,1,.52.694,1.47-1.133,2.385-2.731,3.642-4.032-.3,3.468.455,6.893.477,10.362a.542.542,0,0,0,1.084,0C85.485,147.337,84.63,143.4,85.376,139.491Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M108.874,139.664c-.121-.566-.737-.564-1.084-.26a.431.431,0,0,0-.3-.3c-2.558-.346-6.169-.263-6.849,2.775a18.368,18.368,0,0,0,.173,5.766c.179,1.517.215,3.383,1.431,4.509,1.688,1.563,5.279.858,6.719-.824,1.12-1.307.805-3.382.737-4.986A39.9,39.9,0,0,0,108.874,139.664Zm-7.067,4.075c.359-3.6,2.6-3.663,5.506-3.728a.651.651,0,0,0,.26-.087c0,.188.2,1.27.26,1.6a67.172,67.172,0,0,1-5.159,8.237l-.347-.347c-.173-.91-.262-1.82-.347-2.731A15.946,15.946,0,0,1,101.807,143.739Zm6.5,5.419c-.3,1.3-2.168,3.035-3.728,2.515-.3-.3-.607-.607-.911-.954a30.761,30.761,0,0,0,4.466-7.2A30.44,30.44,0,0,1,108.31,149.158Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M125.868,139.491c.089-.477-.438-1.091-.954-.737-2.054,1.405-3.05,3.671-4.682,5.5-.306.345.129,1,.52.694,1.47-1.133,2.385-2.731,3.642-4.032-.3,3.468.455,6.893.477,10.362a.542.542,0,0,0,1.084,0C125.977,147.337,125.144,143.4,125.868,139.491Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M25.809,94.49c1.119-1.308.789-3.382.737-4.986a39.926,39.926,0,0,0-.781-6.676c-.115-.567-.737-.564-1.084-.26a.428.428,0,0,0-.3-.3c-2.558-.347-6.169-.263-6.85,2.775a18.37,18.37,0,0,0,.174,5.766c.179,1.516.215,3.383,1.43,4.508C20.821,96.877,24.368,96.172,25.809,94.49ZM25.2,92.322c-.3,1.3-2.168,3.035-3.729,2.515-.3-.3-.607-.607-.91-.954a30.777,30.777,0,0,0,4.465-7.2A30.344,30.344,0,0,1,25.2,92.322Zm-6.5-5.376c.366-3.6,2.6-3.663,5.506-3.728a.641.641,0,0,0,.26-.087c0,.188.2,1.262.26,1.6a67.338,67.338,0,0,1-5.159,8.237l-.347-.346c-.173-.911-.264-1.821-.347-2.732A16.3,16.3,0,0,1,18.7,86.946Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M41.329,84.085c-.3,3.468.455,6.893.477,10.361a.542.542,0,0,0,1.084,0c.022-3.945-.833-7.883-.087-11.792.091-.476-.438-1.09-.954-.737-2.054,1.406-3.05,3.672-4.682,5.506-.306.344.129,1,.52.694C39.157,86.984,40.072,85.386,41.329,84.085Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M32.052,15.066c-.121-.565-.737-.563-1.084-.26a.428.428,0,0,0-.3-.3c-2.558-.347-6.169-.263-6.85,2.774a18.4,18.4,0,0,0,.174,5.766c.179,1.517.215,3.384,1.43,4.509,1.689,1.563,5.28.859,6.72-.824,1.12-1.307.8-3.382.737-4.985A39.925,39.925,0,0,0,32.052,15.066Zm-7.067,4.076c.367-3.6,2.6-3.664,5.506-3.729a.654.654,0,0,0,.26-.086c0,.187.2,1.261.26,1.6a67.172,67.172,0,0,1-5.159,8.237l-.347-.347c-.173-.911-.264-1.821-.347-2.731A16.4,16.4,0,0,1,24.985,19.142Zm6.5,5.375c-.3,1.3-2.168,3.035-3.728,2.515-.3-.3-.607-.607-.911-.954a30.775,30.775,0,0,0,4.466-7.2A30.426,30.426,0,0,1,31.488,24.517Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M47.615,16.28c-.3,3.469.456,6.893.477,10.362a.542.542,0,0,0,1.084,0c.022-3.946-.833-7.884-.087-11.792.091-.476-.437-1.09-.953-.737-2.055,1.406-3.05,3.671-4.683,5.506-.306.344.126.991.521.693C45.433,19.209,46.358,17.581,47.615,16.28Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M65.867,27.509c1.69,1.562,5.279.858,6.72-.824,1.119-1.307.789-3.382.737-4.986a40.042,40.042,0,0,0-.78-6.676c-.116-.567-.737-.564-1.084-.26a.431.431,0,0,0-.3-.3c-2.558-.346-6.169-.263-6.85,2.775A18.4,18.4,0,0,0,64.48,23C64.659,24.517,64.7,26.426,65.867,27.509Zm6.156-2.992c-.3,1.3-2.167,3.035-3.728,2.515-.3-.3-.607-.607-.911-.954a30.742,30.742,0,0,0,4.466-7.2c.087.91.173,1.864.217,2.817A19.681,19.681,0,0,1,72.023,24.517Zm-6.546-5.375c.367-3.6,2.6-3.664,5.506-3.729a.649.649,0,0,0,.26-.086c0,.187.2,1.261.26,1.6a67.172,67.172,0,0,1-5.159,8.237L66,24.821c-.173-.911-.264-1.821-.347-2.731A16.4,16.4,0,0,1,65.477,19.142Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M84.466,20.312c1.5-1.1,2.384-2.731,3.641-4.032-.3,3.469.456,6.893.477,10.362a.542.542,0,0,0,1.084,0c.022-3.946-.833-7.884-.087-11.792.091-.476-.437-1.09-.953-.737-2.055,1.406-2.99,3.726-4.683,5.506C83.607,19.974,84.039,20.625,84.466,20.312Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M50,42.726c.091-.476-.438-1.09-.954-.737C46.991,43.4,46,45.66,44.364,47.5c-.306.344.129,1,.52.693,1.469-1.133,2.385-2.731,3.642-4.031-.3,3.468.455,6.892.477,10.361a.542.542,0,0,0,1.084,0C50.108,50.573,49.254,46.634,50,42.726Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M73.5,42.943c-.12-.566-.737-.564-1.084-.261a.427.427,0,0,0-.3-.3c-2.558-.347-6.169-.263-6.85,2.775a18.37,18.37,0,0,0,.174,5.766c.179,1.516.215,3.383,1.43,4.508,1.689,1.564,5.279.859,6.72-.823,1.12-1.308.79-3.382.737-4.986A37.839,37.839,0,0,0,73.5,42.943Zm-7.066,4.075c.359-3.6,2.6-3.664,5.506-3.729a.654.654,0,0,0,.26-.086c0,.187.2,1.261.26,1.6A67.415,67.415,0,0,1,67.3,53.044l-.347-.347c-.173-.91-.264-1.82-.347-2.731A15.907,15.907,0,0,1,66.431,47.018Zm6.546,5.419c-.289,1.3-2.168,3.035-3.728,2.514-.3-.3-.607-.606-.911-.953A30.781,30.781,0,0,0,72.8,46.8c.086.91.173,1.864.216,2.818A19.072,19.072,0,0,1,72.977,52.437Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M90.535,42.726c.091-.476-.438-1.09-.954-.737C87.527,43.4,86.531,45.66,84.9,47.5c-.306.344.129,1,.52.693,1.47-1.133,2.385-2.731,3.642-4.031-.3,3.468.455,6.892.477,10.361a.542.542,0,0,0,1.084,0C90.622,50.573,89.789,46.634,90.535,42.726Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M113.036,15.066c-.121-.565-.737-.563-1.084-.26a.428.428,0,0,0-.3-.3c-2.558-.347-6.169-.263-6.85,2.774a18.4,18.4,0,0,0,.174,5.766c.179,1.517.215,3.384,1.431,4.509,1.688,1.563,5.279.859,6.719-.824,1.12-1.307.79-3.381.737-4.985A37.861,37.861,0,0,0,113.036,15.066Zm-7.024,4.076c.367-3.6,2.6-3.664,5.506-3.729a.644.644,0,0,0,.26-.086c0,.188.2,1.27.26,1.6a67.172,67.172,0,0,1-5.159,8.237l-.346-.347c-.174-.911-.264-1.821-.347-2.731A16.4,16.4,0,0,1,106.012,19.142Zm6.5,5.375c-.3,1.3-2.167,3.035-3.728,2.515-.3-.3-.607-.607-.91-.954a30.771,30.771,0,0,0,4.465-7.2A30.426,30.426,0,0,1,112.515,24.517Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M130.073,14.85c.091-.476-.437-1.09-.953-.737-2.055,1.406-3.05,3.671-4.683,5.506-.306.344.129,1,.521.693,1.469-1.133,2.384-2.731,3.641-4.032-.3,3.469.456,6.893.477,10.362a.542.542,0,0,0,1.084,0C130.182,22.7,129.327,18.758,130.073,14.85Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M153.571,15.066c-.121-.565-.737-.563-1.084-.26a.427.427,0,0,0-.3-.3c-2.558-.347-6.17-.263-6.85,2.774a18.368,18.368,0,0,0,.173,5.766c.179,1.517.215,3.384,1.431,4.509,1.688,1.563,5.279.859,6.72-.824,1.119-1.307.805-3.382.737-4.985A40.031,40.031,0,0,0,153.571,15.066ZM146.5,19.142c.367-3.6,2.6-3.664,5.506-3.729a.644.644,0,0,0,.26-.086c0,.188.2,1.27.26,1.6a67.172,67.172,0,0,1-5.159,8.237l-.346-.347c-.174-.911-.264-1.821-.347-2.731A16.4,16.4,0,0,1,146.5,19.142Zm6.5,5.375c-.3,1.3-2.167,3.035-3.728,2.515-.3-.3-.607-.607-.91-.954a30.771,30.771,0,0,0,4.465-7.2A30.426,30.426,0,0,1,153.007,24.517Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M165.493,20.312c1.5-1.1,2.385-2.731,3.642-4.032-.3,3.469.455,6.893.477,10.362a.542.542,0,0,0,1.084,0c.021-3.946-.833-7.884-.087-11.792.091-.476-.438-1.09-.954-.737-2.055,1.406-2.99,3.726-4.682,5.506C164.635,19.974,165.066,20.625,165.493,20.312Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M170.435,43.55c-.12-.566-.737-.564-1.083-.261a.428.428,0,0,0-.3-.3c-2.558-.347-6.169-.263-6.85,2.775a18.37,18.37,0,0,0,.174,5.766c.179,1.516.215,3.383,1.43,4.508,1.689,1.564,5.279.859,6.72-.823,1.12-1.308.806-3.383.737-4.986A40.355,40.355,0,0,0,170.435,43.55Zm-7.066,4.118c.366-3.6,2.6-3.663,5.506-3.728a.656.656,0,0,0,.26-.087c0,.188.2,1.27.26,1.6a67.293,67.293,0,0,1-5.159,8.237l-.347-.347c-.173-.91-.264-1.82-.347-2.731A16.3,16.3,0,0,1,163.369,47.668Zm6.5,5.376c-.3,1.3-2.168,3.035-3.729,2.514-.3-.3-.607-.607-.91-.953a30.744,30.744,0,0,0,4.465-7.2A30.344,30.344,0,0,1,169.872,53.044Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M187.43,43.376c.088-.476-.438-1.09-.954-.737-2.055,1.406-3.05,3.672-4.682,5.506-.306.344.129,1,.52.694,1.47-1.134,2.385-2.732,3.642-4.032-.3,3.468.455,6.893.477,10.361a.542.542,0,0,0,1.084,0C187.538,51.223,186.706,47.28,187.43,43.376Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M152.27,163.465c-.12-.566-.737-.564-1.083-.26a.433.433,0,0,0-.3-.3c-2.558-.347-6.169-.263-6.85,2.775a18.368,18.368,0,0,0,.174,5.766c.179,1.517.215,3.383,1.43,4.509,1.689,1.563,5.279.858,6.72-.824,1.12-1.307.79-3.382.737-4.986A37.839,37.839,0,0,0,152.27,163.465ZM145.2,167.54c.366-3.6,2.6-3.663,5.506-3.728a.656.656,0,0,0,.26-.087c0,.188.2,1.27.26,1.6a67.415,67.415,0,0,1-5.159,8.237l-.347-.347c-.173-.91-.264-1.82-.347-2.731A16.3,16.3,0,0,1,145.2,167.54Zm6.5,5.419c-.322,1.3-2.168,3.035-3.729,2.515-.3-.3-.607-.607-.91-.954a30.757,30.757,0,0,0,4.465-7.2A28.264,28.264,0,0,1,151.707,172.959Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M169.308,163.248c.091-.476-.438-1.09-.954-.737-2.054,1.406-3.049,3.672-4.682,5.506-.306.344.129,1,.521.694,1.469-1.134,2.384-2.732,3.641-4.032-.3,3.468.455,6.893.477,10.361a.542.542,0,0,0,1.084,0C169.4,171.1,168.562,167.157,169.308,163.248Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M117.588,61.975c-.13-.867-1.388-.607-1.431.173a7.569,7.569,0,0,0,.13,1.3c.151.863,1.474.607,1.517-.217C117.7,63.132,117.8,62.921,117.588,61.975Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M125.565,60.978a.759.759,0,0,0-.737.737,2.925,2.925,0,0,0,.086,1.6.769.769,0,0,0,.867.347.7.7,0,0,0,.477-.954l.044.043a4.4,4.4,0,0,1,.043-1.04A.833.833,0,0,0,125.565,60.978Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M123.137,72.119a.507.507,0,0,0-.13-1c-.564-.086-1.778.044-2.255-.26a3.094,3.094,0,0,1-.563-1.387,9.272,9.272,0,0,1,.13-1.864c.12-1.432.248-2.819.347-4.249.039-.564-.822-.563-.867,0-.167,2.082-.78,4.162-.737,6.243C119.106,71.773,121.09,72.738,123.137,72.119Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M188.861,124.75a2.381,2.381,0,0,1-.347-.3,2.644,2.644,0,0,0,.086-1.994,16.946,16.946,0,0,0,4.162-8.237,18.253,18.253,0,0,0-2.514-13.527,2.663,2.663,0,0,0-.3-1.56c9.513-9.988,4.4-24.619-6.026-29.567a23.8,23.8,0,0,0-18.468-.434c-.867-4.075-4.942-7.76-9.1-8.454a8.26,8.26,0,0,0-2.385-4.639,4.631,4.631,0,0,0-.737-4.508c-.9-1.266-3.945-2.125-5.419-1.344a6.851,6.851,0,0,0-1-6.59c-4.825-5.277-9.321-2.341-9.321-2.341s-1.951-3.729-8.627-3.338a8.733,8.733,0,0,0-13.7.867,8.128,8.128,0,0,0-7.11.823,8.354,8.354,0,0,0-3.338,6.5A8.233,8.233,0,0,0,99.249,57.6a6.843,6.843,0,0,0-4.378,5.419c-.245,1.823,2.557,4.6,2.6,4.6.043.043-.3,1.474-.434,2.254a9.931,9.931,0,0,0-6.156,8.367,9.113,9.113,0,0,0-8.974-1.821,2.064,2.064,0,0,0-2.211-1.56c-4.422-9.625-16.3-14.827-26.706-13.527a2.243,2.243,0,0,0-3.641-1.517c-3.122-4.335-10.362-4.639-14.567-.78C34.566,50.963,24.9,45.934,17.4,47.8,10.071,49.619,3.1,56.6,5.476,64.619c2.744,9.274,15.217,7.247,22.587,7.37a88.04,88.04,0,0,0,16.388-.823c1.559-.268,3.566-.38,4.768-1.6a7.333,7.333,0,0,0,1.6-4.9,3.241,3.241,0,0,0-.044-.651,2.082,2.082,0,0,0,2.081-1.56A29.433,29.433,0,0,1,68.512,65.4,21.086,21.086,0,0,1,78.4,75.371a2.473,2.473,0,0,0-.607,2.731,35.286,35.286,0,0,0-7.76,5.81.544.544,0,0,0-.173.3c-11.012-5.463-21.389,13.847-12.963,21.417,2.467,2.216,5.983,2.032,9.061,2.167,4.726.208,33.425,1.309,43.05,1.561,18.771.492,37.72,1.369,56.4-.954,7.242-.9,14.871-2.124,20.983-6.373a2.355,2.355,0,0,0,3.209-.043,17.225,17.225,0,0,1,1.82,12.226,15.784,15.784,0,0,1-3.685,7.24,2.286,2.286,0,0,0-3.164.563c-8.659-4.209-16.561.666-16.561,7.63-4.162-2.731-8.755-4.5-13.743-2.558-3.466,1.35-7.5,5.376-8.151,9.408a11.659,11.659,0,0,0-10.231-2.818c-5.939,1.469-5.957,8.981-1.821,14a2.333,2.333,0,0,0,1.561,3.208c.494,14.323-9.39,26.67-25.015,28.007a2.231,2.231,0,0,0-.39-1.171c-.044-.043-.391-.433-.391-.433a8.8,8.8,0,0,0-3.6-9.755,13.716,13.716,0,0,0-16.864,1.951c-2.038-5.289-6.462-9.742-12.226-10.665a13.794,13.794,0,0,0-13.266,5.419c-2.038-5.766-8.541-9.8-13.786-12.225-15.105-6.994-27.439-.681-30.521,12.962-1.215,5.376-.824,11.966,3.3,16.084,3.641,3.642,9.277,4.2,14.176,4.336,7.631.209,15.3.305,22.977.477a283.055,283.055,0,0,0,29.524-.651c4.291-.353,8.675-.712,12.963-1.387a9.264,9.264,0,0,0,5.462-2.861,2.361,2.361,0,0,0,1.041.043,2.123,2.123,0,0,0,1.387-.954c6.763.174,13.832-3.509,18.469-8.107a28.282,28.282,0,0,0,8.15-21.113,1.592,1.592,0,0,0,.477-.217c5.029,3.165,12.053,3.978,17.558,4.379,9.41.685,25.187,1.165,32.645-4.682S196.1,131.037,188.861,124.75ZM49.393,66.18c-.691,3.218-3.469,3.5-6.286,3.945a85.541,85.541,0,0,1-14.047.694c-4.249-.042-8.541.045-12.746-.3-4.682-.388-8.986-2.209-9.884-7.326-.791-4.507,1.732-8.674,5.289-11.229,3.986-2.864,8.54-3.9,13.223-2.341,5.072,1.691,9.123,5.211,8.323,10.968-.123.891,1.388.875,1.388-.086,3.926-4.095,11.016-4.415,13.873.52a2.411,2.411,0,0,0,.91,2.645A5.932,5.932,0,0,1,49.393,66.18ZM114.683,54.3a.542.542,0,0,1,.737-.737c3.457,1.8,6.022-1.633,7.023-4.509a.427.427,0,0,1,.824.217,9.689,9.689,0,0,1-1.517,3.772,4.812,4.812,0,0,0,2.341,2.168,5.38,5.38,0,0,0,3.728.433,7.915,7.915,0,0,0,2.645-1.214,2.579,2.579,0,0,0-.044-1.994c-.2-.482.523-.7.781-.347a3.018,3.018,0,0,1-.3,3.859c.694,3.988,1.974,10.221,5.419,8.93.6-.226.39-2.167,2.471-1.56,2.575,1.42,2.269,4.222.521,5.029a5.079,5.079,0,0,1-1.6.173.807.807,0,0,0-.781.737,3.642,3.642,0,0,0,.13.954c.13,4.725,1.214,9.494,2,14.09,0,.043.043.043.043.086-.91,2.558-2.948,3.859-5.679,4.162-2.341.26-4.986.13-6.547-1.821a37.714,37.714,0,0,0-.043-4.422,12.569,12.569,0,0,0,9.147-3.511c.434-.434-.219-1-.65-.65-4.881,3.957-15.639,4.632-18.9-1.735-2.176-4.246-2.211-9.464-2.211-14.783-.13-1.994.043-5.072,1.387-6.546A1.383,1.383,0,0,1,114.683,54.3Zm6.937,54.018c-15.261-.307-54.062-1.69-58.224-1.907s-7.139-1.953-7.847-6.286c-1.233-7.548,5.493-19.137,14.307-14.7a.477.477,0,0,0,.65-.174.581.581,0,0,0,.607-.216A28.915,28.915,0,0,1,78.7,79.186a2.178,2.178,0,0,0,3.121-1.171,10.9,10.9,0,0,1,6.416.391,13.191,13.191,0,0,1,4.9,6.156c.226.473.911.13.781-.347a10.5,10.5,0,0,0-2.125-4.292c0-.043.043-.087.044-.13.067-4.174,2.694-7.8,5.159-8.671a4.58,4.58,0,0,0,.78,2.125c.483.689,4.9,3.208,5.289,1.647a4.547,4.547,0,0,0,2.645,4.9,8.612,8.612,0,0,0,5.9.217,4.3,4.3,0,0,0,.694,5.2,7.027,7.027,0,0,0,5.2,1.908,21.2,21.2,0,0,0,5.593-1.084c.737-.214,2.037-.564,2.427-1.344.044-.043.044-.087.087-.174-.043.781-.043,1.518-.13,2.3v.044c-10.1,2.818-21.119,9.4-26.619,18.555-.26.433.4.961.737.563a65.621,65.621,0,0,1,7.76-8.323c5.581-4.654,11.966-7.284,18.6-10.015,1.561,2.3,4.942,2.381,7.5,2.081,2.991-.351,5.549-1.951,6.286-4.9,10.1,1.127,18.83,6.857,27.66,11.445.43.224.818-.422.39-.65C158.951,90.9,150.1,85.039,140,83.7c-.086-.39-.13-.824-.216-1.214a4.292,4.292,0,0,0,4.248-5.549c2.255.216,4.682.216,6.59-1s2.991-3.945,1.734-5.852a5.188,5.188,0,0,0,3.122-2.775,9.621,9.621,0,0,0,1-5.592c3.771,1,6.329,4.335,7.76,7.847-.867.39-1.686.789-2.515,1.257a.758.758,0,0,0,.781,1.3c11.443-6.657,28-2.522,30.781,11.706a16.082,16.082,0,0,1-4.422,14.35,2.253,2.253,0,0,0-2.992,2.6c-5.679,3.988-12.745,5.251-19.465,6.2C151.578,109.068,136.49,108.619,121.62,108.319ZM96.171,183.234c-22.715,2.642-41.288.737-53.758.737-4.639,0-9.54.224-13.96-1.3-11.625-4.011-9.173-20.964-1.821-27.876,5.519-5.188,13.53-5.167,20.29-2.731,6.115,2.2,14.631,6.985,16.084,13.873a.7.7,0,0,0,1.257.173,12.388,12.388,0,0,1,13.266-5.9c5.244,1.137,9.2,5.459,10.8,10.449.263.823,1.518.563,1.431-.217,4.162-4.162,10.855-5.4,15.954-2.038a7.522,7.522,0,0,1,3.035,8.324,2.068,2.068,0,0,0-1.821,3.338C104.229,183.032,99.931,182.8,96.171,183.234Zm92-34.856c-6.072,6.072-21.111,6.135-29.48,5.723-7.037-.347-14.808-.615-20.506-4.466a2.314,2.314,0,0,0-2-3.425,1.979,1.979,0,0,0-1.257.39c-4.237-5.585-2.571-11.766,3.035-11.835,2.948-.036,6.692,1.2,8.237,3.815.307.518,1.315.346,1.257-.347-.381-4.561,4.77-9.49,8.888-10.4,4.466-.992,8.237.954,11.792,3.425a11.391,11.391,0,0,0,1.474,4.856c.3.525,1,.042.78-.477a17.3,17.3,0,0,1-1.084-4.769.963.963,0,0,0-.043-.347c-.044-.216-.044-.433-.087-.65,0-.043,0-.043-.043-.087.043-6.156,6.672-9.089,12.269-7.673a15.184,15.184,0,0,1,2.861,1.084,2.279,2.279,0,0,0,3.382,2.211C194.112,131.1,194.467,142.078,188.167,148.378Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M38.858,62.235c-6.888-.4-13.784-.542-20.68-.65a.647.647,0,0,0-.606.606c-.087,1.388-.01,2.779-.174,4.162-.036.305.3.559.564.564,6.983.13,13.916.477,20.9.434a.577.577,0,0,0,.564-.564c0-1.127-.087-2.3-.13-3.425A.681.681,0,0,0,38.858,62.235ZM18.569,65.79c.086-1,.086-1.994.13-2.992,6.546.217,13.136.347,19.682.651l-.13,2.731C31.705,66.223,25.158,66.05,18.569,65.79Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M38.294,66.18c.044-.91.044-1.821.13-2.731-6.546-.3-13.136-.434-19.682-.651-.043,1-.043,2-.13,2.992C25.158,66.05,31.705,66.223,38.294,66.18Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M86.373,173.74c-6.369-.44-12.74-.759-19.162-.911a.646.646,0,0,0-.607.607c-.043.867-.043,1.778-.087,2.645-7.586-.217-15.173.13-22.717-.174a28.489,28.489,0,0,0,0-5.766c2.428.044,4.856.022,7.284,0a.575.575,0,0,0,.563-.563c0-1.127-.086-2.3-.13-3.425a.63.63,0,0,0-.433-1.041c-6.9-.151-13.784-.542-20.68-.65a.65.65,0,0,0-.607.607c-.087,1.387-.01,2.778-.173,4.162-.036.3.3.558.563.564,4.208.086,8.411.3,12.573.39,0,2.124-.3,4.248-.13,6.329a.645.645,0,0,0,.563.564c7.722.152,15.564.433,23.324-.087,0,.737-.043,1.431-.086,2.168-.044.3.3.563.563.563,6.46.391,12.875.629,19.336.564a.577.577,0,0,0,.564-.564c0-1.6-.044-3.208-.131-4.855A.669.669,0,0,0,86.373,173.74Zm-55.535-5.116c.086-1,.086-1.994.13-2.991,6.546.216,13.136.346,19.682.65l-.13,2.731C48.179,169.014,34.913,168.8,30.838,168.624Zm36.807,9.928c.13-1.474.086-2.992.173-4.509,6.026.3,12.1.477,18.122.867-.087,1.388-.13,2.731-.13,4.119C79.74,179.159,73.671,178.9,67.645,178.552Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M50.52,169.014c.043-.91.043-1.821.13-2.731-6.546-.3-13.136-.434-19.682-.65-.044,1-.044,1.994-.13,2.991C34.913,168.8,48.179,169.014,50.52,169.014Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M184.482,140.141c-6.029-.109-12.095-.26-18.122-.3a.591.591,0,0,0-.607.607c0,.911,0,1.778.044,2.688h-2.038c0-.217-.043-.433-.043-.65a.644.644,0,0,0-.477-1.041c-6.894-.021-13.787,0-20.723,0a.6.6,0,0,0-.607.607c-.022,1.388.043,2.775-.043,4.162a.546.546,0,0,0,.563.564c6.98.022,13.955-.108,20.9-.26a.551.551,0,0,0,.564-.564c-.043-.563-.043-1.17-.087-1.734.651,0,1.344-.087,2-.13v2.038a.576.576,0,0,0,.563.563c6.115.087,12.177.109,18.295-.043a.577.577,0,0,0,.564-.564c-.022-1.648-.13-3.251-.3-4.855A.657.657,0,0,0,184.482,140.141Zm-41.4,5.462c.087-1,.044-1.994.044-2.991,6.546,0,13.136-.087,19.682,0,0,.173-.043,2.3,0,2.731C156.216,145.647,149.626,145.647,143.079,145.6Zm23.888-.086c.087-1.518,0-2.992,0-4.509,5.679.13,11.4.087,17.081.347-.043,1.387,0,2.774,0,4.118C178.369,145.777,172.69,145.69,166.967,145.517Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M162.762,145.343v-2.731c-6.547-.13-13.136,0-19.683,0,0,1,.044,1.994-.043,2.991C149.626,145.647,156.216,145.647,162.762,145.343Z"
+                    fill="#2563eb"
+                  ></path>
+                  <path
+                    d="M127.169,76.238c2.081.824,4.429-1,5.115-2.861.176-.477-.563-.781-.823-.347a4.1,4.1,0,0,1-1.734,1.777,5.961,5.961,0,0,1-2.428.521C126.735,75.414,126.649,76.065,127.169,76.238Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M123.744,59.937c.938.08,1.94-.572,3.728.217a.428.428,0,0,0,.434-.737,4.8,4.8,0,0,0-4.379-.347C123.05,59.243,123.31,59.9,123.744,59.937Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M115.2,60.067c.562-.18.951-.531,1.518-.693a4.475,4.475,0,0,1,1.864.043c.433.05.735-.475.3-.737-1.131-.687-3.511-.52-4.2.78A.442.442,0,0,0,115.2,60.067Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M87.587,97.394c-3.7,1.762-12.3,1.682-14.61-2.6-.258-.478-.9-.047-.694.39,1.215,2.538,3.99,3.246,6.547,3.772,3.123.643,6.373.824,9.277-.78C88.584,97.871,88.112,97.144,87.587,97.394Z"
+                    fill="#191919"
+                  ></path>
+                  <path
+                    d="M156.389,75.2a10.906,10.906,0,0,0-3.642,11.532.453.453,0,0,0,.867-.26c-.591-4.034.247-7.818,3.382-10.665C157.428,75.412,156.818,74.846,156.389,75.2Z"
+                    fill="#191919"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ContactForm />
+
+      <Testimonials />
+
+      <FAQs faqs={faqs} />
+
+      <LatestBlog className="-mt-20" homePosts={homePosts} />
+
+      <CTAImage></CTAImage>
+
+      <SimpleCTA
+        strongText="Let us manage your server today."
+        normalButton={{ href: "#more", label: "Learn more" }}
+        strongButton={{ href: "#pricing", label: "View plans" }}
+      ></SimpleCTA>
+    </main>
+  );
+}
+
+export async function getStaticProps() {
+  const homePosts = await getHomePosts();
+  return {
+    props: { homePosts },
+  };
 }
