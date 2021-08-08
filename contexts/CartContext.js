@@ -31,6 +31,10 @@ export function CartContextProvider({ children }) {
           ],
         };
       }
+
+      case "clearcart" : {
+        return initialState
+      }
     }
     return state;
   }

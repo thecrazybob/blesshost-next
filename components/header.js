@@ -1,10 +1,7 @@
 import { Fragment, useRef, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { Listbox } from "@headlessui/react";
-const allCurrencies = [
-  { symbol: "د.إ", name: "AED" },
-  { symbol: "$", name: "USD" },
-];
+import { useCart } from "../contexts/CartContext";
 import {
   ClockIcon,
   CloudIcon,
@@ -27,6 +24,11 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import Checkout from "../components/slide-over";
+
+const allCurrencies = [
+  { symbol: "د.إ", name: "AED" },
+  { symbol: "$", name: "USD" },
+];
 
 const hosting = [
   {
@@ -195,7 +197,9 @@ export default function Header() {
   const marketingButtonRef = useRef();
   const supportButtonRef = useRef();
   const [isOpen, setIsOpen] = useState(false);
-
+  const {
+    globalState: { products },
+  } = useCart();
   const { currency, setCurrency } = useCurrency("");
 
   return (
@@ -782,12 +786,15 @@ export default function Header() {
                     setIsOpen(true);
                   }}
                 >
-                  <div>
-                    <span className="animate-ping-slow absolute inline-flex h-4 w-4 rounded-full bg-blue-400 opacity-75"></span>
-                    <span className="absolute inline-flex justify-center items-center pt-0.5 rounded-full h-4 w-4 bg-blue-500 text-xs text-white">
-                      3
-                    </span>
-                  </div>
+                  {products.length > 0 ? (
+                    <div>
+                      <span className="animate-ping-slow absolute inline-flex h-4 w-4 rounded-full bg-blue-400 opacity-75"></span>
+                      <span className="absolute inline-flex justify-center items-center pt-0.5 rounded-full h-4 w-4 bg-blue-500 text-xs text-white">
+                        {products?.length}
+                      </span>
+                    </div>
+                  ) : null}
+
                   <Checkout open={isOpen} setOpen={setIsOpen} />
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
