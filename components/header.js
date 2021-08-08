@@ -783,8 +783,8 @@ export default function Header() {
                   }}
                 >
                   <div>
-                    <span class="animate-ping-slow absolute inline-flex h-4 w-4 rounded-full bg-blue-400 opacity-75"></span>
-                    <span class="absolute inline-flex justify-center items-center pt-0.5 rounded-full h-4 w-4 bg-blue-500 text-xs text-white">
+                    <span className="animate-ping-slow absolute inline-flex h-4 w-4 rounded-full bg-blue-400 opacity-75"></span>
+                    <span className="absolute inline-flex justify-center items-center pt-0.5 rounded-full h-4 w-4 bg-blue-500 text-xs text-white">
                       3
                     </span>
                   </div>

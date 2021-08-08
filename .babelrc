@@ -1,0 +1,9 @@
+{
+  "presets": [
+    "next/babel", {
+        "test": "./lib/products-data.preval.js",
+        "compact": false
+    }
+  ],
+  "plugins": []
+}
