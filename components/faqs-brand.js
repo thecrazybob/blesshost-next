@@ -7,7 +7,7 @@ export default function faqsBrand({ faqs }) {
         </h2>
         <div className="mt-6 border-t border-blue-300 border-opacity-25 pt-10">
           <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:grid-rows-2 md:gap-x-8 md:gap-y-12">
-            {faqs.map((faq) => (
+            {faqs?.map((faq) => (
               <div key={faq.id}>
                 <dt className="text-lg leading-6 font-medium text-white">
                   {faq.question}
