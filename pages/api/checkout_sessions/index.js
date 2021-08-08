@@ -23,7 +23,8 @@ export default async function handler(req, res) {
 
       res.status(200).json(checkoutSession);
     } catch (err) {
-      res.status(500).json({ statusCode: 500, message: err.message });
+      console.log(err);
+      // res.status(500).json({ statusCode: 500, message: err.message });
     }
   } else {
     res.setHeader("Allow", "POST");
