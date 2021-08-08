@@ -5,6 +5,7 @@ import SimpleCTA from "../components/cta-simple";
 import FAQSDark from "../components/faqs-dark";
 import { useState } from "react";
 import { useCurrency } from "../contexts/CurrencyContext.js";
+import { useCart } from "../contexts/CartContext";
 import priceString from "../lib/pricing";
 import WHMCSLink from "../components/whmcs-link";
 import Image from "next/image";
@@ -274,9 +275,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function simpleHostingPage() {
+export default function SimpleHostingPage() {
   const [billingInterval, setBillingInterval] = useState("annually");
-  const { currency, setCurrency } = useCurrency("");
+  const { currency } = useCurrency("");
+  const { initialState, dispatch } = useCart();
 
   return (
     <main>
@@ -453,18 +455,18 @@ export default function simpleHostingPage() {
                           </div>
                         </div>
 
-                        <WHMCSLink
-                          label={`Buy ${plan.title}`}
-                          pid={plan.pid}
-                          term={billingInterval}
-                          currency={currency}
+                        <button
+
+                         onClick={() => dispatch({ type: 'addtocart', payload: {title : plan.title , description:plan.description, pid : plan.pid, billingInterval}  })}
                           className={classNames(
                             plan.featured
                               ? "bg-blue-600 text-white hover:bg-blue-700"
                               : "bg-white text-blue-600 hover:bg-blue-50",
-                            "mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full"
+                            "mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md sh``adow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full"
                           )}
-                        />
+                        >
+                          Buy {plan.title}
+                        </button>
                       </div>
                     </div>
                     <h4 className="sr-only">Features</h4>
