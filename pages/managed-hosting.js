@@ -63,29 +63,21 @@ const tiers = [
   },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-import { Listbox, Transition } from "@headlessui/react";
-import { SelectorIcon } from "@heroicons/react/solid";
-
 const terms = [
   { id: "annually", name: "Yearly" },
   { id: "monthly", name: "Monthly" },
 ];
 
 import { useCurrency } from "../contexts/CurrencyContext";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import LatestBlog from "../components/latest-blog";
-import Image from "next/image";
 import priceString from "../lib/pricing";
 import WHMCSLink from "../components/whmcs-link";
 import Testimonials from "../components/testimonials";
 
-export default function vpsHostingPage({ homePosts }) {
-  const [billingInterval, setBillingInterval] = useState("annually");
-  const { currency, setCurrency } = useCurrency("");
+export default function VpsHostingPage({ homePosts }) {
+  const [billingInterval] = useState("annually");
+  const { currency } = useCurrency("");
 
   return (
     <main>

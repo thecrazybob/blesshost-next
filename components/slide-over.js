@@ -5,7 +5,7 @@ import { useCart } from "../contexts/CartContext";
 import { useCurrency } from "../contexts/CurrencyContext";
 import priceString from "../lib/pricing";
 import { fetchPostJSON } from "../lib/stripe-helpers";
-import getStripe, {formatAmountForStripe} from "../lib/get-stripe";
+import getStripe, { formatAmountForStripe } from "../lib/get-stripe";
 
 export default function Checkout({ open, setOpen }) {
   const {
@@ -22,36 +22,38 @@ export default function Checkout({ open, setOpen }) {
 
   //Stripe Checkout Button Handler
 
-  const handleCheckout  = async (event) => {
+  const handleCheckout = async (event) => {
     event.preventDefault();
     setLoading(true);
 
     // Format Cart items for stripe.
     const items = products?.map((product) => {
-        return {
-          price_data: {
-            currency: currency.name,
-            product_data: {
-              name: product.title,
-            },
-            unit_amount: formatAmountForStripe(parseInt(priceString({
+      return {
+        price_data: {
+          currency: currency.name,
+          product_data: {
+            name: product.title,
+          },
+          unit_amount: formatAmountForStripe(
+            parseInt(
+              priceString({
                 pid: product?.pid,
                 term: product.billingInterval,
                 currency: currency,
                 raw: true,
-              })), currency.name),
-          },
-          quantity: 1,
-        }
-      })
-
-
-    // Create a Checkout Session.
-      const response = await fetchPostJSON("/api/checkout_sessions", {
-      products: items
+              })
+            ),
+            currency.name
+          ),
+        },
+        quantity: 1,
+      };
     });
 
-
+    // Create a Checkout Session.
+    const response = await fetchPostJSON("/api/checkout_sessions", {
+      products: items,
+    });
 
     if (response.statusCode === 500) {
       console.error(response.message);
@@ -276,12 +278,14 @@ export default function Checkout({ open, setOpen }) {
                     </div>
                   </div>
                   <div className="flex-shrink-0 px-4 py-4 flex justify-end">
-                      {products.length > 0  ?  <button
-                    onClick={handleCheckout}
-                    className="flex-grow inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                    >
-                      Checkout
-                    </button> : null}
+                    {products.length > 0 ? (
+                      <button
+                        onClick={handleCheckout}
+                        className="flex-grow inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                      >
+                        Checkout
+                      </button>
+                    ) : null}
 
                     <button
                       type="button"

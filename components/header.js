@@ -1,6 +1,5 @@
 import { Fragment, useRef, useState } from "react";
-import { Popover, Transition } from "@headlessui/react";
-import { Listbox } from "@headlessui/react";
+import { Popover, Transition, Listbox } from "@headlessui/react";
 import { useCart } from "../contexts/CartContext";
 import {
   ClockIcon,
