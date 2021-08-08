@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useCart } from "../contexts/CartContext";
 
 import useSWR from "swr";
 
@@ -17,6 +18,7 @@ const PrintObject = ({ content }) => {
 };
 
 const ResultPage = () => {
+  const { dispatch } = useCart();
   const router = useRouter();
 
   // Fetch CheckoutSession from static page via
@@ -29,6 +31,11 @@ const ResultPage = () => {
   );
 
   if (error) return <div>failed to load</div>;
+
+  if (data?.payment_intent?.status === "succeeded") {
+      console.log("this ran")
+    dispatch({ type: "clearcart" });
+  }
 
   return (
     <>
