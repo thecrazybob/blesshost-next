@@ -456,8 +456,17 @@ export default function SimpleHostingPage() {
                         </div>
 
                         <button
-
-                         onClick={() => dispatch({ type: 'addtocart', payload: {title : plan.title , description:plan.description, pid : plan.pid, billingInterval}  })}
+                          onClick={() =>
+                            dispatch({
+                              type: "addtocart",
+                              payload: {
+                                title: plan.title,
+                                description: plan.description,
+                                pid: plan.pid,
+                                billingInterval,
+                              },
+                            })
+                          }
                           className={classNames(
                             plan.featured
                               ? "bg-blue-600 text-white hover:bg-blue-700"

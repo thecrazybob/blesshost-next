@@ -345,6 +345,15 @@ export default function Header() {
                     setIsOpen(true);
                   }}
                 >
+                  {products.length > 0 ? (
+                    <div>
+                      <span className="animate-ping-slow absolute inline-flex h-4 w-4 rounded-full bg-blue-400 opacity-75"></span>
+                      <span className="absolute inline-flex justify-center items-center pt-0.5 rounded-full h-4 w-4 bg-blue-500 text-xs text-white">
+                        {products?.length}
+                      </span>
+                    </div>
+                  ) : null}
+
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
