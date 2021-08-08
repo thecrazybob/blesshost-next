@@ -5,7 +5,7 @@ import { useCart } from "../contexts/CartContext";
 import { useCurrency } from "../contexts/CurrencyContext";
 import priceString from "../lib/pricing";
 import { fetchPostJSON } from "../lib/stripe-helpers";
-import getStripe from "../lib/get-stripe";
+import getStripe, {formatAmountForStripe} from "../lib/get-stripe";
 
 export default function Checkout({ open, setOpen }) {
   const {
@@ -25,11 +25,33 @@ export default function Checkout({ open, setOpen }) {
   const handleCheckout  = async (event) => {
     event.preventDefault();
     setLoading(true);
+
+    // Format Cart items for stripe.
+    const items = products?.map((product) => {
+        return {
+          price_data: {
+            currency: currency.name,
+            product_data: {
+              name: product.title,
+            },
+            unit_amount: formatAmountForStripe(parseInt(priceString({
+                pid: product?.pid,
+                term: product.billingInterval,
+                currency: currency,
+                raw: true,
+              })), currency.name),
+          },
+          quantity: 1,
+        }
+      })
+
+
     // Create a Checkout Session.
-    const response = await fetchPostJSON("/api/checkout_sessions", {
-      amount: total,
-      currency : currency.name
+      const response = await fetchPostJSON("/api/checkout_sessions", {
+      products: items
     });
+
+
 
     if (response.statusCode === 500) {
       console.error(response.message);
@@ -51,6 +73,7 @@ export default function Checkout({ open, setOpen }) {
     setLoading(false);
   };
 
+  //Format Number for display
   function format(number) {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
