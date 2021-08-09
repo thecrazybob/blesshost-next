@@ -63,11 +63,6 @@ const tiers = [
   },
 ];
 
-const terms = [
-  { id: "annually", name: "Yearly" },
-  { id: "monthly", name: "Monthly" },
-];
-
 import { useCurrency } from "../contexts/CurrencyContext";
 import { useState } from "react";
 import LatestBlog from "../components/latest-blog";
@@ -75,9 +70,24 @@ import priceString from "../lib/pricing";
 import WHMCSLink from "../components/whmcs-link";
 import Testimonials from "../components/testimonials";
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
 export default function VpsHostingPage({ homePosts }) {
-  const [billingInterval] = useState("annually");
+  const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency("");
+
+  const toggleOptions = [
+    {
+      id: "annually",
+      name: "Yearly billing",
+    },
+    {
+      id: "monthly",
+      name: "Monthly billing",
+    },
+  ];
 
   return (
     <main>
@@ -402,7 +412,11 @@ export default function VpsHostingPage({ homePosts }) {
       </div>
 
       <div id="pricing" className="bg-gray-50">
-        <div className="">
+        <Tab.Group
+          onChange={(index) => {
+            setBillingInterval(toggleOptions[index].id);
+          }}
+        >
           <div className="pt-12 sm:pt-16 lg:pt-24">
             <div className="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
               <div className="max-w-3xl mx-auto space-y-2 lg:max-w-none">
@@ -410,24 +424,45 @@ export default function VpsHostingPage({ homePosts }) {
                   Pricing
                 </h2>
                 <p className="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl">
-                  The right price for you, whoever you are
+                  Simple plans for your server management
                 </p>
                 <p className="text-xl text-gray-500">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Harum sequi unde repudiandae natus.
+                  Get the essentials covered or get complete server management
+                  from BlessHost
                 </p>
               </div>
             </div>
           </div>
-          <div className="mt-8 pb-12 bg-gray-50 sm:mt-12 sm:pb-16 lg:mt-16 lg:pb-24">
+          {/* Toggle */}
+          <div className="relative my-6 flex justify-center">
+            <Tab.List className="bg-gray-800 p-0.5 rounded-lg flex">
+              {toggleOptions.map((option) => (
+                <Tab
+                  key={option.id}
+                  className={({ selected }) =>
+                    classNames(
+                      "relative py-2 px-6 rounded-md text-sm font-medium whitespace-nowrap border",
+                      "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-700 focus:ring-white focus:z-10",
+                      selected
+                        ? "bg-white shadow-sm border-gray-700 text-gray-700 hover:bg-gray-100"
+                        : "text-gray-200 border-transparent hover:text-white ml-0.5 hover:bg-gray-800"
+                    )
+                  }
+                >
+                  {option.name}
+                </Tab>
+              ))}
+            </Tab.List>
+          </div>
+          <div className="mt-8 pb-12 bg-gray-50 sm:mt-12 sm:pb-16 lg:pb-24">
             <div className="relative">
-              <div className="absolute inset-0 h-3/4 " />
+              <div className="absolute inset-0 h-3/4" />
               <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="max-w-md mx-auto space-y-4 lg:max-w-5xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
                   {tiers.map((tier) => (
                     <div
                       key={tier.name}
-                      className="flex flex-col rounded-lg shadow-lg overflow-hidden"
+                      className="flex flex-col rounded-lg shadow-lg border overflow-hidden"
                     >
                       <div className="px-6 py-8 bg-white sm:p-10 sm:pb-6">
                         <div>
@@ -511,7 +546,7 @@ export default function VpsHostingPage({ homePosts }) {
               </div>
             </div>
           </div>
-        </div>
+        </Tab.Group>
       </div>
 
       {/* Alternating Features */}
@@ -1130,7 +1165,7 @@ export default function VpsHostingPage({ homePosts }) {
 
       <Testimonials />
 
-      <FAQs faqs={faqs} />
+      <FAQs faqs={faqs} className="pb-20" />
 
       <LatestBlog className="-mt-20" homePosts={homePosts} />
 

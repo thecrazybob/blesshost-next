@@ -1,6 +1,6 @@
-export default function faqsBrand({ faqs }) {
+export default function faqsBrand({ faqs, className }) {
   return (
-    <div className="bg-blue-700 pb-20">
+    <div className={`bg-blue-700 ${className}`}>
       <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-extrabold text-white">
           Frequently asked questions
