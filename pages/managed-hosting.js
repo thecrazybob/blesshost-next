@@ -67,7 +67,7 @@ import { useCurrency } from "../contexts/CurrencyContext";
 import { useState } from "react";
 import LatestBlog from "../components/latest-blog";
 import priceString from "../lib/pricing";
-import WHMCSLink from "../components/whmcs-link";
+import { useCart } from "../contexts/CartContext";
 import Testimonials from "../components/testimonials";
 
 function classNames(...classes) {
@@ -76,7 +76,8 @@ function classNames(...classes) {
 
 export default function VpsHostingPage({ homePosts }) {
   const [billingInterval, setBillingInterval] = useState("annually");
-  const { currency } = useCurrency("");
+  const { currency } = useCurrency();
+  const { addProductToCart } = useCart();
 
   const toggleOptions = [
     {
@@ -505,13 +506,12 @@ export default function VpsHostingPage({ homePosts }) {
                           ))}
                         </ul>
                         <div className="rounded-md shadow">
-                          <WHMCSLink
-                            label="Get started"
-                            pid={tier.pid}
-                            currency={currency}
-                            term={billingInterval}
-                            className="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
-                          />
+                          <button
+                          onClick={() =>
+                            addProductToCart(tier, billingInterval)}
+
+                            className="flex max-w-max items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
+                          > Buy {tier.name} </button>
                         </div>
                       </div>
                     </div>

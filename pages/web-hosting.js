@@ -13,8 +13,16 @@ import {
   TruckIcon,
 } from "@heroicons/react/outline";
 import Link from "next/link";
-import WHMCSLink from "../components/whmcs-link";
+import { useCart } from "../contexts/CartContext";
 import FeaturesGradient from "../components/features-gradient";
+
+const plan =
+  {
+    pid: 91,
+    title: "360 Web Hosting",
+    description: "Unlimited website hosting ",
+  }
+
 
 const features = [
   {
@@ -162,7 +170,8 @@ import { useCurrency } from "../contexts/CurrencyContext";
 
 export default function WebHosting() {
   const [billingInterval, setBillingInterval] = useState("annually");
-  const { currency, setCurrency } = useCurrency("");
+  const { currency } = useCurrency();
+  const { addProductToCart } = useCart();
 
   return (
     <>
@@ -184,13 +193,13 @@ export default function WebHosting() {
               </p>
               <div className="pt-8 sm:flex sm:justify-center md:justify-start justify-start">
                 <div className="rounded-md shadow">
-                  <WHMCSLink
-                    label="Order now"
-                    pid={91}
-                    currency={currency}
-                    term={billingInterval}
+                  <button
+                    onClick={() => addProductToCart(plan, billingInterval)}
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10"
-                  />
+                  >
+
+                    Order now
+                  </button>
                 </div>
                 <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
                   <a
@@ -402,12 +411,13 @@ export default function WebHosting() {
                   </li>
                 ))}
               </ul>
-              <WHMCSLink
-                pid={91}
-                currency={currency}
-                label="Get started today"
+              <button
+                onClick={() => addProductToCart(plan, billingInterval)}
                 className="w-full bg-white border border-transparent rounded-md py-4 px-8 flex items-center justify-center text-lg leading-6 font-medium text-blue-700 hover:bg-blue-50 md:px-10"
-              />
+              >
+
+                Get started today
+              </button>
               <a
                 href="/simple-hosting"
                 className="block text-center text-base font-medium text-blue-100 hover:text-white"
@@ -1049,7 +1059,7 @@ export default function WebHosting() {
                     Are you hosting your website somewhere else?
                   </span>
                   <span className="block text-xl text-blue-900">
-                    We can transfer it within{" "}
+                    We can transfer it within
                     <span className="border-b-2">24 hours</span>
                   </span>
                 </h2>
@@ -1113,12 +1123,13 @@ export default function WebHosting() {
             team of experts help you.
           </p>
           <div className="flex justify-center space-x-4">
-            <WHMCSLink
-              label="Order now"
-              pid="91"
-              currency={currency}
+            <button
+              onClick={() => addProductToCart(plan, billingInterval)}
               className="mt-8 w-full bg-blue-50 border border-transparent rounded-md py-3 px-5 inline-flex items-center justify-center text-base font-medium text-blue-700 hover:bg-blue-100 sm:w-auto"
-            />
+            >
+
+              Order now
+            </button>
             <a
               href="#"
               className="mt-8 w-full bg-blue-600 border border-blue-600 rounded-md py-3 px-5 inline-flex items-center justify-center text-base font-medium text-gray-200 hover:bg-blue-700 sm:w-auto"

@@ -267,12 +267,13 @@ import { Fragment, useState } from "react";
 import LatestBlog from "../components/latest-blog";
 import Image from "next/image";
 import priceString from "../lib/pricing";
-import WHMCSLink from "../components/whmcs-link";
+import { useCart } from "../contexts/CartContext";
 
-export default function vpsHostingPage({ homePosts }) {
+export default function VpsHostingPage({ homePosts }) {
   const [billingInterval, setBillingInterval] = useState("annually");
-  const { currency, setCurrency } = useCurrency("");
+  const { currency } = useCurrency();
   const [tiers, setTiers] = useState(tiersUAE);
+  const { addProductToCart } = useCart();
 
   const toggleOptions = [
     {
@@ -871,13 +872,11 @@ export default function vpsHostingPage({ homePosts }) {
                       </Listbox>
                     </div>
 
-                    <WHMCSLink
-                      currency={currency}
-                      term={billingInterval}
-                      pid={tier.pid}
-                      label={`Buy ${tier.name}`}
+                    <button
+onClick={() =>
+    addProductToCart(tier, billingInterval)}
                       className="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
-                    />
+                    > Buy {tier.name} </button>
                   </div>
                   <div className="pt-6 pb-8 px-6">
                     <h3 className="text-xs font-medium text-gray-900 tracking-wide uppercase">
@@ -1016,13 +1015,11 @@ export default function vpsHostingPage({ homePosts }) {
                         )
                       </span>
                     </p>
-                    <WHMCSLink
-                      currency={currency}
-                      term={billingInterval}
-                      pid={tier.pid}
-                      label={`Buy ${tier.name}`}
+                    <button
+                      onClick={() =>
+                        addProductToCart(tier, billingInterval)}
                       className="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
-                    />
+                    > Buy {tier.name} </button>
                   </div>
                 </div>
               ))}

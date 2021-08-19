@@ -208,11 +208,12 @@ function classNames(...classes) {
 import { useState } from "react";
 import priceString from "../lib/pricing";
 import { useCurrency } from "../contexts/CurrencyContext";
-import WHMCSLink from "../components/whmcs-link";
+import { useCart } from "../contexts/CartContext";
 
-export default function dedicatedSupportPage() {
+export default function DedicatedSupportPage() {
+  const { addProductToCart } = useCart();
   const [billingInterval, setBillingInterval] = useState("annually");
-  const { currency, setCurrency } = useCurrency("");
+  const { currency } = useCurrency();
 
   const toggleOptions = [
     {
@@ -398,18 +399,21 @@ export default function dedicatedSupportPage() {
                             </p>
                           </div>
                         </div>
-                        <WHMCSLink
-                          label={`Buy ${plan.title}`}
-                          pid={plan.pid}
-                          term={billingInterval}
-                          currency={currency}
-                          className={classNames(
-                            plan.featured
-                              ? "bg-blue-600 text-white hover:bg-blue-700"
-                              : "bg-white text-blue-600 hover:bg-blue-50",
-                            "mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full"
-                          )}
-                        />
+                        {plan.pid === -2 ? null : (
+                          <button
+                            onClick={() =>
+                              addProductToCart(plan, billingInterval)
+                            }
+                            className={classNames(
+                              plan.featured
+                                ? "bg-blue-600 text-white hover:bg-blue-700"
+                                : "bg-white text-blue-600 hover:bg-blue-50",
+                              "mt-6 w-full inline-block py-2 px-8 border border-transparent rounded-md shadow-sm text-center text-sm font-medium sm:mt-0 sm:w-auto lg:mt-6 lg:w-full"
+                            )}
+                          >
+                            Buy {plan.title}
+                          </button>
+                        )}
                       </div>
                     </div>
                     <h4 className="sr-only">Features</h4>

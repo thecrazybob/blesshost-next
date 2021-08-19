@@ -1,8 +1,10 @@
-import ReactDOMServer from "react-dom/server";
-import WHMCSLink from "../components/whmcs-link";
+import {useState } from "react";
+import { useCart } from "../contexts/CartContext";
 import CTASimple from "../components/cta-simple";
 import GradientFeatures from "../components/features-gradient";
 import Testimonials from "../components/testimonials";
+import { useCurrency } from "../contexts/CurrencyContext";
+import priceString from "../lib/pricing";
 import {
   AdjustmentsIcon,
   ChartSquareBarIcon,
@@ -14,6 +16,12 @@ import {
   ShoppingBagIcon,
   SupportIcon,
 } from "@heroicons/react/outline";
+
+const plan = {
+    pid:201,
+    name:"Website Security",
+    description:"Security service that protects your website against malware and hacker exploits"
+}
 
 const features = [
   {
@@ -96,11 +104,15 @@ const checklist = [
   "24x7 Support",
 ];
 
-import { useCurrency } from "../contexts/CurrencyContext";
-import priceString from "../lib/pricing";
 
-export default function websiteSecurityPage() {
-  const { currency, setCurrency } = useCurrency("");
+export default function WebsiteSecurityPage() {
+  const { currency } = useCurrency();
+  const { addProductToCart } = useCart();
+  const [billingInterval] = useState("annually");
+
+
+
+
 
   return (
     <>
@@ -113,7 +125,7 @@ export default function websiteSecurityPage() {
                 <h1 className="text-4xl tracking-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
                   <span className="inline">Secure your website with our </span>
                   <span className="inline text-blue-600">
-                    website security{" "}
+                    website security
                   </span>
                   <span className="inline">service</span>
                 </h1>
@@ -355,18 +367,16 @@ export default function websiteSecurityPage() {
                   </li>
                 ))}
               </ul>
-              <WHMCSLink
-                currency={currency}
+              <button
+               onClick={() => addProductToCart(plan, billingInterval) }
                 className="bg-white border border-transparent rounded-md w-full px-8 py-4 flex items-center justify-center text-lg leading-6 font-medium text-blue-600 hover:bg-blue-50 md:px-10"
-                label="Get started today"
-                pid="201"
-              />
+              >Get started today </button>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="py-16 bg-gray-50 overflow-hidden">
+      <div id="more" className="py-16 bg-gray-50 overflow-hidden">
         <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
           <svg
             className="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4"
@@ -1047,13 +1057,14 @@ export default function websiteSecurityPage() {
       <CTASimple
         normalText="Ready to secure your website?"
         strongText="Sign up for our website security today."
-        normalButton={{ label: "View pricing", href: "#pricing" }}
-        strongButton={{
-          label: "Get started",
-          href: `${ReactDOMServer.renderToString(
-            <WHMCSLink raw={true} pid={201} currency={currency} />
-          )}`,
-        }}
+        normalButton={{
+            label: "Learn more",
+            href: "#more",
+          }}
+          strongButton={{
+            label: "View plans",
+            href: "#pricing",
+          }}
       />
     </>
   );

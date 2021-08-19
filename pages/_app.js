@@ -4,6 +4,8 @@ import mailgo from "mailgo";
 import { useEffect } from "react";
 import { CurrencyContextProvider } from "./../contexts/CurrencyContext";
 import { CartContextProvider } from "../contexts/CartContext";
+import { CartOpenContextProvider } from "../contexts/CartOpenContext";
+
 import Layout from "../pages/_layout";
 export default function App({ Component, pageProps }) {
   useEffect(() => {
@@ -12,11 +14,13 @@ export default function App({ Component, pageProps }) {
 
   return (
     <CurrencyContextProvider>
-      <CartContextProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </CartContextProvider>
+      <CartOpenContextProvider>
+        <CartContextProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </CartContextProvider>
+      </CartOpenContextProvider>
     </CurrencyContextProvider>
   );
 }

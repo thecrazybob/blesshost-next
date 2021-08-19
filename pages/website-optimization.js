@@ -1,4 +1,4 @@
-import WHMCSLink from "../components/whmcs-link";
+import { useCart } from "../contexts/CartContext";
 import { CheckIcon } from "@heroicons/react/outline";
 import Testimonials from "../components/testimonials";
 import CTASimple from "../components/cta-simple";
@@ -7,6 +7,11 @@ import priceString from "../lib/pricing";
 import { useCurrency } from "../contexts/CurrencyContext";
 import { useState } from "react";
 import ReactDOMServer from "react-dom/server";
+
+const plan = {
+    pid : 164,
+    name: "Website Speed Optimization"
+}
 
 const features = [
   "Custom Server Configuration",
@@ -21,14 +26,16 @@ const features = [
   "WordPress Plugin Installation",
 ];
 
-export default function websiteOptimizationPage() {
-  const [billingInterval, setBillingInterval] = useState("annually");
-  const { currency, setCurrency } = useCurrency("");
+export default function WebsiteOptimizationPage() {
+  const [billingInterval] = useState("annually");
+  const { currency } = useCurrency();
+  const { addProductToCart } = useCart();
+
 
   return (
     <div className="bg-gray-50">
       <div className="relative pt-6 pb-16">
-        <div className="mt-16 mx-auto max-w-7xl px-4 sm:mt-24 sm:px-6">
+        <div className="mt-16 mx-auto max--7xl px-4 sm:mt-24 sm:px-6">
           <div className="text-center">
             <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
               <span className="block">Super-charge your website with our</span>
@@ -60,7 +67,7 @@ export default function websiteOptimizationPage() {
           />
         </div>
       </div>
-      <div className="py-16 bg-gray-50 overflow-hidden lg:py-24">
+      <div id="more" className="py-16 bg-gray-50 overflow-hidden lg:py-24">
         <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
           <svg
             className="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4"
@@ -568,12 +575,11 @@ export default function websiteOptimizationPage() {
                 site - they won't stick around.
               </p>
             </div>
-            <WHMCSLink
-              pid="164"
-              currency={currency}
-              label="Get started today"
+            <button
+              onClick={() =>
+                addProductToCart(plan, billingInterval) }
               className="mt-8 w-full bg-blue-600 border border-transparent px-5 py-3 inline-flex items-center justify-center text-base font-medium rounded-md text-white hover:bg-blue-700 sm:mt-10 sm:w-auto xl:mt-0"
-            />
+            > Get started today </button>
           </div>
           <div className="border-t border-gray-200 pt-16 xl:grid xl:grid-cols-3 xl:gap-x-8">
             <div>
@@ -654,17 +660,10 @@ export default function websiteOptimizationPage() {
       <CTASimple
         normalText="Ready to give your site a speed boost?"
         strongText="Get started with our website optimization today!"
-        normalButton={{
-          label: "View pricing",
-          href: "#pricing",
-        }}
-        strongButton={{
-          label: "Get started",
-          href: ReactDOMServer.renderToString(
-            <WHMCSLink raw={true} pid={164} currency={currency} />
-          ),
-        }}
+        normalButton={{ href: "#more", label: "Learn more" }}
+        strongButton={{ href: "#pricing", label: "View plan" }}
       />
+
     </div>
   );
 }

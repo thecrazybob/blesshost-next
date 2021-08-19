@@ -1,6 +1,9 @@
 import { Fragment, useRef, useState } from "react";
 import { Popover, Transition, Listbox } from "@headlessui/react";
 import { useCart } from "../contexts/CartContext";
+import Topbar from "../components/topbar";
+import { useCurrency } from "../contexts/CurrencyContext";
+import { useCartContext } from "../contexts/CartOpenContext";
 import {
   ClockIcon,
   CloudIcon,
@@ -187,14 +190,12 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-import Topbar from "../components/topbar";
-import { useCurrency } from "../contexts/CurrencyContext";
-
 export default function Header() {
   const hostingButtonRef = useRef();
   const websitesButtonRef = useRef();
   const marketingButtonRef = useRef();
   const supportButtonRef = useRef();
+  const {isCartOpen, setIsCartOpen} = useCartContext();
   const [isOpen, setIsOpen] = useState(false);
   const {
     globalState: { products },
@@ -342,7 +343,7 @@ export default function Header() {
                 <button
                   className="text-gray-500 mr-4 px-2 py-2 rounded flex-grow-0 max-w-max hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                   onClick={() => {
-                    setIsOpen(true);
+                    setIsCartOpen(true);
                   }}
                 >
                   {products.length > 0 ? (
@@ -791,7 +792,7 @@ export default function Header() {
                 <button
                   className="text-gray-500 mr-4 px-2 py-2 rounded flex-grow-0 max-w-max hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                   onClick={() => {
-                    setIsOpen(true);
+                    setIsCartOpen(true);
                   }}
                 >
                   {products.length > 0 ? (
@@ -803,7 +804,7 @@ export default function Header() {
                     </div>
                   ) : null}
 
-                  <Checkout open={isOpen} setOpen={setIsOpen} />
+                  <Checkout open={isCartOpen} setOpen={setIsCartOpen} />
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"

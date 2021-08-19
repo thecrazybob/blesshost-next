@@ -1,4 +1,4 @@
-import { CheckIcon, XIcon } from "@heroicons/react/solid";
+import { CheckIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import Testimonials from "../components/testimonials";
 import SimpleCTA from "../components/cta-simple";
@@ -7,7 +7,6 @@ import { useState } from "react";
 import { useCurrency } from "../contexts/CurrencyContext.js";
 import { useCart } from "../contexts/CartContext";
 import priceString from "../lib/pricing";
-import WHMCSLink from "../components/whmcs-link";
 import Image from "next/image";
 
 const securityFeatures = [
@@ -278,7 +277,7 @@ function classNames(...classes) {
 export default function SimpleHostingPage() {
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency("");
-  const { initialState, dispatch } = useCart();
+  const { addProductToCart } = useCart();
 
   return (
     <main>
@@ -456,17 +455,8 @@ export default function SimpleHostingPage() {
                         </div>
 
                         <button
-                          onClick={() =>
-                            dispatch({
-                              type: "addtocart",
-                              payload: {
-                                title: plan.title,
-                                description: plan.description,
-                                pid: plan.pid,
-                                billingInterval,
-                              },
-                            })
-                          }
+
+                         onClick={() => addProductToCart(plan, billingInterval) }
                           className={classNames(
                             plan.featured
                               ? "bg-blue-600 text-white hover:bg-blue-700"
