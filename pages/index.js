@@ -23,8 +23,7 @@ import Image from "next/image";
 import shouketImg from "../public/img/testimonials/shouket.jpg";
 import adnanImg from "../public/img/testimonials/adnan.jpg";
 import priceString from "../lib/pricing";
-import WhatsAppWidget from "react-whatsapp-widget";
-import "react-whatsapp-widget/dist/index.css";
+
 
 const features = [
   {
@@ -110,14 +109,6 @@ export default function HomePage({ homePosts }) {
   return (
     <>
       <div className="text-center md:text-left sm:my-4 md:my-20 lg:my-10 mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="z-50 bottom-0 right-0 fixed">
-          <WhatsAppWidget
-            companyName="Blesshost"
-            phoneNumber="971544423111"
-            textReplyTime="'Typically replies within an hour'"
-          />{" "}
-        </div>
-
         <div className="bg-gray-50">
           <div className="grid grid-cols-1 items-center justify-between gap-x-5 md:grid-cols-2">
             <div>

@@ -1,6 +1,9 @@
 import Head from "next/head";
 import Footer from "../components/footer";
 import Header from "../components/header";
+import WhatsAppWidget from "react-whatsapp-widget";
+import "react-whatsapp-widget/dist/index.css";
+
 export default function Layout({ children }) {
   return (
     <>
@@ -93,6 +96,14 @@ export default function Layout({ children }) {
       <Header></Header>
 
       {children}
+
+      <div className="z-50 bottom-0 right-0 fixed">
+        <WhatsAppWidget
+          companyName="Blesshost"
+          phoneNumber="971544423111"
+          textReplyTime="'Typically replies within an hour'"
+        />
+      </div>
 
       <Footer></Footer>
       <script
