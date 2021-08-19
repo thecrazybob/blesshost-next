@@ -6,6 +6,7 @@ export default function WHMCSLink({
   label,
   className,
   raw,
+  configOption,
 }) {
   currency = currency?.name == "USD" ? 1 : 2;
 
@@ -14,7 +15,7 @@ export default function WHMCSLink({
   if (pid > 0) {
     link = `https://billing.blesshost.com/cart.php?a=add&pid=${
       pid ?? 91
-    }&currency=${currency}&promocode=${promo ?? ""}`;
+    }&currency=${currency}&promocode=${promo ?? ""}&${configOption}`;
   } else {
     label = "Included";
   }

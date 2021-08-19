@@ -131,6 +131,7 @@ const features = [
     icon: ChatIcon,
   },
 ];
+import WHMCSLink from "../components/whmcs-link";
 
 export default function GoogleWorkspacePage() {
   const [billingInterval, setBillingInterval] = useState("annually");
@@ -224,6 +225,7 @@ export default function GoogleWorkspacePage() {
                       type="range"
                       className="w-full"
                       min="1"
+                      defaultValue="1"
                       max="100"
                     />
                   </div>
@@ -234,12 +236,12 @@ export default function GoogleWorkspacePage() {
                   </div>
                   <div className="mt-6">
                     <div className="rounded-md shadow">
-                      <a
-                        href="#"
+                      <WHMCSLink
+                        pid="135"
                         className="flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
-                      >
-                        Order now
-                      </a>
+                        label="Order now"
+                        configOption={`configoption[158]=${quantity}`}
+                      />
                     </div>
                   </div>
                 </div>

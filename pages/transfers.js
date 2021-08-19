@@ -4,19 +4,18 @@ import CTASimple from "../components/cta-simple";
 const faqs = [
   {
     question: "What are nameservers?",
-    answer: "",
+    answer:
+      "Nameservers help connect URLs with the IP address of web servers. Nameservers are an important part of the Domain Name System (DNS), which many people call the “phone book of the Internet”.    ",
   },
   {
     question: "What is cPanel?",
-    answer: "",
+    answer:
+      "cPanel is the world's most popular web hosting control panel. Your current hosting provider is likely using cPanel and your cPanel account's credentials will be required for the transfer of your website to us.",
   },
   {
     question: "Where can I find my cPanel login credentials?",
-    answer: "",
-  },
-  {
-    question: "Where can I find my domain login credentials?",
-    answer: "",
+    answer:
+      "You usually receive these credentials while signing up for a hosting account. If you haven't received these credentials, you should contact your current hosting provider and ask for these credentials.",
   },
   {
     question:
@@ -287,7 +286,11 @@ export default function transfersPage() {
 
       <FAQSDark faqs={faqs} />
 
-      <CTASimple />
+      <CTASimple
+        normalText="Ready to transfer your website to us?"
+        strongText="Fill the form or contact us today."
+        normalButton={{ text: "" }}
+      />
     </>
   );
 }
