@@ -33,7 +33,6 @@ const ResultPage = () => {
   if (error) return <div>failed to load</div>;
 
   if (data?.payment_intent?.status === "succeeded") {
-      console.log("this ran")
     dispatch({ type: "clearcart" });
   }
 

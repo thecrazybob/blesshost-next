@@ -18,9 +18,12 @@ export function CartContextProvider({ children }) {
       case "addtocart": {
         setIsCartOpen(true);
         let exists = state.products.some((e) => e.pid === action.payload.pid);
+        let id
 
-        if (exists) {
-          return { ...state };
+        if (exists ) {
+            id = state.products.map((product) => product.pid).indexOf(action.payload.pid)
+            state.products.splice(id, 1)
+          return { ...state, products: [...state.products, action.payload] };
         } else {
           return { ...state, products: [...state.products, action.payload] };
         }
