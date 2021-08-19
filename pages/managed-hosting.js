@@ -505,13 +505,16 @@ export default function VpsHostingPage({ homePosts }) {
                             </li>
                           ))}
                         </ul>
-                        <div className="rounded-md shadow">
+                        <div className="rounded-md">
                           <button
-                          onClick={() =>
-                            addProductToCart(tier, billingInterval)}
-
+                            onClick={() =>
+                              addProductToCart(tier, billingInterval)
+                            }
                             className="flex max-w-max items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
-                          > Buy {tier.name} </button>
+                          >
+                            {" "}
+                            Buy {tier.name}{" "}
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -586,7 +589,7 @@ export default function VpsHostingPage({ homePosts }) {
             />
           </svg>
 
-          <div  className="relative">
+          <div className="relative">
             <h2 className="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               Why choose our server management solutions?
             </h2>

@@ -48,6 +48,7 @@ export default function transfersPage() {
                 possible!
               </p>
               <form
+                id="form"
                 action="#"
                 method="POST"
                 className="mt-9 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
@@ -289,7 +290,14 @@ export default function transfersPage() {
       <CTASimple
         normalText="Ready to transfer your website to us?"
         strongText="Fill the form or contact us today."
-        normalButton={{ text: "" }}
+        normalButton={{
+          label: "Contact us",
+          href: "/contact",
+        }}
+        strongButton={{
+          label: "Fill form",
+          href: "#form",
+        }}
       />
     </>
   );
