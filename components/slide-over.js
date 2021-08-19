@@ -131,80 +131,83 @@ export default function Checkout({ open, setOpen }) {
                       <div className="bg-white overflow-hidden shadow border border-gray-100 rounded-lg">
                         <div className="px-4 py-5 sm:p-6">
                           {/* Replace with your content */}
-                          {products.length > 1 ? products.map((product, idx) => {
-                            total += +priceString({
-                              pid: product?.pid,
-                              term: product.billingInterval,
-                              currency: currency,
-                              raw: true,
-                            });
-                            return (
-                              <div
-                                key={idx}
-                                className="p-2 flex bg-white hover:bg-gray-100 cursor-pointer "
-                              >
-
-                                <div className="pr-2">
-                                  <svg
-                                    className="h-12 w-12 text-blue-500"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path
-                                      d="M21 12v0a9 9 0 01-9 9m9-9v0a9 9 0 00-9-9m9 9H3m9 9h0a9 9 0 01-9-9s0 0 0 0m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9m-9 9h0a9 9 0 019-9"
-                                      strokeLinecap="round"
-                                      strokeWidth="2"
-                                      fill="none"
-                                      strokeLinejoin="round"
-                                    ></path>
-                                  </svg>
-                                </div>
-                                <div className="flex-auto w-32">
-                                  <div className="font-bold">
-                                    {product.title}
-                                  </div>
-                                  <div className="truncate">
-                                    {product.description}
-                                  </div>
-                                </div>
-                                <div className="flex flex-col w-18 font-medium items-end">
-                                  <button
-                                    onClick={() =>
-                                      dispatch({
-                                        type: "removefromcart",
-                                        payload: {
-                                          pid: product.pid,
-                                        },
-                                      })
-                                    }
-                                    className="mt-1 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-blue focus:border-blue-300 active:bg-gray-100 active:text-red-900 transition ease-in-out duration-150"
-                                  >
+                          {products.length >= 1 ? (
+                            products.map((product, idx) => {
+                              total += +priceString({
+                                pid: product?.pid,
+                                term: product.billingInterval,
+                                currency: currency,
+                                raw: true,
+                              });
+                              return (
+                                <div
+                                  key={idx}
+                                  className="p-2 flex bg-white hover:bg-gray-100 cursor-pointer "
+                                >
+                                  <div className="pr-2">
                                     <svg
-                                      className="w-5 h-5 text-red-500"
+                                      className="h-12 w-12 text-blue-500"
                                       stroke="currentColor"
-                                      fill="currentColor"
                                       viewBox="0 0 24 24"
                                     >
                                       <path
-                                        d="M19 7l-.87 12.14h0a2 2 0 01-2 1.86H7.87h0a2 2 0 01-2-1.86L5 7m5 4v6m4-6v6m1-10V4v0a1 1 0 00-1-1h-4 0a1 1 0 00-1 1s0 0 0 0v3M4 7h16"
+                                        d="M21 12v0a9 9 0 01-9 9m9-9v0a9 9 0 00-9-9m9 9H3m9 9h0a9 9 0 01-9-9s0 0 0 0m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9m-9 9h0a9 9 0 019-9"
                                         strokeLinecap="round"
                                         strokeWidth="2"
                                         fill="none"
                                         strokeLinejoin="round"
                                       ></path>
                                     </svg>
-                                  </button>
-                                  <div>
-                                    {priceString({
-                                      pid: product?.pid,
-                                      term: product.billingInterval,
-                                      currency: currency,
-                                    })}
+                                  </div>
+                                  <div className="flex-auto w-32">
+                                    <div className="font-bold">
+                                      {product.title}
+                                    </div>
+                                    <div className="truncate">
+                                      {product.description}
+                                    </div>
+                                  </div>
+                                  <div className="flex flex-col w-18 font-medium items-end">
+                                    <button
+                                      onClick={() =>
+                                        dispatch({
+                                          type: "removefromcart",
+                                          payload: {
+                                            pid: product.pid,
+                                          },
+                                        })
+                                      }
+                                      className="mt-1 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-blue focus:border-blue-300 active:bg-gray-100 active:text-red-900 transition ease-in-out duration-150"
+                                    >
+                                      <svg
+                                        className="w-5 h-5 text-red-500"
+                                        stroke="currentColor"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path
+                                          d="M19 7l-.87 12.14h0a2 2 0 01-2 1.86H7.87h0a2 2 0 01-2-1.86L5 7m5 4v6m4-6v6m1-10V4v0a1 1 0 00-1-1h-4 0a1 1 0 00-1 1s0 0 0 0v3M4 7h16"
+                                          strokeLinecap="round"
+                                          strokeWidth="2"
+                                          fill="none"
+                                          strokeLinejoin="round"
+                                        ></path>
+                                      </svg>
+                                    </button>
+                                    <div>
+                                      {priceString({
+                                        pid: product?.pid,
+                                        term: product.billingInterval,
+                                        currency: currency,
+                                      })}
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                            );
-                          }) : <p className="text-center"> Your Cart is Empty </p> }
+                              );
+                            })
+                          ) : (
+                            <p className="text-center"> Your Cart is Empty </p>
+                          )}
                         </div>
                         <div className="bg-gray-50 px-4 py-4 sm:px-6 text-center">
                           <div className="font-bold py-2 flex flex-col space-y-2">
