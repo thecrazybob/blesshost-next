@@ -3,48 +3,6 @@ import FAQSDark from "../components/faqs-dark";
 import CTASimple from "../components/cta-simple";
 import Testimonials from "../components/testimonials";
 
-const features = [
-  {
-    name: "Invite team members",
-    description:
-      "Tempor tellus in aliquet eu et sit nulla tellus. Suspendisse est, molestie blandit quis ac. Lacus.",
-  },
-  {
-    name: "Notifications",
-    description:
-      "Ornare donec rhoncus vitae nisl velit, neque, mauris dictum duis. Nibh urna non parturient.",
-  },
-  {
-    name: "List view",
-    description:
-      "Etiam cras augue ornare pretium sit malesuada morbi orci, venenatis. Dictum lacus.",
-  },
-  {
-    name: "Boards",
-    description:
-      "Interdum quam pulvinar turpis tortor, egestas quis diam amet, natoque. Mauris sagittis.",
-  },
-  {
-    name: "Keyboard shortcuts",
-    description:
-      "Ullamcorper in ipsum ac feugiat. Senectus at aliquam vulputate mollis nec. In at risus odio.",
-  },
-  {
-    name: "Reporting",
-    description:
-      "Magna a vel sagittis aliquam eu amet. Et lorem auctor quam nunc odio. Sed bibendum.",
-  },
-  {
-    name: "Calendars",
-    description:
-      "Sed mi, dapibus turpis orci posuere integer. A porta viverra posuere adipiscing turpis.",
-  },
-  {
-    name: "Mobile app",
-    description:
-      "Quisque sapien nunc nisl eros. Facilisis sagittis maecenas id dignissim tristique proin sed.",
-  },
-];
 const faqs = [
   {
     question: "Calendars",
@@ -55,50 +13,6 @@ const faqs = [
 export default function transfersPage() {
   return (
     <>
-      <main className="lg:relative">
-        <div className="mx-auto max-w-7xl w-full pt-16 pb-20 text-center lg:py-48 lg:text-left">
-          <div className="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
-            <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
-              <span className="block xl:inline">Data to enrich your</span>{" "}
-              <span className="block text-blue-600 xl:inline">
-                online business
-              </span>
-            </h1>
-            <p className="mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-              fugiat aliqua.
-            </p>
-            <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-              <div className="rounded-md shadow">
-                <a
-                  href="#"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10"
-                >
-                  Get started
-                </a>
-              </div>
-              <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                <a
-                  href="#"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
-                >
-                  Live demo
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
-          <img
-            className="absolute inset-0 w-full h-full object-cover"
-            src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80"
-            alt=""
-          />
-        </div>
-      </main>
-
-      <Features features={features} />
 
       <div className="relative bg-white">
         <div className="lg:absolute lg:inset-0">
@@ -339,7 +253,6 @@ export default function transfersPage() {
         </div>
       </div>
 
-      <Testimonials />
       <FAQSDark faqs={faqs} />
       <CTASimple />
     </>
