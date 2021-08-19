@@ -27,7 +27,7 @@ const features = [
 ];
 
 export default function WebsiteOptimizationPage() {
-  const [billingInterval] = useState("annually");
+  const [billingInterval] = useState("monthly");
   const { currency } = useCurrency();
   const { addProductToCart } = useCart();
 
