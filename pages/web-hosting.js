@@ -870,6 +870,11 @@ export default function WebHosting() {
                 relax. Our free website migration service is included with every
                 web hosting plan that we offer.
               </p>
+              <Link href="/transfers">
+                <a className="mt-8 bg-blue-100 border border-transparent rounded-md shadow py-3 px-6 inline-flex items-center text-base font-medium text-blue-600 hover:text-blue-500">
+                  Transfer my website
+                </a>
+              </Link>
             </div>
 
             <div

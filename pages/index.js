@@ -464,8 +464,8 @@ export default function HomePage({ homePosts }) {
               <div className=" pl-4 -mr-48 sm:pl-6 md:-mr-16 lg:px-0 lg:m-0 lg:relative lg:h-full">
                 <img
                   className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                  src="/img/lighthouse-100.png"
-                  alt="Customer profile user interface"
+                  src="/img/website-speed.jpg"
+                  alt="Website Speed"
                 />
               </div>
             </div>
@@ -539,7 +539,7 @@ export default function HomePage({ homePosts }) {
                 <img
                   className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
                   src="/img/website-design.jpg"
-                  alt="Customer profile user interface"
+                  alt="Website Design"
                 />
               </div>
             </div>

@@ -801,8 +801,11 @@ export default function VpsHostingPage({ homePosts }) {
                         <div className="relative mt-1">
                           <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md border cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
                             <Listbox.Label className="block text-sm font-medium text-gray-700">
-                              Billing Cycle: { terms.find((term) => term.id == billingInterval)
-                                  .name}
+                              Billing Cycle:{" "}
+                              {
+                                terms.find((term) => term.id == billingInterval)
+                                  .name
+                              }
                             </Listbox.Label>
                             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                               <SelectorIcon
@@ -868,10 +871,12 @@ export default function VpsHostingPage({ homePosts }) {
                     </div>
 
                     <button
-onClick={() =>
-    addProductToCart(tier, billingInterval)}
+                      onClick={() => addProductToCart(tier, billingInterval)}
                       className="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
-                    > Buy {tier.name} </button>
+                    >
+                      {" "}
+                      Buy {tier.name}{" "}
+                    </button>
                   </div>
                   <div className="pt-6 pb-8 px-6">
                     <h3 className="text-xs font-medium text-gray-900 tracking-wide uppercase">
@@ -896,7 +901,10 @@ onClick={() =>
             </div>
             <div className="mt-8 space-y-4 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0">
               {tiers.slice(4, 6).map((tier) => (
-                <div key={tier.name} className="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
+                <div
+                  key={tier.name}
+                  className="border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200"
+                >
                   <div className="p-6">
                     <h2 className="text-lg  leading-6 font-bold text-gray-900">
                       {tier.name}
@@ -1011,10 +1019,12 @@ onClick={() =>
                       </span>
                     </p>
                     <button
-                      onClick={() =>
-                        addProductToCart(tier, billingInterval)}
+                      onClick={() => addProductToCart(tier, billingInterval)}
                       className="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
-                    > Buy {tier.name} </button>
+                    >
+                      {" "}
+                      Buy {tier.name}{" "}
+                    </button>
                   </div>
                 </div>
               ))}
@@ -1060,7 +1070,7 @@ onClick={() =>
             />
           </svg>
 
-          <div  className="relative">
+          <div className="relative">
             <h2 className="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               Why choose BlessHost's VPS hosting solutions?
             </h2>
@@ -1841,10 +1851,8 @@ onClick={() =>
               <div className="aspect-w-10 aspect-h-6 rounded-xl shadow-xl overflow-hidden sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
                 <img
                   className="object-cover lg:h-full lg:w-full"
-                  src={
-                    "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
-                  }
-                  alt="Adnan Yasin"
+                  src={"/img/crepeaholic.jpg"}
+                  alt="Crepeaholic"
                 />
               </div>
             </div>

@@ -1,19 +1,33 @@
-import Features from "../components/features-tick";
 import FAQSDark from "../components/faqs-dark";
 import CTASimple from "../components/cta-simple";
-import Testimonials from "../components/testimonials";
 
 const faqs = [
   {
-    question: "Calendars",
+    question: "What are nameservers?",
+    answer: "",
+  },
+  {
+    question: "What is cPanel?",
+    answer: "",
+  },
+  {
+    question: "Where can I find my cPanel login credentials?",
+    answer: "",
+  },
+  {
+    question: "Where can I find my domain login credentials?",
+    answer: "",
+  },
+  {
+    question:
+      "How can I get assistance from your support team to obtain my username and password?",
     answer:
-      "Sed mi, dapibus turpis orci posuere integer. A porta viverra posuere adipiscing turpis.",
+      "We can handle it all for you. Just write an email to support@blesshost.com and we will take it from there so you can focus on growing your business!",
   },
 ];
 export default function transfersPage() {
   return (
     <>
-
       <div className="relative bg-white">
         <div className="lg:absolute lg:inset-0">
           <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
@@ -28,18 +42,18 @@ export default function transfersPage() {
           <div className="lg:pr-8">
             <div className="max-w-md mx-auto sm:max-w-lg lg:mx-0">
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-                Let's work together
+                Transfer your site to BlessHost
               </h2>
               <p className="mt-4 text-lg text-gray-500 sm:mt-3">
-                We’d love to hear from you! Send us a message using the form
-                opposite, or email us. We’d love to hear from you! Send us a
-                message using the form opposite, or email us.
+                Send us the details and we'll get back to you as soon as
+                possible!
               </p>
               <form
                 action="#"
                 method="POST"
                 className="mt-9 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
               >
+                {/* First Name */}
                 <div>
                   <label
                     htmlFor="first_name"
@@ -57,6 +71,8 @@ export default function transfersPage() {
                     />
                   </div>
                 </div>
+
+                {/* Last Name */}
                 <div>
                   <label
                     htmlFor="last_name"
@@ -74,7 +90,9 @@ export default function transfersPage() {
                     />
                   </div>
                 </div>
-                <div className="sm:col-span-2">
+
+                {/* Email */}
+                <div>
                   <label
                     htmlFor="email"
                     className="block text-sm font-medium text-gray-700"
@@ -91,24 +109,9 @@ export default function transfersPage() {
                     />
                   </div>
                 </div>
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="company"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Company
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="company"
-                      id="company"
-                      autoComplete="organization"
-                      className="block w-full shadow-sm sm:text-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
-                    />
-                  </div>
-                </div>
-                <div className="sm:col-span-2">
+
+                {/* Phone */}
+                <div>
                   <div className="flex justify-between">
                     <label
                       htmlFor="phone"
@@ -134,111 +137,140 @@ export default function transfersPage() {
                     />
                   </div>
                 </div>
-                <div className="sm:col-span-2">
-                  <div className="flex justify-between">
-                    <label
-                      htmlFor="how_can_we_help"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      How can we help you?
-                    </label>
-                    <span
-                      id="how_can_we_help_description"
-                      className="text-sm text-gray-500"
-                    >
-                      Max. 500 characters
-                    </span>
-                  </div>
-                  <div className="mt-1">
-                    <textarea
-                      id="how_can_we_help"
-                      name="how_can_we_help"
-                      aria-describedby="how_can_we_help_description"
-                      rows={4}
-                      className="block w-full shadow-sm sm:text-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
-                      defaultValue={""}
-                    />
-                  </div>
-                </div>
-                <fieldset className="sm:col-span-2">
-                  <legend className="block text-sm font-medium text-gray-700">
-                    Expected budget
-                  </legend>
-                  <div className="mt-4 grid grid-cols-1 gap-y-4">
-                    <div className="flex items-center">
-                      <input
-                        id="budget_under_25k"
-                        name="budget"
-                        defaultValue="under_25k"
-                        type="radio"
-                        className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300"
-                      />
-                      <label htmlFor="budget_under_25k" className="ml-3">
-                        <span className="block text-sm text-gray-700">
-                          Less than $25K
-                        </span>
-                      </label>
-                    </div>
-                    <div className="flex items-center">
-                      <input
-                        id="budget_25k-50k"
-                        name="budget"
-                        defaultValue="25k-50k"
-                        type="radio"
-                        className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300"
-                      />
-                      <label htmlFor="budget_25k-50k" className="ml-3">
-                        <span className="block text-sm text-gray-700">
-                          $25K – $50K
-                        </span>
-                      </label>
-                    </div>
-                    <div className="flex items-center">
-                      <input
-                        id="budget_50k-100k"
-                        name="budget"
-                        defaultValue="50k-100k"
-                        type="radio"
-                        className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300"
-                      />
-                      <label htmlFor="budget_50k-100k" className="ml-3">
-                        <span className="block text-sm text-gray-700">
-                          $50K – $100K
-                        </span>
-                      </label>
-                    </div>
-                    <div className="flex items-center">
-                      <input
-                        id="budget_over_100k"
-                        name="budget"
-                        defaultValue="over_100k"
-                        type="radio"
-                        className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300"
-                      />
-                      <label htmlFor="budget_over_100k" className="ml-3">
-                        <span className="block text-sm text-gray-700">
-                          $100K+
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                </fieldset>
+
+                {/* Domain Name */}
                 <div className="sm:col-span-2">
                   <label
-                    htmlFor="how_did_you_hear_about_us"
+                    htmlFor="company"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    How did you hear about us?
+                    Domain Name
                   </label>
                   <div className="mt-1">
                     <input
                       type="text"
-                      name="how_did_you_hear_about_us"
-                      id="how_did_you_hear_about_us"
-                      className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      name="company"
+                      id="company"
+                      placeholder="yourcompany.com"
+                      className="block w-full shadow-sm sm:text-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
                     />
                   </div>
                 </div>
+
+                {/* Domain Login URL */}
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="domain_login_url"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Domain Login URL
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="domain_login_url"
+                      id="domain_login_url"
+                      placeholder=""
+                      className="block w-full shadow-sm sm:text-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                {/* Domain Username */}
+                <div>
+                  <label
+                    htmlFor="domain_username"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Domain Username
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="domain_username"
+                      id="domain_username"
+                      autoComplete="given-name"
+                      className="block w-full shadow-sm sm:text-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                {/* Domain Password */}
+                <div>
+                  <label
+                    htmlFor="domain_password"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Domain Password
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="domain_password"
+                      id="domain_password"
+                      autoComplete="family-name"
+                      className="block w-full shadow-sm sm:text-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                {/* Hosting Login URL */}
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="hosting_login_url"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Hosting Login URL
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="hosting_login_url"
+                      id="hosting_login_url"
+                      placeholder=""
+                      className="block w-full shadow-sm sm:text-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                {/* Hosting Username */}
+                <div>
+                  <label
+                    htmlFor="hosting_username"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Hosting Username
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="hosting_username"
+                      id="hosting_username"
+                      autoComplete="given-name"
+                      className="block w-full shadow-sm sm:text-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
+                {/* Hosting Password */}
+                <div>
+                  <label
+                    htmlFor="hosting_password"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Hosting Password
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      type="text"
+                      name="hosting_password"
+                      id="hosting_password"
+                      autoComplete="family-name"
+                      className="block w-full shadow-sm sm:text-sm focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md"
+                    />
+                  </div>
+                </div>
+
                 <div className="text-right sm:col-span-2">
                   <button
                     type="submit"
@@ -254,6 +286,7 @@ export default function transfersPage() {
       </div>
 
       <FAQSDark faqs={faqs} />
+
       <CTASimple />
     </>
   );
