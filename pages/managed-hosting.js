@@ -550,7 +550,7 @@ export default function VpsHostingPage({ homePosts }) {
       </div>
 
       {/* Alternating Features */}
-      <div className="py-16 bg-gray-50 overflow-hidden">
+      <div id="more" className="py-16 bg-gray-50 overflow-hidden">
         <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
           <svg
             className="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4"
@@ -586,7 +586,7 @@ export default function VpsHostingPage({ homePosts }) {
             />
           </svg>
 
-          <div id="more" className="relative">
+          <div  className="relative">
             <h2 className="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               Why choose our server management solutions?
             </h2>

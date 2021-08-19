@@ -659,14 +659,10 @@ export default function VpsHostingPage({ homePosts }) {
                         <div className="relative mt-1">
                           <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md border cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
                             <Listbox.Label className="block text-sm font-medium text-gray-700">
-                              Billing cycle
+                            Billing Cycle: { terms.find((term) => term.id == billingInterval)
+                                  .name}
                             </Listbox.Label>
-                            <span className="block truncate">
-                              {
-                                terms.find((term) => term.id == billingInterval)
-                                  .name
-                              }
-                            </span>
+
                             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                               <SelectorIcon
                                 className="w-5 h-5 text-gray-400"
@@ -888,7 +884,7 @@ export default function VpsHostingPage({ homePosts }) {
       </div>
 
       {/* Alternating Features */}
-      <div className="py-16 bg-gray-50 overflow-hidden">
+      <div id="more" className="py-16 bg-gray-50 overflow-hidden">
         <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
           <svg
             className="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4"
@@ -924,7 +920,7 @@ export default function VpsHostingPage({ homePosts }) {
             />
           </svg>
 
-          <div id="more" className="relative">
+          <div  className="relative">
             <h2 className="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               Why choose BlessHost's dedicated hosting?
             </h2>

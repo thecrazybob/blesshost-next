@@ -16,13 +16,11 @@ import Link from "next/link";
 import { useCart } from "../contexts/CartContext";
 import FeaturesGradient from "../components/features-gradient";
 
-const plan =
-  {
-    pid: 91,
-    title: "360 Web Hosting",
-    description: "Unlimited website hosting ",
-  }
-
+const plan = {
+  pid: 91,
+  title: "360 Web Hosting",
+  description: "Unlimited website hosting ",
+};
 
 const features = [
   {
@@ -197,7 +195,6 @@ export default function WebHosting() {
                     onClick={() => addProductToCart(plan, billingInterval)}
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10"
                   >
-
                     Order now
                   </button>
                 </div>
@@ -384,7 +381,7 @@ export default function WebHosting() {
                   <span className="text-center text-2xl text-gray-200 text-uppercase mb-3">
                     Starting from just
                   </span>
-                  <span className="text-5xl font-extrabold text-white tracking-tight">
+                  <span className="text-5xl font-extrabold text-white tracking-normal">
                     {priceString({
                       pid: 91,
                       currency: currency,
@@ -415,7 +412,6 @@ export default function WebHosting() {
                 onClick={() => addProductToCart(plan, billingInterval)}
                 className="w-full bg-white border border-transparent rounded-md py-4 px-8 flex items-center justify-center text-lg leading-6 font-medium text-blue-700 hover:bg-blue-50 md:px-10"
               >
-
                 Get started today
               </button>
               <a
@@ -453,7 +449,7 @@ export default function WebHosting() {
       </div>
 
       {/* Alternating Features */}
-      <div className="py-16 bg-gray-50 overflow-hidden">
+      <div id="more" className="py-16 bg-gray-50 overflow-hidden">
         <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
           <svg
             className="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4"
@@ -489,7 +485,7 @@ export default function WebHosting() {
             />
           </svg>
 
-          <div id="more" className="relative mt-10">
+          <div className="relative mt-10">
             <h2 className="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               Why choose BlessHost's 360 Web Hosting for your website?
             </h2>
@@ -1127,11 +1123,12 @@ export default function WebHosting() {
               onClick={() => addProductToCart(plan, billingInterval)}
               className="mt-8 w-full bg-blue-50 border border-transparent rounded-md py-3 px-5 inline-flex items-center justify-center text-base font-medium text-blue-700 hover:bg-blue-100 sm:w-auto"
             >
-
               Order now
             </button>
             <a
-              href="#"
+              href="https://wa.me/+971544423111"
+              target="_blank"
+              rel="noreferrer noopener"
               className="mt-8 w-full bg-blue-600 border border-blue-600 rounded-md py-3 px-5 inline-flex items-center justify-center text-base font-medium text-gray-200 hover:bg-blue-700 sm:w-auto"
             >
               Chat with us

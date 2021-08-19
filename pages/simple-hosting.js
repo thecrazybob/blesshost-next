@@ -455,8 +455,9 @@ export default function SimpleHostingPage() {
                         </div>
 
                         <button
-
-                         onClick={() => addProductToCart(plan, billingInterval) }
+                          onClick={() =>
+                            addProductToCart(plan, billingInterval)
+                          }
                           className={classNames(
                             plan.featured
                               ? "bg-blue-600 text-white hover:bg-blue-700"
@@ -509,7 +510,7 @@ export default function SimpleHostingPage() {
       </div>
 
       {/* Alternating Features */}
-      <div className="pb-16 bg-gray-50 overflow-hidden">
+      <div id="more" className="pb-16 bg-gray-50 overflow-hidden">
         <div className="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
           <svg
             className="hidden lg:block absolute left-full transform -translate-x-1/2 -translate-y-1/4"
@@ -545,7 +546,7 @@ export default function SimpleHostingPage() {
             />
           </svg>
 
-          <div id="more" className="relative mt-10 lg:mt-16">
+          <div className="relative mt-10 lg:mt-16">
             <h2 className="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               Why choose our Simple Web Hosting for your website?
             </h2>

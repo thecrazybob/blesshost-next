@@ -590,7 +590,9 @@ export default function homePage({ homePosts }) {
             <div className="mt-8 mb-2">
               <div className="inline-flex rounded-md shadow">
                 <a
-                  href="#"
+                  href="https://wa.me/+971544423111"
+                  target="_blank"
+                  rel="noreferrer noopener"
                   className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50"
                 >
                   Chat with us
@@ -601,9 +603,6 @@ export default function homePage({ homePosts }) {
                 </a>
               </div>
             </div>
-            <span className="text-gray-300">
-              or if you prefer Call/WhatsApp +971 54 44 23 111
-            </span>
           </div>
         </div>
       </div>
