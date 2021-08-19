@@ -32,7 +32,9 @@ export default function CTAImage() {
                     <div className="mt-8 mb-2">
                         <div className="inline-flex rounded-md shadow">
                             <a
-                                href="#"
+                                href="https://wa.me/+971544423111"
+                                target="_blank"
+                                rel="noreferrer noopener"
                                 className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50"
                             >
                                 Chat with us
@@ -43,9 +45,6 @@ export default function CTAImage() {
                             </a>
                         </div>
                     </div>
-                    <span className="text-gray-300">
-                        or if you prefer WhatsApp +971-55-4012015
-                    </span>
                 </div>
             </div>
         </div>

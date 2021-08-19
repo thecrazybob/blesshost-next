@@ -17,7 +17,7 @@ const supportLinks = [
   },
   {
     name: "Live Chat",
-    href: "#",
+    href: "https://wa.me/+971544423111",
     description: "Average waiting time < 1 minute.",
     label: "Chat with us now!",
     icon: SupportIcon,
