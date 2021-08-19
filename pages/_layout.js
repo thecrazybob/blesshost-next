@@ -99,9 +99,9 @@ export default function Layout({ children }) {
 
       <div className="z-50 bottom-0 right-0 fixed">
         <WhatsAppWidget
-          companyName="Blesshost"
+          companyName="BlessHost"
           phoneNumber="971544423111"
-          textReplyTime="'Typically replies within an hour'"
+          textReplyTime="Typically replies within an hour"
         />
       </div>
 

@@ -131,7 +131,7 @@ export default function Checkout({ open, setOpen }) {
                       <div className="bg-white overflow-hidden shadow border border-gray-100 rounded-lg">
                         <div className="px-4 py-5 sm:p-6">
                           {/* Replace with your content */}
-                          {products.map((product, idx) => {
+                          {products.length > 1 ? products.map((product, idx) => {
                             total += +priceString({
                               pid: product?.pid,
                               term: product.billingInterval,
@@ -143,6 +143,7 @@ export default function Checkout({ open, setOpen }) {
                                 key={idx}
                                 className="p-2 flex bg-white hover:bg-gray-100 cursor-pointer "
                               >
+
                                 <div className="pr-2">
                                   <svg
                                     className="h-12 w-12 text-blue-500"
@@ -203,7 +204,7 @@ export default function Checkout({ open, setOpen }) {
                                 </div>
                               </div>
                             );
-                          })}
+                          }) : <p className="text-center"> Your Cart is Empty </p> }
                         </div>
                         <div className="bg-gray-50 px-4 py-4 sm:px-6 text-center">
                           <div className="font-bold py-2 flex flex-col space-y-2">
