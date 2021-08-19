@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { SelectorIcon } from "@heroicons/react/solid";
 import { useCurrency } from "../contexts/CurrencyContext.js";
+import Subscribe from "./Subscribe.js";
 
 const allCurrencies = [
   { symbol: "د.إ", name: "AED" },
@@ -335,28 +336,12 @@ export default function Footer() {
               The latest offers, articles, and resources, sent to your inbox.
             </p>
           </div>
-          <form className="mt-4 sm:flex sm:max-w-md lg:mt-0">
-            <label htmlFor="emailAddress" className="sr-only">
-              Email address
-            </label>
-            <input
-              type="email"
-              name="emailAddress"
-              id="emailAddress"
-              autoComplete="email"
-              required
-              className="appearance-none min-w-0 w-full bg-white border border-transparent rounded-md py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white focus:placeholder-gray-400 sm:max-w-xs"
-              placeholder="Enter your email"
-            />
-            <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-              <button
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-blue-500"
-              >
-                Subscribe
-              </button>
-            </div>
-          </form>
+
+
+            <Subscribe />
+
+
+
         </div>
         <div className="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
           <div className="flex space-x-6 md:order-3">
