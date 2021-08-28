@@ -32,6 +32,7 @@ export default function transfersPage() {
   const emailInput = useRef(null);
   const phoneInput = useRef(null);
   const domainInput = useRef(null);
+  const domainLoginUrlInput = useRef(null)
   const domainLoginInput = useRef(null);
   const domainPassInput = useRef(null);
   const hostingInput = useRef(null);
@@ -59,6 +60,7 @@ export default function transfersPage() {
               phone: phoneInput.current.value,
               domain_name: domainInput.current.value,
               domain_login: domainLoginInput.current.value,
+              domain_login_url:domainLoginUrlInput.current.value,
               domain_pass: domainPassInput.current.value,
               hosting_name: hostingInput.current.value,
               hosting_user: hostingUserInput.current.value,
@@ -88,6 +90,7 @@ export default function transfersPage() {
           emailInput.current.value = "";
           domainInput.current.value = "";
           domainLoginInput.current.value = "";
+          domainLoginUrlInput.current.value="";
           domainPassInput.current.value = "";
           hostingInput.current.value = "";
           hostingUserInput.current.value = "";
@@ -249,7 +252,7 @@ export default function transfersPage() {
                   <div className="mt-1">
                     <input
                       ref={domainLoginInput}
-                      type="text"
+                      type="url"
                       name="domain_login_url"
                       id="domain_login_url"
                       placeholder=""
@@ -309,7 +312,7 @@ export default function transfersPage() {
                   <div className="mt-1">
                     <input
                       ref={hostingInput}
-                      type="text"
+                      type="url"
                       name="hosting_login_url"
                       id="hosting_login_url"
                       placeholder=""

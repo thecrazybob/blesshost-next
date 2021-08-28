@@ -26,6 +26,7 @@ export default async (req, res) => {
       Phone: ${req.body.phone}
       Domain name: ${req.body.domain_name}
       Domain login: ${req.body.domain_login}
+      Domain login url:${req.body.domain_login_url},
       Domain pass: ${req.body.domain_pass}
       Hosting name: ${req.body.hosting_name}
       Hosting user: ${req.body.hosting_user}
