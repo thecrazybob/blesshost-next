@@ -4,7 +4,9 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {});
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    const { products } = req.body;
+    const { products, affiliate } = req.body;
+
+    console.log(affiliate);
 
     try {
       // Validate the amount that was passed from the client.
@@ -13,6 +15,7 @@ export default async function handler(req, res) {
         mode: "payment",
         payment_intent_data: {
           setup_future_usage: "off_session",
+          metadata: { affiliate_id: affiliate }
         },
         payment_method_types: ["card"],
         line_items: products,

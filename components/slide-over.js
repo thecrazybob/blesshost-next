@@ -6,6 +6,8 @@ import { useCurrency } from "../contexts/CurrencyContext";
 import priceString from "../lib/pricing";
 import { fetchPostJSON } from "../lib/stripe-helpers";
 import getStripe, { formatAmountForStripe } from "../lib/get-stripe";
+import { parseCookies } from 'nookies'
+
 
 export default function Checkout({ open, setOpen }) {
   const {
@@ -19,6 +21,9 @@ export default function Checkout({ open, setOpen }) {
   let total = 0.0;
 
   let maxDecimal = 2;
+
+  const cookies = parseCookies()
+
 
   //Stripe Checkout Button Handler
 
@@ -53,6 +58,7 @@ export default function Checkout({ open, setOpen }) {
     // Create a Checkout Session.
     const response = await fetchPostJSON("/api/checkout_sessions", {
       products: items,
+      affiliate: cookies.affiliate_id
     });
 
     if (response.statusCode === 500) {
