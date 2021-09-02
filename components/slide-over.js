@@ -6,8 +6,7 @@ import { useCurrency } from "../contexts/CurrencyContext";
 import priceString from "../lib/pricing";
 import { fetchPostJSON } from "../lib/stripe-helpers";
 import getStripe, { formatAmountForStripe } from "../lib/get-stripe";
-import { parseCookies } from 'nookies'
-
+import { parseCookies } from "nookies";
 
 export default function Checkout({ open, setOpen }) {
   const {
@@ -22,8 +21,9 @@ export default function Checkout({ open, setOpen }) {
 
   let maxDecimal = 2;
 
-  const cookies = parseCookies()
+  let object = {}
 
+  const cookies = parseCookies();
 
   //Stripe Checkout Button Handler
 
@@ -38,16 +38,20 @@ export default function Checkout({ open, setOpen }) {
           currency: currency.name,
           product_data: {
             name: product.title,
+            metadata: {
+              order_pid: product?.pid,
+              order_interval: product.billingInterval,
+            },
           },
           unit_amount: formatAmountForStripe(
-            (parseFloat(
+            parseFloat(
               priceString({
                 pid: product?.pid,
                 term: product.billingInterval,
                 currency: currency,
                 raw: true,
               })
-            )),
+            ),
             currency.name
           ),
         },
@@ -55,10 +59,18 @@ export default function Checkout({ open, setOpen }) {
       };
     });
 
+    const meta = products?.map((product) => {
+       object[product.pid] = product.billingInterval
+       return object
+      });
+
+
+
     // Create a Checkout Session.
     const response = await fetchPostJSON("/api/checkout_sessions", {
       products: items,
-      affiliate: cookies.affiliate_id
+      affiliate: cookies.affiliate_id,
+      meta : meta
     });
 
     if (response.statusCode === 500) {
@@ -201,12 +213,12 @@ export default function Checkout({ open, setOpen }) {
                                       </svg>
                                     </button>
                                     <div>
-                                    {currency.name} {``}
+                                      {currency.name} {``}
                                       {priceString({
                                         pid: product?.pid,
                                         term: product.billingInterval,
                                         currency: currency,
-                                        raw:true
+                                        raw: true,
                                       })}
                                     </div>
                                   </div>
@@ -271,7 +283,7 @@ export default function Checkout({ open, setOpen }) {
                               <div>
                                 {currency.name === "USD"
                                   ? format(0)
-                                  : format(0.05 * (total / 1.05 ))}
+                                  : format(0.05 * (total / 1.05))}
                               </div>
                             </div>
                             {/* <div className="flex justify-between pb--2 border-b border-gray-200">

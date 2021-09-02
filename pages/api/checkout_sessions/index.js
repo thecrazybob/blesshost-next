@@ -4,10 +4,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {});
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    const { products, affiliate } = req.body;
-
-    console.log(affiliate);
-
+    const { products, affiliate, meta } = req.body;
+    
     try {
       // Validate the amount that was passed from the client.
       // Create Checkout Sessions from body params.
@@ -21,6 +19,7 @@ export default async function handler(req, res) {
         line_items: products,
         success_url: `${req.headers.origin}/payment-result?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}`,
+        metadata : meta[0]
       };
       const checkoutSession = await stripe.checkout.sessions.create(params);
 
