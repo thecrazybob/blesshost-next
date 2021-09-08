@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import FAQSDark from "../components/faqs-dark";
 import CTASimple from "../components/cta-simple";
 
@@ -25,6 +26,83 @@ const faqs = [
   },
 ];
 export default function transfersPage() {
+  // 1. Create a reference to the input so we can fetch/clear it's value.
+  const firstNameInput = useRef(null);
+  const lastNameInput = useRef(null);
+  const emailInput = useRef(null);
+  const phoneInput = useRef(null);
+  const domainInput = useRef(null);
+  const domainLoginUrlInput = useRef(null)
+  const domainLoginInput = useRef(null);
+  const domainPassInput = useRef(null);
+  const hostingInput = useRef(null);
+  const hostingUserInput = useRef(null);
+  const hostingPassInput = useRef(null);
+
+  // 2. Hold a message in state to handle the response from our API.
+  const [message, setMessage] = useState("");
+
+  const contact = async (e) => {
+    e.preventDefault();
+
+    grecaptcha.ready(() => {
+      grecaptcha
+        .execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, {
+          action: "submit",
+        })
+        .then(async (token) => {
+          // 3. Send a request to our API with the user's email address.
+          const res = await fetch("/api/transfer", {
+            body: JSON.stringify({
+              first_name: firstNameInput.current.value,
+              last_name: lastNameInput.current.value,
+              email: emailInput.current.value,
+              phone: phoneInput.current.value,
+              domain_name: domainInput.current.value,
+              domain_login: domainLoginInput.current.value,
+              domain_login_url:domainLoginUrlInput.current.value,
+              domain_pass: domainPassInput.current.value,
+              hosting_name: hostingInput.current.value,
+              hosting_user: hostingUserInput.current.value,
+              hosting_pass: hostingPassInput.current.value,
+              recaptchaResponse: token,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+          });
+
+          const { error } = await res.json();
+
+          if (error) {
+            // 4. If there was an error, update the message in state.
+            setMessage(error);
+
+            return;
+          }
+
+          // 5. Clear the input value and show a success message.
+          firstNameInput.current.value = "";
+          lastNameInput.current.value = "";
+          emailInput.current.value = "";
+          phoneInput.current.value = "";
+          emailInput.current.value = "";
+          domainInput.current.value = "";
+          domainLoginInput.current.value = "";
+          domainLoginUrlInput.current.value="";
+          domainPassInput.current.value = "";
+          hostingInput.current.value = "";
+          hostingUserInput.current.value = "";
+          hostingPassInput.current.value = "";
+
+          setMessage(
+            "Success! 🎉 Our team will get back to you as soon as possible."
+          );
+        });
+    });
+  };
+
   return (
     <>
       <div className="relative bg-white">
@@ -37,7 +115,10 @@ export default function transfersPage() {
             />
           </div>
         </div>
-        <div className="relative py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto lg:py-32 lg:grid lg:grid-cols-2">
+        <div
+          id="form"
+          className="relative py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:max-w-7xl lg:mx-auto lg:py-32 lg:grid lg:grid-cols-2"
+        >
           <div className="lg:pr-8">
             <div className="max-w-md mx-auto sm:max-w-lg lg:mx-0">
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
@@ -48,9 +129,7 @@ export default function transfersPage() {
                 possible!
               </p>
               <form
-                id="form"
-                action="#"
-                method="POST"
+                onSubmit={contact}
                 className="mt-9 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
               >
                 {/* First Name */}
@@ -63,6 +142,7 @@ export default function transfersPage() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={firstNameInput}
                       type="text"
                       name="first_name"
                       id="first_name"
@@ -82,6 +162,7 @@ export default function transfersPage() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={lastNameInput}
                       type="text"
                       name="last_name"
                       id="last_name"
@@ -101,6 +182,7 @@ export default function transfersPage() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={emailInput}
                       id="email"
                       name="email"
                       type="email"
@@ -128,6 +210,7 @@ export default function transfersPage() {
                   </div>
                   <div className="mt-1">
                     <input
+                      ref={phoneInput}
                       type="text"
                       name="phone"
                       id="phone"
@@ -148,6 +231,7 @@ export default function transfersPage() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={domainInput}
                       type="text"
                       name="company"
                       id="company"
@@ -167,7 +251,8 @@ export default function transfersPage() {
                   </label>
                   <div className="mt-1">
                     <input
-                      type="text"
+                      ref={domainLoginInput}
+                      type="url"
                       name="domain_login_url"
                       id="domain_login_url"
                       placeholder=""
@@ -186,6 +271,7 @@ export default function transfersPage() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={domainLoginInput}
                       type="text"
                       name="domain_username"
                       id="domain_username"
@@ -205,7 +291,8 @@ export default function transfersPage() {
                   </label>
                   <div className="mt-1">
                     <input
-                      type="text"
+                      ref={domainPassInput}
+                      type="password"
                       name="domain_password"
                       id="domain_password"
                       autoComplete="family-name"
@@ -224,7 +311,8 @@ export default function transfersPage() {
                   </label>
                   <div className="mt-1">
                     <input
-                      type="text"
+                      ref={hostingInput}
+                      type="url"
                       name="hosting_login_url"
                       id="hosting_login_url"
                       placeholder=""
@@ -243,6 +331,7 @@ export default function transfersPage() {
                   </label>
                   <div className="mt-1">
                     <input
+                      ref={hostingUserInput}
                       type="text"
                       name="hosting_username"
                       id="hosting_username"
@@ -262,7 +351,8 @@ export default function transfersPage() {
                   </label>
                   <div className="mt-1">
                     <input
-                      type="text"
+                      ref={hostingPassInput}
+                      type="password"
                       name="hosting_password"
                       id="hosting_password"
                       autoComplete="family-name"

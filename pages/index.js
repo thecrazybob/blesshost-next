@@ -23,6 +23,9 @@ import Image from "next/image";
 import shouketImg from "../public/img/testimonials/shouket.jpg";
 import adnanImg from "../public/img/testimonials/adnan.jpg";
 import priceString from "../lib/pricing";
+import {useRouter} from "next/router";
+import { setCookie } from 'nookies'
+
 
 
 const features = [
@@ -83,6 +86,8 @@ export default function HomePage({ homePosts }) {
   const el = React.useRef(null);
   // Create reference to store the Typed instance itself
   const typed = React.useRef(null);
+  //Fetch params from url
+  const { query } = useRouter();
 
   React.useEffect(() => {
     const options = {
@@ -105,6 +110,12 @@ export default function HomePage({ homePosts }) {
   }, []);
 
   const { currency } = useCurrency();
+
+  if (query.aff ) {
+  setCookie(null, 'affiliate_id', query.aff, {
+    maxAge: 30 * 24 * 60 * 5
+  })}
+
 
   return (
     <>
