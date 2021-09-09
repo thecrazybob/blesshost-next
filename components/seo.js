@@ -14,7 +14,7 @@ export default function Seo({ seo }) {
         description: metaDesc,
         images: [
           {
-            url: opengraphImage?.sourceUrl ||opengraphImage(),
+            url: opengraphImage?.sourceUrl ||opengraphImage?.sourceUrl(),
           },
         ],
         site_name: "Blesshost",
