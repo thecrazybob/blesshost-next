@@ -22,8 +22,8 @@ const seo = {
   metaDesc:
     "If you are looking for a web design company to make a modern website then look no further we provide the best web design services in Dubai UAE",
   canonical: "https://blesshost.com/about",
-  opengraphImage: {sourceUrl: function(){return `https://og-image-six-pi.vercel.app/About?description=${seo.metaDesc}`}},
-};
+  opengraphImage: {sourceUrl: "https://og-image-six-pi.vercel.app/About?description=If you are looking for a web design company to make a modern website then look no further we provide the best web design services in Dubai UAE",
+}};
 
 const supportLinks = [
   {
