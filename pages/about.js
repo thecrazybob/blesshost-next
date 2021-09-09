@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import useSWR from "swr";
 import fetcher from "../lib/fetcher";
+import Seo from "../components/seo";
 
 import {
   NewspaperIcon,
@@ -15,6 +16,14 @@ const stats = [
   { label: "Beta Users", value: "521" },
   { label: "Raised", value: "$25M" },
 ];
+
+const seo = {
+  title: "Web Design & Web Hosting Company in Abu Dhabi and Dubai | BlessHost",
+  metaDesc:
+    "If you're looking for a web design company to make a modern website then look no further we provide the best web design services in Dubai UAE",
+  canonical: "https://blesshost.com/about",
+  opengraphImage: `https://og-image-six-pi.vercel.app/About?description=${this.metaDesc}`,
+};
 
 const supportLinks = [
   {
@@ -48,6 +57,7 @@ export default function aboutPage() {
 
   return (
     <>
+      <Seo seo={seo} />
       {/* Title and Cards section */}
       <div className="bg-white">
         {/* Header */}
@@ -116,7 +126,6 @@ export default function aboutPage() {
         </section>
       </div>
       {/* /Title and Cards Section */}
-
       <div className="relative mt-20">
         <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
           <div className="relative sm:py-16 lg:py-0">
@@ -240,7 +249,6 @@ export default function aboutPage() {
           </div>
         </div>
       </div>
-
       <div className="bg-gray-50 pt-12 sm:pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
@@ -288,7 +296,6 @@ export default function aboutPage() {
           </div>
         </div>
       </div>
-
       {/* Partners Logo Cloud */}
       <div className="bg-white">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
@@ -420,7 +427,6 @@ export default function aboutPage() {
         </div>
       </div>
       {/* /Partners Logo Cloud */}
-
       <section
         className="relative mb-10 bg-white"
         aria-labelledby="join-heading"
