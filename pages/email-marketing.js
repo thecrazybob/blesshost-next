@@ -6,6 +6,7 @@ import { useCurrency } from "../contexts/CurrencyContext";
 import Pricing from "../components/pricing-three-tier";
 import { CheckIcon } from "@heroicons/react/outline";
 import FeaturesTick from "../components/features-tick";
+import Seo from "../components/seo";
 
 const features = [
   {
@@ -109,6 +110,20 @@ const pricing = {
   ],
 };
 
+const seo = {
+  pageTitle: "Email Marketing",
+  title:
+    "We offer best email marketing services in Abu Dhabi & Dubai | BlessHost",
+  metaDesc:
+    "Email Marketing in Dubai is the best way to reach customers with a 300% ROI. Reach customers directly and land your email in the inbox. ",
+  keywords:
+    "best email marketing companies in dubai, email marketing price in dubai, bulk email marketing dubai, email marketing agency dubai",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
+
 export default function emailMarketingPage() {
   const [tier, setTier] = useState(pricing.tiers[0]);
   const [billingInterval, setBillingInterval] = useState("monthly");
@@ -116,6 +131,8 @@ export default function emailMarketingPage() {
 
   return (
     <>
+      <Seo seo={seo} />
+
       {/* Hero */}
       <div className="md:h-[screen-wh] bg-gradient-to-b from-blue-400 md:bg-gradient-conic-b md:from-white via-blue-500 to-blue-700">
         <div className="text-center md:text-left mx-auto max-w-7xl px-4 sm:px-6 h-full ">

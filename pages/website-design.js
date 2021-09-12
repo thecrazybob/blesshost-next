@@ -4,7 +4,7 @@ import ContactForm from "../components/contact-form";
 import FAQSDark from "../components/faqs-dark";
 import CTASimple from "../components/cta-simple";
 import Testimonials from "../components/testimonials";
-
+import Seo from "../components/seo";
 import buildzone from "../public/img/portfolio/buildzone.ae.jpeg";
 import workshoponwheels from "../public/img/portfolio/workshoponwheels.ae.jpeg";
 import fosscape from "../public/img/portfolio/fosscape.com.jpeg";
@@ -81,6 +81,19 @@ const thirdFeatures = [
     name: "Thoroughly tested pre and post-launching for best performance",
   },
 ];
+
+const seo = {
+  pageTitle: "Website Design",
+  title: "Website Design company in Dubai and Abu Dhabi | Blesshost",
+  metaDesc:
+    "We have an in-house team of web developers for creating great website designs located in both Abu Dhabi and Dubai. Get a free quote now!",
+  keywords:
+    "website design abu dhabi, website design uae, website design company, website design company in dubai",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 import {
   AdjustmentsIcon,
@@ -159,6 +172,7 @@ const portfolio = [
 export default function websiteDesignPage() {
   return (
     <>
+      <Seo seo={seo} />
       <div className="lg:h-[screen-wh] bg-gradient-to-t from-blue-400 lg:from-blue-600 via-blue-600 to-blue-700">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 h-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-8 h-full items-center">

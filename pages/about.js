@@ -18,12 +18,18 @@ const stats = [
 ];
 
 const seo = {
-  title: "Web Design & Web Hosting Company in Abu Dhabi and Dubai | BlessHost",
-  metaDesc:
-    "If you are looking for a web design company to make a modern website then look no further we provide the best web design services in Dubai UAE",
-  canonical: "https://blesshost.com/about",
-  opengraphImage: {sourceUrl: "https://og-image-six-pi.vercel.app/About?description=If you are looking for a web design company to make a modern website then look no further we provide the best web design services in Dubai UAE",
-}};
+    pageTitle: "About",
+    title: "Web Design & Web Hosting Company in Abu Dhabi and Dubai | BlessHost",
+    metaDesc: "If you are looking for a web design company to make a modern website then look no further we provide the best web design services in Dubai UAE",
+    keywords: "web design agency dubai, best web design company in dubai, web design company dubai, freelance web designer dubai",
+    opengraphImage: {}
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`
+
+
+
 
 const supportLinks = [
   {

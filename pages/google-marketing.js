@@ -4,6 +4,7 @@ import Testimonials from "../components/testimonials";
 import { useState } from "react";
 import { useCurrency } from "../contexts/CurrencyContext";
 import Pricing from "../components/pricing-three-tier";
+import Seo from "../components/seo";
 
 const pricing = {
   tiers: [
@@ -63,6 +64,19 @@ const pricing = {
   ],
 };
 
+const seo = {
+  pageTitle: "Google Marketing",
+  title: "Google Marketing Agency, Get more leads with google Ads | BlessHost",
+  metaDesc:
+    "Get your words right, appear at the top of google search & get leads with google marketing. Choose the plan that meets your marketing needs.",
+  keywords:
+    "google digital marketing, google maps marketing, google ads marketing agency, google ads",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
+
 export default function googleMarketingPage() {
   const [tier, setTier] = useState(pricing.tiers[0]);
   const [billingInterval, setBillingInterval] = useState("monthly");
@@ -70,6 +84,8 @@ export default function googleMarketingPage() {
 
   return (
     <>
+      <Seo seo={seo} />
+
       {/* Hero */}
       <div className="md:h-[screen-wh] bg-gradient-to-b from-blue-400 md:bg-gradient-conic-b md:from-white via-blue-500 to-blue-700">
         <div className="text-center md:text-left mx-auto max-w-7xl px-4 sm:px-6 h-full ">
