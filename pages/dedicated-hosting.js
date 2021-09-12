@@ -216,14 +216,12 @@ const tiersGermany = [
 ];
 
 const seo = {
-  pageTitle: "Careers",
-  title: "Web design jobs at Leading IT company in UAE, Apply now! | Blesshost",
-  metaDesc:
-    "If you are looking for PHP Developer and looking to enhance your career, join us at BlessHost. We have vacancies for web design jobs. ",
-  keywords:
-    "web designing jobs in dubai, website design, php developer, web designer",
-  opengraphImage: {},
-};
+    pageTitle: "Dedicated Hosting",
+    title: "Dedicated hosting servers in multiple locations | BlessHost",
+    metaDesc: "Affordable dedicated Hosting servers in Middle East, Europe, Asia and America. We provide managed dedicated web hosting with no extra cost. ",
+    keywords: "affordable dedicated hosting, dedicated server hosting europe, managed dedicated server web hosting, affordable dedicated server hosting",
+    opengraphImage: {}
+  };
 
 seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
 seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
