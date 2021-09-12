@@ -284,8 +284,7 @@ export default function VpsHostingPage({ homePosts }) {
                       Powerful
                     </span>
                     <span className="pb-3 sm:pb-5 block">
-                      {" "}
-                      Dedicated Servers
+                     Dedicated Servers
                     </span>
                   </h1>
                   <p className="text-base text-gray-300 sm:text-xl lg:text-lg xl:text-xl">
@@ -657,12 +656,12 @@ export default function VpsHostingPage({ homePosts }) {
                             term: billingInterval,
                             monthlyPricing: true,
                           })}
-                        </span>{" "}
+                        </span>
                         <span className="text-base font-medium text-gray-500">
                           / mo
                         </span>
                         <span className="text-base block font-medium text-gray-500">
-                          (Billed{" "}
+                          (Billed
                           {terms
                             .find((term) => term.id == billingInterval)
                             .name.toLowerCase()}
@@ -677,7 +676,7 @@ export default function VpsHostingPage({ homePosts }) {
                           <div className="relative mt-1">
                             <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md border cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
                               <Listbox.Label className="block text-sm font-medium text-gray-700">
-                                Billing Cycle:{" "}
+                                Billing Cycle:
                                 {
                                   terms.find(
                                     (term) => term.id == billingInterval
@@ -752,8 +751,7 @@ export default function VpsHostingPage({ homePosts }) {
                         onClick={() => addProductToCart(tier, billingInterval)}
                         className="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
                       >
-                        {" "}
-                        Buy {tier.name}{" "}
+                        Buy {tier.name}
                       </button>
                     </div>
                     <div className="pt-6 pb-8 px-6">
@@ -889,7 +887,7 @@ export default function VpsHostingPage({ homePosts }) {
                           })}
                         </span>
                         <span className="text-base leading-6 font-medium text-gray-500">
-                          / mo (Billed{" "}
+                          / mo (Billed
                           {terms
                             .find((term) => term.id == billingInterval)
                             .name.toLowerCase()}

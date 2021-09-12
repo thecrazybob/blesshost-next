@@ -1,4 +1,5 @@
 import TitleBar from "../components/title-bar";
+import Seo from "../components/seo";
 
 const colors = [
   {
@@ -94,97 +95,116 @@ const files = [
   },
 ];
 
+const seo = {
+  pageTitle: "Media",
+  title: "Our Identity, brand guidelines and media kit | BlessHost",
+  metaDesc:
+    "Download our logos, banners, and brand colors from the official BlessHost media kit which is designed to perfection by our designers. ",
+  keywords:
+    "blesshost logos, blesshost graphics. Blesshost, blesshost banners, blesshost brand guidelines",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
+
 export default function mediaPage() {
   return (
-    <div className="text-center md:text-left mb-16 lg:mt-0 mx-auto max-w-7xl px-4 sm:px-6">
-      <TitleBar
-        subheading="About BlessHost"
-        title="Media Kit"
-        description="You can find a wide variety of our logos and banners designed to the perfection by the best of our designers."
-      />
-      <div>
-        <ul
-          role="list"
-          className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
-        >
-          {files.map((file) => (
-            <li key={file.source} className="relative">
-              <div
-                className={`${
-                  file.dark === true ? "bg-gray-800" : "bg-gray-100"
-                } group block w-full aspect-w-10 aspect-h-7 rounded-lg focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-blue-500 overflow-hidden`}
-              >
-                <img
-                  src={file.source}
-                  alt={file.title}
-                  className="px-6 pointer-events-none group-hover:opacity-75"
-                />
-                <a
-                  href={file.source}
-                  className="absolute inset-0 focus:outline-none"
-                >
-                  <span className="sr-only">View details for {file.title}</span>
-                </a>
-              </div>
-              <p className="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">
-                {file.title}
-              </p>
-              <p className="block text-sm font-medium text-gray-500">
-                <a
-                  download
-                  className="hover:border-b border-gray-800 transition-all ease-in-out duration-75"
-                  href={file.svg}
-                >
-                  SVG
-                </a>{" "}
-                <a
-                  download
-                  className="hover:border-b border-gray-800 transition-all ease-in-out duration-75"
-                  href={file.png}
-                >
-                  PNG
-                </a>
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <TitleBar
-        title="Brand Colors"
-        description="The amazing colors we use that make up our identity"
-        subheading="Media Kit"
-      />
-      <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {colors.map((color) => (
-          <div
-            key={color.name}
-            className="rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400"
+    <>
+      <Seo seo={seo} />
+
+      <div className="text-center md:text-left mb-16 lg:mt-0 mx-auto max-w-7xl px-4 sm:px-6">
+        <TitleBar
+          subheading="About BlessHost"
+          title="Media Kit"
+          description="You can find a wide variety of our logos and banners designed to the perfection by the best of our designers."
+        />
+        <div>
+          <ul
+            role="list"
+            className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
           >
-            <div className="flex-shrink-0">
-              <div className={`h-10 w-10 rounded-full ${color.class}`} />
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="focus:outline-none">
-                <p className="text-sm font-medium text-gray-900">
-                  {color.name}
+            {files.map((file) => (
+              <li key={file.source} className="relative">
+                <div
+                  className={`${
+                    file.dark === true ? "bg-gray-800" : "bg-gray-100"
+                  } group block w-full aspect-w-10 aspect-h-7 rounded-lg focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-blue-500 overflow-hidden`}
+                >
+                  <img
+                    src={file.source}
+                    alt={file.title}
+                    className="px-6 pointer-events-none group-hover:opacity-75"
+                  />
+                  <a
+                    href={file.source}
+                    className="absolute inset-0 focus:outline-none"
+                  >
+                    <span className="sr-only">
+                      View details for {file.title}
+                    </span>
+                  </a>
+                </div>
+                <p className="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">
+                  {file.title}
                 </p>
-                <p className="text-sm text-gray-500 truncate uppercase">
-                  {color.hex}
+                <p className="block text-sm font-medium text-gray-500">
+                  <a
+                    download
+                    className="hover:border-b border-gray-800 transition-all ease-in-out duration-75"
+                    href={file.svg}
+                  >
+                    SVG
+                  </a>{" "}
+                  <a
+                    download
+                    className="hover:border-b border-gray-800 transition-all ease-in-out duration-75"
+                    href={file.png}
+                  >
+                    PNG
+                  </a>
                 </p>
-              </div>
-            </div>
-            <button
-              onClick={() => {
-                navigator.clipboard.writeText(color.hex);
-              }}
-              type="button"
-              className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              </li>
+            ))}
+          </ul>
+        </div>
+        <TitleBar
+          title="Brand Colors"
+          description="The amazing colors we use that make up our identity"
+          subheading="Media Kit"
+        />
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {colors.map((color) => (
+            <div
+              key={color.name}
+              className="rounded-lg border border-gray-300 bg-white px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400"
             >
-              Copy to clipboard
-            </button>
-          </div>
-        ))}
+              <div className="flex-shrink-0">
+                <div className={`h-10 w-10 rounded-full ${color.class}`} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="focus:outline-none">
+                  <p className="text-sm font-medium text-gray-900">
+                    {color.name}
+                  </p>
+                  <p className="text-sm text-gray-500 truncate uppercase">
+                    {color.hex}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(color.hex);
+                }}
+                type="button"
+                className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              >
+                Copy to clipboard
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

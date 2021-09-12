@@ -183,7 +183,7 @@ export default function websiteDesignPage() {
                 </span>
                 <span className="mt-1 block text-5xl tracking-tight font-extrabold">
                   <span className="text-gray-200">
-                    Need your window to the world?{" "}
+                    Need your window to the world?
                   </span>
                   <span className="block text-gray-900">
                     We are experts in website design and development

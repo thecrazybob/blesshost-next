@@ -16,6 +16,7 @@ import {
   SupportIcon,
 } from "@heroicons/react/outline";
 import Image from "next/image";
+import Seo from "../components/seo";
 
 const firstFeatures = [
   {
@@ -166,6 +167,19 @@ const faqs = [
   },
 ];
 
+const seo = {
+  pageTitle: "Seo",
+  title: "Best SEO company with branches in Abu Dhabi & Dubai | BlessHost",
+  metaDesc:
+    'We offer search engine optimization "SEO" services in UAE that provide comprehensive search engine marketing results.',
+  keywords:
+    "seo company dubai, seo company, best seo company in dubai, seo company in uae",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
+
 import { useCurrency } from "../contexts/CurrencyContext";
 
 export default function seoPage() {
@@ -180,6 +194,8 @@ export default function seoPage() {
 
   return (
     <>
+      <Seo seo={seo} />
+
       <div className="md:h-[screen-wh] bg-gradient-to-b md:bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900">
         <main className="pt-16 lg:pt-32 mx-auto max-w-7xl sm:pb-24 lg:pb-32 h-full">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center h-full">
@@ -190,7 +206,7 @@ export default function seoPage() {
                 </span>
                 <span className="mt-1 block text-4xl tracking-tight font-extrabold sm:text-5xl xl:text-6xl">
                   <span className="block text-gray-200">
-                    Appear on the{" "}
+                    Appear on the
                     <span className="block text-blue-300">
                       first-page of Google
                     </span>

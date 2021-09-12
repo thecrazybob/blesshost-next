@@ -10,10 +10,10 @@ export default function Example() {
         Customers) ("Users" or "You") private and secure. BlessHost adheres to
         the U.S.-Swiss Safe Harbor Framework as well as the Safe Harbor
         Principles as agreed to and set forth by the United States Department of
-        Commerce and the European Union ("EU"),{" "}
+        Commerce and the European Union ("EU"),
         <a href="http://www.export.gov/safeharbor/.">
           http://www.export.gov/safeharbor/.
-        </a>{" "}
+        </a>
         To demonstrate our firm commitment to privacy, the following agreement
         has been created to explain our policies and procedures in relation to
         all data collected. In this Privacy Agreement ("PA") we describe the
@@ -272,10 +272,10 @@ export default function Example() {
             you should carefully consider whether you wish to submit data and
             should tailor any other content submitted accordingly. Billing
             panel, Customer Customization, Preferences and Opt-Out New Customers
-            are automatically registered for access at{" "}
+            are automatically registered for access at
             <a href="https://manage.BlessHost.com.">
               https://manage.BlessHost.com.
-            </a>{" "}
+            </a>
             The billing panel allows Customers the ability to create users,
             add/delete users, add/delete user privileges and opt in (or out) of
             Services and mailing lists. The billing panel provides the Customers

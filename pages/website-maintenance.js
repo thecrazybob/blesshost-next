@@ -1,4 +1,21 @@
 import CTASimple from "../components/cta-simple";
+import Testimonials from "../components/testimonials";
+import { useCurrency } from "../contexts/CurrencyContext";
+import { useState } from "react";
+import Pricing from "../components/pricing-three-tier";
+import ContactForm from "../components/contact-form";
+import Seo from "../components/seo";
+import {
+  AdjustmentsIcon,
+  CheckIcon,
+  DocumentReportIcon,
+  DocumentSearchIcon,
+  DocumentTextIcon,
+  LinkIcon,
+  PresentationChartLineIcon,
+  SupportIcon,
+} from "@heroicons/react/outline";
+
 const firstFeatures = [
   {
     id: 1,
@@ -62,20 +79,6 @@ const thirdFeatures = [
   },
 ];
 
-import {
-  AdjustmentsIcon,
-  CheckIcon,
-  DocumentReportIcon,
-  DocumentSearchIcon,
-  DocumentTextIcon,
-  LinkIcon,
-  PresentationChartLineIcon,
-  SupportIcon,
-} from "@heroicons/react/outline";
-
-import Testimonials from "../components/testimonials";
-import { useCurrency } from "../contexts/CurrencyContext";
-
 const pricing = {
   tiers: [
     {
@@ -127,17 +130,28 @@ const pricing = {
     },
   ],
 };
-import { useState } from "react";
-import Pricing from "../components/pricing-three-tier";
-import ContactForm from "../components/contact-form";
 
-export default function websiteMaintenancePage() {
+const seo = {
+  pageTitle: "Website Maintenance",
+  title: "Cost Effective Website Maintenance Company in UAE | BlessHost",
+  metaDesc:
+    "Starting from a professional web design to effective website maintenance at an affordable cost. Enquire now to get a discounted rate. ",
+  keywords:
+    "average monthly website maintenance fees, web design and maintenance cost, custom website services, affordable custom websites",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
+
+export default function WebsiteMaintenancePage() {
   const [tier, setTier] = useState(pricing.tiers[0]);
   const [billingInterval, setBillingInterval] = useState("monthly");
   const { currency, setCurrency } = useCurrency("");
 
   return (
     <>
+      <Seo seo={seo} />
       {/* Hero */}
       <div className="lg:h-[screen-wh] bg-gradient-to-r from-blue-800 to-blue-600">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 h-full">

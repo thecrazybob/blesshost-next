@@ -1,3 +1,5 @@
+import Testimonials from "../components/testimonials";
+import priceString from "../lib/pricing";
 import Image from "next/image";
 import {
   HeartIcon,
@@ -15,6 +17,9 @@ import {
 import Link from "next/link";
 import { useCart } from "../contexts/CartContext";
 import FeaturesGradient from "../components/features-gradient";
+import Seo from "../components/seo";
+import { useState } from "react";
+import { useCurrency } from "../contexts/CurrencyContext";
 
 const plan = {
   pid: 91,
@@ -111,8 +116,6 @@ const faqs = [
       "You can pay via any VISA / Mastercard card, PayPal or Bitcoin (and other popular cryptocurrencies such as ETH).",
   },
 ];
-import Testimonials from "../components/testimonials";
-import priceString from "../lib/pricing";
 const gradientFeatures = [
   {
     name: "SSD Storage",
@@ -163,8 +166,19 @@ const gradientFeatures = [
     icon: TruckIcon,
   },
 ];
-import { useState } from "react";
-import { useCurrency } from "../contexts/CurrencyContext";
+
+const seo = {
+  pageTitle: "Web Hosting",
+  title: "Web hosting Dubai, Best Web Hosting in UAE | BlessHost Abu Dhabi",
+  metaDesc:
+    "BlessHost is one of the best web hosting companies with physical offices in Abu Dhabi and Dubai. Try our Web Hosting risk-free for 1 month. ",
+  keywords:
+    "web hosting dubai, web hosting uae, best web hosting in uae, web hosting companies in abu dhabi, web hosting abu dhabi",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 export default function WebHosting() {
   const [billingInterval, setBillingInterval] = useState("annually");
@@ -173,6 +187,7 @@ export default function WebHosting() {
 
   return (
     <>
+      <Seo seo={seo} />
       {/* Hero */}
       <div className="lg:h-[screen-wh] bg-gradient-to-l from-blue-700 to-blue-900">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 h-full">
