@@ -3,6 +3,7 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 import WhatsAppWidget from "react-whatsapp-widget";
 import "react-whatsapp-widget/dist/index.css";
+import Script from "next/script";
 
 export default function Layout({ children }) {
   return (
@@ -106,10 +107,9 @@ export default function Layout({ children }) {
       </div>
 
       <Footer></Footer>
-      <script
+      <Script
         src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-        async
-        defer
+        strategy="lazyOnload"
       />
     </>
   );
