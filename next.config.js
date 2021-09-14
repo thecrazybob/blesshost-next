@@ -1,5 +1,6 @@
 // next.config.js
 const createNextPluginPreval = require("next-plugin-preval/config");
+const generateRobotsTxt = require("./scripts/generate-robots-txt");
 const withNextPluginPreval = createNextPluginPreval();
 
 module.exports = withNextPluginPreval({
@@ -14,5 +15,11 @@ module.exports = withNextPluginPreval({
     // Warning: Dangerously allow production builds to successfully complete even if
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
+  },
+  webpack(config, { isServer }) {
+    if (isServer) {
+      generateRobotsTxt();
+    }
+    return config;
   },
 });
