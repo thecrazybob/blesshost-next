@@ -91,7 +91,7 @@ export default function ContactForm({ tier, setTier, plans, term, currency }) {
               email: emailInput.current.value,
               phone: phoneInput.current.value,
               message: messageInput.current.value,
-              plan: `${tier.title} - ${tier.description} PID: ${tier.pid}`,
+              plan: `${tier?.title} - ${tier?.description} PID: ${tier?.pid}`,
               recaptchaResponse: token,
             }),
             headers: {
