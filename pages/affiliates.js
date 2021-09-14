@@ -8,6 +8,8 @@ import {
   ShareIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
+import Seo from "../components/seo";
+
 const firstFeatures = [
   {
     id: 1,
@@ -103,9 +105,22 @@ const faqs = [
   },
 ];
 
+const seo = {
+    pageTitle: "Affiliates",
+    title: "Web hosting affiliate program with great rewards on every order | Blesshost ",
+    metaDesc: "Our web hosting affiliate program is a great way to get paid by recommending BlessHost. Refer and earn cash, Get $10 just for signing up.",
+    keywords: "earn by referring, earn money by referring friends, recommending blesshost, web design affiliate",
+    opengraphImage: {}
+  }
+
+  seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+  seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`
+
 export default function affiliatesPage() {
   return (
     <>
+      <Seo seo={seo} />
+
       {/* Hero */}
       <div className="bg-gradient-to-b md:bg-gradient-to-l from-blue-700 to-gray-900">
         <div className="text-center md:text-left sm:py-4 md:py-20 mx-auto max-w-7xl px-4 sm:px-6">

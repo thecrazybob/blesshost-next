@@ -1,5 +1,20 @@
 import ContactForm from "../components/contact-form";
 import { useState } from "react";
+import Seo from "../components/seo";
+import FAQSDark from "../components/faqs-dark";
+import {
+  CashIcon,
+  ChartSquareBarIcon,
+  CurrencyDollarIcon,
+  DocumentTextIcon,
+  LinkIcon,
+  ShareIcon,
+  ShoppingCartIcon,
+} from "@heroicons/react/outline";
+import Testimonials from "../components/testimonials";
+import Pricing from "../components/pricing-three-tier";
+import { useCurrency } from "../contexts/CurrencyContext.js";
+
 const pricing = {
   tiers: [
     {
@@ -53,19 +68,6 @@ const pricing = {
     },
   ],
 };
-
-import FAQSDark from "../components/faqs-dark";
-import {
-  CashIcon,
-  ChartSquareBarIcon,
-  CurrencyDollarIcon,
-  DocumentTextIcon,
-  LinkIcon,
-  ShareIcon,
-  ShoppingCartIcon,
-} from "@heroicons/react/outline";
-import Testimonials from "../components/testimonials";
-import Pricing from "../components/pricing-three-tier";
 
 const firstFeatures = [
   {
@@ -161,9 +163,21 @@ const faqs = [
       "There are no limits to the amount of money you can make through our affiliate program.",
   },
 ];
-import { useCurrency } from "../contexts/CurrencyContext.js";
 
-export default function socialMediaPage() {
+const seo = {
+  pageTitle: "Social Media",
+  title: "Affordable Social Media Marketing Company Dubai | BlessHost",
+  metaDesc:
+    "We have a creative team of social media specialists based in Abu Dhabi and Dubai with affordable pricing plans. Get exposure through SMM.  ",
+  keywords:
+    "affordable social media management, social media marketing dubai, social media marketing agency, social media marketing abu dhabi",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
+
+export default function SocialMediaPage() {
   const [tier, setTier] = useState(pricing.tiers[0]);
 
   const [billingInterval, setBillingInterval] = useState("monthly");
@@ -171,6 +185,8 @@ export default function socialMediaPage() {
 
   return (
     <>
+      <Seo seo={seo} />
+
       {/* Hero */}
       <div className="md:h-[screen-wh] bg-gradient-to-b md:bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900">
         <div className="text-center md:text-left sm:py-4 md:py-20 mx-auto max-w-7xl px-4 sm:px-6 h-full">

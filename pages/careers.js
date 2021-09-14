@@ -1,5 +1,6 @@
 import { CheckIcon } from "@heroicons/react/outline";
 import Link from "next/link";
+import Seo from "../components/seo";
 
 const jobs = [
   {
@@ -36,9 +37,24 @@ const jobs = [
   },
 ];
 
+const seo = {
+  pageTitle: "Careers",
+  title: "Web design jobs at Leading IT company in UAE, Apply now! | Blesshost",
+  metaDesc:
+    "If you are looking for PHP Developer and looking to enhance your career, join us at BlessHost. We have vacancies for web design jobs. ",
+  keywords:
+    "web designing jobs in dubai, website design, php developer, web designer",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
+
 export default function careersPage() {
   return (
     <>
+      <Seo seo={seo} />
+
       {/* Title Section */}
       <div className="relative bg-gray-800">
         <div className="absolute inset-0">

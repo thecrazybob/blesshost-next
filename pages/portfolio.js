@@ -57,6 +57,7 @@ import truststore from "../public/img/portfolio/bless-_0024_truststore-min.jpg";
 import nsfatma from "../public/img/portfolio/bless-_0025_Nsfatma-min.jpg";
 import mangroveuae from "../public/img/portfolio/bless-_0026_Mangrove-min.jpg";
 import areejaldar from "../public/img/portfolio/bless-_0027_Areej-min.jpg";
+import Seo from "../components/seo";
 
 const portfolio = [
   {
@@ -466,9 +467,25 @@ const portfolio = [
     image: areejaldar,
   },
 ];
+
+const seo = {
+  pageTitle: "Portfolio",
+  title: "View our extensive list of web design portfolio | BlessHost",
+  metaDesc:
+    "BlessHost's portfolio is full of great designs. It's hard to decide which web design agency to choose, but our portfolio makes it simple. ",
+  keywords:
+    "which web design company, web design agency, best web design company in dubai, web design agency dubai",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
+
 export default function Page() {
   return (
     <>
+      <Seo seo={seo} />
+
       <div className="relative bg-blue-800">
         <div className="absolute inset-0">
           <img

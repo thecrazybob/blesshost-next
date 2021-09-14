@@ -4,6 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import lauraImg from "../public/img/testimonials/laura.jpg";
 import madianImg from "../public/img/testimonials/madian.jpg";
+import Seo from "../components/seo";
+import { useState } from "react";
+import priceString from "../lib/pricing";
+import { useCurrency } from "../contexts/CurrencyContext";
+import { useCart } from "../contexts/CartContext";
 
 const plans = [
   {
@@ -201,14 +206,22 @@ const faqs = [
   },
 ];
 
+const seo = {
+  pageTitle: "Dedicated Support",
+  title: "Dedicated support services for hosting management | BlessHost",
+  metaDesc:
+    "We provide dedicated support services via emails, live chats, phone calls, and even office visits. Simple pricing with no commitments.",
+  keywords:
+    "dedicated support services, dedicated customer support, dedicated support, dedicated support team",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-
-import { useState } from "react";
-import priceString from "../lib/pricing";
-import { useCurrency } from "../contexts/CurrencyContext";
-import { useCart } from "../contexts/CartContext";
 
 export default function DedicatedSupportPage() {
   const { addProductToCart } = useCart();
@@ -228,6 +241,7 @@ export default function DedicatedSupportPage() {
 
   return (
     <>
+      <Seo seo={seo} />
       {/* Hero card */}
       <div className="relative bg-white">
         <div className="absolute inset-x-0 bottom-0 h-1/2" />
@@ -388,7 +402,7 @@ export default function DedicatedSupportPage() {
                             >
                               {`Billed ${
                                 plan.pid != "-2" ? billingInterval : "never"
-                              }`}{" "}
+                              }`}
                               (
                               {priceString({
                                 pid: plan.pid,

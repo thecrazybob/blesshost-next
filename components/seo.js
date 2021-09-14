@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo";
 
 export default function Seo({ seo }) {
-  const { title, metaDesc, canonical, opengraphImage } = seo;
+  const { title, metaDesc, canonical, opengraphImage, keywords } = seo;
 
   return (
     <NextSeo
@@ -24,6 +24,10 @@ export default function Seo({ seo }) {
         site: "@blesshost",
         cardType: "summary_large_image",
       }}
+      additionalMetaTags={[{
+        property:'keywords',
+        context: keywords
+      }]}
     />
   );
 }

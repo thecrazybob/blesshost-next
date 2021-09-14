@@ -16,6 +16,9 @@ import {
 import priceString from "../lib/pricing";
 import { useState } from "react";
 import { useCurrency } from "../contexts/CurrencyContext";
+import Seo from "../components/seo";
+import WHMCSLink from "../components/whmcs-link";
+
 const includedFeatures = [
   "30 GB Cloud Email Storage",
   "Business email addresse (name@yourdomain.com)",
@@ -131,7 +134,19 @@ const features = [
     icon: ChatIcon,
   },
 ];
-import WHMCSLink from "../components/whmcs-link";
+
+const seo = {
+  pageTitle: "Google Workspace",
+  title: "Buy Google Workspace in Dubai & Abu Dhabi | BlessHost",
+  metaDesc:
+    "Get Google Workspace Emails & Collaboration suite including Google Meet & Docs in the UAE. BlessHost is an authorized Google Partner.",
+  keywords:
+    "what is a google workspace, workspace google, google workspace, google workspace UAE",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 export default function GoogleWorkspacePage() {
   const [billingInterval, setBillingInterval] = useState("annually");
@@ -140,6 +155,8 @@ export default function GoogleWorkspacePage() {
 
   return (
     <>
+      <Seo seo={seo} />
+
       <div className="bg-gray-100">
         <div className="pt-12 sm:pt-16 lg:pt-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

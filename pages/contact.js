@@ -6,6 +6,7 @@ import {
   SupportIcon,
 } from "@heroicons/react/outline";
 import ContactForm from "../components/contact-form";
+import Seo from "../components/seo";
 
 const supportLinks = [
   {
@@ -38,9 +39,23 @@ const supportLinks = [
   },
 ];
 
+const seo = {
+  pageTitle: "Contact",
+  title: "Web hosting and web design company with 24/7 support | Blesshost",
+  metaDesc:
+    "Contact our company for web Hosting, Domain Registration, 24x7 support, server provisioning, and website development in Abu Dhabi and Dubai. ",
+  keywords:
+    "contact blesshost, Website Development, web hosting companies in abu dhabi",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
+
 export default function Page() {
   return (
     <>
+      <Seo seo={seo} />
       <div className="bg-gray-100">
         <div className="relative pb-32 bg-gray-800">
           <div className="absolute inset-0">

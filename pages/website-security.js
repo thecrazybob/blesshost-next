@@ -1,4 +1,4 @@
-import {useState } from "react";
+import { useState } from "react";
 import { useCart } from "../contexts/CartContext";
 import CTASimple from "../components/cta-simple";
 import GradientFeatures from "../components/features-gradient";
@@ -16,12 +16,14 @@ import {
   ShoppingBagIcon,
   SupportIcon,
 } from "@heroicons/react/outline";
+import Seo from "../components/seo";
 
 const plan = {
-    pid:201,
-    name:"Website Security",
-    description:"Security service that protects your website against malware and hacker exploits"
-}
+  pid: 201,
+  name: "Website Security",
+  description:
+    "Security service that protects your website against malware and hacker exploits",
+};
 
 const features = [
   {
@@ -104,18 +106,27 @@ const checklist = [
   "24x7 Support",
 ];
 
+const seo = {
+  pageTitle: "Website Security",
+  title: "Best Website Security and Secure Firewall for WordPress | BlessHost",
+  metaDesc:
+    "We provide the best website security, restore websites, secure web VPN, and Website firewall for WordPress. ",
+  keywords:
+    "best website security, restore website, secure web vpn, website firewall, website firewall wordpress",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 export default function WebsiteSecurityPage() {
   const { currency } = useCurrency();
   const { addProductToCart } = useCart();
   const [billingInterval] = useState("annually");
 
-
-
-
-
   return (
     <>
+      <Seo seo={seo} />
       {/* Hero */}
       <div className="h-[screen-wh]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 h-full">
@@ -124,9 +135,7 @@ export default function WebsiteSecurityPage() {
               <div className="text-center md:text-left">
                 <h1 className="text-4xl tracking-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
                   <span className="inline">Secure your website with our </span>
-                  <span className="inline text-blue-600">
-                    website security
-                  </span>
+                  <span className="inline text-blue-600">website security</span>
                   <span className="inline">service</span>
                 </h1>
                 <p className="mt-3 mb-20 md:mb-0 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
@@ -368,9 +377,11 @@ export default function WebsiteSecurityPage() {
                 ))}
               </ul>
               <button
-               onClick={() => addProductToCart(plan, billingInterval) }
+                onClick={() => addProductToCart(plan, billingInterval)}
                 className="bg-white border border-transparent rounded-md w-full px-8 py-4 flex items-center justify-center text-lg leading-6 font-medium text-blue-600 hover:bg-blue-50 md:px-10"
-              >Get started today </button>
+              >
+                Get started today
+              </button>
             </div>
           </div>
         </div>
@@ -1058,13 +1069,13 @@ export default function WebsiteSecurityPage() {
         normalText="Ready to secure your website?"
         strongText="Sign up for our website security today."
         normalButton={{
-            label: "Learn more",
-            href: "#more",
-          }}
-          strongButton={{
-            label: "View plans",
-            href: "#pricing",
-          }}
+          label: "Learn more",
+          href: "#more",
+        }}
+        strongButton={{
+          label: "View plans",
+          href: "#pricing",
+        }}
       />
     </>
   );

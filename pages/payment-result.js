@@ -12,11 +12,6 @@ async function fetchGetJSON(url) {
   }
 }
 
-const PrintObject = ({ content }) => {
-  const formattedContent = JSON.stringify(content, null, 2);
-  return <pre>{formattedContent}</pre>;
-};
-
 const ResultPage = () => {
   const { dispatch } = useCart();
   const router = useRouter();

@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import FAQSDark from "../components/faqs-dark";
 import CTASimple from "../components/cta-simple";
+import Seo from "../components/seo";
 
 const faqs = [
   {
@@ -25,6 +26,20 @@ const faqs = [
       "We can handle it all for you. Just write an email to support@blesshost.com and we will take it from there so you can focus on growing your business!",
   },
 ];
+
+const seo = {
+  pageTitle: "Transfers",
+  title: "Wondering how to transfer website hosting to a new host? | BlessHost",
+  metaDesc:
+    "Save time and effort by letting our expert staff transfer your existing website to a new host. We provide free website and domain transfer.",
+  keywords:
+    "how to transfer web hosting from one company to another, how to transfer website hosting, transfer website to new host, how to transfer domain name to new host",
+  opengraphImage: {},
+};
+
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
+
 export default function transfersPage() {
   // 1. Create a reference to the input so we can fetch/clear it's value.
   const firstNameInput = useRef(null);
@@ -32,7 +47,7 @@ export default function transfersPage() {
   const emailInput = useRef(null);
   const phoneInput = useRef(null);
   const domainInput = useRef(null);
-  const domainLoginUrlInput = useRef(null)
+  const domainLoginUrlInput = useRef(null);
   const domainLoginInput = useRef(null);
   const domainPassInput = useRef(null);
   const hostingInput = useRef(null);
@@ -60,7 +75,7 @@ export default function transfersPage() {
               phone: phoneInput.current.value,
               domain_name: domainInput.current.value,
               domain_login: domainLoginInput.current.value,
-              domain_login_url:domainLoginUrlInput.current.value,
+              domain_login_url: domainLoginUrlInput.current.value,
               domain_pass: domainPassInput.current.value,
               hosting_name: hostingInput.current.value,
               hosting_user: hostingUserInput.current.value,
@@ -90,7 +105,7 @@ export default function transfersPage() {
           emailInput.current.value = "";
           domainInput.current.value = "";
           domainLoginInput.current.value = "";
-          domainLoginUrlInput.current.value="";
+          domainLoginUrlInput.current.value = "";
           domainPassInput.current.value = "";
           hostingInput.current.value = "";
           hostingUserInput.current.value = "";
@@ -105,6 +120,8 @@ export default function transfersPage() {
 
   return (
     <>
+      <Seo seo={seo} />
+
       <div className="relative bg-white">
         <div className="lg:absolute lg:inset-0">
           <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
