@@ -25,6 +25,9 @@ import adnanImg from "../public/img/testimonials/adnan.jpg";
 import priceString from "../lib/pricing";
 import {useRouter} from "next/router";
 import { setCookie } from 'nookies'
+import { useCurrency } from "../contexts/CurrencyContext";
+import Seo from "../components/seo"
+
 
 
 
@@ -79,7 +82,16 @@ const features = [
   },
 ];
 
-import { useCurrency } from "../contexts/CurrencyContext";
+const seo =  {
+    pageTitle: "Homepage",
+    title: "Web Hosting, Website Design and Digital Marketing Company | BlessHost",
+    metaDesc: "We are a web hosting, web design, and digital marketing company based in Dubai & Abu Dhabi. Call now to get a free quote. ",
+    keywords: "web design agency dubai, freelance web designer dubai, web design abu dhabi, web design company"
+    ,opengraphImage: {}
+  }
+
+  seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+  seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`
 
 export default function HomePage({ homePosts }) {
   // Create reference to store the DOM element containing the animation
@@ -119,6 +131,7 @@ export default function HomePage({ homePosts }) {
 
   return (
     <>
+    <Seo seo={seo} />
       <div className="text-center md:text-left sm:my-4 md:my-20 lg:my-10 mx-auto max-w-7xl px-4 sm:px-6">
         <div className="bg-gray-50">
           <div className="grid grid-cols-1 items-center justify-between gap-x-5 md:grid-cols-2">
