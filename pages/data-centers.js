@@ -117,7 +117,7 @@ seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?descripti
 export default function DataCenters() {
   const router = useRouter();
 
-  seo.canonical = `${process.env.BASE_URL}${router.route}`;
+  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
   return (
     <>
       <Seo seo={seo} />

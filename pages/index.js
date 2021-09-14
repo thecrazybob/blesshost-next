@@ -1,5 +1,5 @@
 import React from "react";
-const ContactForm = dynamic(() => import('../components/contact-form'))
+const ContactForm = dynamic(() => import("../components/contact-form"));
 import { getHomePosts } from "../lib/api";
 import LatestBlog from "../components/latest-blog";
 import Stats from "../components/stats";
@@ -27,8 +27,7 @@ import { useRouter } from "next/router";
 import { setCookie } from "nookies";
 import { useCurrency } from "../contexts/CurrencyContext";
 import Seo from "../components/seo";
-import dynamic from 'next/dynamic'
-
+import dynamic from "next/dynamic";
 
 const features = [
   {
@@ -93,7 +92,7 @@ const seo = {
 };
 
 seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.BASE_URL}`;
+seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}`;
 
 export default function HomePage({ homePosts }) {
   // Create reference to store the DOM element containing the animation

@@ -154,7 +154,7 @@ export default function GoogleWorkspacePage() {
   const [quantity, setQuantity] = useState(1);
   const router = useRouter();
 
-  seo.canonical = `${process.env.BASE_URL}${router.route}`;
+  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
 
   return (
     <>

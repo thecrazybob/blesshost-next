@@ -29,7 +29,7 @@ const seo = {
 };
 
 seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
+seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 const supportLinks = [
   {

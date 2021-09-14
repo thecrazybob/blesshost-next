@@ -123,9 +123,9 @@ export default function WebsiteSecurityPage() {
   const { currency } = useCurrency();
   const { addProductToCart } = useCart();
   const [billingInterval] = useState("annually");
-  const router = useRouter()
+  const router = useRouter();
 
-  seo.canonical = `${process.env.BASE_URL}${router.route}`
+  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
 
   return (
     <>

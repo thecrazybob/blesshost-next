@@ -150,7 +150,7 @@ export default function WebsiteMaintenancePage() {
   const { currency, setCurrency } = useCurrency("");
   const router = useRouter();
 
-  seo.canonical = `${process.env.BASE_URL}${router.route}`;
+  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
 
   return (
     <>
