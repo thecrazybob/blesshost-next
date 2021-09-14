@@ -225,7 +225,7 @@ const seo = {
   opengraphImage: {},
 };
 
-seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
 
 const allTiers = [tiersUAE, tiersGermany];
 
@@ -253,9 +253,9 @@ export default function VpsHostingPage({ homePosts }) {
   const { currency, setCurrency } = useCurrency("");
   const [tiers, setTiers] = useState(tiersUAE);
   const { addProductToCart } = useCart();
-  const router = useRouter()
+  const router = useRouter();
 
-  seo.canonical = `${process.env.BASE_URL}${router.route}`
+  seo.canonical = `${process.env.BASE_URL}${router.route}`;
 
   const toggleOptions = [
     {

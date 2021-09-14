@@ -75,15 +75,15 @@ const seo = {
   opengraphImage: {},
 };
 
-seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
 
 export default function GoogleMarketingPage() {
   const [tier, setTier] = useState(pricing.tiers[0]);
   const [billingInterval, setBillingInterval] = useState("monthly");
   const { currency, setCurrency } = useCurrency("");
-  const router = useRouter()
+  const router = useRouter();
 
-  seo.canonical = `${process.env.BASE_URL}${router.route}`
+  seo.canonical = `${process.env.BASE_URL}${router.route}`;
 
   return (
     <>

@@ -13,7 +13,7 @@ import CTAImage from "../components/cta-image";
 import { getHomePosts } from "../lib/api";
 import { Tab } from "@headlessui/react";
 import Seo from "../components/seo";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import { useCurrency } from "../contexts/CurrencyContext";
 import { Fragment, useState } from "react";
 import LatestBlog from "../components/latest-blog";
@@ -22,7 +22,6 @@ import priceString from "../lib/pricing";
 import { useCart } from "../contexts/CartContext";
 import { Listbox, Transition } from "@headlessui/react";
 import { SelectorIcon } from "@heroicons/react/solid";
-
 
 const packedFeatures = [
   {
@@ -271,7 +270,7 @@ const seo = {
   opengraphImage: {},
 };
 
-seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -287,9 +286,9 @@ export default function VpsHostingPage({ homePosts }) {
   const { currency } = useCurrency();
   const [tiers, setTiers] = useState(tiersUAE);
   const { addProductToCart } = useCart();
-  const router = useRouter()
+  const router = useRouter();
 
-  seo.canonical = `${process.env.BASE_URL}${router.route}`
+  seo.canonical = `${process.env.BASE_URL}${router.route}`;
 
   const toggleOptions = [
     {
@@ -894,7 +893,6 @@ export default function VpsHostingPage({ homePosts }) {
                         onClick={() => addProductToCart(tier, billingInterval)}
                         className="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
                       >
-
                         Buy {tier.name}
                       </button>
                     </div>
@@ -1045,7 +1043,6 @@ export default function VpsHostingPage({ homePosts }) {
                         onClick={() => addProductToCart(tier, billingInterval)}
                         className="mt-8 block w-full bg-gray-800 border border-gray-800 rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-gray-900"
                       >
-
                         Buy {tier.name}
                       </button>
                     </div>
@@ -1310,7 +1307,6 @@ export default function VpsHostingPage({ homePosts }) {
                                 <div>
                                   <div className="text-lg leading-6 font-medium ">
                                     <h3 className="font-extrabold">
-
                                       <p>cPanel/WHM v11</p>
                                     </h3>
                                   </div>
@@ -1331,7 +1327,6 @@ export default function VpsHostingPage({ homePosts }) {
                                 <div>
                                   <div className="text-lg leading-6 font-medium ">
                                     <h3 className="font-extrabold">
-
                                       <p>Parallels Plesk for Linux</p>
                                     </h3>
                                   </div>
@@ -1352,7 +1347,6 @@ export default function VpsHostingPage({ homePosts }) {
                                 <div>
                                   <div className="text-lg leading-6 font-medium ">
                                     <h3 className="font-extrabold">
-
                                       <p>Parallels Plesk for Windows</p>
                                     </h3>
                                   </div>
@@ -1377,7 +1371,6 @@ export default function VpsHostingPage({ homePosts }) {
                                 <div>
                                   <div className="text-lg leading-6 font-medium ">
                                     <h3 className="font-extrabold">
-
                                       <p>Linux</p>
                                     </h3>
                                   </div>
@@ -1401,7 +1394,6 @@ export default function VpsHostingPage({ homePosts }) {
                                 <div>
                                   <div className="text-lg leading-6 font-medium ">
                                     <h3 className="font-extrabold">
-
                                       <p>Windows</p>
                                     </h3>
                                   </div>

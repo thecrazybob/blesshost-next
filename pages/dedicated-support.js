@@ -217,7 +217,7 @@ const seo = {
   opengraphImage: {},
 };
 
-seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -227,9 +227,9 @@ export default function DedicatedSupportPage() {
   const { addProductToCart } = useCart();
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency();
-  const router = useRouter()
+  const router = useRouter();
 
-  seo.canonical = `${process.env.BASE_URL}${router.route}`
+  seo.canonical = `${process.env.BASE_URL}${router.route}`;
 
   const toggleOptions = [
     {

@@ -37,7 +37,7 @@ const seo = {
   opengraphImage: {},
 };
 
-seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
 
 export default function WebsiteOptimizationPage() {
   const [billingInterval] = useState("monthly");

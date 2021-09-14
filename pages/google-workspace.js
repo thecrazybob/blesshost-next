@@ -146,15 +146,15 @@ const seo = {
   opengraphImage: {},
 };
 
-seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
 
 export default function GoogleWorkspacePage() {
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency("");
   const [quantity, setQuantity] = useState(1);
-  const router = useRouter()
+  const router = useRouter();
 
-  seo.canonical = `${process.env.BASE_URL}${router.route}`
+  seo.canonical = `${process.env.BASE_URL}${router.route}`;
 
   return (
     <>
