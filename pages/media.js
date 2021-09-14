@@ -1,5 +1,6 @@
 import TitleBar from "../components/title-bar";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 
 const colors = [
   {

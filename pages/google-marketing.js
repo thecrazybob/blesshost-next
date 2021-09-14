@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useCurrency } from "../contexts/CurrencyContext";
 import Pricing from "../components/pricing-three-tier";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 
 const pricing = {
   tiers: [
@@ -75,12 +76,14 @@ const seo = {
 };
 
 seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
-export default function googleMarketingPage() {
+export default function GoogleMarketingPage() {
   const [tier, setTier] = useState(pricing.tiers[0]);
   const [billingInterval, setBillingInterval] = useState("monthly");
   const { currency, setCurrency } = useCurrency("");
+  const router = useRouter()
+
+  seo.canonical = `${process.env.BASE_URL}${router.route}`
 
   return (
     <>

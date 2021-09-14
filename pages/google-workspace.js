@@ -17,6 +17,7 @@ import priceString from "../lib/pricing";
 import { useState } from "react";
 import { useCurrency } from "../contexts/CurrencyContext";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 import WHMCSLink from "../components/whmcs-link";
 
 const includedFeatures = [
@@ -146,12 +147,14 @@ const seo = {
 };
 
 seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 export default function GoogleWorkspacePage() {
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency("");
   const [quantity, setQuantity] = useState(1);
+  const router = useRouter()
+
+  seo.canonical = `${process.env.BASE_URL}${router.route}`
 
   return (
     <>

@@ -58,6 +58,7 @@ import nsfatma from "../public/img/portfolio/bless-_0025_Nsfatma-min.jpg";
 import mangroveuae from "../public/img/portfolio/bless-_0026_Mangrove-min.jpg";
 import areejaldar from "../public/img/portfolio/bless-_0027_Areej-min.jpg";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 
 const portfolio = [
   {

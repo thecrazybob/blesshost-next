@@ -13,6 +13,7 @@ import CTAImage from "../components/cta-image";
 import { getHomePosts } from "../lib/api";
 import { Tab } from "@headlessui/react";
 import Seo from "../components/seo";
+import { useRouter } from 'next/router'
 import { useCurrency } from "../contexts/CurrencyContext";
 import { Fragment, useState } from "react";
 import LatestBlog from "../components/latest-blog";
@@ -21,6 +22,7 @@ import priceString from "../lib/pricing";
 import { useCart } from "../contexts/CartContext";
 import { Listbox, Transition } from "@headlessui/react";
 import { SelectorIcon } from "@heroicons/react/solid";
+
 
 const packedFeatures = [
   {
@@ -270,7 +272,6 @@ const seo = {
 };
 
 seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -286,6 +287,9 @@ export default function VpsHostingPage({ homePosts }) {
   const { currency } = useCurrency();
   const [tiers, setTiers] = useState(tiersUAE);
   const { addProductToCart } = useCart();
+  const router = useRouter()
+
+  seo.canonical = `${process.env.BASE_URL}${router.route}`
 
   const toggleOptions = [
     {

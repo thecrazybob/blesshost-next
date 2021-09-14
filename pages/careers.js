@@ -1,6 +1,7 @@
 import { CheckIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 
 const jobs = [
   {

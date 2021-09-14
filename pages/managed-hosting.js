@@ -6,6 +6,7 @@ import { getHomePosts } from "../lib/api";
 import { Tab } from "@headlessui/react";
 import ContactForm from "../components/contact-form";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 import { useCurrency } from "../contexts/CurrencyContext";
 
 const faqs = [
@@ -76,7 +77,6 @@ const seo = {
 };
 
 seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 import { useState } from "react";
 import LatestBlog from "../components/latest-blog";
@@ -92,6 +92,9 @@ export default function VpsHostingPage({ homePosts }) {
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency();
   const { addProductToCart } = useCart();
+  const router = useRouter()
+
+  seo.canonical = `${process.env.BASE_URL}${router.route}`
 
   const toggleOptions = [
     {
@@ -532,7 +535,6 @@ export default function VpsHostingPage({ homePosts }) {
                               }
                               className="flex max-w-max items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
                             >
-
                               Buy {tier.name}
                             </button>
                           </div>

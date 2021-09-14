@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/outline";
 import ContactForm from "../components/contact-form";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 
 const supportLinks = [
   {

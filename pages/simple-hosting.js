@@ -9,6 +9,7 @@ import { useCart } from "../contexts/CartContext";
 import priceString from "../lib/pricing";
 import Image from "next/image";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 
 const securityFeatures = [
   {
@@ -282,7 +283,6 @@ const seo = {
 };
 
 seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -292,6 +292,9 @@ export default function SimpleHostingPage() {
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency("");
   const { addProductToCart } = useCart();
+  const router = useRouter()
+
+  seo.canonical = `${process.env.BASE_URL}${router.route}`
 
   return (
     <>
@@ -449,7 +452,6 @@ export default function SimpleHostingPage() {
                                   "text-sm"
                                 )}
                               >
-
                                 {billingInterval == "annually"
                                   ? "yearly"
                                   : billingInterval}

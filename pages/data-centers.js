@@ -5,6 +5,7 @@ import dubai from "../public/img/datacenters/dubai.jpg";
 import abudhabi from "../public/img/datacenters/abudhabi.jpg";
 import montreal from "../public/img/datacenters/montreal.jpg";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 
 const datacenters = [
   {
@@ -112,9 +113,12 @@ const seo = {
 };
 
 seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
+
 
 export default function DataCenters() {
+    const router = useRouter()
+
+    seo.canonical = `${process.env.BASE_URL}${router.route}`
   return (
     <>
       <Seo seo={seo} />

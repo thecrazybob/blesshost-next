@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import FAQSDark from "../components/faqs-dark";
 import CTASimple from "../components/cta-simple";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 
 const faqs = [
   {

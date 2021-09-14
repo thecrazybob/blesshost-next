@@ -1,13 +1,23 @@
 import Portfolio from "../components/portfolio";
-
 import ContactForm from "../components/contact-form";
 import FAQSDark from "../components/faqs-dark";
 import CTASimple from "../components/cta-simple";
 import Testimonials from "../components/testimonials";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 import buildzone from "../public/img/portfolio/buildzone.ae.jpeg";
 import workshoponwheels from "../public/img/portfolio/workshoponwheels.ae.jpeg";
 import fosscape from "../public/img/portfolio/fosscape.com.jpeg";
+import {
+  AdjustmentsIcon,
+  CheckIcon,
+  DocumentReportIcon,
+  DocumentSearchIcon,
+  DocumentTextIcon,
+  LinkIcon,
+  PresentationChartLineIcon,
+  SupportIcon,
+} from "@heroicons/react/outline";
 
 const firstFeatures = [
   {
@@ -93,18 +103,6 @@ const seo = {
 };
 
 seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
-
-import {
-  AdjustmentsIcon,
-  CheckIcon,
-  DocumentReportIcon,
-  DocumentSearchIcon,
-  DocumentTextIcon,
-  LinkIcon,
-  PresentationChartLineIcon,
-  SupportIcon,
-} from "@heroicons/react/outline";
 
 const faqs = [
   {
@@ -169,7 +167,11 @@ const portfolio = [
   },
 ];
 
-export default function websiteDesignPage() {
+export default function WebsiteDesignPage() {
+  const router = useRouter();
+
+  seo.canonical = `${process.env.BASE_URL}${router.route}`;
+
   return (
     <>
       <Seo seo={seo} />

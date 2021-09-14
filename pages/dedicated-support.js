@@ -5,6 +5,7 @@ import Link from "next/link";
 import lauraImg from "../public/img/testimonials/laura.jpg";
 import madianImg from "../public/img/testimonials/madian.jpg";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import priceString from "../lib/pricing";
 import { useCurrency } from "../contexts/CurrencyContext";
@@ -217,7 +218,6 @@ const seo = {
 };
 
 seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -227,6 +227,9 @@ export default function DedicatedSupportPage() {
   const { addProductToCart } = useCart();
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency();
+  const router = useRouter()
+
+  seo.canonical = `${process.env.BASE_URL}${router.route}`
 
   const toggleOptions = [
     {

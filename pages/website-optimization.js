@@ -7,6 +7,7 @@ import priceString from "../lib/pricing";
 import { useCurrency } from "../contexts/CurrencyContext";
 import { useState } from "react";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 
 const plan = {
   pid: 164,
@@ -37,12 +38,14 @@ const seo = {
 };
 
 seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 export default function WebsiteOptimizationPage() {
   const [billingInterval] = useState("monthly");
   const { currency } = useCurrency();
   const { addProductToCart } = useCart();
+  const router = useRouter();
+
+  seo.canonical = `${process.env.BASE_URL}${router.route}`;
 
   return (
     <>

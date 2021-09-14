@@ -3,6 +3,7 @@ import Image from "next/image";
 import useSWR from "swr";
 import fetcher from "../lib/fetcher";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 
 import {
   NewspaperIcon,
@@ -18,18 +19,17 @@ const stats = [
 ];
 
 const seo = {
-    pageTitle: "About",
-    title: "Web Design & Web Hosting Company in Abu Dhabi and Dubai | BlessHost",
-    metaDesc: "If you are looking for a web design company to make a modern website then look no further we provide the best web design services in Dubai UAE",
-    keywords: "web design agency dubai, best web design company in dubai, web design company dubai, freelance web designer dubai",
-    opengraphImage: {}
+  pageTitle: "About",
+  title: "Web Design & Web Hosting Company in Abu Dhabi and Dubai | BlessHost",
+  metaDesc:
+    "If you are looking for a web design company to make a modern website then look no further we provide the best web design services in Dubai UAE",
+  keywords:
+    "web design agency dubai, best web design company in dubai, web design company dubai, freelance web designer dubai",
+  opengraphImage: {},
 };
 
-seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`
-seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`
-
-
-
+seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
+seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 const supportLinks = [
   {

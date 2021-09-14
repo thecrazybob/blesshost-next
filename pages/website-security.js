@@ -17,6 +17,7 @@ import {
   SupportIcon,
 } from "@heroicons/react/outline";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 
 const plan = {
   pid: 201,
@@ -117,12 +118,14 @@ const seo = {
 };
 
 seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 export default function WebsiteSecurityPage() {
   const { currency } = useCurrency();
   const { addProductToCart } = useCart();
   const [billingInterval] = useState("annually");
+  const router = useRouter()
+
+  seo.canonical = `${process.env.BASE_URL}${router.route}`
 
   return (
     <>

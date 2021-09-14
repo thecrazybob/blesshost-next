@@ -19,7 +19,7 @@ import CTAImage from "../components/cta-image";
 import { getHomePosts } from "../lib/api";
 import { Tab } from "@headlessui/react";
 import Seo from "../components/seo";
-
+import { useRouter } from "next/router";
 
 const faqs = [
   {
@@ -216,15 +216,16 @@ const tiersGermany = [
 ];
 
 const seo = {
-    pageTitle: "Dedicated Hosting",
-    title: "Dedicated hosting servers in multiple locations | BlessHost",
-    metaDesc: "Affordable dedicated Hosting servers in Middle East, Europe, Asia and America. We provide managed dedicated web hosting with no extra cost. ",
-    keywords: "affordable dedicated hosting, dedicated server hosting europe, managed dedicated server web hosting, affordable dedicated server hosting",
-    opengraphImage: {}
-  };
+  pageTitle: "Dedicated Hosting",
+  title: "Dedicated hosting servers in multiple locations | BlessHost",
+  metaDesc:
+    "Affordable dedicated Hosting servers in Middle East, Europe, Asia and America. We provide managed dedicated web hosting with no extra cost. ",
+  keywords:
+    "affordable dedicated hosting, dedicated server hosting europe, managed dedicated server web hosting, affordable dedicated server hosting",
+  opengraphImage: {},
+};
 
 seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 const allTiers = [tiersUAE, tiersGermany];
 
@@ -252,6 +253,9 @@ export default function VpsHostingPage({ homePosts }) {
   const { currency, setCurrency } = useCurrency("");
   const [tiers, setTiers] = useState(tiersUAE);
   const { addProductToCart } = useCart();
+  const router = useRouter()
+
+  seo.canonical = `${process.env.BASE_URL}${router.route}`
 
   const toggleOptions = [
     {
@@ -284,7 +288,7 @@ export default function VpsHostingPage({ homePosts }) {
                       Powerful
                     </span>
                     <span className="pb-3 sm:pb-5 block">
-                     Dedicated Servers
+                      Dedicated Servers
                     </span>
                   </h1>
                   <p className="text-base text-gray-300 sm:text-xl lg:text-lg xl:text-xl">

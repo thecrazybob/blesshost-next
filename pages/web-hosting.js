@@ -18,6 +18,7 @@ import Link from "next/link";
 import { useCart } from "../contexts/CartContext";
 import FeaturesGradient from "../components/features-gradient";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useCurrency } from "../contexts/CurrencyContext";
 
@@ -178,12 +179,14 @@ const seo = {
 };
 
 seo.opengraphImage.sourceUrl = `https://og-image-six-pi.vercel.app/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 export default function WebHosting() {
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency();
   const { addProductToCart } = useCart();
+  const router = useRouter();
+
+  seo.canonical = `${process.env.BASE_URL}${router.route}`;
 
   return (
     <>

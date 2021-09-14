@@ -17,6 +17,7 @@ import {
 } from "@heroicons/react/outline";
 import Image from "next/image";
 import Seo from "../components/seo";
+import { useRouter } from "next/router";
 
 const firstFeatures = [
   {
