@@ -15,17 +15,21 @@ export default async (req, res) => {
 
     const recaptchaJson = await recaptchaRes.json();
 
-    response = await mailgun.messages().send({
-      to: "support@blesshost.com",
-      from: req.body.email,
-      subject: `Contact form submission by ${req.body.first_name} ${req.body.last_name}`,
-      text: `
-      First name: ${req.body.first_name}
-      Last name: ${req.body.last_name}
-      Email: ${req.body.email}
-      Plan: ${req.body.plan}
-      Phone: ${req.body.phone} Message: ${req.body.message}`,
-    });
+    if (recaptchaJson?.success == true) {
+      response = await mailgun.messages().send({
+        to: "support@blesshost.com",
+        from: req.body.email,
+        subject: `Contact form submission by ${req.body.first_name} ${req.body.last_name}`,
+        text: `
+        First name: ${req.body.first_name}
+        Last name: ${req.body.last_name}
+        Email: ${req.body.email}
+        Plan: ${req.body.plan}
+        Phone: ${req.body.phone} Message: ${req.body.message}`,
+      });
+    }
+
+    response.message = "Captcha Error!";
   } catch (error) {
     return res.status(error.statusCode || 500).json({ error: error.message });
   }
