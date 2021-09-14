@@ -1,5 +1,5 @@
 import React from "react";
-import ContactForm from "../components/contact-form";
+const ContactForm = dynamic(() => import('../components/contact-form'))
 import { getHomePosts } from "../lib/api";
 import LatestBlog from "../components/latest-blog";
 import Stats from "../components/stats";
@@ -27,6 +27,8 @@ import { useRouter } from "next/router";
 import { setCookie } from "nookies";
 import { useCurrency } from "../contexts/CurrencyContext";
 import Seo from "../components/seo";
+import dynamic from 'next/dynamic'
+
 
 const features = [
   {
@@ -80,7 +82,7 @@ const features = [
 ];
 
 const seo = {
-  pageTitle: "Homepage",
+  pageTitle: "Web Hosting & Website Design",
   title:
     "Web Hosting, Website Design and Digital Marketing Company | BlessHost",
   metaDesc:
