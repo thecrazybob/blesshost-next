@@ -1,0 +1,13 @@
+{
+  "redirects": [
+    {"source": "/dedicated-servers", "destination": "/dedicated-hosting"},
+    {"source": "/domains", "destination": "https://billing.blesshost.com/cart.php?a=add&domain=register"},
+    {"source": "/email-hosting", "destination": "/google-workspace"},
+    {"source": "/g-suite", "destination": "/google-workspace"},
+    {"source": "/managed-cloud", "destination": "/managed-hosting"},
+    {"source": "/managed-servers", "destination": "/managed-hosting"},
+    {"source": "/site-protection", "destination": "/website-security"},
+    {"source": "/spam-protection", "destination": "/website-security"},
+    {"source": "/virtual-servers", "destination": "/vps-hosting"}
+  ]
+}
