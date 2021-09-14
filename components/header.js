@@ -195,7 +195,7 @@ export default function Header() {
   const websitesButtonRef = useRef();
   const marketingButtonRef = useRef();
   const supportButtonRef = useRef();
-  const {isCartOpen, setIsCartOpen} = useCartContext();
+  const { isCartOpen, setIsCartOpen } = useCartContext();
   const [isOpen, setIsOpen] = useState(false);
   const {
     globalState: { products },
@@ -341,6 +341,7 @@ export default function Header() {
                   )}
                 </Listbox>
                 <button
+                  aria-label="Open Cart"
                   className="text-gray-500 mr-4 px-2 py-2 rounded flex-grow-0 max-w-max hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                   onClick={() => {
                     setIsCartOpen(true);
@@ -790,6 +791,7 @@ export default function Header() {
                   )}
                 </Listbox>
                 <button
+                  aria-label="Open Cart"
                   className="text-gray-500 mr-4 px-2 py-2 rounded flex-grow-0 max-w-max hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                   onClick={() => {
                     setIsCartOpen(true);
