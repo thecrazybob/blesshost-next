@@ -258,7 +258,7 @@ const tiersGermany = [
   },
 ];
 
-const allTiers = [tiersUAE, tiersGermany];
+const allTiers = [tiersGermany, tiersUAE];
 
 const seo = {
   pageTitle: "Vps Hosting",
@@ -284,7 +284,7 @@ const terms = [
 export default function VpsHostingPage({ homePosts }) {
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency();
-  const [tiers, setTiers] = useState(tiersUAE);
+  const [tiers, setTiers] = useState(tiersGermany);
   const { addProductToCart } = useCart();
   const router = useRouter();
 
@@ -292,14 +292,14 @@ export default function VpsHostingPage({ homePosts }) {
 
   const toggleOptions = [
     {
-      id: "uae",
-      name: "United Arab Emirates",
-      flag: require("../public/img/flags/united-arab-emirates.svg").default,
-    },
-    {
       id: "germany",
       name: "Germany",
       flag: require("../public/img/flags/germany.svg").default,
+    },
+    {
+      id: "uae",
+      name: "United Arab Emirates",
+      flag: require("../public/img/flags/united-arab-emirates.svg").default,
     },
   ];
 

@@ -227,7 +227,7 @@ const seo = {
 
 seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
 
-const allTiers = [tiersUAE, tiersGermany];
+const allTiers = [tiersGermany, tiersUAE];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -251,7 +251,7 @@ import { useCart } from "../contexts/CartContext";
 export default function VpsHostingPage({ homePosts }) {
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency, setCurrency } = useCurrency("");
-  const [tiers, setTiers] = useState(tiersUAE);
+  const [tiers, setTiers] = useState(tiersGermany);
   const { addProductToCart } = useCart();
   const router = useRouter();
 
@@ -259,14 +259,14 @@ export default function VpsHostingPage({ homePosts }) {
 
   const toggleOptions = [
     {
-      id: "uae",
-      name: "United Arab Emirates",
-      flag: require("../public/img/flags/united-arab-emirates.svg").default,
-    },
-    {
       id: "germany",
       name: "Germany",
       flag: require("../public/img/flags/germany.svg").default,
+    },
+    {
+      id: "uae",
+      name: "United Arab Emirates",
+      flag: require("../public/img/flags/united-arab-emirates.svg").default,
     },
   ];
 
