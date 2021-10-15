@@ -130,7 +130,7 @@ export default function VpsHostingPage({ homePosts }) {
                   </h1>
                   <p className="text-base text-gray-300 sm:text-xl lg:text-lg xl:text-xl">
                     Server Management doesn't have to be a headache! Let us
-                    focus on your servers so you can focuson growing your
+                    focus on your servers so you can focus on growing your
                     business!
                   </p>
                   <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
@@ -631,7 +631,7 @@ export default function VpsHostingPage({ homePosts }) {
                   Automatic Server Updates
                 </h3>
                 <p className="mt-3 text-lg text-gray-500">
-                  Stay informed on all software updates to avoid unexpectded
+                  Stay informed on all software updates to avoid unexpected
                   incidents. We will regularly check and install updates so
                   you'll never miss an important update.
                 </p>

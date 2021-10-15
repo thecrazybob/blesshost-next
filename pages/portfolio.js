@@ -86,7 +86,7 @@ const portfolio = [
     title: "Al Jazeera Royal Hotel",
     href: "https://www.aljaziraroyal.ae/",
     category: { name: "Corporate" },
-    description: "Hotel Accomodation.",
+    description: "Hotel Accommodation.",
     image: aljazeeraroyalhotel,
   },
   {

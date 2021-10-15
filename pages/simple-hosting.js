@@ -1535,7 +1535,7 @@ export default function SimpleHostingPage() {
                       Are you hosting your website somewhere else?
                     </span>
                     <span className="block text-xl text-blue-900">
-                      We can transfer it within
+                      We can transfer it within{" "}
                       <span className="border-b-2">24 hours</span>
                     </span>
                   </h2>

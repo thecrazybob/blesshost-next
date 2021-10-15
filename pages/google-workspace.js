@@ -22,7 +22,7 @@ import WHMCSLink from "../components/whmcs-link";
 
 const includedFeatures = [
   "30 GB Cloud Email Storage",
-  "Business email addresse (name@yourdomain.com)",
+  "Business email addresses (name@yourdomain.com)",
   "Work from anywhere",
   "Integrated online calendars",
   "Safe and secure",

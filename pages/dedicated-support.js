@@ -308,7 +308,7 @@ export default function DedicatedSupportPage() {
 
             <div className="relative max-w-2xl mx-auto pt-16 px-4 text-center sm:pt-32 sm:px-6 lg:max-w-7xl lg:px-8">
               <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl">
-                <span className="block lg:inline">Simple pricing,</span>
+                <span className="block lg:inline">Simple pricing, </span>
                 <span className="block lg:inline">no commitment.</span>
               </h1>
               <p className="mt-4 text-xl text-blue-100">

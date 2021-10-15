@@ -41,7 +41,7 @@ const hosting = [
   },
   {
     name: "Simple Hosting",
-    description: "Hosting optimized for improved perfomance.",
+    description: "Hosting optimized for improved performance.",
     href: "/simple-hosting",
     icon: CollectionIcon,
   },
