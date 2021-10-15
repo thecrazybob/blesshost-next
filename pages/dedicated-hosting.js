@@ -665,10 +665,16 @@ export default function VpsHostingPage({ homePosts }) {
                           / mo
                         </span>
                         <span className="text-base block font-medium text-gray-500">
-                          (Billed
+                          (Billed{" "}
                           {terms
                             .find((term) => term.id == billingInterval)
-                            .name.toLowerCase()}
+                            .name.toLowerCase()}{" "}
+                          @{" "}
+                          {priceString({
+                            pid: tier.pid,
+                            currency: currency,
+                            term: billingInterval,
+                          })}
                           )
                         </span>
                       </p>

@@ -804,10 +804,16 @@ export default function VpsHostingPage({ homePosts }) {
                           / mo
                         </span>
                         <span className="text-base block font-medium text-gray-500">
-                          (Billed
+                          (Billed{" "}
                           {terms
                             .find((term) => term.id == billingInterval)
-                            .name.toLowerCase()}
+                            .name.toLowerCase()}{" "}
+                          @{" "}
+                          {priceString({
+                            pid: tier.pid,
+                            currency: currency,
+                            term: billingInterval,
+                          })}
                           )
                         </span>
                       </p>
@@ -1032,10 +1038,16 @@ export default function VpsHostingPage({ homePosts }) {
                           })}
                         </span>
                         <span className="text-base leading-6 font-medium text-gray-500">
-                          / mo (Billed
+                          / mo (Billed{" "}
                           {terms
                             .find((term) => term.id == billingInterval)
-                            .name.toLowerCase()}
+                            .name.toLowerCase()}{" "}
+                          @{" "}
+                          {priceString({
+                            pid: tier.pid,
+                            currency: currency,
+                            term: billingInterval,
+                          })}
                           )
                         </span>
                       </p>
