@@ -154,7 +154,9 @@ export default function HomePage({ homePosts }) {
                   Search for a domain name
                 </p>
                 <form
-                  action="https://billing.blesshost.com/cart.php?a=add&domain=register&currency=1"
+                  action={`https://billing.blesshost.com/cart.php?a=add&domain=register&currency=${
+                    currency?.name == "USD" ? 1 : 2
+                  }`}
                   method="POST"
                   className="mt-3 sm:flex"
                 >
