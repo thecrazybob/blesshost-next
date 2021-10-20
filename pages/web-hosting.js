@@ -181,7 +181,7 @@ const seo = {
 seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
 
 export default function WebHosting() {
-  const [billingInterval, setBillingInterval] = useState("annually");
+  const [billingInterval, setBillingInterval] = useState("monthly");
   const { currency } = useCurrency();
   const { addProductToCart } = useCart();
   const router = useRouter();
@@ -397,18 +397,17 @@ export default function WebHosting() {
 
                 <span className="flex flex-col text-center">
                   <span className="text-center text-2xl text-gray-200 text-uppercase mb-3">
-                    Starting from just
+                    Try our hosting for just
                   </span>
                   <span className="text-5xl font-extrabold text-white tracking-normal">
                     {priceString({
                       pid: 91,
-                      currency: currency,
                       term: billingInterval,
-                      monthlyPricing: true,
+                      currency: currency,
                     })}
                   </span>
                   <span className="mt-2 text-base font-medium text-blue-100">
-                    Monthly
+                    Limited time offer!
                   </span>
                 </span>
               </div>

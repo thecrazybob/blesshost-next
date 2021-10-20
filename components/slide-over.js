@@ -21,7 +21,7 @@ export default function Checkout({ open, setOpen }) {
 
   let maxDecimal = 2;
 
-  let object = {}
+  let object = {};
 
   const cookies = parseCookies();
 
@@ -60,17 +60,15 @@ export default function Checkout({ open, setOpen }) {
     });
 
     const meta = products?.map((product) => {
-       object[product.pid] = product.billingInterval
-       return object
-      });
-
-
+      object[product.pid] = product.billingInterval;
+      return object;
+    });
 
     // Create a Checkout Session.
     const response = await fetchPostJSON("/api/checkout_sessions", {
       products: items,
       affiliate: cookies.affiliate_id,
-      meta : meta
+      meta: meta,
     });
 
     if (response.statusCode === 500) {
