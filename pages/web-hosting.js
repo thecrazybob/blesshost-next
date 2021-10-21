@@ -399,13 +399,19 @@ export default function WebHosting() {
                   <span className="text-center text-2xl text-gray-200 text-uppercase mb-3">
                     Try our hosting for just
                   </span>
-                  <span className="text-5xl font-extrabold text-white tracking-normal">
-                    {priceString({
-                      pid: 91,
-                      term: billingInterval,
-                      currency: currency,
-                    })}
-                  </span>
+                  <div className="flex justify-center items-center gap-2">
+                    <span className="text-5xl font-extrabold text-white tracking-normal">
+                      {priceString({
+                        pid: 91,
+                        term: billingInterval,
+                        currency: currency,
+                      })}{" "}
+                    </span>
+                    <span className="text-2xl font-normal text-white">
+                      / month
+                    </span>
+                  </div>
+
                   <span className="mt-2 text-base font-medium text-blue-100">
                     Limited time offer!
                   </span>
@@ -431,12 +437,16 @@ export default function WebHosting() {
               >
                 Get started today
               </button>
-              <a
-                href="/simple-hosting"
-                className="block text-center text-base font-medium text-blue-100 hover:text-white"
-              >
-                Are you looking for simple hosting?
-              </a>
+              <span className="block text-center text-base font-medium text-blue-100 hover:text-white">
+                Automatically renews at{" "}
+                {priceString({
+                  pid: 91,
+                  term: "annually",
+                  currency: currency,
+                  monthlyPricing: true,
+                })}{" "}
+                per month.
+              </span>
             </div>
           </div>
         </div>
