@@ -1,7 +1,6 @@
 import { CheckIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
 
 const jobs = [
   {
@@ -96,15 +95,17 @@ export default function careersPage() {
                 We are currently looking for talent in the following areas:
               </p>
             </div>
-            <Link href="/contact">
-              <a className="mt-8 w-full bg-blue-600 border border-transparent px-5 py-3 inline-flex items-center justify-center text-base font-medium rounded-md text-white hover:bg-blue-700 sm:mt-10 sm:w-auto xl:mt-0">
-                Apply now
-              </a>
-            </Link>
+            <div className="text-gray-500">
+              To apply, send an email with the job title to
+              careers@blesshost.com
+            </div>
           </div>
-          {jobs.map((job) => {
+          {jobs.map((job, index) => {
             return (
-              <div className="border-t border-gray-200 py-16 xl:grid xl:grid-cols-3 xl:items-center xl:gap-x-8">
+              <div
+                key={index}
+                className="border-t border-gray-200 py-16 xl:grid xl:grid-cols-3 xl:items-center xl:gap-x-8"
+              >
                 <div>
                   <h2 className="text-base font-semibold text-blue-600 tracking-wide uppercase">
                     {job.department}
@@ -116,7 +117,7 @@ export default function careersPage() {
                     {job.description}
                   </p>
                 </div>
-                <div className="mt-4 sm:mt-8 md:mt-10 md:grid md:grid-cols-2 md:gap-x-8 xl:mt-0 xl:col-span-2">
+                <div className="mt-4 sm:mt-8 md:mt-10 md:pt-10 md:grid md:grid-cols-2 md:gap-x-8 xl:mt-0 xl:col-span-2">
                   <ul className="divide-y divide-gray-200">
                     {job.requirements.slice(0, 4).map((feature, featureIdx) =>
                       featureIdx === 0 ? (
