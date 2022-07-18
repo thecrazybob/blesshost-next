@@ -11,6 +11,8 @@
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.4",
     "@mailchimp/mailchimp_marketing": "^3.0.65",
+    "@sanity/client": "^3.3.2",
+    "@sanity/image-url": "^1.0.1",
     "@stripe/react-stripe-js": "^1.4.1",
     "@stripe/stripe-js": "^1.17.1",
     "@tailwindcss/aspect-ratio": "^0.2.1",
@@ -38,6 +40,7 @@
     "use-persisted-state": "^0.3.3"
   },
   "devDependencies": {
+    "@sanity/cli": "^2.30.2",
     "autoprefixer": "^10.3.4",
     "eslint-config-next": "^11.1.2",
     "eslint-config-prettier": "^8.3.0",
