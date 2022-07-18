@@ -19,6 +19,14 @@ import {
   SupportIcon,
 } from "@heroicons/react/outline";
 
+const sanityClient = require("@sanity/client");
+export const client = sanityClient({
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    dataset: "production",
+    useCdn: true,
+  });
+
+
 const firstFeatures = [
   {
     id: 1,
@@ -167,7 +175,7 @@ const portfolio = [
   },
 ];
 
-export default function WebsiteDesignPage() {
+export default function WebsiteDesignPage({projects}) {
   const router = useRouter();
 
   seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
@@ -1451,7 +1459,8 @@ export default function WebsiteDesignPage() {
         </div>
       </div>
 
-      <Portfolio header={true} portfolio={portfolio} />
+
+      <Portfolio header={true} portfolio={projects} client={client}/>
 
       <Testimonials />
       <ContactForm />
@@ -1465,3 +1474,14 @@ export default function WebsiteDesignPage() {
     </>
   );
 }
+
+export async function getStaticProps({ params }) {
+    //use Sanity's home-grown query language GROQ to build anything you can imagine
+
+    const projects = await client.fetch('*[_type == "Project"]');
+    return {
+      props: {
+        projects,
+      },
+    };
+  }

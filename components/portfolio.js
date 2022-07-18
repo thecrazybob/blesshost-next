@@ -1,7 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useNextSanityImage } from "next-sanity-image";
 
-export default function portfolio({ header, footer = true, portfolio }) {
+export default function portfolio({
+  header,
+  footer = true,
+  portfolio,
+  client,
+}) {
   return (
     <div
       className={
@@ -15,46 +21,46 @@ export default function portfolio({ header, footer = true, portfolio }) {
           <div className="bg-white h-1/3 sm:h-2/3" />
         </div>
       ) : null}
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative mx-auto max-w-7xl">
         {header ? (
           <div className="text-center">
-            <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               Some of our work
             </h2>
-            <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+            <p className="max-w-2xl mx-auto mt-3 text-xl text-gray-500 sm:mt-4">
               Here are some of the websites that we have helped our clients
               with.
             </p>
           </div>
         ) : null}
-        <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+        <div className="grid max-w-lg gap-5 mx-auto mt-12 lg:grid-cols-3 lg:max-w-none">
           {portfolio.map((item) => (
             <div
               key={item.title}
-              className="flex flex-col rounded-lg shadow-lg overflow-hidden"
+              className="flex flex-col overflow-hidden rounded-lg shadow-lg"
             >
               <div className="flex-shrink-0">
-                <a href={item.href} target="_blank" rel="noreferrer">
+                <a href={item.websiteURL} target="_blank" rel="noreferrer">
                   <Image
                     layout="intrinsic"
-                    className="h-48 w-full object-cover"
-                    src={item.image}
+                    className="object-cover w-full h-48"
+                    src={useNextSanityImage(client, item.mainImage)}
                   />
                 </a>
               </div>
-              <div className="flex-1 bg-white p-6 flex flex-col justify-between">
+              <div className="flex flex-col justify-between flex-1 p-6 bg-white">
                 <div className="flex-1">
                   <p className="text-sm font-medium text-blue-600">
-                    <a href={item.category.href} className="hover:underline">
-                      {item.category.name}
+                    <a href={item.category} className="hover:underline">
+                      {item.category}
                     </a>
                   </p>
-                  <a href={item.href} className="block mt-2">
+                  <a href={item.websiteURL} className="block mt-2">
                     <p className="text-xl font-semibold text-gray-900">
                       {item.title}
                     </p>
                     <p className="mt-3 text-base text-gray-500">
-                      {item.description}
+                      {item.subcategory}
                     </p>
                   </a>
                 </div>
@@ -66,7 +72,7 @@ export default function portfolio({ header, footer = true, portfolio }) {
         {footer ? (
           <div className="flex justify-center mt-10">
             <Link href="/portfolio">
-              <a className="inline-flex border items-center justify-center px-5 py-3 border-gray-400 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+              <a className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-white bg-blue-600 border border-gray-400 rounded-md hover:bg-blue-700">
                 See our complete portfolio
               </a>
             </Link>
