@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "concurrently \"next dev\" \"cd studio && sanity start\"",
+    "build": "echo 'Building Sanity to public/studio…' && cd studio && sanity build ../public/studio -y && cd .. && next build",
     "start": "next start"
   },
   "dependencies": {
@@ -42,6 +42,7 @@
   "devDependencies": {
     "@sanity/cli": "^2.30.2",
     "autoprefixer": "^10.3.4",
+    "concurrently": "^7.2.2",
     "eslint-config-next": "^11.1.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.2",
