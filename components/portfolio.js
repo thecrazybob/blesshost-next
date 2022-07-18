@@ -1,16 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useNextSanityImage } from "next-sanity-image";
 
 export default function portfolio({
   header,
   footer = true,
   portfolio,
-  builder,
+  client,
 }) {
-  function urlFor(source) {
-    return builder.image(source);
-  }
-
   return (
     <div
       className={
@@ -45,11 +42,9 @@ export default function portfolio({
               <div className="flex-shrink-0">
                 <a href={item.websiteURL} target="_blank" rel="noreferrer">
                   <Image
-                    layout="responsive"
+                    layout="intrinsic"
                     className="object-cover w-full h-48"
-                    src={urlFor(item.mainImage).width(400).height(200).url()}
-                    height={200}
-                    width={400}
+                    src={useNextSanityImage(client, item.mainImage)}
                   />
                 </a>
               </div>

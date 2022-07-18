@@ -1,15 +1,12 @@
 const sanityClient = require("@sanity/client");
+import Portfolio from "../components/portfolio";
+import Seo from "../components/seo";
+
 export const client = sanityClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: "production",
   useCdn: true,
 });
-import imageUrlBuilder from '@sanity/image-url'
-import Portfolio from "../components/portfolio";
-import Seo from "../components/seo";
-import { useRouter } from "next/router";
-
-const builder = imageUrlBuilder(client)
 
 const seo = {
   pageTitle: "Portfolio",
@@ -52,7 +49,12 @@ export default function Page({ projects }) {
           </p>
         </div>
       </div>
-      <Portfolio header={false} footer={false} portfolio={projects} builder={builder} />
+      <Portfolio
+        header={false}
+        footer={false}
+        portfolio={projects}
+        client={client}
+      />
     </>
   );
 }
