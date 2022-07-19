@@ -40,7 +40,7 @@ export default function portfolio({
               className="flex flex-col overflow-hidden rounded-lg shadow-lg"
             >
               <div className="flex-shrink-0">
-                <a href={item.websiteURL} target="_blank" rel="noreferrer">
+                <a href={item.websiteUrl} target="_blank" rel="noreferrer">
                   <Image
                     layout="intrinsic"
                     className="object-cover w-full h-48"
@@ -51,11 +51,11 @@ export default function portfolio({
               <div className="flex flex-col justify-between flex-1 p-6 bg-white">
                 <div className="flex-1">
                   <p className="text-sm font-medium text-blue-600">
-                    <a href={item.category} className="hover:underline">
+                    <a>
                       {item.category}
                     </a>
                   </p>
-                  <a href={item.websiteURL} className="block mt-2">
+                  <a href={item.websiteUrl} className="block mt-2">
                     <p className="text-xl font-semibold text-gray-900">
                       {item.title}
                     </p>
