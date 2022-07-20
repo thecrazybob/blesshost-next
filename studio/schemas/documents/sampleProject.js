@@ -1,8 +1,6 @@
-import { format, parseISO } from "date-fns"
-
 export default {
   name: "Project",
-  title: "Project",
+  title: "Projects",
   type: "document",
   fields: [
     {
@@ -35,6 +33,7 @@ export default {
     select: {
       title: "title",
       media: "mainImage",
+      subtitle: "category",
     },
   },
 }
