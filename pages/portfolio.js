@@ -1,12 +1,6 @@
-const sanityClient = require("@sanity/client");
 import Portfolio from "../components/portfolio";
 import Seo from "../components/seo";
-
-export const client = sanityClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: "production",
-  useCdn: true,
-});
+import { client } from "../lib/sanity";
 
 const seo = {
   pageTitle: "Portfolio",
@@ -59,7 +53,7 @@ export default function Page({ projects }) {
   );
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps() {
   //use Sanity's home-grown query language GROQ to build anything you can imagine
 
   const projects = await client.fetch('*[_type == "Project"]');
