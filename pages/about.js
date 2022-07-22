@@ -5,7 +5,6 @@ import fetcher from "../lib/fetcher";
 import Seo from "../components/seo";
 import { client } from "../lib/sanity";
 
-
 import {
   NewspaperIcon,
   OfficeBuildingIcon,
@@ -39,13 +38,8 @@ const supportLinks = [
   },
 ];
 
-export default function aboutPage({seo}) {
+export default function aboutPage({ seo }) {
   const { data } = useSWR("/api/tickets", fetcher);
-
-  //Append remaining data to the seo object
-  seo.opengraphImage = {}
-  seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
   return (
     <>
@@ -545,12 +539,12 @@ export default function aboutPage({seo}) {
 }
 
 export async function getStaticProps() {
-    //use Sanity's home-grown query language GROQ to build anything you can imagine
-
-    let [{seo : seo} ] = await client.fetch('*[_type == "page" && seo.pageTitle == "About"  ]'  ) ;
-    return {
-      props: {
-        seo,
-      },
-    };
-  }
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "About"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
+}

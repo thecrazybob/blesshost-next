@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default {
   title: 'Page',
   name: 'page',
@@ -14,6 +12,7 @@ export default {
   preview: {
     select: {
       title: 'seo.pageTitle',
+      subtitle : 'seo.canonical'
     },
   }
 }
