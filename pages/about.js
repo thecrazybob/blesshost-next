@@ -3,33 +3,14 @@ import Image from "next/image";
 import useSWR from "swr";
 import fetcher from "../lib/fetcher";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
+import { client } from "../lib/sanity";
+
 
 import {
   NewspaperIcon,
   OfficeBuildingIcon,
   PaperClipIcon,
 } from "@heroicons/react/outline";
-
-const stats = [
-  { label: "Founded", value: "2021" },
-  { label: "Employees", value: "5" },
-  { label: "Beta Users", value: "521" },
-  { label: "Raised", value: "$25M" },
-];
-
-const seo = {
-  pageTitle: "About",
-  title: "Web Design & Web Hosting Company in Abu Dhabi and Dubai | BlessHost",
-  metaDesc:
-    "If you are looking for a web design company to make a modern website then look no further we provide the best web design services in Dubai UAE",
-  keywords:
-    "web design agency dubai, best web design company in dubai, web design company dubai, freelance web designer dubai",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
 const supportLinks = [
   {
@@ -58,8 +39,13 @@ const supportLinks = [
   },
 ];
 
-export default function aboutPage() {
+export default function aboutPage({seo}) {
   const { data } = useSWR("/api/tickets", fetcher);
+
+  //Append remaining data to the seo object
+  seo.opengraphImage = {}
+  seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
+  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}/${seo.pageTitle.toLowerCase()}`;
 
   return (
     <>
@@ -557,3 +543,14 @@ export default function aboutPage() {
     </>
   );
 }
+
+export async function getStaticProps() {
+    //use Sanity's home-grown query language GROQ to build anything you can imagine
+
+    let [{seo : seo} ] = await client.fetch('*[_type == "page" && seo.pageTitle == "About"  ]'  ) ;
+    return {
+      props: {
+        seo,
+      },
+    };
+  }
