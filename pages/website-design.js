@@ -1478,7 +1478,7 @@ export default function WebsiteDesignPage({projects}) {
 export async function getStaticProps({ params }) {
     //use Sanity's home-grown query language GROQ to build anything you can imagine
 
-    const projects = await client.fetch('*[_type == "Project"]');
+    const projects = await client.fetch('*[_type == "Project"][0...3]');
     return {
       props: {
         projects,
