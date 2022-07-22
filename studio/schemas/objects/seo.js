@@ -4,6 +4,12 @@ export default {
   type: "object",
   fields: [
     {
+        title: "Page Title",
+        name: "pageTitle",
+        type: "string",
+        validation: Rule => Rule.required(),
+    },
+    {
       title: "Meta Title",
       name: "title",
       type: "string",

@@ -6,13 +6,6 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'pageTitle',
-      title: 'Page Name',
-      description: 'Name of the page',
-      type: 'string',
-      validation: Rule => Rule.required(),
-    },
-    {
       title: 'SEO Settings',
       name: 'seo',
       type: 'seo',
@@ -20,12 +13,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'seo.pageTitle',
     },
-    prepare({ title = 'Untitled'}) {
-      return {
-        title,
-      }
-    }
   }
 }
