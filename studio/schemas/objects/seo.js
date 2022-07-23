@@ -51,35 +51,37 @@ export default {
         documentQuerySelection: `
          "pageTitle": seo.pageTitle`,
         reduceQueryResult: function (queryResult) {
-          return `https://blesshost.com/${queryResult.pageTitle.toLowerCase().replace(/\s+/g, '-')}`;
+          return `https://www.blesshost.com/${queryResult.pageTitle
+            .toLowerCase()
+            .replace(/\s+/g, "-")}`;
         },
       },
     },
     {
-        title: "Opengraph Image",
-        name: "opengraphImage",
-        type: "document",
-        validation: (Rule) => Rule.required(),
-        fields: [
-            {
-                title: "Source URL",
-                name: "sourceUrl",
-                type: "string",
-                description: "Opengraph URL of the image",
-                validation: (Rule) => Rule.required(),
-                inputComponent: ComputedField,
-                options: {
-                    editable: false,
-                    documentQuerySelection: `
+      title: "Opengraph Image",
+      name: "opengraphImage",
+      type: "document",
+      validation: (Rule) => Rule.required(),
+      fields: [
+        {
+          title: "Source URL",
+          name: "sourceUrl",
+          type: "string",
+          description: "Opengraph URL of the image",
+          validation: (Rule) => Rule.required(),
+          inputComponent: ComputedField,
+          options: {
+            editable: false,
+            documentQuerySelection: `
                     "pageTitle": seo.pageTitle,
                     "metaDesc": seo.metaDesc,
                     `,
-                    reduceQueryResult: function (queryResult) {
-                        return `https://blesshost.com/opengraph/${queryResult.pageTitle}?description=${queryResult.metaDesc}`;
-                    }
-                }
-            }
-        ]
-    }
+            reduceQueryResult: function (queryResult) {
+              return `https://www.blesshost.com/opengraph/${queryResult.pageTitle}?description=${queryResult.metaDesc}`;
+            },
+          },
+        },
+      ],
+    },
   ],
 };
