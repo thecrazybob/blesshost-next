@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import ContactForm from "../components/contact-form";
 import FAQSDark from "../components/faqs-dark";
 import CTASimple from "../components/cta-simple";
@@ -17,7 +16,8 @@ import {
 } from "@heroicons/react/outline";
 import Image from "next/image";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
+import { useCurrency } from "../contexts/CurrencyContext";
+import { client } from "../lib/sanity";
 
 const firstFeatures = [
   {
@@ -168,24 +168,7 @@ const faqs = [
   },
 ];
 
-const seo = {
-  pageTitle: "Seo",
-  title: "Best SEO company with branches in Abu Dhabi & Dubai | BlessHost",
-  metaDesc:
-    'We offer search engine optimization "SEO" services in UAE that provide comprehensive search engine marketing results.',
-  keywords:
-    "seo company dubai, seo company, best seo company in dubai, seo company in uae",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${
-  process.env.NEXT_PUBLIC_BASE_URL
-}/${seo.pageTitle.toLowerCase()}`;
-
-import { useCurrency } from "../contexts/CurrencyContext";
-
-export default function seoPage() {
+export default function SeoPage({ seo }) {
   const [showVideo, setShowVideo] = useState(false);
   const [tier, setTier] = useState(pricing.tiers[0]);
   const [billingInterval, setBillingInterval] = useState("monthly");
@@ -240,9 +223,9 @@ export default function seoPage() {
                     height="315"
                     src="https://www.youtube.com/embed/RoNPq-WnXuI?autoplay=1"
                     title="YouTube video player"
-                    frameborder="0"
+                    frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
+                    allowFullScreen
                   ></iframe>
                 ) : (
                   <button
@@ -1281,4 +1264,15 @@ export default function seoPage() {
       />
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Seo"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }

@@ -4,7 +4,6 @@ import useSWR from "swr";
 import fetcher from "../lib/fetcher";
 import Seo from "../components/seo";
 import { client } from "../lib/sanity";
-
 import {
   NewspaperIcon,
   OfficeBuildingIcon,

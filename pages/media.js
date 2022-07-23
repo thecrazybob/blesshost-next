@@ -1,6 +1,6 @@
 import TitleBar from "../components/title-bar";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
+import { client } from "../lib/sanity";
 
 const colors = [
   {
@@ -96,22 +96,7 @@ const files = [
   },
 ];
 
-const seo = {
-  pageTitle: "Media",
-  title: "Our Identity, brand guidelines and media kit | BlessHost",
-  metaDesc:
-    "Download our logos, banners, and brand colors from the official BlessHost media kit which is designed to perfection by our designers. ",
-  keywords:
-    "blesshost logos, blesshost graphics. Blesshost, blesshost banners, blesshost brand guidelines",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${
-  process.env.NEXT_PUBLIC_BASE_URL
-}/${seo.pageTitle.toLowerCase()}`;
-
-export default function mediaPage() {
+export default function mediaPage({seo}) {
   return (
     <>
       <Seo seo={seo} />
@@ -211,3 +196,14 @@ export default function mediaPage() {
     </>
   );
 }
+
+export async function getStaticProps() {
+    let [{ seo: seo }] = await client.fetch(
+      '*[_type == "page" && seo.pageTitle == "Media"]'
+    );
+    return {
+      props: {
+        seo,
+      },
+    };
+  }

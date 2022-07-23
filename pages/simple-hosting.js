@@ -9,7 +9,7 @@ import { useCart } from "../contexts/CartContext";
 import priceString from "../lib/pricing";
 import Image from "next/image";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
+import { client } from "../lib/sanity";
 
 const securityFeatures = [
   {
@@ -272,29 +272,14 @@ const perks = [
   },
 ];
 
-const seo = {
-  pageTitle: "Simple Hosting",
-  title: "Web Hosting Company in Abu Dhabi & Dubai | BlessHost",
-  metaDesc:
-    "Website hosting & domain registration services all over UAE. 24/7 Support & fast web hosting servers with a 99.99% uptime guarantee.",
-  keywords:
-    "dubai web hosting company, cheap web hosting, web hosting companies in abu dhabi, website hosting, web hosting domain hosting",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function SimpleHostingPage() {
+export default function SimpleHostingPage({ seo }) {
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency("");
   const { addProductToCart } = useCart();
-  const router = useRouter();
-
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
 
   return (
     <>
@@ -1580,4 +1565,15 @@ export default function SimpleHostingPage() {
       </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Simple Hosting"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }

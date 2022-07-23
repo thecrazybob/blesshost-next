@@ -8,8 +8,8 @@ import {
   ShareIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
+import { client } from "../lib/sanity";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
 
 const firstFeatures = [
   {
@@ -106,23 +106,7 @@ const faqs = [
   },
 ];
 
-const seo = {
-  pageTitle: "Affiliates",
-  title:
-    "Web hosting affiliate program with great rewards on every order | Blesshost ",
-  metaDesc:
-    "Our web hosting affiliate program is a great way to get paid by recommending BlessHost. Refer and earn cash, Get $10 just for signing up.",
-  keywords:
-    "earn by referring, earn money by referring friends, recommending blesshost, web design affiliate",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${
-  process.env.NEXT_PUBLIC_BASE_URL
-}/${seo.pageTitle.toLowerCase()}`;
-
-export default function affiliatesPage() {
+export default function affiliatesPage({ seo }) {
   return (
     <>
       <Seo seo={seo} />
@@ -1087,4 +1071,15 @@ export default function affiliatesPage() {
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Affiliates"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }

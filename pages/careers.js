@@ -1,5 +1,5 @@
 import { CheckIcon } from "@heroicons/react/outline";
-import Link from "next/link";
+import { client } from "../lib/sanity";
 import Seo from "../components/seo";
 
 const jobs = [
@@ -37,26 +37,10 @@ const jobs = [
   },
 ];
 
-const seo = {
-  pageTitle: "Careers",
-  title: "Web design jobs at Leading IT company in UAE, Apply now! | Blesshost",
-  metaDesc:
-    "If you are looking for PHP Developer and looking to enhance your career, join us at BlessHost. We have vacancies for web design jobs. ",
-  keywords:
-    "web designing jobs in dubai, website design, php developer, web designer",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${
-  process.env.NEXT_PUBLIC_BASE_URL
-}/${seo.pageTitle.toLowerCase()}`;
-
-export default function careersPage() {
+export default function careersPage({ seo }) {
   return (
     <>
       <Seo seo={seo} />
-
       {/* Title Section */}
       <div className="relative bg-gray-800">
         <div className="absolute inset-0">
@@ -81,7 +65,6 @@ export default function careersPage() {
         </div>
       </div>
       {/* /Title Section */}
-
       {/* Available positions */}
       <div className="bg-white">
         <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
@@ -180,4 +163,15 @@ export default function careersPage() {
       {/* /Available Positions */}
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Careers"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }

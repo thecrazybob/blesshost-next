@@ -17,7 +17,7 @@ import {
   SupportIcon,
 } from "@heroicons/react/outline";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
+import { client } from "../lib/sanity";
 
 const plan = {
   pid: 201,
@@ -107,25 +107,10 @@ const checklist = [
   "24x7 Support",
 ];
 
-const seo = {
-  pageTitle: "Website Security",
-  title: "Best Website Security and Secure Firewall for WordPress | BlessHost",
-  metaDesc:
-    "We provide the best website security, restore websites, secure web VPN, and Website firewall for WordPress. ",
-  keywords:
-    "best website security, restore website, secure web vpn, website firewall, website firewall wordpress",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-
-export default function WebsiteSecurityPage() {
+export default function WebsiteSecurityPage({ seo }) {
   const { currency } = useCurrency();
   const { addProductToCart } = useCart();
   const [billingInterval] = useState("annually");
-  const router = useRouter();
-
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
 
   return (
     <>
@@ -1084,4 +1069,15 @@ export default function WebsiteSecurityPage() {
       />
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Website Security"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }

@@ -1,7 +1,6 @@
 import ContactForm from "../components/contact-form";
 import { useState } from "react";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
 import FAQSDark from "../components/faqs-dark";
 import {
   CashIcon,
@@ -15,6 +14,7 @@ import {
 import Testimonials from "../components/testimonials";
 import Pricing from "../components/pricing-three-tier";
 import { useCurrency } from "../contexts/CurrencyContext.js";
+import { client } from "../lib/sanity";
 
 const pricing = {
   tiers: [
@@ -165,25 +165,10 @@ const faqs = [
   },
 ];
 
-const seo = {
-  pageTitle: "Social Media",
-  title: "Affordable Social Media Marketing Company Dubai | BlessHost",
-  metaDesc:
-    "We have a creative team of social media specialists based in Abu Dhabi and Dubai with affordable pricing plans. Get exposure through SMM.  ",
-  keywords:
-    "affordable social media management, social media marketing dubai, social media marketing agency, social media marketing abu dhabi",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-
-export default function SocialMediaPage() {
+export default function SocialMediaPage({ seo }) {
   const [tier, setTier] = useState(pricing.tiers[0]);
   const [billingInterval, setBillingInterval] = useState("monthly");
   const { currency, setCurrency } = useCurrency("");
-  const router = useRouter();
-
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
 
   return (
     <>
@@ -1366,4 +1351,15 @@ export default function SocialMediaPage() {
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Social Media"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }

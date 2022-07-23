@@ -5,11 +5,11 @@ import Link from "next/link";
 import lauraImg from "../public/img/testimonials/laura.jpg";
 import madianImg from "../public/img/testimonials/madian.jpg";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import priceString from "../lib/pricing";
 import { useCurrency } from "../contexts/CurrencyContext";
 import { useCart } from "../contexts/CartContext";
+import { client } from "../lib/sanity";
 
 const plans = [
   {
@@ -207,30 +207,14 @@ const faqs = [
   },
 ];
 
-const seo = {
-  pageTitle: "Dedicated Support",
-  title: "Dedicated support services for hosting management | BlessHost",
-  metaDesc:
-    "We provide dedicated support services via emails, live chats, phone calls, and even office visits. Simple pricing with no commitments.",
-  keywords:
-    "dedicated support services, dedicated customer support, dedicated support, dedicated support team",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function DedicatedSupportPage() {
+export default function DedicatedSupportPage({ seo }) {
   const { addProductToCart } = useCart();
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency();
-  const router = useRouter();
-
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
-
   const toggleOptions = [
     {
       id: "annually",
@@ -1068,4 +1052,15 @@ export default function DedicatedSupportPage() {
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Dedicated Support"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }

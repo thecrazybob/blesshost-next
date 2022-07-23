@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import FAQSDark from "../components/faqs-dark";
 import CTASimple from "../components/cta-simple";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
+import { client } from "../lib/sanity";
 
 const faqs = [
   {
@@ -28,22 +28,7 @@ const faqs = [
   },
 ];
 
-const seo = {
-  pageTitle: "Transfers",
-  title: "Wondering how to transfer website hosting to a new host? | BlessHost",
-  metaDesc:
-    "Save time and effort by letting our expert staff transfer your existing website to a new host. We provide free website and domain transfer.",
-  keywords:
-    "how to transfer web hosting from one company to another, how to transfer website hosting, transfer website to new host, how to transfer domain name to new host",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${
-  process.env.NEXT_PUBLIC_BASE_URL
-}/${seo.pageTitle.toLowerCase()}`;
-
-export default function transfersPage() {
+export default function TransfersPage({ seo }) {
   // 1. Create a reference to the input so we can fetch/clear it's value.
   const firstNameInput = useRef(null);
   const lastNameInput = useRef(null);
@@ -411,4 +396,15 @@ export default function transfersPage() {
       />
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Transfers"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }
