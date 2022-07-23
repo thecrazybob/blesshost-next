@@ -4,28 +4,15 @@ import FAQSDark from "../components/faqs-dark";
 import CTASimple from "../components/cta-simple";
 import Testimonials from "../components/testimonials";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
-import buildzone from "../public/img/portfolio/buildzone.ae.jpeg";
-import workshoponwheels from "../public/img/portfolio/workshoponwheels.ae.jpeg";
-import fosscape from "../public/img/portfolio/fosscape.com.jpeg";
 import {
   AdjustmentsIcon,
   CheckIcon,
-  DocumentReportIcon,
   DocumentSearchIcon,
   DocumentTextIcon,
   LinkIcon,
   PresentationChartLineIcon,
-  SupportIcon,
 } from "@heroicons/react/outline";
-
-const sanityClient = require("@sanity/client");
-export const client = sanityClient({
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-    dataset: "production",
-    useCdn: true,
-  });
-
+import { client } from "../lib/sanity";
 
 const firstFeatures = [
   {
@@ -100,18 +87,6 @@ const thirdFeatures = [
   },
 ];
 
-const seo = {
-  pageTitle: "Website Design",
-  title: "Website Design company in Dubai and Abu Dhabi | Blesshost",
-  metaDesc:
-    "We have an in-house team of web developers for creating great website designs located in both Abu Dhabi and Dubai. Get a free quote now!",
-  keywords:
-    "website design abu dhabi, website design uae, website design company, website design company in dubai",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-
 const faqs = [
   {
     id: 1,
@@ -151,35 +126,7 @@ const faqs = [
   },
 ];
 
-const portfolio = [
-  {
-    title: "Buildzone",
-    href: "https://www.buildzone.ae/",
-    category: { name: "Corporate" },
-    description: "Construction company.",
-    image: buildzone,
-  },
-  {
-    title: "Workshop on Wheels",
-    href: "https://www.workshoponwheels.ae/",
-    category: { name: "Corporate" },
-    description: "Maintenance Services.",
-    image: workshoponwheels,
-  },
-  {
-    title: "Fosscape",
-    href: "https://www.fosscape.com/",
-    category: { name: "Corporate" },
-    description: "LED Lighting.",
-    image: fosscape,
-  },
-];
-
-export default function WebsiteDesignPage({projects}) {
-  const router = useRouter();
-
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
-
+export default function WebsiteDesignPage({ projects, seo }) {
   return (
     <>
       <Seo seo={seo} />
@@ -1459,9 +1406,7 @@ export default function WebsiteDesignPage({projects}) {
         </div>
       </div>
 
-
-      <Portfolio header={true} portfolio={projects} client={client}/>
-
+      <Portfolio header={true} portfolio={projects} client={client} />
       <Testimonials />
       <ContactForm />
       <FAQSDark faqs={faqs} />
@@ -1475,13 +1420,15 @@ export default function WebsiteDesignPage({projects}) {
   );
 }
 
-export async function getStaticProps({ params }) {
-    //use Sanity's home-grown query language GROQ to build anything you can imagine
-
-    const projects = await client.fetch('*[_type == "Project"][0...3]');
-    return {
-      props: {
-        projects,
-      },
-    };
-  }
+export async function getStaticProps() {
+  const projects = await client.fetch('*[_type == "Project"][0...3]');
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Website Design"]'
+  );
+  return {
+    props: {
+      projects,
+      seo,
+    },
+  };
+}

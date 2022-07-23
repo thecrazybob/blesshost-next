@@ -5,7 +5,8 @@ import dubai from "../public/img/datacenters/dubai.jpg";
 import abudhabi from "../public/img/datacenters/abudhabi.jpg";
 import montreal from "../public/img/datacenters/montreal.jpg";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
+import { CheckIcon } from "@heroicons/react/outline";
+import { client } from "../lib/sanity";
 
 const datacenters = [
   {
@@ -29,8 +30,6 @@ const datacenters = [
     image: montreal,
   },
 ];
-
-import { CheckIcon } from "@heroicons/react/outline";
 
 const features = [
   {
@@ -101,27 +100,10 @@ const power = [
   "Onsite diesel generators protect services from any single power failure",
 ];
 
-const seo = {
-  pageTitle: "Data Centers",
-  title:
-    "Data centers in UAE & around the world with high speed uplink | BlessHost",
-  metaDesc:
-    "BlessHost offers the most reliable web hosting solutions with Data centers in the UAE and major locations in Europe, Asia, and America. ",
-  keywords:
-    "data center companies in uae, data center in dubai, cloud hosting data center, best data centers in uae",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-
-export default function DataCenters() {
-  const router = useRouter();
-
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
+export default function DataCenters({ seo }) {
   return (
     <>
       <Seo seo={seo} />
-
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-15 pb-10">
         <TitleBar
           subheading="Data centers"
@@ -319,4 +301,15 @@ export default function DataCenters() {
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Data Centers"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }

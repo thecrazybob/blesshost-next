@@ -7,7 +7,7 @@ import priceString from "../lib/pricing";
 import { useCurrency } from "../contexts/CurrencyContext";
 import { useState } from "react";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
+import { client } from "../lib/sanity";
 
 const plan = {
   pid: 164,
@@ -27,25 +27,10 @@ const features = [
   "WordPress Plugin Installation",
 ];
 
-const seo = {
-  pageTitle: "Website Optimization",
-  title: " Website Speed Optimization Service in UAE | BlessHost",
-  metaDesc:
-    "Super-charge your website with our speed optimization service. WordPress website speed optimization and custom website speed optimization.",
-  keywords:
-    "how do i optimize my website, wordpress website speed optimization, website speed optimization service, website speed optimization",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-
-export default function WebsiteOptimizationPage() {
+export default function WebsiteOptimizationPage({ seo }) {
   const [billingInterval] = useState("monthly");
   const { currency } = useCurrency();
   const { addProductToCart } = useCart();
-  const router = useRouter();
-
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
 
   return (
     <>
@@ -688,4 +673,15 @@ export default function WebsiteOptimizationPage() {
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Website Optimization"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }

@@ -1,29 +1,8 @@
-const sanityClient = require("@sanity/client");
 import Portfolio from "../components/portfolio";
 import Seo from "../components/seo";
+import { client } from "../lib/sanity";
 
-export const client = sanityClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: "production",
-  useCdn: true,
-});
-
-const seo = {
-  pageTitle: "Portfolio",
-  title: "View our extensive list of web design portfolio | BlessHost",
-  metaDesc:
-    "BlessHost's portfolio is full of great designs. It's hard to decide which web design agency to choose, but our portfolio makes it simple. ",
-  keywords:
-    "which web design company, web design agency, best web design company in dubai, web design agency dubai",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${
-  process.env.NEXT_PUBLIC_BASE_URL
-}/${seo.pageTitle.toLowerCase()}`;
-
-export default function Page({ projects }) {
+export default function Page({ projects, seo }) {
   return (
     <>
       <Seo seo={seo} />
@@ -59,13 +38,14 @@ export default function Page({ projects }) {
   );
 }
 
-export async function getStaticProps({ params }) {
-  //use Sanity's home-grown query language GROQ to build anything you can imagine
-
+export async function getStaticProps() {
   const projects = await client.fetch('*[_type == "Project"]');
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Portfolio"]'
+  );
   return {
     props: {
-      projects,
+      projects, seo
     },
   };
 }

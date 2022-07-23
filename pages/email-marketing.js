@@ -4,10 +4,9 @@ import Testimonials from "../components/testimonials";
 import { useState } from "react";
 import { useCurrency } from "../contexts/CurrencyContext";
 import Pricing from "../components/pricing-three-tier";
-import { CheckIcon } from "@heroicons/react/outline";
 import FeaturesTick from "../components/features-tick";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
+import { client } from "../lib/sanity";
 
 const features = [
   {
@@ -111,26 +110,10 @@ const pricing = {
   ],
 };
 
-const seo = {
-  pageTitle: "Email Marketing",
-  title:
-    "We offer best email marketing services in Abu Dhabi & Dubai | BlessHost",
-  metaDesc:
-    "Email Marketing in Dubai is the best way to reach customers with a 300% ROI. Reach customers directly and land your email in the inbox. ",
-  keywords:
-    "best email marketing companies in dubai, email marketing price in dubai, bulk email marketing dubai, email marketing agency dubai",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-
-export default function EmailMarketingPage() {
+export default function EmailMarketingPage({ seo }) {
   const [tier, setTier] = useState(pricing.tiers[0]);
   const [billingInterval, setBillingInterval] = useState("monthly");
   const { currency, setCurrency } = useCurrency("");
-  const router = useRouter();
-
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
 
   return (
     <>
@@ -435,4 +418,15 @@ export default function EmailMarketingPage() {
       />
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Email Marketing"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }

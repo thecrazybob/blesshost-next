@@ -5,17 +5,14 @@ import { useState } from "react";
 import Pricing from "../components/pricing-three-tier";
 import ContactForm from "../components/contact-form";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
 import {
   AdjustmentsIcon,
-  CheckIcon,
-  DocumentReportIcon,
   DocumentSearchIcon,
   DocumentTextIcon,
   LinkIcon,
   PresentationChartLineIcon,
-  SupportIcon,
 } from "@heroicons/react/outline";
+import { client } from "../lib/sanity";
 
 const firstFeatures = [
   {
@@ -132,25 +129,10 @@ const pricing = {
   ],
 };
 
-const seo = {
-  pageTitle: "Website Maintenance",
-  title: "Cost Effective Website Maintenance Company in UAE | BlessHost",
-  metaDesc:
-    "Starting from a professional web design to effective website maintenance at an affordable cost. Enquire now to get a discounted rate. ",
-  keywords:
-    "average monthly website maintenance fees, web design and maintenance cost, custom website services, affordable custom websites",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-
-export default function WebsiteMaintenancePage() {
+export default function WebsiteMaintenancePage({ seo }) {
   const [tier, setTier] = useState(pricing.tiers[0]);
   const [billingInterval, setBillingInterval] = useState("monthly");
   const { currency, setCurrency } = useCurrency("");
-  const router = useRouter();
-
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
 
   return (
     <>
@@ -1270,4 +1252,15 @@ export default function WebsiteMaintenancePage() {
       />
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Website Maintenance"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }

@@ -6,8 +6,9 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 
 // Document types
 import project from "./documents/sampleProject";
-
+import page from "./documents/samplePage";
 // Object types
+import seo from "./objects/seo";
 import figure from "./objects/figure";
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -20,8 +21,10 @@ export default createSchema({
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     figure,
+    seo,
     // The following are document types which will appear
     // in the studio.
     project,
+    page,
   ]),
 });

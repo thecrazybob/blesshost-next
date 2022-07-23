@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/outline";
 import ContactForm from "../components/contact-form";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
+import { client } from "../lib/sanity";
 
 const supportLinks = [
   {
@@ -40,22 +40,7 @@ const supportLinks = [
   },
 ];
 
-const seo = {
-  pageTitle: "Contact",
-  title: "Web hosting and web design company with 24/7 support | Blesshost",
-  metaDesc:
-    "Contact our company for web Hosting, Domain Registration, 24x7 support, server provisioning, and website development in Abu Dhabi and Dubai. ",
-  keywords:
-    "contact blesshost, Website Development, web hosting companies in abu dhabi",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-seo.canonical = `${
-  process.env.NEXT_PUBLIC_BASE_URL
-}/${seo.pageTitle.toLowerCase()}`;
-
-export default function Page() {
+export default function Page({ seo }) {
   return (
     <>
       <Seo seo={seo} />
@@ -127,4 +112,15 @@ export default function Page() {
       <ContactForm></ContactForm>
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Contact"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }

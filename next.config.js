@@ -10,6 +10,12 @@ const STUDIO_REWRITE = {
       : "/studio/index.html",
 };
 
+const OG_REWRITE = {
+  source: "/opengraph/:path*",
+  destination: `${process.env.OG_URL}/:path*`,
+  permanent: true,
+};
+
 module.exports = withNextPluginPreval({
   images: {
     domains: [
@@ -19,6 +25,7 @@ module.exports = withNextPluginPreval({
       "cdn.sanity.io",
     ],
   },
+  redirects: () => [OG_REWRITE],
   rewrites: () => [STUDIO_REWRITE],
   eslint: {
     // Warning: Dangerously allow production builds to successfully complete even if

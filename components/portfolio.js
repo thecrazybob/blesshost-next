@@ -51,9 +51,7 @@ export default function portfolio({
               <div className="flex flex-col justify-between flex-1 p-6 bg-white">
                 <div className="flex-1">
                   <p className="text-sm font-medium text-blue-600">
-                    <a>
-                      {item.category}
-                    </a>
+                    <a>{item.category}</a>
                   </p>
                   <a href={item.websiteUrl} className="block mt-2">
                     <p className="text-xl font-semibold text-gray-900">

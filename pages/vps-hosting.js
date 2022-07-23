@@ -13,7 +13,6 @@ import CTAImage from "../components/cta-image";
 import { getHomePosts } from "../lib/api";
 import { Tab } from "@headlessui/react";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
 import { useCurrency } from "../contexts/CurrencyContext";
 import { Fragment, useState } from "react";
 import LatestBlog from "../components/latest-blog";
@@ -22,6 +21,8 @@ import priceString from "../lib/pricing";
 import { useCart } from "../contexts/CartContext";
 import { Listbox, Transition } from "@headlessui/react";
 import { SelectorIcon } from "@heroicons/react/solid";
+import { client } from "../lib/sanity";
+
 
 const packedFeatures = [
   {
@@ -260,18 +261,6 @@ const tiersGermany = [
 
 const allTiers = [tiersGermany, tiersUAE];
 
-const seo = {
-  pageTitle: "Vps Hosting",
-  title: "Virtual server private hosting company in UAE | BlessHost",
-  metaDesc:
-    "Our Linux VPS hosting & Windows virtual server is power-packed with exclusive data center services. (Virtual Private Database SQL Server)",
-  keywords:
-    "virtual server, dubai vps server, best managed vps hosting, vps hosting dedicated ip, virtual private database sql server",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -281,14 +270,11 @@ const terms = [
   { id: "monthly", name: "Monthly" },
 ];
 
-export default function VpsHostingPage({ homePosts }) {
+export default function VpsHostingPage({ homePosts,seo }) {
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency();
   const [tiers, setTiers] = useState(tiersGermany);
   const { addProductToCart } = useCart();
-  const router = useRouter();
-
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
 
   const toggleOptions = [
     {
@@ -1937,7 +1923,10 @@ export default function VpsHostingPage({ homePosts }) {
 
 export async function getStaticProps() {
   const homePosts = await getHomePosts();
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Vps Hosting"]'
+  );
   return {
-    props: { homePosts },
+    props: { homePosts, seo },
   };
 }

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useCurrency } from "../contexts/CurrencyContext";
 import Pricing from "../components/pricing-three-tier";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
+import { client } from "../lib/sanity";
 
 const pricing = {
   tiers: [
@@ -65,25 +65,10 @@ const pricing = {
   ],
 };
 
-const seo = {
-  pageTitle: "Google Marketing",
-  title: "Google Marketing Agency, Get more leads with google Ads | BlessHost",
-  metaDesc:
-    "Get your words right, appear at the top of google search & get leads with google marketing. Choose the plan that meets your marketing needs.",
-  keywords:
-    "google digital marketing, google maps marketing, google ads marketing agency, google ads",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-
-export default function GoogleMarketingPage() {
+export default function GoogleMarketingPage({ seo }) {
   const [tier, setTier] = useState(pricing.tiers[0]);
   const [billingInterval, setBillingInterval] = useState("monthly");
   const { currency, setCurrency } = useCurrency("");
-  const router = useRouter();
-
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
 
   return (
     <>
@@ -1288,4 +1273,15 @@ export default function GoogleMarketingPage() {
       />
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Google Marketing"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }

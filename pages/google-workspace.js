@@ -17,8 +17,8 @@ import priceString from "../lib/pricing";
 import { useState } from "react";
 import { useCurrency } from "../contexts/CurrencyContext";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
 import WHMCSLink from "../components/whmcs-link";
+import { client } from "../lib/sanity";
 
 const includedFeatures = [
   "30 GB Cloud Email Storage",
@@ -136,25 +136,10 @@ const features = [
   },
 ];
 
-const seo = {
-  pageTitle: "Google Workspace",
-  title: "Buy Google Workspace in Dubai & Abu Dhabi | BlessHost",
-  metaDesc:
-    "Get Google Workspace Emails & Collaboration suite including Google Meet & Docs in the UAE. BlessHost is an authorized Google Partner.",
-  keywords:
-    "what is a google workspace, workspace google, google workspace, google workspace UAE",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-
-export default function GoogleWorkspacePage() {
+export default function GoogleWorkspacePage({ seo }) {
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency("");
   const [quantity, setQuantity] = useState(1);
-  const router = useRouter();
-
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
 
   return (
     <>
@@ -294,4 +279,15 @@ export default function GoogleWorkspacePage() {
       />
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Google Workspace"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }

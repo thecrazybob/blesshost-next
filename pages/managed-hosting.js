@@ -1,13 +1,18 @@
 import { CheckIcon } from "@heroicons/react/outline";
-import SimpleCTA from "../components/cta-simple";
-import FAQs from "../components/faqs-brand";
-import CTAImage from "../components/cta-image";
-import { getHomePosts } from "../lib/api";
 import { Tab } from "@headlessui/react";
 import ContactForm from "../components/contact-form";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
+import SimpleCTA from "../components/cta-simple";
+import FAQs from "../components/faqs-brand";
+import CTAImage from "../components/cta-image";
+import LatestBlog from "../components/latest-blog";
+import Testimonials from "../components/testimonials";
 import { useCurrency } from "../contexts/CurrencyContext";
+import { useCart } from "../contexts/CartContext";
+import { useState } from "react";
+import { getHomePosts } from "../lib/api";
+import priceString from "../lib/pricing";
+import { client } from "../lib/sanity";
 
 const faqs = [
   {
@@ -66,35 +71,14 @@ const tiers = [
   },
 ];
 
-const seo = {
-  pageTitle: "Managed Hosting",
-  title: "Managed hosting company in the UAE | BlessHost",
-  metaDesc:
-    "From hosting server setup to firewall setup and health monitoring, we manage it all. Flat monthly and yearly billing with no hidden costs. ",
-  keywords:
-    "Hosting Services Dubai, Hosting Services Abu Dhabi, Hosting Services UAE, Web Hosting Provider in UAE, Hosting Provider in Middle East",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-
-import { useState } from "react";
-import LatestBlog from "../components/latest-blog";
-import priceString from "../lib/pricing";
-import { useCart } from "../contexts/CartContext";
-import Testimonials from "../components/testimonials";
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function VpsHostingPage({ homePosts }) {
+export default function VpsHostingPage({ homePosts, seo }) {
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency();
   const { addProductToCart } = useCart();
-  const router = useRouter();
-
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
 
   const toggleOptions = [
     {
@@ -1208,7 +1192,10 @@ export default function VpsHostingPage({ homePosts }) {
 
 export async function getStaticProps() {
   const homePosts = await getHomePosts();
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Managed Hosting"]'
+  );
   return {
-    props: { homePosts },
+    props: { homePosts, seo },
   };
 }

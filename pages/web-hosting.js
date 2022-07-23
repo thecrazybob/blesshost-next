@@ -18,9 +18,9 @@ import Link from "next/link";
 import { useCart } from "../contexts/CartContext";
 import FeaturesGradient from "../components/features-gradient";
 import Seo from "../components/seo";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { useCurrency } from "../contexts/CurrencyContext";
+import { client } from "../lib/sanity";
 
 const plan = {
   pid: 91,
@@ -168,25 +168,10 @@ const gradientFeatures = [
   },
 ];
 
-const seo = {
-  pageTitle: "Web Hosting",
-  title: "Web hosting Dubai, Best Web Hosting in UAE | BlessHost Abu Dhabi",
-  metaDesc:
-    "BlessHost is one of the best web hosting companies with physical offices in Abu Dhabi and Dubai. Try our Web Hosting risk-free for 1 month. ",
-  keywords:
-    "web hosting dubai, web hosting uae, best web hosting in uae, web hosting companies in abu dhabi, web hosting abu dhabi",
-  opengraphImage: {},
-};
-
-seo.opengraphImage.sourceUrl = `${process.env.OG_URL}/${seo.pageTitle}?description=${seo.metaDesc}`;
-
-export default function WebHosting() {
+export default function WebHosting({ seo }) {
   const [billingInterval, setBillingInterval] = useState("monthly");
   const { currency } = useCurrency();
   const { addProductToCart } = useCart();
-  const router = useRouter();
-
-  seo.canonical = `${process.env.NEXT_PUBLIC_BASE_URL}${router.route}`;
 
   return (
     <>
@@ -1170,4 +1155,15 @@ export default function WebHosting() {
       </div>
     </>
   );
+}
+
+export async function getStaticProps() {
+  let [{ seo: seo }] = await client.fetch(
+    '*[_type == "page" && seo.pageTitle == "Web Hosting"]'
+  );
+  return {
+    props: {
+      seo,
+    },
+  };
 }
