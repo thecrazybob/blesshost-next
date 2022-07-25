@@ -1,8 +1,8 @@
 const fs = require("fs");
 
-const crawlableRobotsTxt = `User-agent: *\nAllow: /`;
+const crawlableRobotsTxt = `User-agent: *\nAllow: / \nSitemap: https://www.blesshost.com/sitemap.xml`;
 
-const uncrawlableRobotsTxt = `User-agent: *\nDisallow: /`;
+const uncrawlableRobotsTxt = `User-agent: *\nDisallow: / \nSitemap: https://www.blesshost.com/sitemap.xml`;
 
 function generateRobotsTxt() {
   // Create a non-crawlable robots.txt in non-production environments
