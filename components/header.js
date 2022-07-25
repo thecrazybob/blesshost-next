@@ -25,7 +25,9 @@ import {
 } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import Link from "next/link";
-import Checkout from "../components/slide-over";
+const Checkout = dynamic(() => import("../components/slide-over"), {
+  ssr: false,
+});
 const Topbar = dynamic(() => import("../components/topbar"), {
   ssr: false,
 });
