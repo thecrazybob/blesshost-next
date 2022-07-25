@@ -1,10 +1,23 @@
 import React from "react";
-const ContactForm = dynamic(() => import("../components/contact-form"));
+const ContactForm = dynamic(() => import("../components/contact-form"), {
+  ssr: false,
+});
 import { getHomePosts } from "../lib/api";
-import LatestBlog from "../components/latest-blog";
-import Stats from "../components/stats";
-import GradientFeatures from "../components/features-gradient";
-import Testimonials from "../components/testimonials";
+const LatestBlog = dynamic(() => import("../components/latest-blog"), {
+  ssr: false,
+});
+const Stats = dynamic(() => import("../components/stats"), {
+  ssr: false,
+});
+const GradientFeatures = dynamic(
+  () => import("../components/features-gradient"),
+  {
+    ssr: false,
+  }
+);
+const Testimonials = dynamic(() => import("../components/testimonials"), {
+  ssr: false,
+});
 import Typed from "typed.js";
 import {
   ChatAltIcon,
@@ -15,8 +28,8 @@ import {
   ReplyIcon,
   TrashIcon,
   UsersIcon,
+  SparklesIcon,
 } from "@heroicons/react/outline";
-import { SparklesIcon } from "@heroicons/react/outline";
 import { ExternalLinkIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import Image from "next/image";
@@ -493,6 +506,7 @@ export default function HomePage({ homePosts }) {
                   className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
                   src="/img/website-speed.jpg"
                   alt="Website Speed"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -567,6 +581,7 @@ export default function HomePage({ homePosts }) {
                   className="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
                   src="/img/website-design.jpg"
                   alt="Website Design"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -578,13 +593,13 @@ export default function HomePage({ homePosts }) {
         title="Why should you trust BlessHost?"
         description="With years of experience in web hosting, web designing and web development, we know what it takes to get for your business to succeed online. We will make sure you have all the necessary requirements for your online business and that you do not have to worry about maintaining your online identity."
         features={features}
-      ></GradientFeatures>
+      />
 
       <Testimonials />
 
       <LatestBlog homePosts={homePosts} />
 
-      <Stats></Stats>
+      <Stats />
 
       <ContactForm />
 
@@ -595,6 +610,7 @@ export default function HomePage({ homePosts }) {
             layout="fill"
             src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&sat=-100"
             alt=""
+            loading="lazy"
           />
           <div
             aria-hidden="true"

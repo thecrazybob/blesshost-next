@@ -1,7 +1,7 @@
 // next.config.js
 const createNextPluginPreval = require("next-plugin-preval/config");
-const generateRobotsTxt = require("./scripts/generate-robots-txt");
 const withNextPluginPreval = createNextPluginPreval();
+const generateRobotsTxt = require("./scripts/generate-robots-txt");
 const STUDIO_REWRITE = {
   source: "/studio/:path*",
   destination:
@@ -17,6 +17,7 @@ const OG_REWRITE = {
 };
 
 module.exports = withNextPluginPreval({
+  swcMinify: true,
   images: {
     domains: [
       "blog.blesshost.com",

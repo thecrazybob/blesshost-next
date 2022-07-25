@@ -1,7 +1,11 @@
+import dynamic from "next/dynamic";
+const Footer = dynamic(() => import("../components/footer"), {
+    ssr: false,
+}
+);
 import Head from "next/head";
-import Footer from "../components/footer";
-import Header from "../components/header";
-import WhatsAppWidget from "react-whatsapp-widget";
+const Header = dynamic(() => import("../components/header"));
+import { WhatsAppWidget } from "react-whatsapp-widget";
 import "react-whatsapp-widget/dist/index.css";
 import Script from "next/script";
 
@@ -94,7 +98,7 @@ export default function Layout({ children }) {
         <meta name="description" content="Make a website in Dubai" />
       </Head>
 
-      <Header></Header>
+      <Header />
 
       {children}
 
@@ -106,7 +110,7 @@ export default function Layout({ children }) {
         />
       </div>
 
-      <Footer></Footer>
+      <Footer />
       <Script
         src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
         strategy="lazyOnload"

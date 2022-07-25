@@ -3,7 +3,9 @@
     "eslint:recommended",
     "prettier",
     "plugin:import/recommended",
-    "next"
+    "next",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime"
   ],
   "plugins": ["prettier", "react-hooks"],
   "rules": {

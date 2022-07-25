@@ -1,7 +1,7 @@
+import dynamic from "next/dynamic";
 import { Fragment, useRef, useState } from "react";
 import { Popover, Transition, Listbox } from "@headlessui/react";
 import { useCart } from "../contexts/CartContext";
-import Topbar from "../components/topbar";
 import { useCurrency } from "../contexts/CurrencyContext";
 import { useCartContext } from "../contexts/CartOpenContext";
 import {
@@ -26,6 +26,9 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import Checkout from "../components/slide-over";
+const Topbar = dynamic(() => import("../components/topbar"), {
+  ssr: false,
+});
 
 const allCurrencies = [
   { symbol: "د.إ", name: "AED" },
