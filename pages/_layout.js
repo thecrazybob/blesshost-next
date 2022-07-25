@@ -3,9 +3,7 @@ const Footer = dynamic(() => import("../components/footer"), {
   ssr: false,
 });
 import Head from "next/head";
-const Header = dynamic(() => import("../components/header"), {
-  ssr: false,
-});
+import Header from "../components/header";
 import { WhatsAppWidget } from "react-whatsapp-widget";
 import "react-whatsapp-widget/dist/index.css";
 import Script from "next/script";
@@ -98,7 +96,8 @@ export default function Layout({ children }) {
 
         <meta name="description" content="Make a website in Dubai" />
       </Head>
-        <Header />
+      <Header />
+
       {children}
 
       <div className="z-50 bottom-0 right-0 fixed">

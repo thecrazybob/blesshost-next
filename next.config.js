@@ -17,6 +17,9 @@ const OG_REWRITE = {
 };
 
 module.exports = withNextPluginPreval({
+  experimental: {
+    nextScriptWorkers: true,
+  },
   swcMinify: true,
   images: {
     domains: [
