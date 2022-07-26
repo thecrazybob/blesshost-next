@@ -28,9 +28,10 @@ import Link from "next/link";
 const Checkout = dynamic(() => import("../components/slide-over"), {
   ssr: false,
 });
-const Topbar = dynamic(() => import("../components/topbar"), {
-  ssr: false,
-});
+// const Topbar = dynamic(() => import("../components/topbar"), {
+//   ssr: false,
+// });
+import Topbar from "../components/topbar";
 
 const allCurrencies = [
   { symbol: "د.إ", name: "AED" },

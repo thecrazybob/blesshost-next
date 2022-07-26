@@ -27,13 +27,12 @@ export default function Topbar() {
                     pid: 91,
                     term: "monthly",
                     currency: currency,
-                  })}{" "}
-                  / month!
+                  })}
+                   /month!
                 </span>
                 <span className="block sm:ml-2 sm:inline-block">
                   <Link href="/web-hosting">
                     <a className="text-white font-bold underline">
-                      {" "}
                       Learn more <span aria-hidden="true">&rarr;</span>
                     </a>
                   </Link>
@@ -52,7 +51,7 @@ export default function Topbar() {
             </div>
           </div>
         </div>
-      ) : null}{" "}
+      ) : null}
     </>
   );
 }
