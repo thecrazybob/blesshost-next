@@ -1,6 +1,6 @@
 import { MailIcon, PhoneIcon } from "@heroicons/react/outline";
 import { ExternalLinkIcon } from "@heroicons/react/solid";
-import React, { useRef, Fragment, useState } from "react";
+import React, { useRef, Fragment, useState, useEffect } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import priceString from "../lib/pricing";
@@ -64,6 +64,27 @@ const social = [
 ];
 
 export default function ContactForm({ tier, setTier, plans, term, currency }) {
+  useEffect(() => {
+    var fired = false;
+    window.addEventListener(
+      "scroll",
+      function () {
+        let scroll = window.scrollY;
+        if (scroll > 0 && fired === false) {
+          var recaptchaScript = document.createElement("script");
+          recaptchaScript.src = `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`;
+          recaptchaScript.defer = true;
+          document.body.appendChild(recaptchaScript);
+
+          fired = true;
+
+          console.log("On scroll fired");
+        }
+      },
+      true
+    );
+  }, []);
+
   // 1. Create a reference to the input so we can fetch/clear it's value.
   const firstNameInput = useRef(null);
   const lastNameInput = useRef(null);
