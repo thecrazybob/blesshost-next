@@ -77,8 +77,6 @@ export default function ContactForm({ tier, setTier, plans, term, currency }) {
           document.body.appendChild(recaptchaScript);
 
           fired = true;
-
-          console.log("On scroll fired");
         }
       },
       true

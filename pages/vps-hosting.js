@@ -23,22 +23,21 @@ import { Listbox, Transition } from "@headlessui/react";
 import { SelectorIcon } from "@heroicons/react/solid";
 import { client } from "../lib/sanity";
 
-
 const packedFeatures = [
   {
     id: 1,
     name: "Lightning Fast Processing",
   },
   {
-    id: 1,
+    id: 2,
     name: "Free Anti-DDoS Protection",
   },
   {
-    id: 1,
+    id: 3,
     name: "Pure SSD For Optimal Performance",
   },
   {
-    id: 1,
+    id: 4,
     name: "Scalable Without Interruption",
   },
 ];
@@ -84,36 +83,42 @@ const faqs = [
 
 const features = [
   {
+    id: 1,
     name: "VPS Control Panel",
     description:
       "You will be able to control all aspects of your VPS through our proprietary VPS management portal making managing your virtual private server a piece of cake.",
     icon: CloudUploadIcon,
   },
   {
+    id: 2,
     name: "Isolated Resources",
     description:
       "Our VPS nodes are divided into isolated containers that each have their own set of memory, disk space and CPU power which gives you optimal performance.",
     icon: LockClosedIcon,
   },
   {
+    id: 3,
     name: "Free Quick Provision",
     description:
       "Once your order has been verified, your VPS will be ready to use in less than 60 seconds and you can obtain instant access to the VPS.",
     icon: RefreshIcon,
   },
   {
+    id: 4,
     name: "99.9% Service Uptime",
     description:
       "We take great pride in the service that we offer with our enterprise level hardware, datacenter, and monitoring systems. Your VPS comes with 99.9% service uptime.",
     icon: ShieldCheckIcon,
   },
   {
+    id: 5,
     name: "RAID Redundant Storage",
     description:
       "RAID storage means when a disk fails in our fast SSD array there is no effect on your services. We simply replace the disk, data is automatically rebuilt to it.",
     icon: CogIcon,
   },
   {
+    id: 6,
     name: "KVM Virtualization",
     description:
       "The ideal general purpose, isolated high-performance virtualization technology to give you blazing VPS performance, security and full control over your VPS.",
@@ -270,7 +275,7 @@ const terms = [
   { id: "monthly", name: "Monthly" },
 ];
 
-export default function VpsHostingPage({ homePosts,seo }) {
+export default function VpsHostingPage({ homePosts, seo }) {
   const [billingInterval, setBillingInterval] = useState("annually");
   const { currency } = useCurrency();
   const [tiers, setTiers] = useState(tiersGermany);

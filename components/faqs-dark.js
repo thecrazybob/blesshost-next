@@ -14,7 +14,7 @@ export default function FAQSDark({ title, description, faqs }) {
         <div className="mt-20">
           <dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10">
             {faqs.map((faq) => (
-              <div key={faq}>
+              <div key={faq.id}>
                 <dt className="font-semibold text-white">{faq.question}</dt>
                 <dd className="mt-3 text-gray-400">{faq.answer}</dd>
               </div>
