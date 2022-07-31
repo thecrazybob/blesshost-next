@@ -337,11 +337,7 @@ export default function Footer() {
             </p>
           </div>
 
-
-            <Subscribe />
-
-
-
+          <Subscribe />
         </div>
         <div className="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
           <div className="flex space-x-6 md:order-3">
@@ -360,7 +356,7 @@ export default function Footer() {
             Made with 💙 in the UAE and worldwide
           </div>
           <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
-            &copy; 2021 BlessHost. All rights reserved.
+            &copy; {new Date().getFullYear()} BlessHost. All rights reserved.
           </p>
         </div>
       </div>
