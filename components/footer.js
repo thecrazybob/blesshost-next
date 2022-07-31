@@ -337,11 +337,7 @@ export default function Footer() {
             </p>
           </div>
 
-
-            <Subscribe />
-
-
-
+          <Subscribe />
         </div>
         <div className="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
           <div className="flex space-x-6 md:order-3">
