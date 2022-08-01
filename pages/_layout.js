@@ -16,9 +16,6 @@ export default function Layout({ children }) {
         ></meta>
         <link rel="icon" href="/favicon.ico" />
 
-        <link rel="alternate" hrefLang="en" href="https://www.blesshost.com" />
-        <link rel="alternate" hrefLang="ar" href="https://ar.blesshost.com" />
-
         {/* Favicon */}
         <link
           rel="apple-touch-icon"
