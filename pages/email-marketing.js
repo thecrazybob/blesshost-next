@@ -120,7 +120,7 @@ export default function EmailMarketingPage({ seo }) {
       <Seo seo={seo} />
 
       {/* Hero */}
-      <div className="md:h-[screen-wh] bg-gradient-to-b from-blue-400 md:bg-gradient-conic-b md:from-white via-blue-500 to-blue-700">
+      <div className="md:h-[screen-wh] bg-gradient-to-l from-blue-400 via-blue-500 to-blue-700">
         <div className="text-center md:text-left mx-auto max-w-7xl px-4 sm:px-6 h-full ">
           <div className="h-full grid grid-cols-1 items-center gap-x-10 md:grid-cols-2">
             <div>

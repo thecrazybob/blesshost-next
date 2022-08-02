@@ -130,7 +130,7 @@ export default function WebsiteDesignPage({ projects, seo }) {
   return (
     <>
       <Seo seo={seo} />
-      <div className="lg:h-[screen-wh] bg-gradient-to-t from-blue-400 lg:from-blue-600 via-blue-600 to-blue-700">
+      <div className="lg:h-[screen-wh] bg-gradient-to-t from-blue-400 via-blue-600 to-blue-700">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 h-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-8 h-full items-center">
             <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
@@ -156,7 +156,7 @@ export default function WebsiteDesignPage({ projects, seo }) {
                 <div className="inline-flex rounded-md shadow">
                   <a
                     href="#contact"
-                    className="inline-flex border items-center justify-center px-5 py-3 border-gray-400 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+                    className="inline-flex items-center justify-center px-5 py-3 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
                   >
                     Get in touch with us
                   </a>
