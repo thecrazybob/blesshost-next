@@ -40,8 +40,13 @@ export default function portfolio({
               className="flex flex-col overflow-hidden rounded-lg shadow-lg"
             >
               <div className="flex-shrink-0">
-                <a href={item.websiteUrl} target="_blank" rel="noreferrer">
+                <a
+                  href={item.websiteUrl}
+                  target="_blank"
+                  rel="noreferrer nofollow"
+                >
                   <Image
+                    alt="Website screenshot"
                     layout="intrinsic"
                     className="object-cover w-full h-48"
                     src={useNextSanityImage(client, item.mainImage)}
@@ -53,7 +58,12 @@ export default function portfolio({
                   <p className="text-sm font-medium text-blue-600">
                     <a>{item.category}</a>
                   </p>
-                  <a href={item.websiteUrl} className="block mt-2">
+                  <a
+                    href={item.websiteUrl}
+                    className="block mt-2"
+                    target="_blank"
+                    rel="noreferrer nofollow"
+                  >
                     <p className="text-xl font-semibold text-gray-900">
                       {item.title}
                     </p>

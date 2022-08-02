@@ -45,7 +45,8 @@ export async function getStaticProps() {
   );
   return {
     props: {
-      projects, seo
+      projects,
+      seo,
     },
   };
 }
