@@ -36,6 +36,7 @@ export default function App({ Component, pageProps }) {
               strategy="beforeInteractive"
             />
             <Script
+              id="weglot"
               strategy="afterInteractive"
               dangerouslySetInnerHTML={{
                 __html: `Weglot.initialize({
