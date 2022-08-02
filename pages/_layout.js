@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Head>
-        <title>Make a website in Dubai!</title>
+        <title>Website Design & Hosting in Abu Dhabi and Dubai!</title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0"
@@ -17,7 +17,7 @@ export default function Layout({ children }) {
         <link rel="icon" href="/favicon.ico" />
 
         <link rel="alternate" hrefLang="en" href="https://www.blesshost.com" />
-        <link rel="alternate" hrefLang="ar" href="https://ar.blesshost.com" />
+        <link rel="alternate" hrefLang="ar" href="https://ae.blesshost.com" />
 
         {/* Favicon */}
         <link
