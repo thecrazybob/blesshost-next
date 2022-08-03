@@ -18,6 +18,8 @@ export default function Layout({ children }) {
 
         <link rel="alternate" hrefLang="en" href="https://www.blesshost.com" />
         <link rel="alternate" hrefLang="ar" href="https://ae.blesshost.com" />
+        <link rel="alternate" hrefLang="ru" href="https://ru.blesshost.com" />
+        <link rel="alternate" hrefLang="zh" href="https://zh.blesshost.com" />
 
         {/* Favicon */}
         <link
