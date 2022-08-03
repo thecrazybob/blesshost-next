@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function BlogCard({ posts }) {
   return (
-    <div className="relative bg-gray-50 pt-16 pb-12 px-4 sm:px-6 lg:pt-24 lg:pb- lg:px-8">
+    <div className="relative bg-gray-50 pt-16 pb-12 px-4 sm:px-6 lg:pt-24 lg:px-8 translate-exclude">
       <div className="absolute inset-0">
         <div className="bg-white h-1/3 sm:h-2/3" />
       </div>
