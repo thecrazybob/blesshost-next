@@ -6,10 +6,12 @@ import { CurrencyContextProvider } from "./../contexts/CurrencyContext";
 import { CartContextProvider } from "../contexts/CartContext";
 import { CartOpenContextProvider } from "../contexts/CartOpenContext";
 import Script from "next/script";
+import { hotjar } from "react-hotjar";
 
 import Layout from "../pages/_layout";
 export default function App({ Component, pageProps }) {
   useEffect(() => {
+    hotjar.initialize(3095234, 6);
     mailgo();
   }, []);
 
@@ -44,6 +46,7 @@ export default function App({ Component, pageProps }) {
                 });`,
               }}
             />
+
             <Component {...pageProps} />
           </Layout>
         </CartContextProvider>
