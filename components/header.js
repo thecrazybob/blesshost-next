@@ -38,6 +38,9 @@ const hosting = [
     description: "Suitable hosting for small and medium size businesses.",
     href: "/web-hosting",
     icon: GlobeIcon,
+    badge: {
+      name: "Top Selling!",
+    },
   },
   {
     name: "Simple Hosting",
@@ -77,6 +80,9 @@ const websites = [
     description: "We create digital experiences that excite and inspire",
     href: "/website-design",
     icon: TemplateIcon,
+    badge: {
+      name: "Top Selling!",
+    },
   },
   {
     name: "Speed Optimization",
@@ -104,6 +110,9 @@ const marketing = [
     description: "Search Engine Optimization to expand your digital presence",
     href: "/seo",
     icon: PresentationChartBarIcon,
+    badge: {
+      name: "Top Selling!",
+    },
   },
   {
     name: "Social Media",
@@ -429,8 +438,15 @@ export default function Header() {
                                         />
                                       </div>
                                       <div className="ml-4">
-                                        <p className="text-base font-medium text-gray-900">
-                                          {item.name}
+                                        <p className="text-base font-medium text-gray-900 flex items-center gap-x-2">
+                                          <span>{item.name}</span>
+                                          {item.badge ? (
+                                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                              {item.badge?.name}
+                                            </span>
+                                          ) : (
+                                            ""
+                                          )}
                                         </p>
                                         <p className="mt-1 text-sm text-gray-500">
                                           {item.description}
@@ -524,8 +540,15 @@ export default function Header() {
                                         />
                                       </div>
                                       <div className="ml-4">
-                                        <p className="text-base font-medium text-gray-900">
-                                          {item.name}
+                                        <p className="text-base font-medium text-gray-900 flex items-center gap-x-2">
+                                          <span>{item.name}</span>
+                                          {item.badge ? (
+                                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                              {item.badge?.name}
+                                            </span>
+                                          ) : (
+                                            ""
+                                          )}
                                         </p>
                                         <p className="mt-1 text-sm text-gray-500">
                                           {item.description}
@@ -616,8 +639,15 @@ export default function Header() {
                                         />
                                       </div>
                                       <div className="ml-4">
-                                        <p className="text-base font-medium text-gray-900">
-                                          {item.name}
+                                        <p className="text-base font-medium text-gray-900 flex items-center gap-x-2">
+                                          <span>{item.name}</span>
+                                          {item.badge ? (
+                                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                              {item.badge?.name}
+                                            </span>
+                                          ) : (
+                                            ""
+                                          )}
                                         </p>
                                         <p className="mt-1 text-sm text-gray-500">
                                           {item.description}
