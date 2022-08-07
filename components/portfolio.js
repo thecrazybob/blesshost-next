@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CTASimple from "./cta-simple";
 import { useNextSanityImage } from "next-sanity-image";
 
 export default function portfolio({
@@ -76,6 +77,21 @@ export default function portfolio({
             </div>
           ))}
         </div>
+
+        {!footer ? (
+          <CTASimple
+            className="-mb-16"
+            normalText="Ready to get your own professional website?"
+            strongText="Talk to us today!"
+            normalButton={{
+              label: "Learn more",
+              href: "/website-design",
+            }}
+            strongButton={{ label: "Get in touch with us!", href: "/contact" }}
+          />
+        ) : (
+          ""
+        )}
 
         {footer ? (
           <div className="flex justify-center mt-10">
