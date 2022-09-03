@@ -40,5 +40,6 @@ products.json
 
 # robots
 public/robots.txt
+public/sitemap.xml
 
 public/studio
