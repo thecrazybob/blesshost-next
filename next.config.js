@@ -57,6 +57,7 @@ module.exports = withNextPluginPreval({
   },
   webpack(config, { isServer }) {
     if (isServer) {
+      require("./scripts/generate-sitemap");
       generateRobotsTxt();
     }
     return config;
