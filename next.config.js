@@ -17,6 +17,29 @@ const OG_REWRITE = {
 };
 
 module.exports = withNextPluginPreval({
+  i18n: {
+    locales: ["en", "ar", "ru", "zh"],
+    defaultLocale: "en",
+    localeDetection: false,
+    domains: [
+      {
+        domain: "www.blesshost.com",
+        defaultLocale: "en",
+      },
+      {
+        domain: "ae.blesshost.com",
+        defaultLocale: "ar",
+      },
+      {
+        domain: "ru.blesshost.com",
+        defaultLocale: "ru",
+      },
+      {
+        domain: "zh.blesshost.com",
+        defaultLocale: "zh",
+      },
+    ],
+  },
   images: {
     domains: [
       "blog.blesshost.com",
