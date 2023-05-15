@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import WhatsAppWidget from "react-whatsapp-widget";
-import "react-whatsapp-widget/dist/index.css";
+import WhatsAppWidget from "react-whatsapp-chat-widget";
+import "react-whatsapp-chat-widget/index.css";
 import Script from "next/script";
 import { useRouter } from "next/router";
 
@@ -104,11 +104,7 @@ export default function Layout({ children }) {
       <Header></Header>
       <body dir={router.locale === "ar" ? "rtl" : "ltr"}>{children}</body>
       <div className="z-50 bottom-0 right-0 fixed">
-        <WhatsAppWidget
-          companyName="BlessHost"
-          phoneNumber="971544423111"
-          textReplyTime="Typically replies within an hour"
-        />
+        <WhatsAppWidget phoneNo="971544423111" />
       </div>
 
       <Footer></Footer>
