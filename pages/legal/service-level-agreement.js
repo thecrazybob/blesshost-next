@@ -303,7 +303,7 @@ export default function Example() {
         would be applicable on a per migration basis.
       </p>
       <strong className="leading-10 border-b text-lg">
-          5 ICANN | Registrants' Benefits and Responsibilities
+          5 ICANN | Registrants' Responsibilities
         </strong>
         <p className="mt-3">
         1.	You must comply with the terms and conditions posted by your Registrar, including applicable policies from your Registrar, the Registry and ICANN.</p>
@@ -316,7 +316,7 @@ export default function Example() {
         <p className="mt-3">
         5.	You must respond to inquiries from your Registrar within fifteen (15) days, and keep your Registrar account data current. If you choose to have your domain name registration renew automatically, you must also keep your payment information current.</p>
         <p className="mt-3">
-        Read More: <a href="https://www.icann.org/resources/pages/benefits-2013-09-16-en.">
+        Read More: <a href="https://www.icann.org/resources/pages/benefits-2013-09-16-en">
         https://www.icann.org/resources/pages/benefits-2013-09-16-en
         </a>
         </p>
