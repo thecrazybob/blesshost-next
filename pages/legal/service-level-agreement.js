@@ -302,6 +302,24 @@ export default function Example() {
         applicable for data to be moved into BlessHost's network and charges
         would be applicable on a per migration basis.
       </p>
+      <strong className="leading-10 border-b text-lg">
+          5 ICANN | Registrants' Benefits and Responsibilities
+        </strong>
+        <p className="mt-3">
+        1.	You must comply with the terms and conditions posted by your Registrar, including applicable policies from your Registrar, the Registry and ICANN.</p>
+        <p className="mt-3">
+        2.	You must review your Registrar's current Registration Agreement, along with any updates.</p>
+        <p className="mt-3">
+        3.	You will assume sole responsibility for the registration and use of your domain name.</p>
+        <p className="mt-3">
+        4.	You must provide accurate information for publication in directories such as WHOIS, and promptly update this to reflect any changes.</p>
+        <p className="mt-3">
+        5.	You must respond to inquiries from your Registrar within fifteen (15) days, and keep your Registrar account data current. If you choose to have your domain name registration renew automatically, you must also keep your payment information current.</p>
+        <p className="mt-3">
+        Read More: <a href="https://www.icann.org/resources/pages/benefits-2013-09-16-en.">
+        https://www.icann.org/resources/pages/benefits-2013-09-16-en
+        </a>
+        </p>
     </div>
   );
 }
