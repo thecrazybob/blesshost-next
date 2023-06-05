@@ -6,32 +6,15 @@ export default function Example() {
       <TitleBar subheading="Legal" title="ICANN" />
       <div>
   <section dir="ltr" external_links="">
-    <h1 className="LibraryIntro">Registrants' Benefits and Responsibilities</h1>
-    <div className="Document--translations">
-      <h3>This page is available in:</h3>
-      <ul>
-        <li>English</li>
-        <li className="current"><a href="https://www.icann.org/resources/pages/benefits-2017-10-27-ar">العربية</a></li>
-        <li className="current"><a href="https://www.icann.org/resources/pages/benefits-2017-10-27-es">Español</a></li>
-        <li className="current"><a href="https://www.icann.org/resources/pages/benefits-2017-10-27-fr">Français</a></li>
-        <li className="current"><a href="https://www.icann.org/resources/pages/benefits-2017-10-27-ru">Pусский</a></li>
-        <li className="current"><a href="https://www.icann.org/resources/pages/benefits-2017-10-27-zh">中文</a></li>
-      </ul>
-    </div>
+    <h1 className="LibraryIntro">ICANN | Registrants' Benefits and Responsibilities</h1>
     <div className="EmbeddedHTML">
       <div className="box">
         <p className="floatcenter"><a href="/en/resources/registrars/registrant-rights/responsibilities-27jun11-en.htm">View archived policy</a></p>
       </div>
-      <h3>
-        <em>
-          <abbr title="Domain Name" className="">Domain Name</abbr> Registrants' Rights:
-        </em>
-      </h3>
+      <h3><em><abbr title="Domain Name" className="">Domain Name</abbr> Registrants' Rights:</em></h3>
       <ol>
         <li>
-          <p>
-            Your domain name registration and any privacy/proxy services you may use in conjunction with it must be subject to a Registration Agreement with an
-            <abbr title="Internet Corporation for Assigned Names and Numbers">ICANN</abbr> Accredited Registrar.
+          <p>Your domain name registration and any privacy/proxy services you may use in conjunction with it must be subject to a Registration Agreement with an <abbr title="Internet Corporation for Assigned Names and Numbers">ICANN</abbr> Accredited Registrar.
           </p>
           <ul>
             <li>
@@ -64,7 +47,9 @@ export default function Example() {
               <p>Instructions that explain your Registrar's processes for registering, managing, transferring, renewing, and restoring your domain name registrations, including through any proxy or privacy services made available by your Registrar.</p>
             </li>
           </ul>
-        </li
+        </li>
+        <li>
+          <p>You shall not be subject to false advertising or deceptive practices by your Registrar or though any proxy
     </div>
   );
 }
