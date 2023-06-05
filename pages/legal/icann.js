@@ -4,7 +4,6 @@ export default function Example() {
   return (
     <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-15 pb-10 translate-exclude">
       <TitleBar subheading="Legal" title="ICANN" />
-      <div>
   <h2>Registrants' Benefits and Responsibilities (ICANN)</h2>
   <h3>Domain Name Registrants' Rights:</h3>
   <ol>
@@ -49,8 +48,5 @@ export default function Example() {
     </li>
   </ol>
 </div>
-
-    
-    </div>
   );
 }
