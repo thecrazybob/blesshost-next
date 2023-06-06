@@ -103,13 +103,13 @@ export default function Layout({ children }) {
 
       <Header></Header>
       <body dir={router.locale === "ar" ? "rtl" : "ltr"}>{children}</body>
-     { <div className="z-50 bottom-0 right-0 fixed">
-        <WhatsAppWidget
-          companyName="BlessHost"
-          phoneNumber="971544423111"
-          textReplyTime="Typically replies within an hour"
-        />
-      </div>}
+//      <div className="z-50 bottom-0 right-0 fixed">
+//         <WhatsAppWidget
+//           companyName="BlessHost"
+//           phoneNumber="971544423111"
+//           textReplyTime="Typically replies within an hour"
+//         />
+//      </div>
 
       <Footer></Footer>
       <Script
