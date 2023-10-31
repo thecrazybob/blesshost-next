@@ -67,7 +67,7 @@ export default function careersPage({ seo }) {
       {/* /Title Section */}
       {/* Available positions */}
       <div className="bg-white">
-        <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto pb-8 pt-16 px-4 sm:pt-24 sm:px-6 lg:px-8">
           <div className="pb-16 xl:flex xl:items-center xl:justify-between">
             <div>
               <h1 className="text-4xl font-extrabold sm:text-5xl sm:tracking-tight">
@@ -161,6 +161,27 @@ export default function careersPage({ seo }) {
         </div>
       </div>
       {/* /Available Positions */}
+      <div className="bg-gray-100 py-16">
+        <div className="text-center">
+          <h2 className="text-3xl font-extrabold text-gray-900">
+            Explore Remote Job Opportunities in Dubai
+          </h2>
+          <a
+            href="https://www.remotedxb.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://www.remotedxb.com/img/twitter-profile.jpg"
+              alt="RemoteDXB Logo"
+              className="mx-auto mt-8 w-36"
+            />
+          </a>
+          <p className="mt-4 text-lg text-gray-500">
+            Visit <a className="text-blue-600" href="https://www.remotedxb.com" target="_blank" rel="noopener noreferrer">Remote Jobs in Dubai</a> to discover more remote job opportunities.
+          </p>
+        </div>
+      </div>
     </>
   );
 }
