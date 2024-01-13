@@ -1,13 +1,11 @@
 import Head from "next/head";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import WhatsAppWidget from "react-whatsapp-widget";
-import "react-whatsapp-widget/dist/index.css";
+import { FloatingWhatsApp } from 'react-floating-whatsapp'
 import Script from "next/script";
 import { useRouter } from "next/router";
 
 export default function Layout({ children }) {
-  const router = useRouter();
   return (
     <>
       <Head>
@@ -110,6 +108,37 @@ export default function Layout({ children }) {
         src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
         strategy="lazyOnload"
       />
+        <FloatingWhatsApp
+            phoneNumber="971544423111"
+            accountName="BlessHost"
+            onClick={() => {}}
+            onSubmit={() => {}}
+            onClose={() => {}}
+            onLoopDone={() => {}}
+            onNotification={() => {}}
+            avatar="https://www.blesshost.com/img/media-kit/4a.png"
+            statusMessage="Typically replies within 1 hour"
+            chatMessage="Hello there! How can we help you?"
+            placeholder="Type a message.."
+            messageDelay={2}
+            darkMode={false}
+            allowClickAway={false}
+            allowEsc={false}
+            className="floating-whatsapp"
+            buttonClassName="floating-whatsapp-button"
+            style={{}}
+            buttonStyle={{}}
+            chatboxHeight={320}
+            chatboxClassName="floating-whatsapp-chatbox"
+            chatboxStyle={{}}
+            notification={false}
+            notificationDelay={60}
+            notificationSound={false}
+            notificationSoundSrc=""
+            notificationLoop={0}
+            notificationStyle={{}}
+            notificationClassName=""
+        />
     </>
   );
 }
