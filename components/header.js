@@ -1,4 +1,4 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useRef, useState, useEffect } from "react";
 import { Popover, Transition, Listbox } from "@headlessui/react";
 import { useCart } from "../contexts/CartContext";
 import Topbar from "../components/topbar";
@@ -200,6 +200,7 @@ function classNames(...classes) {
 }
 
 export default function Header() {
+    const [mounted, setMounted] = useState(false);
   const hostingButtonRef = useRef();
   const websitesButtonRef = useRef();
   const marketingButtonRef = useRef();
@@ -210,6 +211,14 @@ export default function Header() {
     globalState: { products },
   } = useCart();
   const { currency, setCurrency } = useCurrency("");
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;  // or return a placeholder if you want to maintain layout stability
+  }
 
   return (
     <header className="sticky top-0 inset-y-0 z-50 filter shadow-md">
