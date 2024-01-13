@@ -2,7 +2,7 @@ import TitleBar from "../../components/title-bar";
 
 export default function Example() {
   return (
-    <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-15 pb-10">
+    <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-15 pb-10 translate-exclude">
       <TitleBar subheading="Legal" title="Terms of Service" />
       <p className="mt-3">
         BlessHost (“we”, “us”) provides hosting services with such other

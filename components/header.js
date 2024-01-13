@@ -206,7 +206,6 @@ export default function Header() {
   const marketingButtonRef = useRef();
   const supportButtonRef = useRef();
   const { isCartOpen, setIsCartOpen } = useCartContext();
-  const [isOpen, setIsOpen] = useState(false);
   const {
     globalState: { products },
   } = useCart();
