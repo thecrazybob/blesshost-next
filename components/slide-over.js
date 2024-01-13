@@ -8,7 +8,7 @@ import { fetchPostJSON } from "../lib/stripe-helpers";
 import getStripe, { formatAmountForStripe } from "../lib/get-stripe";
 import { parseCookies } from "nookies";
 
-export default function Checkout({ open, setOpen }) {
+export default function Checkout({ open, setIsOpen }) {
   const {
     globalState: { products },
     dispatch,
@@ -109,7 +109,7 @@ export default function Checkout({ open, setOpen }) {
         static
         className="fixed inset-0 overflow-hidden z-50"
         open={open}
-        onClose={setOpen}
+        onClose={() => setIsOpen(false)}
       >
         <div className="absolute inset-0 overflow-hidden">
           <Dialog.Overlay className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
@@ -135,7 +135,10 @@ export default function Checkout({ open, setOpen }) {
                         <div className="ml-3 h-7 flex items-center">
                           <button
                             className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            onClick={() => setOpen(false)}
+                            onClick={(event) => {
+                                event.stopPropagation();
+                                setIsOpen(false);
+                              }}
                           >
                             <span className="sr-only">Close panel</span>
                             <XIcon className="h-6 w-6" aria-hidden="true" />
@@ -340,7 +343,10 @@ export default function Checkout({ open, setOpen }) {
                     <button
                       type="button"
                       className="flex-grow bg-white py-2 px-2 ml-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                      onClick={() => setOpen(false)}
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setIsOpen(false);
+                      }}
                     >
                       Continue Shopping
                     </button>

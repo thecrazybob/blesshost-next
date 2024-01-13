@@ -844,7 +844,7 @@ export default function Header() {
                     </div>
                   ) : null}
 
-                  <Checkout open={isCartOpen} setOpen={setIsCartOpen} />
+                  <Checkout open={isCartOpen} setIsOpen={setIsCartOpen} />
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
