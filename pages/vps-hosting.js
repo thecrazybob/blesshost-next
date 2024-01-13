@@ -240,7 +240,7 @@ const tiersGermany = [
     name: "2 GB RAM",
     description: "Good for development / testing purposes",
     includedFeatures: [
-      "360 GB SSD Storage",
+      "36 GB SSD Storage",
       "1.5 TB Premium Bandwidth",
       "1 Core",
       "Germany Data center",
