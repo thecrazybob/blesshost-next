@@ -33,19 +33,6 @@ export default function App({ Component, pageProps }) {
             gtag('config', 'GTM-KSS7RD');
             `}
             </Script>
-            <Script
-              src="https://cdn.weglot.com/weglot.min.js"
-              strategy="beforeInteractive"
-            />
-            <Script
-              id="weglot"
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `Weglot.initialize({
-                api_key: 'wg_2d5dbf868cd81504955b2f3f3b28aad86'
-                });`,
-              }}
-            />
 
             <Component {...pageProps} />
           </Layout>
