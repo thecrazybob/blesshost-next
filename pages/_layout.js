@@ -102,7 +102,8 @@ export default function Layout({ children }) {
       </Head>
 
       <Header></Header>
-      <body dir={router.locale === "ar" ? "rtl" : "ltr"}>{children}</body>
+
+      {children}
 
       <Footer></Footer>
       <Script
