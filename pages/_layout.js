@@ -138,6 +138,7 @@ export default function Layout({ children }) {
             notificationLoop={0}
             notificationStyle={{}}
             notificationClassName=""
+            strategy="lazyOnload"
         />
     </>
   );
